@@ -1,0 +1,161 @@
+.t888-about-wrapper {
+    /* background-size: cover; */
+    padding: 115px 120px 114px;
+    background-position: center;
+}
+
+.t888-about-container {}
+
+.t888-about-box {
+    background: transparent;
+    padding: 70px 0 80px 90px;
+    border: 10px solid var(--secondary-color);
+    max-width: 900px;
+}
+
+.t888-about-title {
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: var(--font-philosopher);
+    position: relative;
+}
+
+.t888-about-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: var(--secondary-color);
+    display: block;
+    margin-top: 6px;
+}
+
+.t888-about-sub {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    max-width: 500px;
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 40px;
+}
+
+.t888-about-button {
+    display: inline-flex;
+    padding: 9px 30px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 2rem;
+}
+
+.t888-about-button i {
+    font-size: 30px;
+    margin-right: 16px;
+}
+
+.t888-about-box {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+.t888-about-box.anim-zoom-out {
+    opacity: 0;
+    transform: scale(1.4);
+    transform-origin: left top;
+    transition:
+        opacity .9s cubic-bezier(.22, .61, .36, 1),
+        transform .9s cubic-bezier(.22, .61, .36, 1);
+    transition-delay: .08s;
+}
+
+.t888-about-box.anim-zoom-out.is-inview {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.t888-about-box>* {
+    transition: opacity .7s ease, transform .7s ease;
+    opacity: 0;
+    transform: translateY(6px);
+}
+
+.t888-about-box.is-inview>* {
+    opacity: 1;
+    transform: none;
+}
+
+.t888-about-box.is-inview .t888-about-title {
+    transition-delay: .12s;
+}
+
+.t888-about-box.is-inview .t888-about-sub {
+    transition-delay: .28s;
+}
+
+.t888-about-box.is-inview .t888-about-button {
+    transition-delay: .44s;
+}
+
+.t888-about-box.is-inview .t888-about-button {
+    transition-delay: .25s;
+}
+
+.elementor-editor-active .t888-about-box.anim-zoom-out {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+.elementor-editor-active .t888-about-box > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (max-width: 1024px) {
+    .t888-about-wrapper {
+        padding: 50px;
+    }
+
+    .t888-about-box {
+        padding: 50px;
+    }
+}
+
+@media (max-width: 575px) {
+    .t888-about-title {
+        font-size: 32px;
+    }
+
+    .t888-about-sub {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .t888-about-button {
+        font-size: 12px;
+        padding: 9px 18px;
+        align-items: center;
+    }
+
+    .t888-about-button i {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .t888-about-title {
+        font-size: 24px;
+    }
+
+    .t888-about-sub {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .t888-about-button {
+        font-size: 11px;
+        padding: 6px 12px;
+        align-items: center;
+    }
+
+    .t888-about-button i {
+        margin-right: 8px;
+        font-size: 21px;
+    }
+}

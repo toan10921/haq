@@ -1,0 +1,85 @@
+
+.slide-content-wrapper {
+    position: absolute;
+    top: 44%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+
+
+.slide-content {
+    color: var(--secondary-color);
+    text-align: left;
+    max-width: 500px;
+}
+.slide-badge{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 4px 12px;
+    display: inline-block;
+    position: relative;
+    background-color: #8cc277;
+    font-weight: bold;
+}
+.slide-badge::after {
+    content: "";
+    position: absolute;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #8cc277; 
+    z-index: 1;
+}
+.slide-title {
+    font-size: 2.25rem;
+    line-height: 3.75rem;
+    font-weight: bold;
+    font-family: var(--font-philosopher);
+}
+.slide-title-2 {
+    font-size: 3.75rem;
+    line-height: 3.75rem;
+    font-weight: bold;
+    font-family: var(--font-philosopher);
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+.slide-title-2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px; 
+    height: 2px;
+    background-color: var(--secondary-color); 
+  }
+.slide-description {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-family: var(--font-philosopher);
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+.slide-btn
+ {
+    display: inline-block;
+    padding: 14.5px 40px;
+    font-size: 0.875rem;
+    margin-right: 10px;
+}
+.slide-btn2{
+    display: inline-block;
+    padding: 14.5px 40px;
+    font-size: 0.875rem;
+}
+.t888-home-slider .eltech888-swiper-slider .t888-pagination-line{
+    bottom: 70px !important;
+}

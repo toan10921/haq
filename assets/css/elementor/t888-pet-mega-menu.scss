@@ -1,0 +1,135 @@
+.t888-pet-mega-menu {
+    --pet-menu-bg: #eeeeee;
+    background: var(--pet-menu-bg);
+    padding: 0 50px;
+
+    .pet-mega-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 52px;
+        margin-bottom: 30px;
+    }
+
+    .pet-mega-column {
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .pet-mega-thumb {
+        width: 170px;
+        flex: 0 0 170px;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    .pet-mega-title {
+        // margin: 0 0 14px;
+        font-size: 18px;
+        line-height: 36px;
+        font-weight: 700;
+        color: #111111;
+        font-family: var(--font-philosopher);
+    }
+
+    .pet-mega-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin: 0;
+        }
+
+        a {
+            color: #353535;
+            font-size: 34px;
+            line-height: 1.35;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: #de4343;
+            }
+        }
+    }
+
+    .pet-mega-banner-wrap {
+        width: 100%;
+    }
+
+    .pet-mega-banner-link {
+        display: block;
+    }
+
+    .pet-mega-banner-image {
+        width: 100%;
+        display: block;
+        height: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .t888-pet-mega-menu {
+        padding: 0 34px 34px;
+
+        .pet-mega-columns {
+            gap: 36px;
+        }
+
+        .pet-mega-thumb {
+            width: 130px;
+            flex-basis: 130px;
+        }
+
+        .pet-mega-title {
+            font-size: 30px;
+        }
+
+        .pet-mega-list a {
+            font-size: 26px;
+        }
+    }
+}
+
+@media (max-width: 991px) {
+    .t888-pet-mega-menu {
+        .pet-mega-columns {
+            grid-template-columns: 1fr;
+            gap: 26px;
+        }
+
+        .pet-mega-column {
+            gap: 18px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .t888-pet-mega-menu {
+        padding: 0 20px 20px;
+
+        .pet-mega-column {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pet-mega-thumb {
+            width: 120px;
+            flex-basis: auto;
+        }
+
+        .pet-mega-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .pet-mega-list a {
+            font-size: 18px;
+        }
+    }
+}

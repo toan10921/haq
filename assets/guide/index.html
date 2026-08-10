@@ -1,0 +1,1698 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<!--<![endif]-->
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>Nebon - Documentation</title>
+	<link type="image/x-icon" href="images/favicon.ico" rel="icon">
+	<link rel="stylesheet" href="css/jquery.fancybox.css" media="all">
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css" media="all">
+	<link rel="stylesheet" href="css/documenter_style.css" media="all">
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.fancybox.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script src="js/customize.js"></script>
+</head>
+
+<body>
+	<div id="documenter_sidebar">
+		<a href="#introduction" id="documenter_logo" class="actived">
+			<img alt="7up logo" src="images/logo.png">
+			<span>Nebon</span>
+		</a>
+		<!-- main nav -->
+		<div id="documenter_nav_wrap">
+			<ol id="documenter_nav">
+				<li class="introduction"><a href="#introduction">Introduction</a></li>
+				<li class="has-child getting-started">
+					<a href="#getting-started">Getting Started</a>
+					<ul>
+						<li><a href="#system-requirements">System Requirements</a></li>
+						<li class="has-child installation-update">
+							<a href="#installation-update">Installation & Update</a>
+							<ul>
+								<li><a href="#autoinstall">WordPress Installation</a></li>
+								<li><a href="#manualinstallation">Manual Installation</a></li>
+								<li><a href="#update-theme">Update Theme</a></li>
+							</ul>
+						</li>
+						<li><a href="#active-theme">Active theme</a></li>
+						<li><a href="#install-plugins">Install Needed Plugins</a></li>
+						<li><a href="#import-demo-data">Import demo data</a></li>
+						<li><a href="#demo-video">Video tutorial</a></li>
+					</ul>
+				</li>
+				<li class="has-child theme-option">
+					<a href="#theme-option">Theme option</a>
+					<ul>
+						<li>
+							<a href="#header-footer-settings">Header & Footer Settings</a>
+						</li>
+						<li class="has-child basic-settings">
+							<a href="#basic-settings">Basic Settings</a>
+							<ul>
+								<li><a href="#typography-settings">Typography</a></li>
+								<li><a href="#layout-settings">Layout Settings</a></li>
+								<li><a href="#support-settings">Support</a></li>
+								<li><a href="#menu-settings">Menu Settings</a></li>
+								<li><a href="#basic-breadcrumb">Breadcrumb</a></li>
+								<li><a href="#basic-other">Other</a></li>
+								<li><a href="#upload-font">Upload custom font</a></li>
+							</ul>
+						</li>
+						<li class="has-child blog-post">
+							<a href="#blog-post">Blog & Post</a>
+							<ul>
+								<li><a href="#blog-general">General</a></li>
+								<li><a href="#list-settings">List Settings</a></li>
+								<li><a href="#grid-settings">Grid Settings</a></li>
+								<li><a href="#blog-detail">Post detail settings</a></li>
+							</ul>
+						</li>
+						<li class="has-child shop-settings">
+							<a href="#shop-settings">Shop Settings</a>
+							<ul>
+								<li><a href="#shop-general">General</a></li>
+								<li><a href="#shop-list">List Settings</a></li>
+								<li><a href="#shop-grid">Grid settings</a></li>
+								<li><a href="#shop-advanced">Advanced</a></li>
+							</ul>
+						</li>
+						<li class="has-child product-settings">
+							<a href="#product-settings">Product Settings</a>
+							<ul>
+								<li><a href="#product-general">General</a></li>
+								<li><a href="#product-display">Extra display</a></li>
+								<li><a href="#product-advanced">Advanced</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</li>
+
+				<li class="has-child metabox">
+					<a href="#metabox">Metabox </a>
+					<ul>
+						<li><a href="#metabox-page-settings">Metabox Page settings</a></li>
+						<li><a href="#metabox-product-settings">Metabox Product settings</a></li>
+						<li><a href="#metabox-post-settings">Metabox Post settings</a></li>
+
+					</ul>
+				</li>
+
+				<li class="has-child elementor">
+					<a href="#elementor">Elementor</a>
+					<ul>
+						<li><a href="#elementor-introduction">Introduction</a></li>
+						<li><a href="#elementor-documentation">Plugin Documentation</a></li>
+						<li><a href="#elementor-update">Update plugin</a></li>
+						<li><a href="#elementor-activate">Activate plugin license</a></li>
+						<li><a href="#widget-elmentor">Widget elementor</a></li>
+					</ul>
+				</li>
+				<li class="has-child content">
+					<a href="#content">Content</a>
+					<ul>
+						<li><a href="#header-footer">Header & Footer</a></li>
+						<li><a href="#mega-menu">Mega Menu</a></li>
+						<li class="has-child elements">
+							<a href="#elements">Elementor 7uptheme (Shortcodes)</a>
+							<ul>
+								<li><a href="#el-carousel-slider">Swiper Slider</a></li>
+								<li><a href="#el-title">Title</a></li>
+								<li><a href="#el-accordion">Accordion</a></li>
+								<li><a href="#el-testimonial">Testimonial</a></li>
+								<li><a href="#el-product-group">Product Group</a></li>
+								<li><a href="#el-feature-box">Feature Box</a></li>
+								<li><a href="#el-quote-box">Quote Box</a></li>
+								<li><a href="#el-video">Video</a></li>
+								<li><a href="#el-tip-list">Tip List</a></li>
+								<li><a href="#el-short-post-info">Short Post Info</a></li>
+								<li><a href="#el-image-link-box">Image Link Box</a></li>
+								<li><a href="#el-product-tabs">Product Tabs</a></li>
+								<li><a href="#el-discount-products">Discount Products</a></li>
+								<li><a href="#el-featured-categories">Featured Categories</a></li>
+								<li><a href="#el-advertise">Advertise</a></li>
+								<li><a href="#el-about-us">About Us</a></li>
+								<li><a href="#el-history_timeline">History Timeline</a></li>
+								<!-- <li><a href="#el-product-hotspot">Product Hotspot</a></li> -->
+								<li><a href="#el-image-compare">Image Compare</a></li>
+								<li><a href="#el-team">Team</a></li>
+								<li><a href="#el-location-list">Location List</a></li>
+								<li><a href="#el-logo">Custom Logo</a></li>
+								<li><a href="#el-menu">Navigation Menu</a></li>
+								<li><a href="#el-account-manager">My Account</a></li>
+								<li><a href="#el-search-form">Search Form</a></li>
+								<li><a href="#el-mini-cart">Mini Cart</a></li>
+								<li><a href="#el-hot-deals">Hot Deals</a></li>
+								<li><a href="#el-list-gallery">List Gallery</a></li>
+								<li><a href="#el-my-wishlist">My Wishlist</a></li>
+								<li><a href="#el-phone">Phone</a></li>
+								<li><a href="#el-social">Social</a></li>
+								<li><a href="#el-posts">List Post</a></li>
+								<li><a href="#el-products">List Product</a></li>
+								<li><a href="#el-feature-products">Feature Products</a></li>
+								<li><a href="#el-button">Button</a></li>
+							</ul>
+
+						</li>
+						<li><a href="#create-page">Create/Edit page</a></li>
+						<li><a href="#create-post">Create post/product</a></li>
+						<li><a href="#responsive">Responsive</a></li>
+						<li class="has-child widgets">
+							<a href="#widgets">Widgets</a>
+							<ul>
+								<li><a href="#widget-post">7up List Posts</a></li>
+								<li><a href="#select-mega">7up Select Mega Page Widget</a></li>
+								<li><a href="#price-filter">7up Custom Price Filter Widget</a></li>
+								<li><a href="#attribute-filter">7up Custom Attribute Filter Widget</a></li>
+								<li><a href="#brand-filter">7up Custom Brand Filter Widget</a></li>
+								<li><a href="#widget-product">7up Custom List Product Widget</a></li>
+
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<li class="has-child customize">
+					<a href="#customize">How to customize</a>
+					<ul>
+						<li><a href="#choose-home-page">Choose home page</a></li>
+						<li><a href="#translate">Translate theme/plugin</a></li>
+						<li><a href="#multi-lang">Multi language plugins</a></li>
+						<li><a href="#optimization">Optimization</a></li>
+						<li><a href="#child-theme">Use child theme</a></li>
+						<li><a href="#custom-style">Custom style</a></li>
+					</ul>
+				</li>
+				<li><a href="#source_and_credits">Source and Credits</a></li>
+				<!-- <li class="has-child frequently_asked_questions">
+					<a href="#frequently_asked_questions">Frequently Asked Questions</a>
+					<ul>
+						<li><a href="#change-logo">Change logo</a></li>
+						<li><a href="#import-error">Import demo data error</a></li>
+						<li><a href="#rtl-style-missing">RTL style missing in child theme</a></li>
+						<li><a href="#header-footer-unchange">Header/Footer not change</a></li>
+						<li><a href="#remove-intro-demo">Remove Intro Demo</a></li>
+					</ul>
+				</li> -->
+				<li><a href="#support-service">Support & Custom service</a></li>
+			</ol>
+		</div>
+		<div id="documenter_copyright">
+			<p>Copyright 7uptheme 2018<br>made with the <a href="#">Documenter v2.0.0</a> </p>
+		</div>
+		<!-- End main nav -->
+	</div>
+	<div id="documenter_content">
+		<!--Introduction-->
+		<section id="introduction">
+			<h1>Nebon - WordPress Theme - Documentation</h1>
+			<hr>
+			<h2>Introduction</h2>
+			<hr>
+			<div class="row">
+				<div class="col-12">
+					<p><img alt="" src="images/introduction/intro1.png"></p>
+				</div>
+			</div>
+			<p><strong>Nebon</strong> – many unique and creative designs of us. Surely, it’s will be great experiences!
+				Because, the organic food and fruit store is designed perfectly for websites and mobile applications.
+				Especially, there are more options for you to easily manage according to your business or your ideals.
+			</p>
+			<p>Thank you for purchasing my theme.</p>
+		</section>
+
+		<section id="getting-started" class="scroll-active">
+			<h2>Getting Started</h2>
+			<hr>
+			<div id="system-requirements" class="scroll-active">
+				<h3>1. System Requirements</h3>
+				<div>
+					<p>To use Nebon, you need to have a WordPress 4.9 (or higher version) site with PHP 5.4 or more
+						running on your hosting server. If you’ve already installed WordPress on your server and your
+						site is up, that’s great. For help regarding WordPress installation, please see this <a
+							href="https://codex.wordpress.org/Installing_WordPress">WordPress Codex</a> link. To learn
+						about some important stuff you should do after installing WordPress.</p>
+					<p><strong>Some more resources from WordPress Codex:</strong></p>
+					<ul>
+						<li><a href="https://codex.wordpress.org/First_Steps_With_WordPress">First Steps With
+								WordPress</a></li>
+						<li><a href="https://codex.wordpress.org/FAQ_New_To_WordPress">FAQ New To WordPress</a></li>
+					</ul>
+					<h4 id="host-config">Host config</h3>
+						<p>Sometimes you may encounter problems like:</p>
+						<ul>
+							<li>Can not upload theme to host for installation.</li>
+							<li>Can not upload large xml files to import.</li>
+							<li>Import demo data failed.</li>
+						</ul>
+						<p>The main reason may be that your host config is not suitable, you can check the following
+							parameters in your host config file (php.ini)</p>
+						<ul>
+							<li>max_input_time at least 6000.</li>
+							<li>memory_limit at least 128M.</li>
+							<li>max_execution_time at least 6000.</li>
+							<li>post_max_size at least 64M.</li>
+							<li>upload_max_filesize at least 32M.</li>
+						</ul>
+						<h4 id="wp-config">WordPress config</h3>
+							<p>You can add code into wp-config.php: <code>set_time_limit (600);</code></p>
+				</div>
+			</div>
+			<div id="installation-update" class="scroll-active">
+				<h3>2. Installation & Update</h3>
+				<div id="autoinstall" class="scroll-active">
+					<h4>2.1. WordPress Installation (Recommended)</h4>
+					<blockquote>
+						<p><strong><em>Step 1.</em></strong>&nbsp;</p>
+						<p> - After downloading the package(zip file) from templatemonster you need to unzip the file
+							and find the file <strong>nebon.zip</strong>. </p>
+						<p> - That is the theme package file for installation.</p>
+						<p> - <strong>Note: </strong> If you choose to download "Installable WordPress file only" then
+							the zip file you get will be the file you used to install the theme.</p>
+						<p><strong><em>Step 2.</em></strong>&nbsp;In WordPress Dashboard, Go to <strong>Appearance -&gt;
+								Themes</strong>.</p>
+						<p><img width="508" height="295" alt="" src="images/getting-started/install_1.png"></p>
+						<p><strong><em>Step 3.</em></strong></p>
+						<p>Click to <strong>Add New </strong></p>
+						<p><img width="546" height="146" alt="" src="images/getting-started/install_2.png"></p>
+						<p>After that, click to <strong>Upload Theme </strong></p>
+						<p><img width="472" height="136" alt="" src="images/getting-started/install_3.png"></p>
+						<p>Then, click to <strong>Browse</strong> or <strong>Choose file</strong> and find to
+							<strong>nebon.zip</strong> and finally click Install Now.
+						</p>
+						<p><img width="900" height="252" alt="" src="images/getting-started/install_4.png"></p>
+						<p><strong><em>Step 4</em></strong>. Click <strong>Activate</strong> to finish.</p>
+						<p><img width="527" height="200" alt="" src="images/getting-started/install_5.png"></p>
+						<p>&nbsp;</p>
+					</blockquote>
+				</div>
+
+				<div id="manualinstallation" class="scroll-active">
+					<h4>2.2. Manual Installation.</h3>
+						<blockquote>
+							<p><strong><em>Step 1.</em></strong> Download ZIP package file from templatemonster as step
+								1 of install with WordPress.</p>
+							<p><strong><em>Step 2.</em></strong> In unzipped folder you will find a folder named
+								&quot;<strong>Package</strong>&quot; find <strong>nebon.zip file</strong> unzip it.</p>
+							<p><strong><em>Step 3. </em></strong>Simply upload the unzipped &quot;<strong>Nebon
+									Theme</strong>&quot; folder to <em><strong>/wp-content/themes/</strong></em> folder
+								on your server via FTP. </p>
+							<p><strong><em>Step 4.</em></strong> Login to your Dashboard, go
+								to <strong>Appearance/Themes</strong> menu and active Appearance theme</p>
+						</blockquote>
+				</div>
+
+				<div id="update-theme" class="scroll-active">
+					<h4>2.3. Update theme</h4>
+					<blockquote>
+						<p><strong>You can update our products in the following two ways:</strong></p>
+						<p>1. Download the latest package from templatemonster, delete the old theme and reinstall the
+							new package.</p>
+						<p><strong>Note:</strong> Make sure you do not modify any files in our theme directory before
+							updating to make sure your customizations are not lost when updating. If you need to backup
+							your theme before updating. You should use the <a
+								href="https://codex.wordpress.org/Child_Themes">Child Theme</a> to customize the theme.
+						</p>
+					</blockquote>
+				</div>
+			</div>
+			<div id="install-plugins" class="scroll-active">
+				<h3>4. Install Needed Plugins</h3>
+				<blockquote>
+					<p>After successful activation of the theme, you need to install the necessary plugins for the site
+					</p>
+					<p><strong><em>Step 1.</em></strong> In WordPress Dashboard, click to <strong>Begin installing
+							plugins</strong> in installation notification</p>
+					<p><img alt="" src="images/getting-started/install_plugin1.jpg"></p>
+					<p><strong><em>Step 2.</em></strong></p>
+					<p>1 - Choose check all plugins</p>
+					<p>2 - Choose <strong>Install</strong> action</p>
+					<p>2 - Click <strong>Apply</strong> and wait</p>
+					<p><img alt="" src="images/getting-started/install_plugin2.jpg"></p>
+					<p><strong><em>Successful install and active required plugins.</em></strong></p>
+					<p><img alt="" src="images/getting-started/install_plugin3.jpg"></p>
+				</blockquote>
+			</div>
+			<div id="import-demo-data" class="scroll-active">
+				<h3>5. Import demo data</h3>
+				<blockquote>
+					<p><strong><em>Step 1.</em></strong> In WordPress Dashboard, Go to <strong>Appearance -> Import
+							Demos</strong></p>
+					<p><img alt="" src="images/getting-started/import_data1.jpg"></p>
+					<p><strong><em>Step 2.</em></strong> Fill your Evanto username and purchase code to activate premium
+						features</p>
+					<p><img alt="" src="images/getting-started/import_data1_1.jpg" /></p>
+					<p><strong><em>Step 3.</em></strong> Click to <strong>Import Demo</strong></p>
+					<p><img alt="" src="images/getting-started/import_data2.jpg"></p>
+					<p><img alt="" src="images/getting-started/import_data2_2.jpg"></p>
+					<p>Choose data you want to import and click to import button</p>
+					<p><img src="images/getting-started/import_data3.jpg" alt="" /></p>
+					<p><strong>Successful import demo data</strong></p>
+					<p><img alt="" src="images/getting-started/import_data4.jpg"></p>
+					<p><strong>Note:</strong> In case your server has the same configuration as the request but still
+						can not import successfully with <strong>Import now</strong>. You can use the <strong>Import
+							without media</strong> feature and then <strong>Import media</strong>. You can import many
+						times until successful.</p>
+				</blockquote>
+			</div>
+		</section>
+		<!--Installation-->
+		<section id="theme-option" class="scroll-active">
+			<h2>Theme Option</h2>
+			<p>Theme options is a custom admin page. It allows users to change theme settings without modifying theme
+				files or touching any code.</p>
+			<p>In WordPress Dashboard, you go to <strong>Theme Option -> Theme Option</strong> to customize.</p>
+			<p><img alt="" src="images/theme-option/theme_option1.jpg"></p>
+			<div id="header-footer-settings" class="scroll-active">
+				<h3>0. Header & Footer settings</h3>
+				<div id="header-footer-settings" class="scroll-active">
+					<p><img alt="" src="images/theme-option/theme_option1_1.jpg"><img alt=""
+							src="images/theme-option/theme_option1_2.jpg"></p>
+
+					<blockquote>
+						<p>- <strong>Header Page</strong>: Include Header content. Go to Header in admin menu to
+							edit/create header content. Note this value default for all pages of your site, If have any
+							page/single page display other content pehaps you are set specific header for it</p>
+						<p>- <strong>Footer Page</strong>: Include Footer content. Go to Footer in admin menu to
+							edit/create footer content. Note this value default for all pages of your site, If have any
+							page/single page display other content pehaps you are set specific footer for it</p>
+					</blockquote>
+				</div>
+			</div>
+			<div id="basic-settings" class="scroll-active">
+				<h3>1. Basic Settings</h3>
+				<div id="typography-set" class="scroll-active">
+					<h4>1.1. Typography</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_settings_typography.jpg"><img alt=""
+							src="images/theme-option/theme_option_typography.jpg"></p>
+					<blockquote>
+						<p>- <strong>Typography — Body (Global)</strong>: Allows you to customize the global font
+							settings such as font family, weight, size, color, and line height for the entire site.</p>
+
+						<p>- <strong>Typography — Main Content</strong>: Adjust font style, size, and spacing for the
+							main content area including paragraphs, headings, and text blocks.</p>
+
+						<p>- <strong>Typography — Widget</strong>: Customize the typography used inside widgets (e.g.,
+							sidebar, footer), including font family, size, and color.</p>
+
+					</blockquote>
+				</div>
+				<div id="layout-settings" class="scroll-active">
+					<h4>1.2. Layout Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_settings_layout.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_setting_layout_inner.jpg"></p>
+					<blockquote>
+						<p>- <strong>Sidebar Page</strong>: Set sidebar position for your default page. Left, Right, or
+							No
+							sidebar.</p>
+
+						<p>- <strong>Sidebar select display in Page :</strong>: Choose a sidebar to display.</p>
+
+					</blockquote>
+				</div>
+				<div id="support-settings" class="scroll-active">
+					<h4>1.3. Support</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_settings_support.jpg"><img alt=""
+							src="images/theme-option/theme_option_support.jpg"><img alt=""
+							src="images/theme-option/support_layout.jpg" </p>
+					<blockquote>
+						<p>- <strong>Support Layout</strong>: You can setup your Support Layout for change main color,
+							switch LTR or RTL Layout...</p>
+					</blockquote>
+				</div>
+				<div id="menu-settings" class="scroll-active">
+					<h4>1.4. Menu Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_setting_menu_setting.jpg"><img alt=""
+							src="images/theme-option/theme_option_menu_setting.jpg"></p>
+					<blockquote>
+						<p>- <strong>Menu Settings</strong>: Customize the appearance and behavior of your site's menu,
+							including font styles, colors, hover effects, and layout options to enhance navigation and
+							user experience.</p>
+
+
+					</blockquote>
+				</div>
+
+				<div id="basic-breadcrumb" class="scroll-active">
+					<h4>1.5 Breadcrumb</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_basic_settings_breadcrumb.jpg"><img alt=""
+							src="images/theme-option/theme_option_breadcrumb1.jpg"><img alt=""
+							src="images/theme-option/theme_option_breadcrumb2.jpg"></p>
+					<blockquote>
+						<p>- <strong>Show BreadCrumb</strong>: Enable or disable the breadcrumb display across the
+							website (ON/OFF).</p>
+
+						<p>- <strong>Background Breadcrumb</strong>: Select a solid color for the breadcrumb background.
+							This color will be used if no custom image is set.</p>
+
+						<p>- <strong>Custom background for breadcrumb</strong>: Upload a custom background image for the
+							breadcrumb area. Recommended image size is around <code>1920×400px</code> (or similar) for
+							best display on all screen sizes.</p>
+
+						<p>- <strong>Custom Breadcrumb Image for Posts</strong>: The custom background image used for
+							breadcrumb on single post pages. If a post doesn’t have its own image, this one will be
+							displayed instead.</p>
+
+						<p>- <strong>Custom Breadcrumb Image for Product</strong>: The custom breadcrumb background
+							image for WooCommerce product pages. Used when no product-specific image is available.</p>
+
+						<p>- <strong>Opacity Background</strong>: Set the transparency level of the breadcrumb
+							background. Accepts values from 0 to 1 (e.g., <code>0.7</code> for 70% opacity).</p>
+
+						<p>- <strong>Title Font Family</strong>: Choose the font family for the main breadcrumb title
+							text.</p>
+
+						<p>- <strong>Title Font Weight</strong>: Set the font weight and style for the breadcrumb title
+						</p>
+
+						<p>- <strong>Title Font Size (px)</strong>: Define the font size of the breadcrumb title,
+							measured in pixels.</p>
+
+						<p>- <strong>Title Align</strong>: Set the alignment of the breadcrumb title (Left, Center, or
+							Right).</p>
+
+						<p>- <strong>Breadcrumb Title Font Color</strong>: Choose the color of the breadcrumb title
+							text.</p>
+
+						<p>- <strong>Trail Font Family</strong>: Select the font family for the breadcrumb trail (the
+							navigation path, e.g., Home > Blog > Post).</p>
+
+						<p>- <strong>Trail Font Weight</strong>: Set the font weight and style for the breadcrumb trail
+						</p>
+
+						<p>- <strong>Trail Align</strong>: Set the text alignment for the breadcrumb trail (Left,
+							Center, or Right).</p>
+
+						<p>- <strong>Trail Font Size (px)</strong>: Set the font size for the breadcrumb trail text.</p>
+
+						<p>- <strong>Trail Line Height (px)</strong>: Define the line height for the breadcrumb trail
+							text.</p>
+
+						<p>- <strong>Breadcrumb Trail Font Color</strong>: Choose the color of the breadcrumb trail
+							text.</p>
+
+						<p>- <strong>Breadcrumb text hover</strong>: Customize the hover color for breadcrumb trail
+							links. This setting helps enhance user interaction and visual feedback.</p>
+					</blockquote>
+				</div>
+				<div id="basic-other" class="scroll-active">
+					<h4>1.6 Other Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option3_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_other_settings.jpg"><img alt=""
+							src="images/theme-option/theme_option_other_setting0.jpg"></p>
+					<blockquote>
+						<p>- <strong>Custom container width(px)</strong>: You can custom width of container on your
+							site. Default is 1200px.</p>
+						<p>- <strong>Show share box</strong>: You can show/hide share box on post, page, product pages.
+						</p>
+						<p>- <strong>Show Preload</strong>: This allow you to show or hide preload (ON/OFF)</p>
+						<p>- <strong>Background</strong>: Change default body background on loadding.</p>
+						<p>- <strong>Preload Style</strong>: Choose preload default style for your site (8 style).</p>
+						<p>- <strong>Preload Image</strong>: Upload your custom preload image.(use for Preload Style 3)
+						</p>
+						<p>- <strong>Custom Javascript</strong>: You can add custom Javascript code to your site.</p>
+					</blockquote>
+				</div>
+				<div id="upload-font" class="scroll-active">
+					<h4>1.7 Upload Font</h4>
+					<p><img alt="" src="images/theme-option/theme_option_basic_setting_upload_font0.jpg"><img alt=""
+							src="images/theme-option/theme_option_upload_custom_font.jpg"></p>
+					<blockquote>
+						<p>- <strong>Upload your custom font</strong>: You can upload your own font files (e.g., .ttf,
+							.otf) to use them in your site.</p>
+					</blockquote>
+				</div>
+			</div>
+
+			<div id="blog-post" class="scroll-active">
+				<h3>2. Blog & Post</h3>
+				<div id="blog-general" class="scroll-active">
+					<h4>2.1 General</h4>
+					<p><img alt="" src="images/theme-option/theme_option6_0.jpg"><img alt=""
+							src="images/theme-option/theme_option7_0.jpg"><img alt=""
+							src="images/theme-option/Blog_General_Settings.jpg"></p>
+					<blockquote>
+						<p>- <strong>Append content before post/blog/archive page</strong>: Choose a mega page content
+							append to before main content of post/blog/archive page.</p>
+						<p>- <strong>Append content after post/blog/archive page</strong>: Choose a mega page content
+							append to after main content of post/blog/archive page.</p>
+						<p>- <strong>Sidebar Blog</strong>: Set sidebar position for your blog page. Left, Right, or No
+							sidebar.</p>
+						<p>- <strong>Sidebar select display in blog</strong>: Choose a sidebar to display for blog
+							pages.</p>
+
+						<p>- <strong>Blog/Archive Default style</strong>: Choose a style to active display (List/Grid)
+						</p>
+						<p>- <strong>Blog pagination</strong>: Choose a pagination style to display.
+						</p>
+						<p>- <strong>Post Thumbnail Default</strong>: Choose a default thumbnail for post if
+							post not have thumbnail image.</p>
+
+					</blockquote>
+				</div>
+				<div id="list-settings" class="scroll-active">
+					<h4>2.2 List Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option6_0.jpg"><img alt=""
+							src="images/theme-option/theme_option8_0.jpg"><img alt=""
+							src="images/theme-option/theme_option8.jpg"></p>
+					<blockquote>
+						<p>- <strong>Custom blog thumbnail size</strong>: Enter size thumbnail to crop.
+							[width]x[height]. Example is 900x600.</p>
+						<p>- <strong>Blog List item style</strong>: Choose a style to active display.</p>
+					</blockquote>
+				</div>
+				<div id="grid-settings" class="scroll-active">
+					<h4>2.3 Grid Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option6_0.jpg"><img alt=""
+							src="images/theme-option/theme_option9.jpg"><img alt=""
+							src="images/theme-option/blog_grid_setting.jpg"></p>
+					<blockquote>
+						<p>- <strong>Grid column</strong>: Choose a style to active display</p>
+						<p>- <strong>Custom grid thumbnail size</strong>: Enter size thumbnail to crop.
+							[width]x[height]. Example is 327x482.</p>
+						<p>- <strong>Grid excerpt text content length</strong>: Enter number of character want to get
+							from
+							excerpt content. Default is 28. Example is 80.</p>
+						<p>- <strong>Grid display</strong>: Choose a style to active display</p>
+					</blockquote>
+				</div>
+				<div id="blog-detail" class="scroll-active">
+					<h4>2.4 Post detail settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option6_0.jpg"><img alt=""
+							src="images/theme-option/theme_option10_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_post_settings.jpg"></p>
+					<blockquote>
+
+						<p>- <strong>Sidebar Single Post Position</strong>: Set sidebar position for your post detail
+							page. Left,
+							Right, or No sidebar.</p>
+						<p>- <strong>Sidebar select display in post single</strong>: Choose a sidebar to display of post
+							single.</p>
+						<p>- <strong>Sidebar post style</strong>: Choose a sidebar to display of post single.</p>
+						<p>- <strong>Show featured image</strong>: Show/hide featured image in post
+							detail (standard post).</p>
+						<p>- <strong>Show share box on Post</strong>: Show/hide social share box on post
+							detail.</p>
+						<p>- <strong>List social share</strong>: Choose list of social share platforms to display.</p>
+						<p>- <strong>Show navigation post</strong>: Show/hide navigation to next post or previous post
+							on the post detail.</p>
+						<p>- <strong>Show related post</strong>: Show/hide related post in the post detail.</p>
+					</blockquote>
+				</div>
+			</div>
+
+			<div id="shop-settings" class="scroll-active">
+				<h3>5. Shop Settings</h3>
+				<div id="shop-general" class="scroll-active">
+					<h4>5.1 General</h4>
+					<p><img alt="" src="images/theme-option/theme_option13_0.jpg"><img alt=""
+							src="images/theme-option/theme_option13_1.jpg"><img alt=""
+							src="images/theme-option/theme_option13.jpg"></p>
+					<blockquote>
+						<p>- <strong>Sidebar Position WooCommerce page</strong>: Set sidebar position for your
+							woocommerce page(Shop, Checkout, Cart, My Account, Product category/tag/taxonomy page...).
+							Left, Right, or No sidebar.</p>
+						<p>- <strong>Sidebar select WooCommerce page</strong>: Choose one style of sidebar for
+							WooCommerce page.</p>
+						<p>- <strong>Shop Default Item Style</strong>: Choose a style to active display.</p>
+						<p>- <strong>Gap Products</strong>: Choose space. The space between the items on the shop page.
+						</p>
+						<p>- <strong>Product Number</strong>: Enter number product to display per page. Default is
+							12.</p>
+
+						<p>- <strong>Product new in(days)</strong>: Enter number to set time for product is new. Unit
+							day. Default is 30.</p>
+						<p>- <strong>Shop pagination</strong>: Choose a style to active display(Default/Load more).</p>
+						<p>- <strong>Shop ajax</strong>: Enable ajax process for your shop page (ON/OFF).</p>
+						<p>- <strong>Thumbnail animation</strong>: Choose a animation for thumbnail.</p>
+						<p>- <strong>Show number filter</strong>: Show/hide number filter on shop page.</p>
+						<p>- <strong>Show type filter</strong>: Show/hide type filter(list/grid) on shop page.</p>
+						<p>- <strong>Show custom ordering dropdown</strong>: Show/hide order filter on shop page.</p>
+					</blockquote>
+				</div>
+				<div id="shop-list" class="scroll-active">
+					<h4>5.2 List Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option13_0.jpg"><img alt=""
+							src="images/theme-option/theme_option14_0.jpg"><img alt=""
+							src="images/theme-option/theme_option14.jpg"></p>
+					<blockquote>
+						<p>- <strong>Custom list thumbnail size</strong>: Enter size thumbnail to crop.
+							[width]x[height]. Example is 300x300.</p>
+						<p>- <strong>List item style</strong>: Choose a style to active display.</p>
+					</blockquote>
+				</div>
+				<div id="shop-grid" class="scroll-active">
+					<h4>5.3 Grid Settings</h4>
+					<p><img alt="" src="images/theme-option/theme_option13_0.jpg"><img alt=""
+							src="images/theme-option/theme_option15_0.jpg"><img alt=""
+							src="images/theme-option/theme_option_shop_grid_setting.jpg"></p>
+					<blockquote>
+						<p>- <strong>Grid column</strong>: Choose a style to active display</p>
+						<p>- <strong>Custom grid thumbnail size</strong>: Enter size thumbnail to crop.
+							[width]x[height]. Example is 300x300.</p>
+						<p>- <strong>Grid item style</strong>: Choose grid item style to display.</p>
+					</blockquote>
+				</div>
+				<div id="shop-advanced" class="scroll-active">
+					<h4>5.4 Advanced</h4>
+					<p><img alt="" src="images/theme-option/theme_option13_0.jpg"><img alt=""
+							src="images/theme-option/theme_option16_0.jpg"><img alt=""
+							src="images/theme-option/theme_option16.jpg"></p>
+					<blockquote>
+						<p>- <strong>Cart display</strong>: Choose a style to active display.</p>
+						<p>- <strong>Checkout display</strong>: Choose a style to active display.</p>
+						<p>- <strong>Append content before Woocommerce page</strong>: Choose a mega page content append
+							to before main content of page/post.</p>
+						<p>- <strong>Append content after Woocommerce page</strong>: Choose a mega page content append
+							to after main content of page/post.</p>
+					</blockquote>
+				</div>
+			</div>
+			<div id="product-settings" class="scroll-active">
+				<h3>6. Product Settings</h3>
+				<div id="product-general" class="scroll-active">
+					<h4>6.1 General</h4>
+					<p><img alt="" src="images/theme-option/theme_option17_0.jpg"><img alt=""
+							src="images/theme-option/theme_option17_1.jpg"><img alt=""
+							src="images/theme-option/theme_option_product_setting_general.jpg"></p>
+					<blockquote>
+						<p>- <strong>Product detail style</strong>: Select style of product detail.</p>
+						<p>- <strong>Product tab style</strong>: Choose a style to display.</p>
+						<p>- <strong>Show sticky add to cart (Simple Product only)</strong>: Show/hide sticky add to
+							cart button (ON/OFF).</p>
+					</blockquote>
+				</div>
+				<div id="product-display" class="scroll-active">
+					<h4>6.2 Extra display</h4>
+					<p><img alt="" src="images/theme-option/theme_option17_0.jpg"><img alt=""
+							src="images/theme-option/theme_option18_0.jpg"><img alt=""
+							src="images/theme-option/theme_option18.jpg"></p>
+					<blockquote>
+						<p>- <strong>Show user guide</strong>: Toggle the user guide box on the product detail page
+							(ON/OFF).</p>
+						<p>- <strong>Label: User guide</strong>: Text label shown for the user guide button/section.</p>
+						<p>- <strong>Show shipping</strong>: Toggle the shipping info box on the product detail page
+							(ON/OFF).</p>
+						<p>- <strong>Label: Shipping</strong>: Text label for the shipping button/section (e.g., “Free
+							Shipping”).</p>
+						<p>- <strong>Popup Title</strong>: Title displayed at the top of the shipping popup.</p>
+						<p>- <strong>Item 1 – Title</strong>: Title of the first shipping info block (e.g., “Delivery”).
+						</p>
+						<p>- <strong>Item 1 – Content</strong>: Content/description for the first shipping block.</p>
+						<p>- <strong>Item 2 – Title</strong>: Title of the second shipping info block (e.g., “Delivery
+							Times”).</p>
+						<p>- <strong>Item 2 – Content</strong>: Content/description for the second shipping block.</p>
+						<p>- <strong>Show share</strong>: Show/hide social sharing on the product detail page (ON/OFF).
+						</p>
+						<p>- <strong>Label: Share</strong>: Text label displayed for the share section.</p>
+						<p>- <strong>Show latest products</strong>: Show/hide latest products on the product detail page
+							(ON/OFF).</p>
+						<p>- <strong>Show upsell products</strong>: Show/hide upsell products on the product detail page
+							(ON/OFF).</p>
+						<p>- <strong>Show related products</strong>: Show/hide related products on the product detail
+							page (ON/OFF).</p>
+						<p>- <strong>Related Products Heading Title</strong>: Heading text for the related products
+							section (e.g., “You May Also Like”).</p>
+						<p>- <strong>Show Single Number</strong>: Number of items to display in the
+							latest/upsell/related products sections (e.g., 6).</p>
+						<p>- <strong>Image safe check out</strong>: Add one or more trust/safety badges shown near the
+							checkout area. Use “Add new field” to insert additional images.</p>
+					</blockquote>
+				</div>
+				<div id="product-advanced" class="scroll-active">
+					<h4>6.3 Advanced</h4>
+					<p><img alt="" src="images/theme-option/theme_option17_0.jpg"><img alt=""
+							src="images/theme-option/theme_option19_0.jpg"><img alt=""
+							src="images/theme-option/theme_option19.jpg"></p>
+					<blockquote>
+						<p>- <strong>Append content before product page</strong>: Choose a mega page content append to
+							before main content of product detail page.</p>
+						<p>- <strong>Append content before product tab</strong>: Choose a mega page content append to
+							before product tab.</p>
+						<p>- <strong>Append content after product tab</strong>: Choose a mega page content append to
+							before product tab.</p>
+						<p>- <strong>Append content after product page</strong>: Choose a mega page content append to
+							after main content of product detail page.</p>
+					</blockquote>
+				</div>
+			</div>
+		</section>
+
+		<section id="metabox" class="scroll-active">
+			<h2>Metabox</h2>
+			<hr />
+			<div id="metabox-page-settings" class="scroll-active">
+				<h3>1. Page Settings Metabox</h3>
+				<p>In WordPress Dashboard, You can go to <strong>Page -> Add New / Edit Page</strong> to see metabox
+					settings for page (default template) .</p>
+				<p><img src="images/metabox/metabox_page_settings.jpg" alt="" /></p>
+				<blockquote>
+					<p>- <strong>Header Page</strong>: Select a custom Header (post type <em>header_item</em>) to use on
+						this page.
+						If left empty, the theme’s default header is used. Manage headers in the <strong>Header</strong>
+						admin menu.</p>
+
+					<p>- <strong>Footer Page</strong>: Select a custom Footer (post type <em>footer_item</em>) to use on
+						this page.
+						If left empty, the theme’s default footer is used. Manage footers in the <strong>Footer</strong>
+						admin menu.</p>
+
+					<p>- <strong>Show page title</strong>: Toggle the page title visibility for this page only.</p>
+
+					<p>- <strong>Breadcrumb Image</strong>: Upload one image to display as the breadcrumb background on
+						this page. If left empty, the theme’s default breadcrumb image is used.</p>
+
+					<p>- <strong>Breadcrumb Opacity</strong>: Set the breadcrumb overlay opacity from <code>0</code>
+						(transparent) to <code>1</code> (solid). If left empty, the theme’s default breadcrumb opacity
+						is used.</p>
+
+					<p>- <strong>Page Sidebar Position</strong>: Choose the sidebar position: <em>Left</em>,
+						<em>Right</em>, or <em>No Sidebar</em>.
+						<br>Note: This applies when the page uses the theme layout (e.g., <em>Default template</em>).
+						Elementor <em>Canvas</em> / <em>Full Width</em> templates won’t render theme sidebars. If left
+						empty,
+						the theme’s default sidebar position is used.
+					</p>
+
+					<p>- <strong>Sidebar Item</strong>: Pick which registered sidebar/widget area to display when the
+						position is <em>Left</em> or <em>Right</em>. If left empty, the theme’s default sidebar item is
+						used.</p>
+
+					<p>- <strong>Enable Ajax Filter</strong>: Enable AJAX filtering for shop/product lists when using
+						the theme’s Elementor product-list widget.</p>
+
+					<p>- <strong>Fullwidth Page</strong>: Make this page use a full-width container (no side gutters
+						from the theme container).</p>
+				</blockquote>
+
+
+			</div>
+
+			<div id="metabox-product-settings" class="scroll-active">
+				<h3>2. Product Settings Metabox</h3>
+				<p>In WordPress Dashboard, You can go to <strong>Products -> Add New / Edit Product</strong> to see
+					metabox
+					settings for product.</p>
+				<p><img src="images/metabox/metabox_product_settings1.jpg" alt="" /></p>
+				<p><img src="images/metabox/metabox_product_setting2.jpg" alt="" /></p>
+				<p><img src="images/metabox/metabox_product_setting3.jpg" alt="" /></p>
+				<blockquote>
+					<p>- <strong>Breadcrumb Image</strong>: Upload a custom breadcrumb background image for this
+						product.
+						If left empty, the theme will use the global breadcrumb image or background color.</p>
+
+					<p>- <strong>Breadcrumb Opacity</strong>: Adjust the overlay opacity on the breadcrumb image
+						from <code>0</code> (transparent) to <code>1</code> (solid).</p>
+
+					<p>- <strong>Sold in time</strong>: Optional field for displaying campaign duration or sold time
+						information.</p>
+
+					<p>- <strong>Product thumbnail hover</strong>: Upload an alternate product thumbnail that will
+						appear when the product image is hovered in product listings.</p>
+
+					<p>- <strong>Product guide</strong>: Upload a guide file (image or PDF) to be displayed or linked on
+						the product detail page.</p>
+
+					<p>- <strong>Product detail style</strong>:
+						<br>• <em>Style1 (Swiper gallery)</em> — <u>Default</u> as defined in the Theme Options. Product
+						images are displayed in a swiper (carousel) layout, and the product information scrolls
+						normally.
+						<br>• <em>Style2 (Fixed Info)</em> — Product images are displayed vertically. The product
+						information area (title, price, add to cart, etc.) stays fixed on the side until all product
+						images are scrolled through.
+					</p>
+
+					<p>- <strong>Sticky add to cart (Simple Product only)</strong>: Enable or disable the sticky
+						add-to-cart bar when scrolling on single product pages.</p>
+
+					<p>- <strong>Advanced</strong>: Allows you to append extra content or mega sections before/after the
+						main product page and before/after the product tab section.</p>
+
+					<p>- <strong>Custom tab</strong>: Create custom product tabs by adding <em>Title</em>,
+						<em>Content</em>, and adjusting their display order with the <em>Priority</em> field.
+					</p>
+				</blockquote>
+
+			</div>
+			<div id="metabox-post-settings" class="scroll-active">
+				<h3>3. Post Settings Metabox</h3>
+				<p>In WordPress Dashboard, You can go to <strong>Posts -> Add New / Edit Post</strong> to see metabox
+					settings for post.</p>
+				<p><img src="images/metabox/metabox_post_settings.jpg" alt="" /></p>
+				<blockquote>
+					<p>- <strong>Post Style</strong>: Select the layout style for this post.
+						<em>Default</em> – Standard post layout following the theme style.
+						<em>Post Parallax</em> – Enables a parallax-style breadcrumb image on the single post.
+					</p>
+
+					<p>- <strong>Show Featured Image</strong>: Check to show the featured image on the single post page
+						(applies to standard post format only).</p>
+
+					<p>- <strong>Fullwidth Layout</strong>: Enable this option to make the post layout stretch
+						full-width (edge to edge) without the default container spacing.</p>
+
+					<p>- <strong>Post Sidebar Position</strong>: Choose the sidebar position for this post —
+						<em>Left</em>, <em>Right</em>, or <em>No Sidebar</em>. If left
+						empty,
+						the theme’s default sidebar position is used.
+					</p>
+					</p>
+
+					<p>- <strong>Sidebar Item</strong>: Select which registered sidebar (widget area) to display when a
+						sidebar position is active.
+						This field is visible only when the sidebar position is set to <em>Left</em> or <em>Right</em>.
+						If left
+						empty, the theme’s default sidebar item is used.
+					</p>
+
+					<p>- <strong>Breadcrumb Image</strong>: Upload a custom breadcrumb background image for this post.
+						If left empty, the theme will use the global breadcrumb image defined in Theme Options.</p>
+
+					<p>- <strong>Breadcrumb Opacity</strong>: Set the overlay opacity on the breadcrumb image from
+						<code>0</code> (transparent) to <code>1</code> (solid).
+						If not set, it falls back to the global breadcrumb opacity.
+					</p>
+
+					<p>- <strong>Short Description</strong>: Enter a brief introduction or summary for this post.
+						This text can be displayed before the main content or in custom areas depending on the theme
+						design.</p>
+
+					<p>- <strong>Post Detail Gallery (for Gallery format)</strong>: Upload multiple images to create a
+						gallery for posts using the <em>Gallery</em> format.
+						These images will display in the single post gallery layout.</p>
+
+					<p>- <strong>Upload Video (for Video format)</strong>: Upload a self-hosted video file to display in
+						the single post when using the <em>Video</em> format.</p>
+
+					<p>- <strong>Video URL (for Video format)</strong>: Paste a video link (e.g., YouTube or Vimeo) to
+						embed directly into the post content.</p>
+
+					<p>- <strong>Upload Audio (for Audio format)</strong>: Upload an audio file (MP3, OGG, or WAV) to
+						display in the single post when using the <em>Audio</em> format.</p>
+
+					<p>- <strong>Audio Embed URL (for Audio format)</strong>: Enter a URL from external platforms such
+						as SoundCloud or Spotify to embed an audio player.</p>
+				</blockquote>
+
+			</div>
+		</section>
+
+		<section id="elementor" class="scroll-active">
+			<h2>Elementor</h2>
+			<hr />
+			<div id="bakery-introduction" class="scroll-active">
+				<h3>1. Introduction</h3>
+				<p>Elementor (formerly Visual Composer) is a unique plugin, it will help you manage your content at the
+					WordPress sites and create stunning layouts in few minutes without coding. Nowadays many websites
+					have complex grid layouts with columns, tabs, sliders and etc. In the Nebon, to create that type of
+					layouts you should be HTML guru or Shortcodes operator ninja.</p>
+				<p>But not anymore! Elementor will create and manage complex layouts combined with professionally
+					designed plugins made easy!</p>
+			</div>
+
+			<div id="bakery-documentation" class="scroll-active">
+				<h3>2. Plugin Documentation</h3>
+				<h5><a href="https://elementor.com/features/support/visual_composer_documentation/">Elementor
+						Documentation</a></h5>
+				<h5><a href="https://kb.elementor.com/">Elementor (Learn more)</a></h5>
+				<h5>Enable page builder for custom post type</h5>
+				<p>In WordPress Dashboard, You can go to <strong>Elementor -> Role Manager</strong>. Choose Post types
+					is <strong>Custom</strong> and check post type that you want to enable page builder and <strong>Save
+						Changes</strong> to finish</p>
+				<p><img src="images/elementor/update_bakery4.jpg" alt="" /></p>
+			</div>
+
+			<div id="bakery-update" class="scroll-active">
+				<h3>3. Update Elementor plugin</h3>
+				<p>When updating the theme version, if there is a newer update for elementor you will see the update
+					notice line appear. You can see plugin package in <strong>folder
+						theme -> plugins</strong> folder</p>
+				<p>You can update elementor following these steps:</p>
+				<blockquote>
+					<p><strong><em>Step 1.</em></strong> Click to <strong>Begin updating plugin</strong>.</p>
+					<p><img src="images/elementor/update_bakery1.jpg" alt="" /></p>
+					<p><strong><em>Step 2.</em></strong> Click to <strong>Update</strong></p>
+					<p><img src="images/elementor/update_bakery2.jpg" alt="" /></p>
+					<p><strong>Update Successful</strong></p>
+					<p><img src="images/elementor/update_bakery3.jpg" alt="" /></p>
+				</blockquote>
+			</div>
+
+			<div id="bakery-activate" class="scroll-active">
+				<h3>4. Activate plugin license</h3>
+				<p>elementor was purchased by us for an extended license. As a result, all our buyers can use elementor
+					without having to purchase additional personal licenses. The auto-update Activate plugin only
+					applies to the templatemonster account that directly purchases the elementor license. But you can
+					still update the latest version of Elementor through the installation message when updating our
+					theme.</p>
+			</div>
+			<div id="widget-elmentor" class="scroll-active">
+				<h3>5. Widget elementor</h3>
+				<p>Use the widget utilities provided by the plugin elementor</p>
+				<p><img src="images/elementor/elementor_basic.jpg" alt="" /><img
+						src="images/elementor/elementor_general.jpg" alt="" /></p>
+				<p>Overview of Elementor</p>
+				<p><img src="images/elementor/elementor_setting.jpg" alt="" /></p>
+				<p>Setting selector</p>
+				<p><img src="images/elementor/elementor_selector1.jpg" alt="" /><img
+						src="images/elementor/elementor_selector2.jpg" alt=""></p>
+			</div>
+		</section>
+
+		<section id="content" class="scroll-active">
+			<h2>7up Content</h2>
+			<hr />
+			<div id="header-footer" class="scroll-active">
+				<h3>1. Header & Footer</h3>
+				<p><strong>Header & Footer</strong> is one of our outstanding features. It allows you to create and edit
+					your web page header/footer content with the page builder. You can easily edit or design your own
+					header/footer for your site with a wide range of customizable features.</p>
+				<h5>The First, please sure header / footer editing with page builder is active</h5>
+				<p><img src="images/content/header_footer1.jpg" alt="" /></p>
+				<h5>In WordPress Dashboard, You can go to <strong>Header Page</strong> to edit/create header</h5>
+				<h5>Go to <strong>Footer Page</strong> to edit/create footer</h5>
+				<p><img src="images/content/header_footer2.jpg" alt="" /></p>
+				<h5><strong>Edit/Create Header Page interface</strong></h5>
+				<p><img src="images/content/header_footer3.jpg" alt="" /></p>
+				<h5><strong>Edit/Create Footer Page interface</strong></h5>
+				<p><img src="images/content/header_footer5.jpg" alt="" /></p>
+				<h5>To set Header/Footer default for your site. You can go to<strong>Theme Option -> Customize Header /
+						Customize Footer</strong></h5>
+				<p><img src="images/theme-option/theme_option1_1.jpg" alt="" /><img
+						src="images/theme-option/theme_option1_2.jpg" alt="" /></p>
+				<h5>To set Header/Footer for special page(Home page). You can go to edit page area. Find to <strong>Page
+						Settings -> Choose Custom Header Page / Choose Custom Footer Page</strong></h5>
+				<p><img src="images/metabox/metabox_page_settings.jpg" alt="" /></p>
+			</div>
+			<div id="mega-menu" class="scroll-active">
+				<h3>2. Mega Menu</h3>
+				<h5>The First, please sure <strong>Mega Page</strong> editing with page builder is active</h5>
+				<p><img src="images/content/mega_menu1.jpg" alt="" /></p>
+				<h5>In WordPress Dashboard, You can go to <strong>Mega Page</strong> to edit/create content of mega menu
+				</h5>
+				<p><img src="images/content/mega_menu2.jpg" alt="" /></p>
+				<p><img src="images/content/mega_menu3.jpg" alt="" /></p>
+				<h5>After you have a <strong>Mega Page</strong>, the next step is to go to the <strong>Menus</strong> to
+					configure the display for a mega item.</h5>
+				<blockquote>
+					<p><strong><em>Step 1.</em></strong> To Dashboard, you can go to <strong>Appearance</strong> ->
+						<strong>Menus</strong>
+					</p>
+					<p><img src="images/content/mega_menu5.jpg" alt="" /></p>
+					<p><strong><em>Step 2.</em></strong> Select menu item to display <strong>Mega Menu</strong>. </p>
+					<p>1. Check <strong>Enable Mega Menu</strong></p>
+					<p>2. Select the <strong>Mega Menu</strong> to display</p>
+					<p>3. <strong>Save changes</strong> to apply</p>
+					<p><img src="images/content/mega_menu6.jpg" alt="" /></p>
+					<p><strong><em>Step 3. </em></strong> This is the front end display interface</p>
+					<p><img src="images/content/mega_menu7.jpg" alt="" /></p>
+				</blockquote>
+			</div>
+			<div id="elements" class="scroll-active">
+				<h3>3. Elementor 7uptheme (Shortcodes)</h3>
+				<h5>List 7up's elementor.</h5>
+				<p><img src="images/elementor/elementor_7up_elements.jpg" alt="" /></p>
+				<h5>Below is the interface of each element</h5>
+				<blockquote>
+					<div id="el-carousel-slider" class="scroll-active">
+						<h5><strong>3.1. Swiper Slider</strong></h5>
+						<p><strong>Feature:</strong> Used to display swiper slider with any content.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/Swiper_slider1.jpg" alt="" /><img
+								src="images/content/Swiper_slider2.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-title" class="scroll-active">
+						<h5><strong>3.2. Title</strong></h5>
+						<p><strong>Feature:</strong> Used to display title anywhere in page builder.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/title.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-accordion" class="scroll-active">
+						<h5><strong>3.3. Accordion</strong></h5>
+						<p><strong>Feature:</strong> Used to display content in a collapsible accordion style.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/accordion.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-testimonial" class="scroll-active">
+						<h5><strong>3.4. Testimonial</strong></h5>
+						<p><strong>Feature:</strong> Used to display customer testimonials in a stylish format.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/testimonial.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-product-group" class="scroll-active">
+						<h5><strong>3.5. Product Group</strong></h5>
+						<p><strong>Feature:</strong> Allows selecting up to four products to display together. Customers
+							can add individual items or the entire set to the cart.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/product_group.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-feature-box" class="scroll-active">
+						<h5><strong>3.6. Feature Box</strong></h5>
+						<p><strong>Feature:</strong> Highlight key features or brand values with icons and short
+							descriptions.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/feature_box1.jpg" alt="" /><img
+								src="images/content/feature_box2.jpg" alt="" /><img
+								src="images/content/feature_box3.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-quote-box" class="scroll-active">
+						<h5><strong>3.7. Quote Box</strong></h5>
+						<p><strong>Feature:</strong> Display a quote with the author's name and image.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/quote_box.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-video" class="scroll-active">
+						<h5><strong>3.8. Video</strong></h5>
+						<p><strong>Feature:</strong> Display a video with an overlay image.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/video.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-tip-list" class="scroll-active">
+						<h5><strong>3.9. Tip List</strong></h5>
+						<p><strong>Feature:</strong> Display a list of tips with icons and descriptions.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/tip_list1.jpg" alt="" /><img src="images/content/tip_list2.jpg"
+								alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-short-post-info" class="scroll-active">
+						<h5><strong>3.10. Short Post Info</strong></h5>
+						<p><strong>Feature:</strong> Display a short summary of a post excerpt (use for post edit with
+							Elementor).</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/short_post_info.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-image-link-box" class="scroll-active">
+						<h5><strong>3.11. Image Link Box</strong></h5>
+						<p><strong>Feature:</strong> Display an image with title, subtitle, and a clickable link button.
+						</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/image_link_box.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-product-tabs" class="scroll-active">
+						<h5><strong>3.12. Product Tabs</strong></h5>
+						<p><strong>Feature:</strong> Display products in tabbed sections such as New, Hot, or Sale,
+							allowing users to switch between product groups easily.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/product_tab.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-discount-products" class="scroll-active">
+						<h5><strong>3.13. Discount Products</strong></h5>
+						<p><strong>Feature:</strong> Highlight discounted products with customizable titles and
+							background image.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/discount_products1.jpg" alt="" /><img
+								src="images/content/discount_products2.jpg" alt="" /><img
+								src="images/content/discount_products3.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-featured-categories" class="scroll-active">
+						<h5><strong>3.14. Featured Categories</strong></h5>
+						<p><strong>Feature:</strong> Select and highlight featured product categories with customizable
+							background images.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/featured_categories1.jpg" alt="" /><img
+								src="images/content/featured_categories2.jpg" alt="" /><img
+								src="images/content/featured_categories3.jpg" alt="" /><img
+								src="images/content/featured_categories4.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-advertise" class="scroll-active">
+						<h5><strong>3.15. Advertise</strong></h5>
+						<p><strong>Feature:</strong> Display image box with image and link.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/advertise.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-about-us" class="scroll-active">
+						<h5><strong>3.16. About Us</strong></h5>
+						<p><strong>Feature:</strong> Present an introduction section with background image, title,
+							subtitle, and an optional video link.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/about_us.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-history_timeline" class="scroll-active">
+						<h5><strong>3.17. History Timeline</strong></h5>
+						<p><strong>Feature:</strong> Present a timeline section with events, dates, and descriptions.
+						</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/history_timeline.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<!-- <div id="el-product-hotspot" class="scroll-active">
+						<h5><strong>3.18. Product Hotspot</strong></h5>
+						<p><strong>Feature:</strong> Display an image with interactive hotspots linked to products.
+							Ideal for showcasing cosmetics or beauty items on model images.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/product_hotspot.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div> -->
+
+					<div id="el-image-compare" class="scroll-active">
+						<h5><strong>3.18. Image Compare</strong></h5>
+						<p><strong>Feature:</strong> Display two images side by side for comparison, with a draggable
+							slider to reveal differences.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/image_compare.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-team" class="scroll-active">
+						<h5><strong>3.19. Team</strong></h5>
+						<p><strong>Feature:</strong> Display a team section with member profiles, roles, and social
+							links.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/team.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-location-list" class="scroll-active">
+						<h5><strong>3.20. Location List</strong></h5>
+						<p><strong>Feature:</strong> Display a list of locations with details such as address, phone
+							number, and operating hours.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/location_list.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-logo" class="scroll-active">
+						<h5><strong>3.21. Custom Logo</strong></h5>
+						<p><strong>Feature:</strong> Used to display logo of your site.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/custom_logo.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-menu" class="scroll-active">
+						<h5><strong>3.22. Navigation Menu</strong></h5>
+						<p><strong>Feature:</strong> Used to display menu in header or anywhere in page builder.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/navigation_menu1.jpg" alt="" /><img
+								src="images/content/navigation_menu2.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-account-manager" class="scroll-active">
+						<h5><strong>3.23. My Account</strong></h5>
+						<p><strong>Feature:</strong> Used to display user account information and settings.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/my-account.jpg" alt="" /></p>
+					</div>
+
+					<div id="el-search-form" class="scroll-active">
+						<h5><strong>3.24. Search Form</strong></h5>
+						<p><strong>Feature:</strong> Used to display search form. You can custom search for post or
+							product. Live search feature already included in this element.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/search_form.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-mini-cart" class="scroll-active">
+						<h5><strong>3.25. Mini Cart</strong></h5>
+						<p><strong>Feature:</strong> Used to display mini cart anywhere in your page builder.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/mini_cart.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-hot-deals" class="scroll-active">
+						<h5><strong>3.26. Hot Deals</strong></h5>
+						<p><strong>Feature:</strong> Showcase limited-time promotions with a countdown timer and
+							highlighted discounted products.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/hot_deals1.jpg" alt="" /><img src="images/content/hot_deals2.jpg"
+								alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-list-gallery" class="scroll-active">
+						<h5><strong>3.27. List Gallery</strong></h5>
+						<p><strong>Feature:</strong> Used to display a list of images in a gallery format.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/list_gallery.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-my-wishlist" class="scroll-active">
+						<h5><strong>3.28. My Wishlist</strong></h5>
+						<p><strong>Feature:</strong> Used to display user's wishlist.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/my_wishlist.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-phone" class="scroll-active">
+						<h5><strong>3.29. Phone</strong></h5>
+						<p><strong>Feature:</strong> Showcase phone number with a click-to-call feature.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/phone1.jpg" alt="" /><img src="images/content/phone2.jpg" alt="" />
+						</p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-social" class="scroll-active">
+						<h5><strong>3.30. Social</strong></h5>
+						<p><strong>Feature:</strong> Used to display social media links.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/social.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-posts" class="scroll-active">
+						<h5><strong>3.31. List Post</strong></h5>
+						<p><strong>Feature:</strong> Display blog posts from selected categories in various layouts such
+							as List, Grid, or Masonry with sorting options.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/list_post.jpg" alt="" /><img src="images/content/list_post2.jpg"
+								alt="" /><img src="images/content/list_post3.jpg" alt="" /><img
+								src="images/content/list_post4.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-products" class="scroll-active">
+						<h5><strong>3.32. List Product</strong></h5>
+						<p><strong>Feature:</strong> Display products from selected categories with flexible layouts
+							(Grid or List), filtering, sorting, and pagination options.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/list_product.jpg" alt="" /><img
+								src="images/content/list_product2.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-feature-products" class="scroll-active">
+						<h5><strong>3.33. Feature Products</strong></h5>
+						<p><strong>Feature:</strong> Highlight featured products with a combination of image banners and
+							product sliders for visual emphasis.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/feature_products.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+
+					<div id="el-button" class="scroll-active">
+						<h5><strong>3.34. Button</strong></h5>
+						<p><strong>Feature:</strong> Used to display button. You can custom style button in this
+							elementor.</p>
+						<p><strong>Edit interface</strong></p>
+						<p><img src="images/content/button.jpg" alt="" /></p>
+						<p><strong>Front-end views</strong></p>
+					</div>
+				</blockquote>
+
+			</div>
+			<div id="create-page" class="scroll-active">
+				<h3>4. Create/Edit page</h3>
+				<p>In WordPress Dashboard you can go to <strong>Pages -> All Pages</strong> and choose page want to
+					edit. Or you can choose <strong>Pages -> Add New</strong> to create new page.</p>
+				<p>Pages template:</p>
+				<blockquote>
+					<p><strong>Default Template</strong>: Uses the theme’s default layout with standard header, footer,
+						and padding spacing.</p>
+					<p><strong>Elementor Full Width</strong>: Expands the content area to full width while still keeping
+						the theme’s header and footer.</p>
+					<p><strong>Elementor Canvas</strong>: A completely blank layout — removes the theme’s header and
+						footer, ideal for custom landing pages built 100% with Elementor.</p>
+					<p><strong>Theme</strong>: Uses the layout defined directly by the theme’s page template (for
+						advanced customization).</p>
+					<p><strong>Slider Revolution Blank Template</strong>: A clean, empty layout optimized for displaying
+						full-screen Slider Revolution modules.</p>
+				</blockquote>
+			</div>
+			<div id="create-post" class="scroll-active">
+				<h3>5. Create post/product</h3>
+				<h5><strong>Create post</strong></h5>
+				<p>In WordPress Dashboard you can go to <strong>Posts --> Add New</strong> to create new post. Or
+					<strong>Posts --> All Posts</strong> and choose a post to edit.
+				</p>
+
+				<h5><strong>Create product</strong></h5>
+				<p>In WordPress Dashboard you can go to <strong>Products --> Add New</strong> to create new product. Or
+					<strong>Products --> All Products</strong> and choose a product to edit.
+				</p>
+
+				<p><strong>Note:</strong> you can enable page builder for post/product to create/edit with Elementor.
+				</p>
+			</div>
+			<div id="responsive" class="scroll-active">
+				<h3>6. Responsive</h3>
+				<p><strong>Base responsibe for column:</strong> when you create page builder content from rows and
+					columns. You can divide the width of the columns you want to display for each screen.</p>
+				<p>In Column Settings, you can choose <strong>Responsive Options</strong></p>
+				<p><img src="images/content/responsive1.jpg" alt="" /></p>
+				<blockquote>
+					<p><strong>Width:</strong> default width. Apply for small device.</p>
+					<p><strong>Responsiveness:</strong> responsibe settings for 3 type of device.</p>
+					<p>1: Destop device</p>
+					<p>2: Tablet device</p>
+					<p>3: Mobile device</p>
+				</blockquote>
+				<p><strong>Advanced responsive:</strong>: Applies to some special items or all items depending on your
+					settings.</p>
+				<p>In elements setting, You can choose <strong>Responsive Design Option: you can change padding, margin,
+						background, width ... and alot of css attribute for each device.</strong></p>
+				<div class="row">
+					<div class=""><img src="images/content/responsive2.jpg" alt="" /><img
+							src="images/content/responsive3.jpg" alt="" /><img src="images/content/responsive4.jpg"
+							alt="" /></div>
+				</div>
+			</div>
+
+			<div id="widgets" class="scroll-active">
+				<h3>8. Widget</h3>
+				<blockquote>
+					<p><img src="images/content/widget.jpg" alt="" /></p>
+				</blockquote>
+				<h5>List 7up's widget</h5>
+				<blockquote>
+					<p id="widget-post"><strong>8.1. 7up List Posts</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_listpost1.jpg" alt="" /></p>
+						</div>
+					</div>
+
+					<p id="select-mega"><strong>8.2. 7up Select Mega Page Widget</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_selectmega.jpg" alt="" /></p>
+						</div>
+					</div>
+
+					<p id="price-filter"><strong>8.3. 7up Custom Price Filter Widget</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_filer_price.jpg" alt="" /></p>
+						</div>
+					</div>
+
+					<p id="attribute-filter"><strong>8.4. 7up Custom Attribute Filter Widget</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_attribute_filter.jpg" alt="" /></p>
+						</div>
+					</div>
+
+					<p id="brand-filter"><strong>8.5. 7up Custom Brand Filter Widget</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_brand_filter.jpg" alt="" /></p>
+						</div>
+					</div>
+
+					<p id="widget-product"><strong>8.6. 7up Custom List Product Widget</strong></p>
+					<div class="row images-col">
+						<div class="col-12">
+							<p><img src="images/content/7up_widget_list_products.jpg" alt="" /></p>
+						</div>
+					</div>
+
+				</blockquote>
+			</div>
+		</section>
+
+		<section id="customize" class="scroll-active">
+			<h2>7uptheme customize</h2>
+			<hr>
+			<div id="choose-home-page" class="scroll-active">
+				<h3>1. Choose home page</h3>
+				<p>After importing the demo data. You can choose one of our demo home as your home page.</p>
+				<blockquote>
+					<p><strong>Step 1</strong>: In WordPress Dashboard, Go to <strong>Settings -> Reading</strong></p>
+					<p><img src="images/customize/choose-home-page.jpg" alt="" /></p>
+					<p><strong>Step 2</strong>: Click to <strong>A static page (select below)</strong> and select Home
+						page from list.</p>
+					<p><img src="images/customize/choose-home-page2.jpg" alt="" /></p>
+					<p><strong>Step 3</strong>: Click <strong>Save Changes</strong> to apply.</p>
+				</blockquote>
+			</div>
+
+			<div id="translate" class="scroll-active">
+				<h3>2. Translate theme/plugin with <a href="https://wordpress.org/plugins/loco-translate/">Loco
+						Translate</a></h3>
+				<p><strong>Loco Translate</strong> provides in-browser editing of WordPress translation files. It also
+					provides localization tools for developers, such as extracting strings and generating templates.</p>
+				<p>First, you need to install Loco Translate plugin for your site.</p>
+				<p><img src="images/customize/loco-translate.jpg" alt="" /></p>
+				<p><strong>Translate Theme</strong></p>
+				<blockquote>
+					<p><strong>Step 1</strong>: In WordPress Dashboard, Go to <strong>Loco Translate -> Themes</strong>
+					</p>
+					<p><img src="images/customize/loco-translate2.jpg" alt="" /></p>
+					<p><strong>Step 2</strong>: Choose theme want to translate from theme list.</p>
+					<p><img src="images/customize/loco-translate3.jpg" alt="" /></p>
+					<p><strong>Step 3</strong>: Click to <strong>New language</strong> to add language to translate. Or
+						choose exits language to edit.</p>
+					<p><img src="images/customize/loco-translate4.jpg" alt="" /></p>
+					<p><strong>Step 4</strong>:Choose a language and location and click <strong>Start
+							translating</strong> to start translate.</p>
+					<p><img src="images/customize/loco-translate5.jpg" alt="" /></p>
+					<p><strong>Step 5</strong>: translate interface</p>
+					<p><img src="images/customize/loco-translate6.jpg" alt="" /></p>
+					<p>1: Click <strong>Sync</strong> button to update new pot file. Use when update theme or update pot
+						file in <strong>theme-folder -> languages</strong> folder.</p>
+					<p>2: Enter key to find text/string</p>
+					<p>3: Source text, click to text want to translate.</p>
+					<p>4: Source text display.</p>
+					<p>5: Enter text translated.</p>
+					<p>6: Click <strong>Save</strong> to finish.</p>
+				</blockquote>
+				<p><strong>Translate Plugin</strong>: Same as translate theme, In WordPress Dashboard, Go to
+					<strong>Loco Translate -> Plugins</strong> and and sequentially the remaining steps as you are
+					translating the theme.
+				</p>
+			</div>
+
+			<div id="multi-lang" class="scroll-active">
+				<h3>3. Multi language plugins</h3>
+				<p>Our products are compatible with multi language plugins like WPML, Polylang, QTranslateX</p>
+				<p>First, make sure you have installed multi language compatible plugins for our products and that
+					translations for languages are available for the categories, products, pages, product categories
+					.... You can read Multi language plugin guide for usage</p>
+				<p><strong>Theme Option in Multi Language</strong>: When using multi language plugin. Theme Option
+					values will be stored independently for each language. So you need to save your settings for each
+					language.</p>
+				<blockquote>
+					<p>Go to <strong>Theme Option</strong>, Switch language that you want to settings</p>
+					<!-- <p><img src="images/customize/multi-language.jpg" alt="" /></p>
+					<p><img src="images/customize/multi-language2.jpg" alt="" /></p> -->
+				</blockquote>
+				<p><strong>Header/Footer/Mega page in multi language</strong>: You can translate same as page or copy
+					content and translate in a new Header/Footer/Mega Page and rechoose for each language.</p>
+			</div>
+
+			<div id="optimization" class="scroll-active">
+				<h3>4. Optimization</h3>
+				<h5>* <strong>Optimize Uploaded Images</strong></h5>
+				<p>Images are one of the heavier elements of your site. There are a few ways you can optimize your
+					uploaded images.</p>
+				<p>You should specify the maximum image dimensions for thumbnail, medium, and large sized images. That
+					means, if you upload an image 1024px wide, and your content area is only 604px wide, normally the
+					image will be scaled down using CSS. When you specify the maximum width of your ‘large’ images as
+					604px, it’ll then display the pre-resized, 604px wide image, which will be significantly smaller in
+					size.</p>
+				<h5>* <strong>Install A Caching Plugin</strong></h5>
+				<p>The second most effective way (the first being choosing a good web host) to improve your site’s load
+					times is to install a caching plugin. As soon as you install a plugin like W3 Total Cache or WP
+					Super Cache, you’ll be able to tell that your site loads faster.</p>
+				<p>In simple words, when a caching plugin is active on your site, it servers users cached copies of your
+					pages. It greatly reduces MySQL database access, no. of PHP requests, server access for static
+					resources, and even HTTP requests (in case of combining multiple files into one).</p>
+				<p>W3 Total Cache is one my most favourite WordPress plugins. It offers a variety of caching features:
+				</p>
+				<blockquote>
+					<p>- Page Cache</p>
+					<p>- Minify</p>
+					<p>- Object Cache</p>
+					<p>- Database Cache</p>
+					<p>- Browser Cache</p>
+					<p>- CDN</p>
+				</blockquote>
+				<p>Initially, you don’t want everything enabled. You can still safely enable everything except Minify
+					and CDN (unless you want to use a CDN).</p>
+				<p>Minify breaks some other heavily JS-based plugins unless you specifically tweak it. On the other
+					hand, you should tweak the Browser Cache settings to utilise the full potential of browser caching.
+				</p>
+				<h5>* <strong>Try a CDN to Speed Up WordPress</strong></h5>
+				<p>Offloading the static resources of your site, like images, scripts, css files, can speed up your
+					site. Not only those resources will load faster for visitors, if you use a CDN, your primary server
+					will have less load to handle and thus will deliver significantly better performance while serving
+					the rest of your site.</p>
+				<h5>* <strong>Enable Gzip Compression</strong></h5>
+				<p>You should serve compressed versions of your site to your visitors, as they’ll be less in size and
+					will generally load a lot faster.</p>
+			</div>
+
+			<div id="child-theme" class="scroll-active">
+				<h3>5. Use child theme</h3>
+				<h5><strong>Child Themes</strong></h5>
+				<p>A child theme is a theme that inherits the functionality and styling of another theme, called the
+					parent theme. Child themes are the recommended way of modifying an existing theme.</p>
+				<h5>Why use a Child Theme?</h5>
+				<p>There are a few reasons why you would want to use a child theme:</p>
+				<blockquote>
+					<p>- If you modify a theme directly and it is updated, then your modifications may be lost. By using
+						a child theme you will ensure that your modifications are preserved.</p>
+					<p>- Using a child theme can speed up development time.</p>
+					<p>- Using a child theme is a great way to learn about WordPress theme development.</p>
+				</blockquote>
+				<h5><strong>Child Themes install</strong></h5>
+				<p>You can find child theme package next to the main theme package in the full
+					download(nebon-child.zip). Once you've installed the main theme, you have to install the child theme
+					and start customizing it</p>
+				<h5><strong>The main file</strong></h5>
+				<blockquote>
+					<p>- <strong>function.php</strong>: You can create new function or php process for your theme or
+						copy a php function in the main theme to child add to edit and customize your way.</p>
+					<p>- <strong>style.css</strong>: Allows you to insert the css code into your web page</p>
+				</blockquote>
+				<h5><strong>Template folder</strong></h5>
+				<p>Allows you to change the html structure of the theme components. You can copy any file in folder
+					s7upf_templates into child theme with the same directory structure to edit. Or you also copy all
+					s7upf_templates folder into child theme for comprehensive change.</p>
+			</div>
+
+			<div id="custom-style" class="scroll-active">
+				<h3>6. Custom style</h3>
+				<p>In addition to using styles available in theme settings, you can add css codes to customize your look
+					in the following ways:</p>
+				<!-- <h5><strong>Use Custom CSS of Elementor</strong>: In WordPress Dashboard, Go to <strong>Elementor ->
+						Custom CSS</strong></h5>
+				<p><img src="images/customize/custom-style.jpg" alt="" /></p> -->
+				<h5><strong>Use Additional CSS in Customize WordPress</strong>: In WordPress Dashboard, Go to
+					<strong>Appearance -> Customize -> Additional CSS</strong>
+				</h5>
+				<p><img src="images/customize/custom-style2.jpg" alt="" /></p>
+				<h5><strong>Use file style.css in child theme.</strong></h5>
+			</div>
+
+		</section>
+
+		<!--Source and Credits-->
+	<section id="source_and_credits" class="scroll-active">
+  <h2>Source and Credits</h2>
+  <hr>
+  <p>
+    I would like to thank the following open-source projects and plugin authors.  
+    This theme would not have been possible without their dedication and contributions.
+  </p>
+
+  <ol>
+    <!-- Core Platforms -->
+    <li><a target="_blank" href="https://wordpress.org/">WordPress</a> – Core CMS platform</li>
+    <li><a target="_blank" href="https://woocommerce.com/">WooCommerce</a> – eCommerce framework integration</li>
+    <li><a target="_blank" href="https://elementor.com/">Elementor</a> – Page builder used for creating layouts and widgets</li>
+
+    <!-- Visual & Interactive Libraries -->
+    <li><a target="_blank" href="https://jquery.com/">jQuery</a> – Core JavaScript library</li>
+    <li><a target="_blank" href="https://jqueryui.com/">jQuery UI</a> – Used for interactive elements such as price sliders</li>
+    <li><a target="_blank" href="https://fancyapps.com/fancybox/">Fancybox</a> – Responsive lightbox for images and popups</li>
+    <li><a target="_blank" href="https://swiperjs.com/">Swiper</a> – Modern mobile touch slider used for carousels</li>
+    <li><a target="_blank" href="https://masonry.desandro.com/">Masonry</a> – Dynamic grid layout for post and product lists</li>
+    <li><a target="_blank" href="https://dixonandmoe.com/rellax/">Rellax.js</a> – Lightweight parallax scrolling library</li>
+    <li><a target="_blank" href="https://zurb.com/playground/twentytwenty">TwentyTwenty</a> – Image comparison plugin for before/after effects</li>
+
+    <!-- Theme Plugins -->
+    <li><a target="_blank" href="https://revolution.themepunch.com/">Slider Revolution</a> – Premium slider plugin for hero banners and visuals</li>
+    <li><a target="_blank" href="https://wordpress.org/plugins/yith-woocommerce-wishlist/">YITH WooCommerce Wishlist</a> – Wishlist functionality for WooCommerce products</li>
+    <li><a target="_blank" href="https://wordpress.org/plugins/yith-woocommerce-compare/">YITH WooCommerce Compare</a> – Product comparison feature</li>
+    <li><a target="_blank" href="https://wordpress.org/plugins/mailchimp-for-wp/">Mailchimp for WordPress</a> – Newsletter subscription integration</li>
+    <li><a target="_blank" href="https://metabox.io/">Meta Box</a> – Framework for custom meta fields and post types</li>
+	<li><a target="_blank" href="https://contactform7.com/">Contact Form 7</a> – Contact form plugin for managing inquiries and forms</li>
+    <!-- Icons & Fonts -->
+    <li><a target="_blank" href="https://icons8.com/line-awesome">Line Awesome</a> – Icon font used throughout the theme</li>
+    <li><a target="_blank" href="https://fonts.google.com/">Google Fonts</a> – Used for the theme’s typography</li>
+  </ol>
+</section>
+
+
+		<!--Support-->
+		<section id="support-service" class="scroll-active">
+			<h2>Support</h2>
+			<hr>
+			<h3>Create account and topic on <a href="https://forum.7uptheme.net/forums/forum/nebon/">Nebon Forum</a>
+				</h4>
+
+				<ul>
+					<li>
+						<h4>Create an account on <a href="http://7uptheme.com/">7uptheme</a> for support</h4>
+						<p>
+							<strong>Step 1:</strong><br><br>
+							<img src="images/support/support_1.png" alt="" />
+						</p>
+						<p>
+							<strong>Step 2:</strong><br><br>
+							<img src="images/support/support_2.png" alt="" />
+							<img src="images/support/support_3.png" alt="" />
+						</p>
+					</li>
+					<li>
+						<h4>Create new topic on <a href="https://forum.7uptheme.net/forums/forum/nebon/">Nebon Forum</a>
+						</h4>
+						<p>
+							<strong>Step 1:</strong>Login to forum by your account and go to <a
+								href="https://forum.7uptheme.net/forums/forum/nebon/">Nebon Forum</a><br><br>
+							<img src="images/support/support_4.png" alt="" /><br><br>
+							<strong>Step 2:</strong>Create new topic<br><br>
+							<img src="images/support/support_5.png" alt="" />
+						</p>
+					</li>
+				</ul>
+				<h3 id="customize-service" class="scroll-active"><strong>Customize Service</strong></h3>
+				<h5>You can send a custom request to email <a
+						href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a> to receive a specific
+					quote</h5>
+				<p> If you face any problems with the installation or customization of our product please do not
+					hesitate to contact us via comment on ThemeForest or send your question to our email: <a
+						href="mailto:contact.7uptheme@gmail.com">contact.7uptheme@gmail.com</a>
+				</p>
+				<p>
+					We have done a ton of work to make our template very easy in configuration, updating and
+					customization, please rate it with hight star if possible (on the downloads page). Good mark will be
+					appreciated.
+				</p>
+				<p>
+					Thank you.
+				</p>
+				<p><b>Wish you success.</b></p>
+		</section>
+	</div>
+</body>
+
+</html>

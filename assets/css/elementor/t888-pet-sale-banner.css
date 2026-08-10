@@ -1,0 +1,178 @@
+.t888-pet-sale-banner {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    max-height: 360px;
+    padding: 105px 40px 100px;
+    border-radius: 0;
+}
+
+.t888-pet-sale-banner__content {
+    position: relative;
+    z-index: 2;
+    /* max-width: 55%; */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Big Discount / Top Text (e.g. UPTO 30%) */
+.t888-pet-sale-banner__discount {
+    font-family: var(--font-family);
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 15px 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* Title / Middle Text (e.g. PET PRODUCTS) - Serif */
+.t888-pet-sale-banner__subtitle {
+    font-family: var(--font-philosopher);
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 10px 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* Sub-subtitle / Bottom Text (e.g. EVERY FURRY) */
+.t888-pet-sale-banner__top-label {
+    font-family: var(--font-philosopher);
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    margin: 0 0 25px 0;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* Button */
+.t888-pet-sale-banner__btn-wrap {
+    margin: 0;
+}
+
+.t888-pet-sale-banner__btn {
+    display: inline-block;
+    padding: 15px 28px;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+    font-family: var(--font-family);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 1;
+    text-align: center;
+}
+
+.t888-pet-sale-banner__btn:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+.t888-pet-sale-banner__image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.t888-pet-sale-banner__image img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center right;
+}
+
+.sale-banner-style2 .t888-pet-sale-banner__top-label {
+    margin-bottom: 15px;
+}
+
+.sale-banner-style2 .t888-pet-sale-banner__discount {
+    margin-bottom: 25px;
+}
+
+.sale-banner-style2 .t888-pet-sale-banner__discount sup {
+    font-size: 20px;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .t888-pet-sale-banner {
+        min-height: 280px;
+        padding: 40px;
+    }
+
+    .t888-pet-sale-banner__discount {
+        font-size: 32px;
+    }
+
+    .t888-pet-sale-banner__subtitle {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 767px) {
+    .t888-pet-sale-banner {
+        min-height: 240px;
+        padding: 30px;
+    }
+
+    /* .t888-pet-sale-banner__content {
+        max-width: 60%;
+    } */
+
+    .t888-pet-sale-banner__discount {
+        font-size: 28px;
+    }
+
+    .t888-pet-sale-banner__subtitle {
+        font-size: 22px;
+    }
+
+    .t888-pet-sale-banner__top-label {
+        font-size: 11px;
+        margin-bottom: 20px;
+    }
+
+    .t888-pet-sale-banner__btn {
+        padding: 10px 24px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .t888-pet-sale-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: auto;
+        padding: 30px 20px;
+    }
+
+    .t888-pet-sale-banner__content {
+        max-width: 100%;
+        margin-bottom: 30px;
+        z-index: 2;
+    }
+
+    .t888-pet-sale-banner__image {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    .t888-pet-sale-banner__image img {
+        object-position: center center;
+    }
+}

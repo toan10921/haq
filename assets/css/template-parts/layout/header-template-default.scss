@@ -1,0 +1,118 @@
+.header-default {
+    .material-symbols-outlined {
+        color: var(--seventh-color);
+        font-size: 24px;
+    }
+
+    .header-first {
+        background-color: var(--forth-color);
+
+        .col-language,
+        .col-delivery,
+        .col-store-location {
+            padding: 8px 15px 12px;
+        }
+
+        .language-change,
+        .free-delivery-content,
+        .store-location {
+            span {
+                color: #3E2B2E;
+            }
+        }
+    }
+
+    .header-title {
+        background-color: var(--secondary-color);
+        padding: 22px 0;
+
+        h1 {
+            font-size: 2rem;
+
+            a {
+                color: var(--secondary-color);
+            }
+        }
+        .site-logo{
+            display: flex;
+            align-items: flex-end;
+            i{
+                color: var(--third-color);
+                font-size: 2.25rem;
+                line-height: 2.25rem;
+                padding-bottom: 0.125rem;
+            }
+            span{
+                font-family: var(--font-philosopher);
+                text-transform: uppercase;
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+
+    .header-extra {
+        display: flex;
+        gap: 15px;
+        margin-right: 20px;
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .order-now-btn {
+        background-color: var(--forth-color);
+        color: var(--third-color);
+        border: none;
+        padding: 12px 33px;
+        font-size: 13px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        // &:hover {
+        //     background-color: #E64A19;
+        // }
+
+        // &:focus {
+        //     outline: none;
+        // }
+    }
+
+    .block-search-element {
+        .toggle-search {
+            width: 24px;
+            height: 24px;
+
+            .search-icon {
+                font-size: 24px;
+            }
+        }
+
+        .input-search {
+            width: 243px;
+            background: transparent;
+            color: var(--seventh-color);
+            border: unset;
+            padding: 0;
+            -webkit-text-fill-color: var(--seventh-color);
+
+            &:focus-visible {
+                outline: none;
+            }
+
+            &::placeholder {
+                color: var(--seventh-color);
+                /* opacity: 0.9;  */
+            }
+
+            &:hover {
+                padding-left: 15px;
+            }
+        }
+    }
+}

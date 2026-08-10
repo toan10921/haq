@@ -1,0 +1,91 @@
+.t888-image-compare-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.t888-image-compare img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+.twenty-before-label,
+.twenty-after-label {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1.875rem;
+    line-height: 1;
+    pointer-events: none;
+    text-transform: uppercase;
+    z-index: 44;
+    font-family: var(--font-philosopher);
+    padding: 10px 17px;
+    background: #fff9de;
+}
+
+.twenty-before-label {
+    left: 25%;
+    transform: translate(-50%, -50%);
+}
+
+.twenty-after-label {
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+
+.twentytwenty-handle {
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    cursor: ew-resize;
+}
+.twentytwenty-horizontal .twentytwenty-handle:before, .twentytwenty-horizontal .twentytwenty-handle:after{
+    width: 6px;
+    margin-left: -4px;
+    box-shadow: unset;
+}
+.twentytwenty-left-arrow{
+    margin-left: -23px;
+    margin-top: -16px;
+}
+.twentytwenty-right-arrow{
+    margin-right: -11px;
+    margin-top: -16px;
+}
+
+.twentytwenty-left-arrow::before,
+.twentytwenty-right-arrow::before {
+    font-family: 'Line Awesome Free';
+    font-weight: 900;
+    font-size: 12px;
+    color: var(--primary-color); 
+}
+
+.twentytwenty-left-arrow::before {
+    content: "\f104"; 
+    margin-right: 0;
+}
+
+.twentytwenty-right-arrow::before {
+    content: "\f105"; 
+    margin-left: 0;
+}
+
+@media (max-width: 575px) {
+   .twenty-before-label,
+   .twenty-after-label{
+    font-size: 1rem;
+    padding: 6px 12px;
+   }
+   .twentytwenty-handle{
+    width: 45px;
+    height: 45px;
+   }
+}

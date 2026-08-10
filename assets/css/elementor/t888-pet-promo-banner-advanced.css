@@ -1,0 +1,59 @@
+.t888-pet-promo-banner-advanced {
+  position: relative;
+  overflow: visible; /* Images overflow outside the banner */
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%; /* Force full height of the parent flex container */
+  width: 100%;
+  /* Images */
+}
+.t888-pet-promo-banner-advanced .promo-content {
+  position: relative;
+  z-index: 10;
+  max-width: 65%; /* Prevent wrapping */
+}
+.t888-pet-promo-banner-advanced .promo-subtitle {
+  text-transform: uppercase;
+}
+.t888-pet-promo-banner-advanced .promo-title {
+  text-transform: uppercase;
+  white-space: nowrap; /* Prevent breaking into two lines */
+}
+.t888-pet-promo-banner-advanced .promo-title sup {
+  font-size: 0.55em;
+  top: -0.45em;
+}
+.t888-pet-promo-banner-advanced .promo-button-wrap {
+  margin-top: 0;
+}
+.t888-pet-promo-banner-advanced .promo-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+.t888-pet-promo-banner-advanced .promo-button:hover {
+  opacity: 0.8;
+  color: inherit;
+}
+.t888-pet-promo-banner-advanced .promo-img {
+  position: absolute;
+  pointer-events: none; /* Images shouldn't block clicks */
+}
+.t888-pet-promo-banner-advanced .promo-img img {
+  max-width: 100%;
+  display: block;
+  background: transparent !important;
+}
+.t888-pet-promo-banner-advanced .promo-icon {
+  position: absolute;
+  pointer-events: none;
+}
+
+/*# sourceMappingURL=t888-pet-promo-banner-advanced.css.map */

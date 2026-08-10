@@ -1,0 +1,389 @@
+.bird-mega-menu-home2 {
+    padding: 50px;
+    max-height: 598px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__grid {
+    display: grid;
+    grid-template-columns: 170px minmax(0, 1fr) 351px;
+    align-items: center;
+    gap: 32px;
+}
+
+.bird-mega-menu-home2--no-art .bird-mega-menu-home2__grid {
+    grid-template-columns: minmax(0, 1fr) 351px;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__art {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__bird-image {
+    width: 100%;
+    max-width: 170px;
+    height: auto;
+    display: block;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__links {
+    min-width: 0;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    font-family: var(--font-philosopher);
+    margin: 0 0 15px;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__list li {
+    margin: 0 0 15.5px;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__list li:last-child {
+    margin: 0;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__list a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__list a:hover {
+    color: #ffc326;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__banner {
+    position: relative;
+    overflow: hidden;
+    min-height: 486px;
+    padding: 80px 34px 44px;
+    background: var(--bird-menu-banner-bg);
+    color: var(--bird-menu-banner-text);
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__banner-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* opacity: .22; */
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__banner-overlay img {
+    /* position: absolute;
+    right: -14px;
+    bottom: -8px;
+    width: 95%; */
+    height: auto;
+    display: block;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__banner-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* padding-top: 8px; */
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__eyebrow {
+    margin: 0;
+    color: inherit;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount {
+    color: inherit;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount--text {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 34px;
+    width: 100%;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-main {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    right: 21px;
+    transform: translateY(320%);
+    width: 100%;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-value {
+    display: block;
+    position: relative;
+    z-index: 1;
+    font-size: 130px;
+    line-height: 27px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit {
+    position: absolute;
+    top: -67px;
+    left: 179px;
+    z-index: 3;
+    font-size: 78px;
+    line-height: .88;
+    font-weight: 700;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image {
+    display: block;
+    position: absolute;
+    */
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    right: 0;
+    top: 38px;
+    bottom: 2px;
+    z-index: 1;
+    background: #ebe2c2;
+    clip-path: polygon(0 100%, 58% 0, 100% 0, 100% 100%);
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount-label {
+    display: block;
+    margin-top: 60px;
+    margin-right: -135px;
+    font-size: 25px;
+    line-height: 27px;
+    font-weight: 700;
+    z-index: 3;
+    position: relative;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount--image {
+    margin-bottom: 28px;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__discount--image img {
+    max-width: 100%;
+    width: auto;
+    max-height: 180px;
+    margin: 0 auto;
+    display: block;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__banner-title {
+    margin: 0 0 47px;
+    color: inherit;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 145px;
+    min-height: 50px;
+    padding: 12px 24px;
+    background: var(--bird-menu-button-bg);
+    font-size: 14px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #000000;
+    font-weight: 400;
+    text-align: center;
+}
+
+.bird-mega-menu-home2 .bird-mega-menu-home2__button:hover {
+    color: var(--bird-menu-button-text);
+    opacity: .88;
+}
+
+@media (max-width: 1199px) {
+    .bird-mega-menu-home2 {
+        padding: 34px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__grid {
+        grid-template-columns: 130px minmax(0, 1fr) 300px;
+        gap: 24px;
+    }
+
+    .bird-mega-menu-home2--no-art .bird-mega-menu-home2__grid {
+        grid-template-columns: minmax(0, 1fr) 300px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__bird-image {
+        max-width: 130px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner {
+        min-height: 430px;
+        padding: 42px 24px 36px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner-content {
+        padding-top: 2px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__eyebrow {
+        margin-bottom: 22px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-value {
+        font-size: 112px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount--text {
+        margin-bottom: 30px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit {
+        top: 10px;
+        left: 80px;
+        font-size: 64px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image {
+        width: 60px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image img {
+        max-width: 60px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image::before {
+        left: 5px;
+        top: 32px;
+        bottom: 2px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-label {
+        margin-top: 8px;
+        margin-right: -10px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner-title {
+        margin-bottom: 42px;
+    }
+}
+
+@media (max-width: 991px) {
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__grid,
+    .bird-mega-menu-home2--no-art .bird-mega-menu-home2__grid {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__art {
+        order: 1;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__links {
+        order: 2;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner {
+        order: 3;
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 767px) {
+    .bird-mega-menu-home2 {
+        padding: 20px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__grid {
+        gap: 18px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__art {
+        justify-content: flex-start;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__bird-image {
+        max-width: 120px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner {
+        min-height: 320px;
+        padding: 34px 18px 28px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__eyebrow {
+        font-size: 12px;
+        letter-spacing: .18em;
+        margin-bottom: 18px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-value {
+        font-size: 84px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount--text {
+        margin-bottom: 24px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit {
+        top: 8px;
+        left: 60px;
+        font-size: 50px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image {
+        width: 48px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image img {
+        max-width: 48px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-unit--image::before {
+        left: 4px;
+        top: 26px;
+        bottom: 1px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__discount-label {
+        margin-top: 6px;
+        margin-right: -4px;
+        font-size: 22px;
+    }
+
+    .bird-mega-menu-home2 .bird-mega-menu-home2__banner-title {
+        margin-bottom: 32px;
+        font-size: 16px;
+    }
+}

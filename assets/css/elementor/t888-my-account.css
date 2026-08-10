@@ -1,0 +1,206 @@
+#t888-account-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none
+}
+
+#t888-account-panel .my-account-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+    z-index: 9998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease
+}
+
+#t888-account-panel .my-account-overlay.active-my-account {
+    opacity: 1;
+    pointer-events: all
+}
+
+#t888-account-panel .my-account-content {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    width: 400px;
+    bottom: 0;
+    background: #fff;
+    z-index: 9999;
+    right: 0;
+    transform: translateX(100%);
+    height: 100vh;
+    transition: all .3s ease
+}
+
+#t888-account-panel .my-account-content.active-my-account {
+    opacity: 1;
+    transform: translateX(0)
+}
+
+#t888-account-panel .my-account-content .my-account-heading {
+    padding: 30px 20px;
+    border-bottom: 1px solid #e5e5e5
+}
+
+#t888-account-panel .my-account-content .my-account-heading h5::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background: var(--primary-color);
+    position: absolute;
+    bottom: -18px;
+    left: 0
+}
+
+#t888-account-panel .my-account-content .my-account-main-body {
+    padding: 20px 20px;
+    max-height: calc(100vh - 82px);
+    overflow-y: auto
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .form-row-username {
+    margin-top: 10px
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .form-row label {
+    display: inline-block;
+    margin-bottom: .9375rem
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .form-row label[for=rememberme] {
+    margin-bottom: 0
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .form-row.form-row-submit {
+    margin-bottom: 2.6875rem
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .form-row {
+    margin-bottom: 20px
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .woocommerce-LostPassword {
+    padding-bottom: 45px
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form input[type=text],
+#t888-account-panel .my-account-content .my-account-main-body form input[type=password] {
+    width: 100%
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form button[type=submit] {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form button[type=submit]:disabled {
+    opacity: .5;
+    cursor: not-allowed
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form .t888-login-error {
+    color: red;
+    font-size: .875rem
+}
+
+#t888-account-panel .my-account-content .my-account-main-body form {
+    border-bottom: 1px solid #c8c8c7
+}
+
+#t888-account-panel .my-account-content .my-account-main-body .register-account {
+    padding-top: 45px
+}
+
+#t888-account-panel .my-account-content .my-account-main-body .register-account i {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: .5;
+    margin-block-end: 1rem
+}
+
+#t888-account-panel .my-account-content .my-account-main-body .register-account span {
+    margin-inline-end: 5px
+}
+
+#t888-account-panel.active-my-account {
+    pointer-events: all
+}
+
+#t888-account-panel.active-my-account .my-account-overlay {
+    opacity: 1;
+    pointer-events: all
+}
+
+#t888-account-panel.active-my-account .my-account-content {
+    opacity: 1;
+    transform: translateX(0)
+}
+
+@media(max-width: 480px) {
+    #t888-account-panel .my-account-content {
+        width: 90%
+    }
+}
+
+.my-account-main-body .woocommerce-FormRow.form-row .woocommerce-form__label-for-checkbox {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    line-height: 1.2
+}
+
+.my-account-main-body .woocommerce-form__input-checkbox {
+    appearance: auto;
+    -webkit-appearance: auto;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    vertical-align: middle;
+    flex: 0 0 18px;
+    border-radius: 0 !important;
+    accent-color: #000
+}
+
+.my-account-main-body .woocommerce-form__label-for-checkbox::before,
+.my-account-main-body .woocommerce-form__label-for-checkbox::after {
+    content: none !important
+}
+
+.acc-mobi .person i {
+    color: var(--secondary-color)
+}
+
+.my-account.style3 .my-account-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    line-height: 1
+}
+
+.my-account.style3 .my-account-icon i {
+    color: #000;
+    font-size: 30px
+}
+
+@supports(-webkit-touch-callout: none) {
+    .my-account-main-body .woocommerce-form__input-checkbox {
+        position: static !important;
+        opacity: 1 !important;
+        transform: none !important
+    }
+}
+
+/*# sourceMappingURL=t888-my-account.css.map */

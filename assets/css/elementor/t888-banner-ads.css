@@ -1,0 +1,42 @@
+.t888-banner-ads-wrap {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.t888-banner-ads-wrap .banner-layer {
+  display: block;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.t888-banner-ads-wrap .banner-layer.type-image .ad-img-el {
+  display: block;
+}
+.t888-banner-ads-wrap .banner-layer.type-image .ad-img-el img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.t888-banner-ads-wrap .banner-layer.type-text .ad-text-el {
+  margin: 0;
+  padding: 0;
+}
+.t888-banner-ads-wrap .banner-layer.type-text .ad-text-el p, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h1, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h2, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h3, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h4, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h5, .t888-banner-ads-wrap .banner-layer.type-text .ad-text-el h6 {
+  margin: 0;
+  padding: 0;
+}
+.t888-banner-ads-wrap .banner-layer.type-button .ad-btn {
+  display: inline-block;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 20px;
+}
+.t888-banner-ads-wrap .banner-layer.type-button .ad-btn:hover {
+  opacity: 0.85;
+}
+
+/*# sourceMappingURL=t888-banner-ads.css.map */

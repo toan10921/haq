@@ -1,0 +1,214 @@
+.footer-default {
+    margin-top: 100px;
+
+    .footer-mailchimp {
+        display: flex;
+        justify-content: center;
+        padding: 44px 0;
+        background-color: #f2f2f2;
+
+        .footer-mailchimp-form {
+            .mc4wp-form {
+                .newsletter-wrap {
+                    display: flex;
+                    align-items: center;
+                    gap: 3rem;
+
+                    .newsletter-text {
+                        font-size: 1.125rem;
+                        line-height: 2rem;
+                        font-family: var(--font-philosopher);
+                        font-weight: bold;
+
+                        .highlight {
+                            color: var(--third-color);
+                        }
+                    }
+
+                    .newletter-input-submit {
+                        position: relative;
+
+                        input {
+                            border: 1px solid var(--forth-color);
+                            padding: 14px 24px;
+                            width: 580px;
+                        }
+
+                        button {
+                            position: absolute;
+                            top: 10px;
+                            right: -10px;
+                            background-color: var(--third-color);
+                            color: var(--secondary-color);
+                            border: none;
+                            padding: 13px 28px;
+
+                            font-weight: bold;
+                            cursor: pointer;
+
+                            i {
+                                font-size: 1.5rem;
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
+    .footer-first {
+        background-color: var(--primary-color);
+        opacity: 80%;
+        padding: 4rem 0;
+
+        .col-intro-footer {
+            display: flex;
+            flex-direction: column;
+
+            .footer-logo {
+                margin-bottom: 16px;
+            }
+
+            .information-footer {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 40px;
+
+                .information-footer-inner {
+                    color: var(--secondary-color);
+                    opacity: 60%;
+                    font-size: 0.875rem;
+                    line-height: 1.5rem;
+                }
+            }
+
+            .social-footer {
+                .social-footer-title {
+                    color: var(--secondary-color);
+                    line-height: 2.25rem;
+                    font-size: 0.875rem;
+                }
+
+                .social-list-icon {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    justify-content: left;
+                    padding: 0;
+
+                    .social-link {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 40px;
+                        height: 40px;
+                        border: 1px solid var(--secondary-color);
+
+                        i {
+                            color: var(--secondary-color);
+                        }
+                    }
+                }
+            }
+
+        }
+
+
+
+
+
+        .col-icon-info {
+            display: flex;
+            gap: 12px;
+
+            .icon-info {
+                font-size: 3rem;
+                color: var(--third-color);
+            }
+
+            .title {
+                color: var(--secondary-color);
+                margin: 0;
+            }
+
+            span {
+                font-size: 0.875rem;
+                line-height: 2.25rem;
+                color: var(--secondary-color);
+                opacity: 60%;
+            }
+        }
+
+        .list-icon-info {
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 0;
+        }
+
+
+
+        .col-company-footer,
+        .col-discover-footer {
+            .title {
+                margin-bottom: 0.5rem;
+                line-height: 2.25rem;
+                color: var(--secondary-color);
+            }
+
+            .footer-company-item,
+            .footer-discover-item {
+                padding: 6px 0;
+
+                .information-footer-inner {
+                    color: var(--secondary-color);
+                    opacity: 60%;
+                    font-size: 0.875rem;
+                    line-height: 1.5rem;
+                }
+            }
+        }
+
+    }
+
+    .footer-second {
+        background: var(--primary-color);
+        padding: 36px 0;
+
+        .col-sitename {
+            .theme-name {
+                color: var(--secondary-color);
+                font-size: 0.875rem;
+                line-height: 1.5rem;
+            }
+        }
+        .col-payment{
+            .footer-payment{
+                display: flex;
+                justify-content: end;
+            }
+        }
+
+
+        .row-logo {
+            margin-top: 30px !important;
+
+            .logo {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .col-terms-footer {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+
+    }
+}

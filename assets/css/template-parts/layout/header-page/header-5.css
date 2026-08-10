@@ -1,0 +1,165 @@
+.header-5-row1 .custom-dropdown .dropdown-label .dropdown-icon {
+  opacity: 0.4;
+}
+.header-5-row1 .custom-dropdown .dropdown-label span {
+  margin-inline-start: 6px;
+  margin-inline-end: 4px;
+}
+.header-5-row1 .custom-dropdown > ul {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: 8px;
+  background-color: var(--secondary-color);
+  min-width: 100px;
+  z-index: 999;
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.header-5-row1 .custom-dropdown > ul li {
+  padding: 3px 12px;
+  white-space: nowrap;
+  list-style: none;
+  transition: all 0.2s;
+}
+.header-5-row1 .custom-dropdown > ul li a {
+  color: var(--primary-color);
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.header-5-row1 .custom-dropdown > ul li:hover {
+  background-color: var(--forth-color);
+}
+.header-5-row1 .custom-dropdown > ul li:hover a {
+  color: var(--primary-color);
+}
+.header-5-row1 .custom-dropdown:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.header-5-row1 .toggle-search i,
+.header-5-row1 .t888-my-wishlist i,
+.header-5-row1 .mini-cart-link i {
+  color: var(--secondary-color);
+  font-size: 18px;
+}
+.header-5-row1 .t888-my-wishlist .heart .wishlist-count {
+  width: 16px;
+  height: 16px;
+  top: -4px;
+  right: -12px;
+}
+.header-5-row1 .mini-cart-box.aside-box .mini-cart-link .cart-number {
+  width: 16px;
+  height: 16px;
+  top: -4px;
+  right: -12px;
+}
+
+.header-5-row2 {
+  background-color: var(--secondary-color);
+  border-top: 1px solid var(--forth-color);
+  border-bottom: 1px solid var(--forth-color);
+}
+.header-5-row2 .main-nav > div > ul {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.header-5-row2 .main-nav > div > ul > li {
+  color: var(--primary-color);
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+.header-5-row2 .main-nav > div > ul > li > a {
+  color: var(--primary-color);
+  font-family: var(--font-philosopher);
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+  text-transform: uppercase;
+  margin: 0 18px;
+}
+.header-5-row2 .main-nav > div > ul > li > a:hover {
+  color: var(--third-color);
+}
+.header-5-row2 .main-nav > div > ul > li.menu-item-has-children, .header-5-row2 .main-nav > div > ul > li.has-mega-menu {
+  padding-right: 18px;
+}
+.header-5-row2 .main-nav > div > ul > li.menu-item-has-children::after, .header-5-row2 .main-nav > div > ul > li.has-mega-menu::after {
+  color: var(--primary-color);
+  font-size: 9px;
+  right: 8px;
+}
+.header-5-row2 .custom-dropdown .dropdown-label .dropdown-icon {
+  opacity: 0.4;
+}
+.header-5-row2 .custom-dropdown .dropdown-label span {
+  margin-inline-start: 6px;
+  margin-inline-end: 4px;
+}
+.header-5-row2 .custom-dropdown > ul {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: 8px;
+  background-color: var(--secondary-color);
+  min-width: 100px;
+  z-index: 999;
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.header-5-row2 .custom-dropdown > ul li {
+  padding: 3px 12px;
+  white-space: nowrap;
+  list-style: none;
+  transition: all 0.2s;
+}
+.header-5-row2 .custom-dropdown > ul li a {
+  color: var(--primary-color);
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.header-5-row2 .custom-dropdown > ul li:hover {
+  background-color: var(--forth-color);
+}
+.header-5-row2 .custom-dropdown > ul li:hover a {
+  color: var(--primary-color);
+}
+.header-5-row2 .custom-dropdown:hover > ul {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.header5-mobi .menu-toggle-mobile i {
+  color: var(--primary-color);
+}
+.header5-mobi .acc-mobi .person i {
+  color: var(--primary-color);
+}
+
+@media (min-width: 1025px) and (max-width: 1216px) {
+  .header-5-row1,
+  .header-5-row2 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/*# sourceMappingURL=header-5.css.map */

@@ -1,0 +1,191 @@
+@use '../variables.scss' as *;
+
+.footer-newsletter-widget {
+    background: #fbfbfb; // Default background
+    padding: 0;
+    margin: 0;
+    position: relative;
+    overflow: visible;
+    
+    // Forced Full-Width Background
+    width: 100vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+
+    .footer-newsletter-inner {
+        max-width: 1401px;
+        margin: 0 auto;
+        min-height: 200px; 
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        padding: 50px 0; // Default padding
+        z-index: 10;
+        
+        .newsletter-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            z-index: 20;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .footer-newsletter-content {
+            margin-left: 320px; // Default space for image
+            flex: 1;
+            text-align: left;
+            padding-right: 0;
+            position: relative;
+            z-index: 30;
+
+            .newsletter-title {
+                font-family: var(--font-philosopher), serif;
+                font-size: 2.25rem;
+                font-weight: 700;
+                margin: 0 0 10px;
+                color: #000 !important;
+                line-height: 1.2;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .newsletter-desc {
+                font-size: 0.9375rem;
+                color: #555 !important;
+                margin: 0 0 25px;
+                font-family: var(--font-family), sans-serif;
+            }
+
+            .newsletter-form {
+                width: 100%;
+                max-width: 700px;
+                
+                form {
+                    width: 100%;
+                    margin: 0;
+                }
+
+                .form-group {
+                    display: flex;
+                    align-items: stretch;
+                    justify-content: flex-start;
+                    flex-wrap: nowrap;
+                    margin: 0;
+                    
+                    // Defaults that can be overridden by Elementor
+                    background: transparent;
+                    border: none;
+                    box-shadow: none;
+                    border-radius: 0;
+                    overflow: visible;
+
+                    input {
+                        flex: 1;
+                        min-width: 0;
+                        border: none;
+                        padding: 18px 25px;
+                        font-size: 0.9375rem;
+                        background: #ffffff;
+                        outline: none;
+                        box-sizing: border-box;
+                        
+                        &::placeholder { color: #aaa; }
+                    }
+
+                    button {
+                        flex-shrink: 0;
+                        background: $third-color;
+                        color: #fff;
+                        border: none;
+                        padding: 0 40px;
+                        font-weight: 700;
+                        font-size: 0.875rem;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        box-sizing: border-box;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        &:hover {
+                            background: #000;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer-newsletter-paw-bg {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 300px;
+            height: 100%;
+            background-size: contain;
+            background-position: center right;
+            background-repeat: no-repeat;
+        
+            z-index: 5;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            i {
+                font-size: 4rem;
+                color: #eeeeee;
+                position: absolute;
+                display: block;
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 991px) {
+    .footer-newsletter-widget {
+        width: 100%;
+        left: 0;
+        margin-left: 0;
+        transform: none;
+        .footer-newsletter-inner {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px 15px;
+            
+            .newsletter-image {
+                position: relative;
+                left: auto;
+                bottom: auto;
+                margin: 0 auto 30px;
+                width: 200px;
+            }
+
+            .footer-newsletter-content {
+                margin-left: 0;
+                padding-right: 0;
+                text-align: center;
+                
+                .form-group {
+                    flex-wrap: wrap;
+                    input { width: 100%; margin-bottom: 10px; }
+                    button { width: 100%; padding: 15px; }
+                }
+            }
+            
+            .footer-newsletter-paw-bg {
+                display: none;
+            }
+        }
+    }
+}

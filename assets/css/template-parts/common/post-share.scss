@@ -1,0 +1,46 @@
+.post-share{
+    margin: 0 -0.625rem;
+    .post-share-title {
+        text-transform: uppercase;
+        line-height: 2.25rem;
+        position: relative;
+        margin-bottom: 2.5rem;
+        margin-top: 0;
+    
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--third-color);
+        }
+        
+    }
+    li{
+        // margin-right: 10px;
+             margin: 0 0.625rem;
+        a{
+       
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--forth-color);
+            transition: all 0.3s ease;
+        }
+        a:hover{
+            border: 1px solid var(--third-color);
+            background-color: var(--third-color);
+            color: var(--secondary-color);
+        }
+    }
+    li:first-child{
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 575px) {
+   .post-share{
+    margin: 0;
+   }
+}

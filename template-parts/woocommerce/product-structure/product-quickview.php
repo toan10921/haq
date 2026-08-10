@@ -1,0 +1,1 @@
+<button class="quickview-button button" data-product_id="<?php echo esc_attr($product_id); ?>"><?php esc_html_e('Quick View', 'nebon'); ?></button>

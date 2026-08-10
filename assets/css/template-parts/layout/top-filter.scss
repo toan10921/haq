@@ -1,0 +1,165 @@
+.show-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+    .show-filter-left {
+        gap: 2.5rem;
+
+        .show-per-page {
+            font-size: 0.875rem;
+            line-height: 1.5rem;
+            color: rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            transition: color 0.3s;
+
+            span {
+                color: var(--primary-color);
+                opacity: 1;
+            }
+
+            a {
+                color: rgba(0, 0, 0, 0.5);
+                text-decoration: none;
+                transition: color 0.3s;
+            }
+
+            a:hover,
+            a.active {
+                color: var(--primary-color);
+            }
+
+        }
+        .view-style {
+            gap: 0.625rem;
+
+            a {
+                font-size: 1.5rem;
+                opacity: 0.5;
+                transition: opacity 0.3s;
+            }
+            a.active,
+            a:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .show-filter-right {
+        gap: 2.5rem;
+        .show-number {
+            margin: 0;
+            display: flex;
+            white-space: normal;
+            font-size: 0.875rem;
+            line-height: 1.5rem;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+    
+        .custom-dropdown {
+            margin: 0;
+            position: relative;
+            width: 235px;
+        
+            .custom-dropdown-toggle {
+                padding: 0.375rem 0;
+                border-bottom: 1px solid var(--forth-color);
+                font-size: 0.875rem;
+                line-height: 1.5rem;
+                color: var(--ninth-color);
+                background: transparent;
+                padding-right: 0;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &::after{
+                    content: "\f107";
+                    font-family: "Line Awesome Free";
+                    font-size: 0.5rem;
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    pointer-events: none;
+                    color: var(--primary-color);
+                    font-weight: 900;
+                }
+            }
+        
+            .custom-dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--secondary-color);
+                border: 1px solid var(--forth-color);
+                border-top: none;
+                z-index: 100;
+                padding: 0;
+                margin: 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                pointer-events: none;
+                // transition: opacity 0.3s ease-in-out, transform 0.5s ease-in-out;
+        
+                li {
+                    padding: 0.75rem;
+                    font-size: 0.875rem;
+                    color: var(--primary-color);
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    list-style: none;
+                    visibility: visible;
+        
+                    &:hover {
+
+                        color: var(--third-color);
+                        // font-size: 1rem;
+                    }
+        
+                    &.selected {
+                        color: var(--third-color);
+                        // font-size: 1rem;
+                    }
+                }
+            }
+        
+            &:hover .custom-dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+        }
+        
+    
+       
+    }
+}
+@media (max-width: 860px) {
+   .show-filter{
+    flex-wrap: wrap;
+    .show-filter-left{
+        gap: 1rem;
+        .show-per-page{
+            display: none;
+        }
+    }
+    .show-filter-right{
+        justify-content: space-between;
+        .show-number{
+            display: none;
+        }
+        .custom-dropdown{
+            width: 160px;
+        }
+    }
+   }
+}
+@media (max-width: 375px){
+    .show-filter .show-filter-right .custom-dropdown{
+        width: 110px;
+    }
+}

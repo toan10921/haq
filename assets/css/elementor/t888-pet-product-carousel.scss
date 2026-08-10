@@ -1,0 +1,209 @@
+.t888-pet-product-module {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.t888-pet-product-module .pet-product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.t888-pet-product-module .pet-product-header .header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.t888-pet-product-module .pet-product-header .pet-product-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.t888-pet-product-module .pet-product-header .header-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.t888-pet-product-module .pet-product-header .header-nav button {
+    width: 31px;
+    height: 29px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    display: inline-flex !important;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.t888-pet-product-module .pet-product-header .header-nav button.swiper-button-lock {
+    display: inline-flex !important;
+    cursor: pointer;
+}
+
+.t888-pet-product-module .pet-product-header .header-nav button:hover {
+    background-color: #c8605f;
+}
+
+.t888-pet-product-module .pet-product-list {
+    width: 100%;
+}
+
+.t888-pet-product-module .pet-product-list .swiper-slide {
+    height: auto;
+}
+
+.t888-pet-product-module .grid-product-item {
+    border: 1px solid #ebebeb;
+    padding: 20px;
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+}
+
+.t888-pet-product-module .grid-product-item .product-item-inner {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Badges */
+.t888-pet-product-module .product-badges-wrap {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 9;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.t888-pet-product-module .product-item-inner .product-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.t888-pet-product-module .product-item-inner .product-badge.new {
+    background-color: #00b8c2;
+}
+
+.t888-pet-product-module .product-item-inner .product-badge.sale {
+    background-color: #72bf42;
+}
+
+.t888-pet-product-module .product-item-inner .product-badge.hot {
+    background-color: #e5476a;
+}
+
+/* Image */
+.t888-pet-product-module .product-thumbnail {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.t888-pet-product-module .product-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    transition: all 0.5s ease;
+}
+
+.t888-pet-product-module .product-thumbnail .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+}
+
+.t888-pet-product-module .product-item-inner:hover .product-thumbnail .primary-img {
+    opacity: 0;
+}
+
+.t888-pet-product-module .product-item-inner:hover .product-thumbnail .hover-img {
+    opacity: 1;
+}
+
+/* Content */
+.t888-pet-product-module .product-content {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.t888-pet-product-module .product-title {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.t888-pet-product-module .product-title a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.t888-pet-product-module .product-title a:hover {
+    color: #c8605f;
+}
+
+/* Rating */
+.t888-pet-product-module .product-rating {
+    margin-bottom: 10px;
+}
+
+.t888-pet-product-module .star-rating {
+    color: #ffc107;
+    font-size: 13px;
+    display: inline-block;
+}
+
+/* Price */
+.t888-pet-product-module .product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #c8605f;
+    margin-top: auto;
+}
+
+.t888-pet-product-module .product-price del {
+    color: #999;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 8px; /* Move margin to left since sale is now on the left */
+    text-decoration: line-through;
+    opacity: 0.8;
+}
+
+.t888-pet-product-module .product-price ins {
+    color: #c8605f;
+    text-decoration: none;
+}
+
+/* Responsive Header */
+@media (max-width: 768px) {
+    .t888-pet-product-module .pet-product-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

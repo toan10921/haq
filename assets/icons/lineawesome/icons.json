@@ -1,0 +1,42 @@
+[
+  {
+    "name": "la la-star",
+    "label": "Star"
+  },
+  {
+    "name": "la la-user",
+    "label": "User"
+  },
+  {
+    "name": "la la-home",
+    "label": "Home"
+  },
+  {
+    "name": "la la-search",
+    "label": "Search"
+  },
+  {
+    "name": "la la-envelope",
+    "label": "Envelope"
+  },
+  {
+    "name": "la la-phone",
+    "label": "Phone"
+  },
+  {
+    "name": "la la-check",
+    "label": "Check"
+  },
+  {
+    "name": "la la-times",
+    "label": "Times"
+  },
+  {
+    "name": "la la-heart",
+    "label": "Heart"
+  },
+  {
+    "name": "la la-cog",
+    "label": "Settings"
+  }
+]

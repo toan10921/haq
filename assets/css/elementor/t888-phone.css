@@ -1,0 +1,73 @@
+.t888-phone-widget .phone-icon{
+    font-size: 24px;
+    line-height: 33px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: end;
+}
+.t888-phone-widget .phone-info .phone-title{
+    font-size: 11px;
+    color: var(--primary-color);
+    opacity: 50%;
+
+}
+.t888-phone-widget .phone-info .phone-number{
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primary-color);
+
+}
+.t888-phone-widget .t888-phone-widget{
+    gap: 5px;
+}
+.t888-phone-widget{
+    gap: 6px;
+}
+.t888-phone-widget .phone-number a{
+    color: inherit;
+    text-decoration: none;
+}
+/* style 2 */
+.t888-phone-widget.style2 .phone-icon{
+    font-size: 18px;
+    line-height: 33px;
+    color: var(--secondary-color);
+}
+.t888-phone-widget.style2 .phone-number a{
+    color: var(--secondary-color);
+}
+.t888-phone-widget.style2 .phone-info {
+    margin-left: 6px;
+}
+
+/* style 3 */
+.t888-phone-widget.style3{
+    gap: 0;
+}
+.t888-phone-widget.style3 .phone-icon{
+    color: #000;
+    font-size: 30px;
+    line-height: 1;
+    align-items: center;
+}
+.t888-phone-widget.style3 .phone-number,
+.t888-phone-widget.style3 .phone-number a{
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    /* line-height:33px; */
+}
+.t888-phone-widget.style3 .phone-info {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.t888-phone-widget.style3 .phone-title{
+    margin: 0;
+    color: #000;
+    opacity: 1;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}

@@ -1,0 +1,107 @@
+.item-post-list.list-default {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 3.125rem;
+
+    .post-thumb {
+        width: 45.193%;
+        padding-top: 38.463%;
+        position: relative;
+
+        .post-thumb-link {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .post-info {
+        width: 54.807%;
+        padding: 4.375rem 1.875rem;
+
+        .post-title {
+            margin-bottom: 0.625rem;
+            font-family: var(--font-philosopher);
+            text-transform: uppercase;
+            line-height: 1.875rem;
+            letter-spacing: -1px;
+
+            a:hover {
+                color: var(--third-color);
+            }
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 24px;
+
+            .date {
+                color: var(--third-color);
+                 min-width: max-content;
+            }
+
+            .category {
+               color: var(--tenth-color);
+               a{
+                    color: var(--tenth-color);
+                }
+            }
+
+            * {
+                font-size: 0.75rem;
+            }
+        }
+
+        .post-excerpt {
+            font-size: 0.875rem;
+            color: var(--ninth-color);
+            line-height: 1.875rem;
+            -webkit-line-clamp: 3;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 1.25rem;
+        }
+
+        .read-more-share-wrap {
+            .read-more {
+                font-size: 0.875rem;
+                padding: 1rem 2rem;
+                color: var(--secondary-color);
+                background: var(--primary-color);
+                text-transform: uppercase;
+            }
+
+        }
+    }
+
+    &:not(:first-child){
+        padding-top: 3.125rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    &:not(:last-child) {
+        margin-bottom: 3.125rem;
+    }
+}
+
+@media (max-width: 575px) {
+ .item-post-list.list-default .post-thumb{
+    width: 100%;
+    padding-top: 72%;
+ }
+ .item-post-list.list-default .post-info {
+    width: 100%;
+    padding: 2.5rem 0 0;
+ }
+}

@@ -1,0 +1,56 @@
+.t888-banner-ads-wrap {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; // items xếp dọc theo chiều đứng
+
+    .banner-layer {
+        display: block;     // block để chiếm toàn width và xếp dọc
+        position: relative; // default, Elementor sẽ override bằng inline style nếu absolute
+        transition: all 0.3s ease;
+
+        // ── Image ──
+        &.type-image {
+            .ad-img-el {
+                display: block;
+
+                img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        // ── Text ──
+        &.type-text {
+            .ad-text-el {
+                margin: 0;
+                padding: 0;
+
+                p, h1, h2, h3, h4, h5, h6 {
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+
+        // ── Button ──
+        &.type-button {
+            .ad-btn {
+                display: inline-block;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                text-align: center;
+                font-weight: 700;
+                text-transform: uppercase;
+                padding: 10px 20px;
+
+                &:hover {
+                    opacity: 0.85;
+                }
+            }
+        }
+    }
+}

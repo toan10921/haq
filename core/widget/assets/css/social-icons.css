@@ -1,0 +1,44 @@
+.iconpicker-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 2;
+    background: #fff;
+    position: absolute;
+}
+
+.iconpicker-items i {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.url-input-wrap{
+    position: relative;
+}
+
+.url-input-wrap .remove-item{
+    position: absolute;
+    right: 3px;
+    top: calc(50% - 7px);
+    border: none;
+    background: red;
+    color: #fff;
+    display: block;
+    cursor: pointer;
+    height: 14px;
+    line-height: normal;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.iconpicker-popover-container .popover-title,
+.iconpicker-popover-container .popover-content ,
+.iconpicker-popover-container .url-input-wrap{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

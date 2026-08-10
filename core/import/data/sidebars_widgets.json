@@ -1,0 +1,125 @@
+{
+    "sidebars_widgets": {
+        "wp_inactive_widgets": [
+            "tech888f_image_text_widget-2",
+            "tech888f_authorwidget-2"
+        ],
+        "blog-sidebar": [
+            "block-2",
+            "tech888f_listpostswidget-2",
+            "block-9",
+            "block-7",
+            "tech888f_select_mega_widget-2"
+        ],
+        "woocommerce-sidebar": [
+            "tech888f_filter_price_widget-2",
+            "block-6",
+            "tech888f_filter_attribute_widget-3",
+            "tech888f_filter_attribute_widget-2",
+            "tech888f_filter_brand_widget-2",
+            "tech888f_list_product_widget-3"
+        ],
+        "array_version": 3
+    },
+    "widget_tech888f_image_text_widget": {
+        "2": {
+            "title": "",
+            "image": "",
+            "description1": "",
+            "description2": "",
+            "description3": "",
+            "link": ""
+        },
+        "3": {
+            "title": "",
+            "image": "",
+            "description1": "",
+            "description2": "",
+            "description3": "",
+            "link": ""
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_authorwidget": {
+        "2": {
+            "title": "",
+            "author_image": "",
+            "link": "",
+            "author_name": "",
+            "author_description": ""
+        },
+        "3": {
+            "title": "",
+            "author_image": "",
+            "link": "",
+            "author_name": "",
+            "author_description": ""
+        },
+        "_multiwidget": 1
+    },
+    "widget_block": {
+        "2": {
+            "content": "<!-- wp:search {\"placeholder\":\"Search...\"} \/-->"
+        },
+        "6": {
+            "content": "<!-- wp:group -->\n<div class=\"wp-block-group\"><!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Product Categories<\/h2>\n<!-- \/wp:heading -->\n\n<!-- wp:woocommerce\/product-categories \/--><\/div>\n<!-- \/wp:group -->"
+        },
+        "7": {
+            "content": "<!-- wp:tag-cloud \/-->"
+        },
+        "9": {
+            "content": "<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">Tags<\/h2>\n<!-- \/wp:heading -->"
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_listpostswidget": {
+        "2": {
+            "title": "Latest Post",
+            "style": "",
+            "posts_per_page": "3",
+            "category": "",
+            "order": "desc",
+            "order_by": "date",
+            "post_type": "post"
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_select_mega_widget": {
+        "2": {
+            "title": "",
+            "mega_page_id": 168
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_filter_price_widget": {
+        "2": {
+            "title": "Filter by Price"
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_filter_attribute_widget": {
+        "2": {
+            "title": "Filter Size",
+            "attribute": "size"
+        },
+        "3": {
+            "title": "Filter Color",
+            "attribute": "color"
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_filter_brand_widget": {
+        "2": {
+            "title": "Filter by Brand"
+        },
+        "_multiwidget": 1
+    },
+    "widget_tech888f_list_product_widget": {
+        "3": {
+            "title": "Top rated products ",
+            "number": 3,
+            "style": "top-rate"
+        },
+        "_multiwidget": 1
+    }
+}

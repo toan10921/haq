@@ -1,0 +1,88 @@
+.t888-top-brands-grid {
+  --t888-top-brands-grid-columns: 6;
+  --t888-top-brands-grid-border: #e3e3e3;
+  width: 100%;
+  background: #ffffff;
+}
+
+.t888-top-brands-grid__header {
+  padding: 14px 30px;
+}
+
+.t888-top-brands-grid__title {
+  margin: 0;
+  color: #111111;
+  font-family: "Philosopher", serif;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.t888-top-brands-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--t888-top-brands-grid-columns), minmax(0, 1fr));
+  border-top: 1px solid var(--t888-top-brands-grid-border);
+  border-left: 1px solid var(--t888-top-brands-grid-border);
+}
+
+.t888-top-brands-grid__item {
+  min-height: 170px;
+  background: #ffffff;
+  border-right: 1px solid var(--t888-top-brands-grid-border);
+  border-bottom: 1px solid var(--t888-top-brands-grid-border);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transform-origin: center;
+}
+
+.t888-top-brands-grid__item-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 30px 24px;
+  text-decoration: none;
+}
+
+.t888-top-brands-grid__logo img {
+  display: block;
+  max-width: 160px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.t888-top-brands-grid__item:hover .t888-top-brands-grid__logo img {
+  transform: scale(1.03);
+}
+
+.t888-top-brands-grid__item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+@media (max-width: 1024px) {
+  .t888-top-brands-grid__item {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 767px) {
+  .t888-top-brands-grid__header {
+    padding: 12px 18px;
+  }
+
+  .t888-top-brands-grid__title {
+    font-size: 24px;
+  }
+
+  .t888-top-brands-grid__item {
+    min-height: 120px;
+  }
+
+  .t888-top-brands-grid__item-inner {
+    padding: 20px 16px;
+  }
+}

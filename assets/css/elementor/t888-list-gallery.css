@@ -1,0 +1,49 @@
+.t888-list-gallery .t888-list-gallery-image-inner{
+    /* padding: 0 60px; */
+}
+.t888-list-gallery .list-gallery-wrapper-logo{
+    align-items: center;
+}
+.t888-list-gallery .t888-list-gallery-title{
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+.t888-list-gallery .swiper-button-next{
+    top: -86px;
+    right: 0;
+    z-index: 5;
+}
+.t888-list-gallery .swiper-button-next:hover{
+   background:var(--third-color);
+   color: var(--secondary-color);
+    border: 1px solid var(--third-color);
+}
+.t888-list-gallery .swiper-button-next:hover i{
+    color: var(--secondary-color);
+}
+.t888-list-gallery .swiper-button-prev{
+    top: -86px;
+    right: 36px;
+    left: auto;
+    z-index: 5;
+}
+.t888-list-gallery .swiper-button-prev:hover{
+   background:var(--third-color);
+   color: var(--secondary-color);
+   border: 1px solid var(--third-color);
+}
+.t888-list-gallery .swiper-button-prev:hover i{
+    color: var(--secondary-color);
+}
+.t888-list-gallery-image-inner img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.t888-list-gallery-item.swiper-slide {
+    /* max-width: 115px; */
+}

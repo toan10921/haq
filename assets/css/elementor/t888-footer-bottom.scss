@@ -1,0 +1,292 @@
+@use '../variables.scss' as *;
+
+// Main structure for Layer 3 (Bottom Footer)
+.footer-contact-info {
+    .footer-logo {
+        margin-bottom: 25px !important;
+        
+        .logo-text { 
+            font-family: 'Poppins', serif !important; 
+            font-size: 38px !important; 
+            margin: 0 !important; 
+            color: #000 !important; 
+            font-weight: 700 !important; 
+            text-transform: uppercase !important;
+            line-height: 1 !important;
+            letter-spacing: 0px !important;
+            display: block !important;
+            width: 100% !important;
+        }
+    }
+
+    .contact-details {
+        margin-bottom: 25px !important;
+        p { 
+            margin: 0 0 8px !important; 
+            color: #333 !important; 
+            font-size: 14px !important; 
+            line-height: 1.4 !important;
+            font-weight: 400 !important;
+            font-family: 'Poppins', sans-serif !important;
+            
+            &.contact-address {
+                max-width: 320px !important;
+                line-height: 1.3 !important;
+            }
+        }
+    }
+
+    .hotline-box {
+        display: flex !important;
+        align-items: center !important;
+        gap: 15px !important;
+        margin-bottom: 30px !important;
+        
+        i, svg { 
+            font-size: 32px !important; 
+            width: 32px !important;
+            height: 32px !important;
+            color: #c8605f !important;
+            fill: #c8605f !important;
+            transform: rotate(-10deg) !important;
+            display: inline-block !important;
+        }
+        .hotline-number { 
+            font-size: 18px !important; 
+            font-weight: 700 !important; 
+            color: #000 !important; 
+            font-family: 'Poppins', serif !important;
+            line-height: 1 !important;
+        }
+    }
+
+    .app-buttons {
+        display: flex !important;
+        gap: 12px !important;
+        .app-btn {
+            line-height: 0 !important;
+            display: inline-block !important;
+            img { 
+                width: 134px !important; 
+                height: 40px !important;
+                border-radius: 4px !important;
+                box-shadow: none !important;
+                border: 1px solid #eeeeee !important;
+                background: #ffffff !important;
+                object-fit: contain !important;
+                padding: 4px !important;
+            }
+            
+            &:hover img {
+                border-color: #c8605f !important;
+                transition: all 0.3s ease !important;
+            }
+        }
+    }
+}
+
+// Group for multiple columns
+.footer-links-group {
+    display: flex !important;
+    gap: 60px !important; // Increased to match Image 2 spacing
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    margin-left: 35px !important; // Push away from NEBON block
+    
+    .footer-links-column {
+        flex: 0 0 auto !important;
+        
+        h2, h3, h4, h5, .links-title { 
+            font-family: 'Philosopher', serif !important; 
+            font-size: 18px !important; 
+            font-weight: 700 !important; 
+            color: #000 !important; 
+            margin: 0 0 32px !important; 
+            text-transform: uppercase !important; 
+            position: relative !important;
+            line-height: normal !important;
+            letter-spacing: 0.05em !important;
+        }
+
+        .links-list, .elementor-icon-list-items {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            font-family: 'Poppins', sans-serif !important;
+            font-weight: normal !important;
+            
+            li, .elementor-icon-list-item {
+                margin-bottom: 29px !important;
+                line-height: 1 !important;
+                
+                a { 
+                    color: #555 !important; 
+                    font-size: 15px !important; 
+                    line-height: 1.2 !important;
+                    transition: all 0.3s ease !important; 
+                    display: block !important;
+                    text-decoration: none !important;
+                    font-weight: 400 !important;
+                    
+                    &:hover { 
+                        color: #c8605f !important; 
+                        padding-left: 5px !important; 
+                    } 
+                }
+            }
+        }
+    }
+}
+
+// Social & Payment section
+.footer-social-payment {
+    margin-left: 122px !important;
+    .social-section {
+        margin-bottom: 35px !important;
+        
+        .social-title { 
+            font-family: 'Philosopher', serif !important; 
+            font-size: 18px !important; 
+            font-weight: 700 !important; 
+            color: #000 !important; 
+            margin: 0 0 35px !important; 
+            text-transform: uppercase !important; 
+            letter-spacing: 0.05em !important;
+            line-height: normal !important;
+        }
+
+        .social-icons {
+            display: flex !important;
+            gap: 12px !important;
+            
+            .social-link {
+                width: 44px !important;
+                height: 44px !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                background: #ffffff !important;
+                border: 1px solid #e1e1e1 !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+                text-decoration: none !important;
+                
+                i, svg {
+                    color: #111 !important;
+                    fill: #111 !important;
+                    display: inline-block !important;
+                    font-size: 18px !important;
+                    width: 18px !important;
+                    height: 18px !important;
+                    line-height: 18px !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                }
+
+                &:hover { 
+                    background: #c8605f !important; 
+                    border-color: #c8605f !important; 
+                    transform: translateY(-3px) !important;
+                    i, svg { color: #fff !important; fill: #fff !important; }
+                }
+            }
+        }
+    }
+
+    .footer-separator {
+        width: 100% !important;
+        height: 2px !important;
+        background-color: #e5e5e5 !important;
+        margin: 40px 0 !important;
+        display: block !important;
+    }
+
+    .payment-section {
+        .payment-title { 
+            font-family: 'Philosopher', serif !important; 
+            font-size: 18px !important; 
+            font-weight: 700 !important; 
+            color: #000 !important; 
+            margin: 0 0 30px !important; 
+            text-transform: uppercase !important; 
+            letter-spacing: 0.05em !important;
+            line-height: normal !important;
+        }
+
+        .payment-icons {
+            display: flex !important;
+            gap: 10px !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            
+            img { 
+                border: none !important;
+                padding: 0 !important;
+                max-height: 24px !important; 
+                width: auto !important;
+                display: block !important;
+                box-shadow: none !important;
+                outline: none !important;
+            }
+            
+            .payment-icon-item, .elementor-image img { 
+                 border: 1px solid #e1e1e1 !important;
+                 padding: 8px 12px !important;
+                 border-radius: 4px !important;
+                 background: #fff !important;
+                 display: flex !important;
+                 align-items: center !important;
+                 justify-content: center !important;
+                 min-width: 55px !important;
+                 height: 38px !important;
+                 box-shadow: none !important;
+                 outline: none !important;
+            }
+
+            .payment-fallback { 
+                display: flex !important; 
+                gap: 10px !important;
+                
+                i {
+                    width: 58px !important;
+                    height: 38px !important;
+                    display: flex !important;
+                    align-items: center !important;
+                    justify-content: center !important;
+                    border: 1px solid #e1e1e1 !important;
+                    border-radius: 4px !important;
+                    background: #fff !important;
+                    font-size: 24px !important;
+                    color: #444 !important;
+                    
+                    &:hover { 
+                        color: #c8605f !important; 
+                        border-color: #c8605f !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Global container adjustment for footer layout
+.footer-main-container {
+    padding: 85px 0 50px !important;
+    background: #ffffff !important;
+}
+
+// Copyright Layer 4
+.footer-copyright {
+    padding: 25px 0 !important;
+    border-top: 1px solid #f1f1f1 !important;
+    text-align: center !important;
+    
+    p { 
+        margin: 0 !important; 
+        font-size: 14px !important; 
+        color: #313131 !important; 
+        letter-spacing: 0.01em !important;
+        font-weight: 450;
+    }
+}

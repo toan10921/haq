@@ -1,0 +1,12 @@
+.footer-default {
+    background-color: var(--primary-color);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .copyright {
+        color: var(--secondary-color);
+        white-space: normal;
+        font-size: 0.875rem;
+        text-align: center;
+    }
+}

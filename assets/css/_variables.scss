@@ -1,0 +1,86 @@
+// declare root variable and main color
+$primary-color: #000;
+// declare secondary color
+$secondary-color: #fff;
+// declare third color
+$third-color: #b88166;
+// declare forth color
+$forth-color: #e0e0e0;
+// declare fifth color
+$fifth-color: #e5e5e5;
+// declare sixth color
+$sixth-color: #9D9393;
+// declare seventh color
+$seventh-color: #fffbf7;
+// declare eighth color
+$eighth-color: #5a4e4f;
+// declare ninth color
+$ninth-color: #666;
+// declare tenth color
+$tenth-color: #999;
+// declare third color with opacity
+$third-color-rgba: rgba($third-color, 0.1);
+// declare font size
+$title8: 0.5rem;
+$title10: 0.625rem;
+$title12: 0.75rem;
+$title13: 0.8125rem;
+$title14: 0.875rem;
+$title18: 1.125rem;
+$title24: 1.5rem;
+$title36: 2.25rem;
+$title48: 3rem;
+
+
+// declare gradient color
+$gradient-color: linear-gradient(to right, $forth-color 0%, $third-color-rgba 69%, $fifth-color 100%);
+
+// declare font family
+
+$font-poppins: 'Poppins', sans-serif;
+
+$font-philosopher: 'Philosopher', serif;
+
+:root {
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --third-color: #{$third-color};
+    --forth-color: #{$forth-color};
+    --fifth-color: #{$fifth-color};
+    --sixth-color: #{$sixth-color};
+    --seventh-color: #{$seventh-color};
+    --eighth-color: #{$eighth-color};
+    --ninth-color: #{$ninth-color};
+    --tenth-color: #{$tenth-color};
+    --third-color-rgba: #{$third-color-rgba};
+    font-size: 1rem;
+    // line-height: 1.3125rem; fix line-height
+    line-height: 1.313;
+    font-family: #{$font-poppins};
+    --font-family: #{$font-poppins};
+    --font-philosopher: #{$font-philosopher};
+    --title8: #{$title8};
+    --title10: #{$title10};
+    --title12: #{$title12};
+    --title13: #{$title13};
+    --title14: #{$title14};
+    --title18: #{$title18};
+    --title24: #{$title24};
+    --title36: #{$title36};
+    --title48: #{$title48};
+    --gradient-color: #{$gradient-color};
+}
+
+
+.elementor-edit-area-active .e-con{
+    --primary-color: #{$primary-color};
+    --secondary-color: #{$secondary-color};
+    --third-color: #{$third-color};
+    --forth-color: #{$forth-color};
+    --fifth-color: #{$fifth-color};
+    --sixth-color: #{$sixth-color};
+    --seventh-color: #{$seventh-color};
+    --eighth-color: #{$eighth-color};
+    --ninth-color: #{$ninth-color};
+    --tenth-color: #{$tenth-color};
+}

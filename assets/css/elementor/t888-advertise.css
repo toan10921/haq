@@ -1,0 +1,36 @@
+.t888-advertise-title {
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 2rem;
+    margin-bottom: 40px;
+    color: var(--ninth-color);
+    display: block;
+}
+
+.t888-advertise-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.t888-advertise-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: all 0.3s ease;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.t888-advertise-item:hover img {
+    scale: 1.1;
+}
+
+
+@media (max-width: 767px) {
+    .t888-advertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+

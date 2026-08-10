@@ -1,0 +1,35 @@
+.t888-my-wishlist .heart .wishlist-count {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    background: var(--third-color);
+    border-radius: 50%;
+    color: #fff;
+    top: -100%;
+    right: -17px;
+    top: -12px;
+    position: absolute;
+    line-height: normal
+}
+
+.t888-my-wishlist.style3 .heart {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    line-height: 1
+}
+
+.t888-my-wishlist.style3 .heart i {
+    color: #000;
+    font-size: 26px
+}
+
+.t888-my-wishlist.style3 .heart .wishlist-count {
+    background: #4c3a0b;
+}
+
+/*# sourceMappingURL=t888-my-wishlist.css.map */

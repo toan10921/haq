@@ -1,0 +1,187 @@
+@use '../../../variables.scss' as *;
+
+// Style 5 Blog Grid Card - Refined
+.blog-wrap.grid-style5 {
+    display: block;
+    width: 100%;
+    
+    .posts-wrap {
+        display: grid !important;
+        gap: 30px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        &.grid-columns-2 {
+            grid-template-columns: repeat(2, 1fr) !important;
+        }
+
+        &.grid-columns-3 {
+            grid-template-columns: repeat(3, 1fr) !important;
+        }
+
+        &.grid-columns-4 {
+            grid-template-columns: repeat(4, 1fr) !important;
+        }
+
+        .grid-style5-item {
+            list-style: none;
+            
+            .grid-style5-card {
+                background: #ffffff;
+                border: 1px solid #eeeeee; 
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s ease;
+                overflow: hidden; // Keep content inside
+
+                &:hover {
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                    transform: translateY(-5px);
+                }
+            }
+
+            .post-thumb {
+                position: relative;
+                width: 100%;
+                padding: 0; // Adjustable via Elementor thumb_padding
+                box-sizing: border-box;
+
+                .post-thumb-link {
+                    display: block;
+                    width: 100%;
+                    padding-top: 66.67%; // 3:2 Aspect Ratio
+                    position: relative;
+                    overflow: hidden;
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        transition: transform 0.6s ease;
+                        // border-radius: Adjustable via thumb_border_radius
+                    }
+                }
+
+                .post-date-badge {
+                    position: absolute !important;
+                    bottom: 15px; // Default, adjustable via date_position_bottom
+                    left: 15px;   // Default, adjustable via date_position_left
+                    background: #ffffff;
+                    min-width: 53px;
+                    height: 60px;
+                    padding: 10px 8px;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    line-height: 1.1;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+                    z-index: 1 !important;
+
+                    .day {
+                        font-size: 1.25rem;
+                        font-weight: 500;
+                        color: #000000;
+                        padding: 0;
+                        margin: 0;
+                        font-family: poppins, sans-serif;
+                    }
+
+                    .month {
+                        font-size: 0.75rem;
+                        text-transform: lowercase;
+                        color: #000000;
+                        font-weight: 500;
+                        margin-top: 2px;
+                        font-family: poppins, sans-serif;
+                    }
+                }
+            }
+
+            .post-info {
+                padding: 30px 25px; // Adjustable via card_padding
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+
+                .post-meta {
+                    margin-bottom: 12px; // Adjustable via meta_margin
+                    display: block;
+                    
+                    .author {
+                        color: $third-color;
+                        font-size: 0.875rem;
+                        font-weight: 600;
+                        text-transform: capitalize;
+                    }
+                }
+
+                .post-title {
+                    margin: 0 0 18px; // Adjustable via title_margin
+                    font-family: var(--font-philosopher), serif;
+                    font-size: 1.5rem;
+                    line-height: 1.25;
+                    font-weight: 700;
+
+                    a {
+                        color: #000000;
+                        text-decoration: none;
+                        transition: color 0.3s;
+                        
+                        &:hover {
+                            color: $third-color;
+                        }
+                    }
+                }
+
+                .post-excerpt {
+                    margin-bottom: 25px; // Adjustable via excerpt_margin
+                    color: #777777;
+                    font-size: 0.9375rem;
+                    line-height: 1.6;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 5; // Default, can be overridden by Elementor
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+
+                    p {
+                        margin: 0;
+                    }
+                }
+
+                .read-more {
+                    color: $third-color;
+                    font-size: 0.9375rem;
+                    font-weight: 600;
+                    margin-top: auto; // Adjustable via readmore_margin
+                    display: inline-block;
+                    text-decoration: none;
+                    transition: all 0.3s;
+
+                    &:hover {
+                        letter-spacing: 0.5px;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 1024px) {
+    .blog-wrap.grid-style5 .posts-wrap {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .blog-wrap.grid-style5 .posts-wrap {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+}

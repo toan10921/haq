@@ -1,0 +1,63 @@
+.t888-pet-hotdeals-countdown-wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.t888-pet-hotdeals-countdown-wrap .t888-hotdeals-title {
+  margin: 0;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  position: relative;
+  top: 6px;
+}
+.t888-pet-hotdeals-countdown-wrap .t888-hotdeals-countdown {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.t888-pet-hotdeals-countdown-wrap .t888-hotdeals-box {
+  width: 102px;
+  min-height: 84px;
+  padding: 10px 8px;
+  background: #c8605f;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+.t888-pet-hotdeals-countdown-wrap .t888-hotdeals-number {
+  display: block;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.t888-pet-hotdeals-countdown-wrap .t888-hotdeals-label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+@media (max-width: 767px) {
+  .t888-pet-hotdeals-countdown-wrap .t888-hotdeals-title {
+    font-size: 34px;
+  }
+  .t888-pet-hotdeals-countdown-wrap .t888-hotdeals-box {
+    width: 78px;
+    min-height: 70px;
+  }
+  .t888-pet-hotdeals-countdown-wrap .t888-hotdeals-number {
+    font-size: 32px;
+  }
+  .t888-pet-hotdeals-countdown-wrap .t888-hotdeals-label {
+    font-size: 14px;
+  }
+}
+
+/*# sourceMappingURL=t888-pet-hotdeals-countdown.css.map */

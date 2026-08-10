@@ -1,0 +1,594 @@
+.t888-pet-shop-carousel-module {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    border-top: 1px solid #f4b183;
+    border-bottom: 0;
+    overflow: hidden;
+    background-color: #fff;
+
+    .pet-shop-carousel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 28px 14px;
+        margin-bottom: 0;
+        border-bottom: 1px solid #e6e6e6;
+        position: relative;
+        z-index: 20;
+        pointer-events: auto;
+    }
+
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .pet-shop-carousel-title {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        appearance: none;
+        -webkit-appearance: none;
+        border-radius: 0;
+        flex: 0 0 auto;
+        color: #000;
+        font-size: 31px;
+        font-weight: 400;
+        line-height: 1.1;
+        text-transform: uppercase;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+    .pet-shop-carousel-menu {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex: 1;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        position: relative;
+        z-index: 6;
+        pointer-events: auto;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .pet-shop-carousel-menu .menu-item {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #2f2f2f;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.3;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.3s ease, opacity 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        z-index: 7;
+        pointer-events: auto;
+    }
+
+    .pet-shop-carousel-menu .menu-item:hover,
+    .pet-shop-carousel-menu .menu-item.is-active {
+        color: #000;
+    }
+
+    .pet-shop-carousel-panel[hidden] {
+        display: none !important;
+    }
+
+    .header-nav {
+        display: flex;
+        gap: 4px;
+        flex: 0 0 auto;
+        position: relative;
+        z-index: 25;
+    }
+
+    .header-nav button {
+        width: 30px;
+        height: 30px;
+        border: 0;
+        background: #000;
+        color: #fff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .header-nav button:hover {
+        background: #c8605f;
+    }
+
+    .pet-shop-carousel-list {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        padding: 28px 18px 18px;
+    }
+
+    .pet-shop-carousel-tabs {
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .pet-shop-carousel-empty {
+        margin: 0;
+        color: #444;
+        font-size: 16px;
+    }
+
+    .pet-shop-carousel-list .swiper-slide {
+        height: auto;
+    }
+
+    .pet-shop-carousel-list .swiper-wrapper > .pet-shop-carousel-empty {
+        width: 100%;
+    }
+
+    .grid-product-item {
+        padding: 0 10px 8px;
+        border: 0;
+        background: transparent;
+        height: 100%;
+        box-shadow: none;
+        transition: transform 0.3s ease;
+    }
+
+    .grid-product-item:hover {
+        transform: translateY(-2px);
+    }
+
+    .product-item-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        min-height: 100%;
+    }
+
+    .product-badges-wrap {
+        top: 0;
+        left: 0;
+        gap: 8px;
+    }
+
+    .product-item-inner .product-badge {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .product-thumbnail {
+        min-height: 285px;
+        margin-bottom: 22px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .product-thumbnail img {
+        max-width: 100%;
+        max-height: 245px;
+        width: auto;
+        height: auto;
+        transition: all 0.5s ease;
+        object-fit: contain;
+    }
+
+    .product-thumbnail .hover-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+        opacity: 0;
+    }
+
+    .product-item-inner:hover .product-thumbnail .primary-img {
+        opacity: 0;
+    }
+
+    .product-item-inner:hover .product-thumbnail .hover-img {
+        opacity: 1;
+    }
+
+    .hover-actions-group {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 10;
+    }
+
+    .grid-product-item:hover .hover-actions-group {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .hover-actions-group .action-btn {
+        width: 42px;
+        height: 42px;
+        background: #fff;
+        border: 1px solid #ebebeb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #222;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .hover-actions-group .action-btn .icon-layer {
+        font-size: 18px;
+        line-height: 1;
+        pointer-events: none;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hover-actions-group .action-btn .btn-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+    }
+
+    .hover-actions-group .action-btn .btn-layer > div,
+    .hover-actions-group .action-btn .btn-layer > .yith-wcwl-add-to-wishlist,
+    .hover-actions-group .action-btn .btn-layer > .woocommerce,
+    .hover-actions-group .action-btn .btn-layer .yith-wcwl-add-button,
+    .hover-actions-group .action-btn .btn-layer .yith-wcwl-wishlistaddedbrowse,
+    .hover-actions-group .action-btn .btn-layer .yith-wcwl-wishlistexistsbrowse {
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
+    }
+
+    .hover-actions-group .action-btn .btn-layer a,
+    .hover-actions-group .action-btn .btn-layer button {
+        width: 100%;
+        height: 100%;
+        display: block !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        color: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        font-size: 0 !important;
+        line-height: 42px !important;
+        overflow: hidden !important;
+    }
+
+    .hover-actions-group .action-btn .btn-layer a::before,
+    .hover-actions-group .action-btn .btn-layer a::after,
+    .hover-actions-group .action-btn .btn-layer button::before,
+    .hover-actions-group .action-btn .btn-layer button::after {
+        display: none !important;
+    }
+
+    .hover-actions-group .action-btn:hover {
+        background: #c8605f !important;
+        border-color: #c8605f !important;
+    }
+
+    .hover-actions-group .action-btn:hover .icon-layer i {
+        color: #fff !important;
+    }
+
+    .hover-actions-group .btn-layer * {
+        background-color: transparent !important;
+    }
+
+    .hover-actions-group .btn-layer .yith-wcwl-icon,
+    .hover-actions-group .btn-layer .ajax-loading,
+    .hover-actions-group .btn-layer .feedback,
+    .hover-actions-group .btn-layer .blockUI,
+    .hover-actions-group .btn-layer img {
+        display: none !important;
+        opacity: 0 !important;
+    }
+
+    .grid-horizontal-card {
+        display: flex;
+        align-items: stretch;
+        position: relative;
+        background: #fff;
+        overflow: hidden;
+        padding: 0 !important;
+        height: 100%;
+    }
+
+    .grid-horizontal-card .hcard-image-col {
+        position: relative;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 12px;
+    }
+
+    .grid-horizontal-card .hcard-image-col .product-badges-wrap {
+        position: absolute;
+        top: 18px;
+        left: 10px;
+        right: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        z-index: 2;
+    }
+
+    .grid-horizontal-card .hcard-image-col .hcard-img-link {
+        display: block;
+        width: 100%;
+    }
+
+    .grid-horizontal-card .hcard-image-col .hcard-img-link img {
+        width: 180px;
+        max-width: 100%;
+        height: 220px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto;
+        transition: transform 0.3s ease;
+    }
+
+    .grid-horizontal-card .hcard-image-col:hover .hcard-img-link img {
+        transform: scale(1.04);
+    }
+
+    .grid-horizontal-card .hcard-info-col {
+        flex: 1;
+        padding: 22px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .grid-horizontal-card .hcard-category {
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 4px;
+    }
+
+    .grid-horizontal-card .hcard-title {
+        margin: 0 0 4px;
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .grid-horizontal-card .hcard-title a {
+        color: #222;
+        text-decoration: none;
+    }
+
+    .grid-horizontal-card .hcard-title a:hover {
+        color: #c8605f;
+    }
+
+    .grid-horizontal-card .hcard-rating {
+        display: flex;
+        gap: 2px;
+        color: #f5a623;
+        font-size: 15px;
+        line-height: 1;
+    }
+
+    .grid-horizontal-card .hcard-rating i.empty {
+        opacity: 0.3;
+    }
+
+    .grid-horizontal-card .hcard-price {
+        font-size: 14px;
+        font-weight: 700;
+        color: #c8605f;
+        line-height: 1.2;
+        margin-bottom: 12px;
+    }
+
+    .grid-horizontal-card .hcard-price del {
+        color: #bbb;
+        font-weight: 400;
+        font-size: 13px;
+        margin-left: 6px;
+    }
+
+    .grid-horizontal-card .hcard-price ins {
+        text-decoration: none;
+    }
+
+    .grid-horizontal-card .hcard-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+    }
+
+    .grid-horizontal-card .hcard-action-btn {
+        width: 42px;
+        height: 42px;
+        border: 1px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #222;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .grid-horizontal-card .hcard-action-btn i {
+        font-size: 17px;
+        color: inherit;
+        pointer-events: none;
+    }
+
+    .grid-horizontal-card .hcard-action-btn:hover {
+        border-color: #c8605f;
+        color: #c8605f;
+    }
+
+    .grid-horizontal-card .hcard-action-btn.disabled {
+        opacity: 0.4;
+        cursor: default;
+        pointer-events: none;
+    }
+
+    .product-content {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .product-title {
+        margin: 0 0 8px;
+        color: #111;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .product-title a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .product-title a:hover {
+        color: #c8605f;
+    }
+
+    .product-rating {
+        margin-bottom: 10px;
+        line-height: 1;
+    }
+
+    .star-rating {
+        color: #ffc107;
+        font-size: 14px;
+        display: inline-flex;
+        line-height: 1;
+    }
+
+    .product-price {
+        margin-top: auto;
+        color: #d76163;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.35;
+    }
+
+    .product-price ins {
+        color: inherit;
+        text-decoration: none;
+        margin-right: 4px;
+    }
+
+    .product-price del {
+        margin-left: 0;
+        color: #d76163;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.35;
+        opacity: 1;
+    }
+
+    @media (max-width: 1199px) {
+        .pet-shop-carousel-menu {
+            gap: 24px;
+        }
+
+        .pet-shop-carousel-menu .menu-item {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .pet-shop-carousel-header {
+            align-items: flex-start;
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .header-left {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .product-thumbnail {
+            min-height: 240px;
+        }
+
+        .product-thumbnail img {
+            max-height: 210px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .pet-shop-carousel-title {
+            font-size: 26px;
+        }
+
+        .pet-shop-carousel-menu {
+            gap: 18px;
+        }
+
+        .pet-shop-carousel-menu .menu-item {
+            font-size: 15px;
+        }
+
+        .pet-shop-carousel-header {
+            padding: 14px 16px 12px;
+        }
+
+        .pet-shop-carousel-list {
+            padding: 20px 8px 12px;
+        }
+
+        .grid-product-item {
+            padding: 0 8px 8px;
+        }
+
+        .product-thumbnail {
+            min-height: 190px;
+            margin-bottom: 14px;
+        }
+
+        .product-thumbnail img {
+            max-height: 165px;
+        }
+    }
+}

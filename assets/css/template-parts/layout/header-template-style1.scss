@@ -1,0 +1,151 @@
+.header-default {
+    .header-first {
+        background-color: var(--primary-color);
+
+        .col-language,
+        .col-delivery,
+        .col-store-location {
+            padding: 14px 15px;
+            gap: 30px;
+        }
+
+        .language-change {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+
+            i {
+                color: var(--secondary-color);
+                font-size: 18px;
+            }
+
+            span {
+                color: var(--secondary-color);
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+
+            .la-angle-down {
+                font-size: 12px;
+                color: var(--secondary-color);
+            }
+
+            .language-dropdown {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                margin-top: 8px;
+                background-color: var(--secondary-color);
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                display: none;
+                min-width: 120px;
+                z-index: 999;
+                padding: 0;
+
+                li {
+                    padding: 8px 12px;
+                    white-space: nowrap;
+                    list-style: none;
+                    transition: background 0.2s;
+
+                    a {
+                        color: var(--primary-color);
+                        font-size: 12px;
+                        text-decoration: none;
+                        display: block;
+                        transition: all 0.3s;
+                        text-transform: uppercase;
+
+                        &:hover {}
+                    }
+
+                    &:hover {
+                        background-color: var(--forth-color);
+
+                        a {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+
+            }
+
+            &:hover {
+                .language-dropdown {
+                    display: block;
+                }
+            }
+        }
+
+        .free-delivery-content,
+        .currency-change {
+
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+
+            i {
+                color: var(--secondary-color);
+                font-size: 12px;
+            }
+
+            span {
+                color: var(--secondary-color);
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+
+            .currency-dropdown {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                margin-top: 8px;
+                background-color: var(--secondary-color);
+                border-radius: 4px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                display: none;
+                min-width: 120px;
+                z-index: 999;
+                padding: 0;
+
+                li {
+                    padding: 8px 12px;
+                    white-space: nowrap;
+                    list-style: none;
+                    transition: background 0.2s;
+
+                    a {
+                        color: var(--primary-color);
+                        font-size: 12px;
+                        text-decoration: none;
+                        display: block;
+                        transition: all 0.3s;
+                        text-transform: uppercase;
+
+                        &:hover {}
+                    }
+
+                    &:hover {
+                        background-color: var(--forth-color);
+
+                        a {
+                            color: var(--primary-color);
+                        }
+                    }
+                }
+
+            }
+
+            &:hover {
+                .currency-dropdown {
+                    display: block;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+.t888-list-loadmore-btn{
+    font-size: .875rem;
+    padding: 1rem 2rem;
+    color: var(--secondary-color);
+    background: var(--primary-color);
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+}
+.t888-list-loadmore-wrap{
+    text-align: center;
+}
+.t888-list-loadmore-btn.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.t888-list-loadmore-btn.loading::before{
+    order: 2;
+}
+

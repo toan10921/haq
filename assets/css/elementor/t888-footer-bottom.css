@@ -1,0 +1,301 @@
+:root {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --third-color: #c8605f;
+  --forth-color: #e0e0e0;
+  --fifth-color: #e5e5e5;
+  --sixth-color: #9D9393;
+  --seventh-color: #fffbf7;
+  --eighth-color: #5a4e4f;
+  --ninth-color: #666;
+  --tenth-color: #999;
+  --third-color-rgba: rgba(200, 96, 95, 0.1);
+  font-size: 1rem;
+  line-height: 1.313;
+  font-family: Poppins, sans-serif;
+  --font-family: Poppins, sans-serif;
+  --font-philosopher: Philosopher, serif;
+  --title8: 0.5rem;
+  --title10: 0.625rem;
+  --title12: 0.75rem;
+  --title13: 0.8125rem;
+  --title14: 0.875rem;
+  --title18: 1.125rem;
+  --title24: 1.5rem;
+  --title36: 2.25rem;
+  --title48: 3rem;
+  --gradient-color: linear-gradient(to right, #e0e0e0 0%, rgba(200, 96, 95, 0.1) 69%, #e5e5e5 100%);
+}
+
+.elementor-edit-area-active .e-con {
+  --primary-color: #000;
+  --secondary-color: #fff;
+  --third-color: #c8605f;
+  --forth-color: #e0e0e0;
+  --fifth-color: #e5e5e5;
+  --sixth-color: #9D9393;
+  --seventh-color: #fffbf7;
+  --eighth-color: #5a4e4f;
+  --ninth-color: #666;
+  --tenth-color: #999;
+}
+
+.footer-contact-info .footer-logo {
+  margin-bottom: 25px !important;
+}
+.footer-contact-info .footer-logo .logo-text {
+  font-family: "Poppins", serif !important;
+  font-size: 38px !important;
+  margin: 0 !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  letter-spacing: 0px !important;
+  display: block !important;
+  width: 100% !important;
+}
+.footer-contact-info .contact-details {
+  margin-bottom: 25px !important;
+}
+.footer-contact-info .contact-details p {
+  margin: 0 0 8px !important;
+  color: #333 !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  font-family: "Poppins", sans-serif !important;
+}
+.footer-contact-info .contact-details p.contact-address {
+  max-width: 320px !important;
+  line-height: 1.3 !important;
+}
+.footer-contact-info .hotline-box {
+  display: flex !important;
+  align-items: center !important;
+  gap: 15px !important;
+  margin-bottom: 30px !important;
+}
+.footer-contact-info .hotline-box i, .footer-contact-info .hotline-box svg {
+  font-size: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  color: #c8605f !important;
+  fill: #c8605f !important;
+  transform: rotate(-10deg) !important;
+  display: inline-block !important;
+}
+.footer-contact-info .hotline-box .hotline-number {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  font-family: "Poppins", serif !important;
+  line-height: 1 !important;
+}
+.footer-contact-info .app-buttons {
+  display: flex !important;
+  gap: 12px !important;
+}
+.footer-contact-info .app-buttons .app-btn {
+  line-height: 0 !important;
+  display: inline-block !important;
+}
+.footer-contact-info .app-buttons .app-btn img {
+  width: 134px !important;
+  height: 40px !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  border: 1px solid #eeeeee !important;
+  background: #ffffff !important;
+  object-fit: contain !important;
+  padding: 4px !important;
+}
+.footer-contact-info .app-buttons .app-btn:hover img {
+  border-color: #c8605f !important;
+  transition: all 0.3s ease !important;
+}
+
+.footer-links-group {
+  display: flex !important;
+  gap: 60px !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  margin-left: 35px !important;
+}
+.footer-links-group .footer-links-column {
+  flex: 0 0 auto !important;
+}
+.footer-links-group .footer-links-column h2, .footer-links-group .footer-links-column h3, .footer-links-group .footer-links-column h4, .footer-links-group .footer-links-column h5, .footer-links-group .footer-links-column .links-title {
+  font-family: "Philosopher", serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  margin: 0 0 32px !important;
+  text-transform: uppercase !important;
+  position: relative !important;
+  line-height: normal !important;
+  letter-spacing: 0.05em !important;
+}
+.footer-links-group .footer-links-column .links-list, .footer-links-group .footer-links-column .elementor-icon-list-items {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: normal !important;
+}
+.footer-links-group .footer-links-column .links-list li, .footer-links-group .footer-links-column .links-list .elementor-icon-list-item, .footer-links-group .footer-links-column .elementor-icon-list-items li, .footer-links-group .footer-links-column .elementor-icon-list-items .elementor-icon-list-item {
+  margin-bottom: 29px !important;
+  line-height: 1 !important;
+}
+.footer-links-group .footer-links-column .links-list li a, .footer-links-group .footer-links-column .links-list .elementor-icon-list-item a, .footer-links-group .footer-links-column .elementor-icon-list-items li a, .footer-links-group .footer-links-column .elementor-icon-list-items .elementor-icon-list-item a {
+  color: #555 !important;
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+  text-decoration: none !important;
+  font-weight: 400 !important;
+}
+.footer-links-group .footer-links-column .links-list li a:hover, .footer-links-group .footer-links-column .links-list .elementor-icon-list-item a:hover, .footer-links-group .footer-links-column .elementor-icon-list-items li a:hover, .footer-links-group .footer-links-column .elementor-icon-list-items .elementor-icon-list-item a:hover {
+  color: #c8605f !important;
+  padding-left: 5px !important;
+}
+
+.footer-social-payment {
+  margin-left: 122px !important;
+}
+.footer-social-payment .social-section {
+  margin-bottom: 35px !important;
+}
+.footer-social-payment .social-section .social-title {
+  font-family: "Philosopher", serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  margin: 0 0 35px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: normal !important;
+}
+.footer-social-payment .social-section .social-icons {
+  display: flex !important;
+  gap: 12px !important;
+}
+.footer-social-payment .social-section .social-icons .social-link {
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #ffffff !important;
+  border: 1px solid #e1e1e1 !important;
+  border-radius: 2px !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+}
+.footer-social-payment .social-section .social-icons .social-link i, .footer-social-payment .social-section .social-icons .social-link svg {
+  color: #111 !important;
+  fill: #111 !important;
+  display: inline-block !important;
+  font-size: 18px !important;
+  width: 18px !important;
+  height: 18px !important;
+  line-height: 18px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+.footer-social-payment .social-section .social-icons .social-link:hover {
+  background: #c8605f !important;
+  border-color: #c8605f !important;
+  transform: translateY(-3px) !important;
+}
+.footer-social-payment .social-section .social-icons .social-link:hover i, .footer-social-payment .social-section .social-icons .social-link:hover svg {
+  color: #fff !important;
+  fill: #fff !important;
+}
+.footer-social-payment .footer-separator {
+  width: 100% !important;
+  height: 2px !important;
+  background-color: #e5e5e5 !important;
+  margin: 40px 0 !important;
+  display: block !important;
+}
+.footer-social-payment .payment-section .payment-title {
+  font-family: "Philosopher", serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+  margin: 0 0 30px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  line-height: normal !important;
+}
+.footer-social-payment .payment-section .payment-icons {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+}
+.footer-social-payment .payment-section .payment-icons img {
+  border: none !important;
+  padding: 0 !important;
+  max-height: 24px !important;
+  width: auto !important;
+  display: block !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.footer-social-payment .payment-section .payment-icons .payment-icon-item, .footer-social-payment .payment-section .payment-icons .elementor-image img {
+  border: 1px solid #e1e1e1 !important;
+  padding: 8px 12px !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 55px !important;
+  height: 38px !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.footer-social-payment .payment-section .payment-icons .payment-fallback {
+  display: flex !important;
+  gap: 10px !important;
+}
+.footer-social-payment .payment-section .payment-icons .payment-fallback i {
+  width: 58px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #e1e1e1 !important;
+  border-radius: 4px !important;
+  background: #fff !important;
+  font-size: 24px !important;
+  color: #444 !important;
+}
+.footer-social-payment .payment-section .payment-icons .payment-fallback i:hover {
+  color: #c8605f !important;
+  border-color: #c8605f !important;
+}
+
+.footer-main-container {
+  padding: 85px 0 50px !important;
+  background: #ffffff !important;
+}
+
+.footer-copyright {
+  padding: 25px 0 !important;
+  border-top: 1px solid #f1f1f1 !important;
+  text-align: center !important;
+}
+.footer-copyright p {
+  margin: 0 !important;
+  font-size: 14px !important;
+  color: #313131 !important;
+  letter-spacing: 0.01em !important;
+  font-weight: 450;
+}
+
+/*# sourceMappingURL=t888-footer-bottom.css.map */

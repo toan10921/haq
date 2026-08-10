@@ -1,0 +1,22 @@
+[
+    {
+        "menu_slug": "categories-menu-mobile",
+        "theme_location": "mobile-menu-categories"
+    },
+    {
+        "menu_slug": "main-menu",
+        "theme_location": "header-menu"
+    },
+    {
+        "menu_slug": "mobile-menu",
+        "theme_location": "mobile-menu"
+    },
+    {
+        "menu_slug": "right-menu-use-for-header-style-3",
+        "theme_location": "right-menu-header-3"
+    },
+    {
+        "menu_slug": "right-menu-2-use-for-header4",
+        "theme_location": "header-menu2"
+    }
+]

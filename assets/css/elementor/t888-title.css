@@ -1,0 +1,44 @@
+.t888-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+}
+
+.t888-heading .line {
+    flex: 1;
+    height: 1px;
+ 
+    max-width: 50px;
+}
+
+.t888-heading .title-wrapper {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    padding: 0 0.75rem;
+}
+
+.t888-heading .bg-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.t888-heading .title {
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+.t888-heading.style2 .title{
+    margin: 0;
+    padding: 9.5px 15.5px;
+    border: 2px solid #000;
+    letter-spacing: 0;
+}

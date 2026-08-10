@@ -1,0 +1,119 @@
+.t888-pet-category-carousel {
+  position: relative;
+  width: 100%;
+}
+.t888-pet-category-carousel .header-nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 100;
+}
+.t888-pet-category-carousel .header-nav-wrap .main-title {
+  margin: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "Philosopher", serif;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+.t888-pet-category-carousel .header-nav-wrap .header-nav {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 10px !important;
+}
+.t888-pet-category-carousel .header-nav-wrap .header-nav.is-hidden {
+  display: none !important;
+}
+.t888-pet-category-carousel .header-nav-wrap .header-nav button {
+  border: none !important;
+  width: 31px;
+  height: 31px;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+  padding: 0 !important;
+  color: #fff !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background-color: #000 !important; /* BOTH ARE BLACK BY DEFAULT */
+}
+.t888-pet-category-carousel .header-nav-wrap .header-nav button:hover {
+  background-color: #c8605f !important; /* COLOR ON HOVER */
+  opacity: 1 !important;
+}
+.t888-pet-category-carousel .header-nav-wrap .header-nav button i {
+  line-height: 1 !important;
+  display: inline-block !important;
+  font-weight: 700 !important;
+}
+.t888-pet-category-carousel .swiper-pet-category-carousel {
+  position: relative;
+  overflow: hidden; /* Requirement for Swiper to function */
+}
+.t888-pet-category-carousel .pet-cat-slide-item {
+  display: block;
+  height: auto;
+}
+.t888-pet-category-carousel .cat-box-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  width: 100%;
+}
+.t888-pet-category-carousel .cat-box-bg {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  background-color: #fdebeb; /* Default */
+  transition: all 0.3s ease;
+  overflow: hidden; /* Ensure images are stuffed inside the frame! */
+}
+.t888-pet-category-carousel .cat-img {
+  position: absolute;
+  bottom: 85px; /* Stay just above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  background: transparent !important;
+  pointer-events: none;
+  z-index: 10;
+}
+.t888-pet-category-carousel .cat-text-wrap {
+  position: relative;
+  z-index: 20;
+}
+.t888-pet-category-carousel .cat-text-wrap .cat-title {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "Philosopher", serif;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+.t888-pet-category-carousel .cat-text-wrap .cat-count {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/*# sourceMappingURL=t888-pet-category-carousel.css.map */

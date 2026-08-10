@@ -1,0 +1,355 @@
+/** responsive */
+
+// Extra large devices (large desktops, less than 1920px)
+
+@media (max-width: 1919.98px) {}
+
+// Large desktops (less than 1600px)
+
+@media (max-width: 1599.98px) {
+    .container {
+        max-width: 1232px !important;
+    }
+
+
+    .woocommerce-message,
+    .woocommerce-info,
+    .woocommerce-error,
+    .e-con-inner {
+        max-width: 1200px !important;
+    }
+
+}
+
+// Medium devices (desktops, less than 1400px)
+
+@media (max-width: 1399.98px) {}
+
+@media (max-width: 1248px) {
+    .accordion-tabs {
+        padding: 0 16px;
+    }
+
+    .accordion-tabs .accordion-tab-content>.elementor>.elementor-element {
+        padding: 0;
+    }
+}
+
+// Small devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+    // Your CSS rules for extra large devices
+
+}
+
+@media (min-width: 1025px) and (max-width: 1216px) {
+
+    .home1-section2,
+    .home1-section3,
+    .home1-section5,
+    .home1-section6,
+    .home1-section7,
+    .home1-section9,
+    .home1-section10,
+    .home2-section2,
+    .home2-section3,
+    .home2-section4,
+    .home2-section5,
+    .home2-section7,
+    .home2-section8,
+    .home2-section9,
+    .home3-section2,
+    .home3-section3,
+    .home3-section4,
+    .home3-section5,
+    .home3-section6,
+    .home3-section7,
+    .home3-section8,
+    .home3-section9,
+    .home-section2,
+    .home-section3,
+    .home-section5,
+    .home-section6,
+    .home-section7,
+    .home-section8,
+    .home-section9,
+    .contact-section1,
+    .contact-section2,
+    .contact-section3,
+    .contact-section4,
+    .after-section1,
+    .after-section2,
+    .after-section3,
+    .after-section4,
+    .woocommerce-Tabs-panel--description {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .page.page-template-default .main-page {
+        margin-bottom: 50px;
+    }
+
+    .main-page-default.blog-page {
+        padding-bottom: 50px;
+    }
+
+    .related-products {
+        margin-bottom: 15px;
+    }
+
+    .error404 .main-page-default {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .page.page-template-default .main-page .title-page h2 {
+        margin-bottom: 45px;
+    }
+
+    .wc-block-cart__empty-cart__title.with-empty-cart-icon:before {
+        margin-bottom: 40px !important;
+    }
+
+    .wp-block-woocommerce-empty-cart-block .wc-block-cart__empty-cart__title {
+        margin-bottom: 10px;
+    }
+
+    p.wishlist-empty {
+        margin: 0;
+        line-height: 14px;
+    }
+
+    .wishlist_table.mobile:has(.wishlist-empty) {
+        margin: 0;
+    }
+
+    .yith_wcwl_wishlist_footer {
+        .wishlist-actions {
+            margin: 0;
+        }
+    }
+
+    .page {
+        .blog-comment-detail {
+            padding-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .leave-comments {
+            margin-top: 50px;
+        }
+    }
+
+    .page .leave-comments .comment-form .form-submit {
+        margin-bottom: -20px;
+    }
+}
+
+// Large devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+    // Your CSS rules for large devices
+
+}
+
+@media (max-width: 860px) {
+    .main-page-default.shop-page {
+        padding-bottom: 0;
+    }
+
+    .woocommerce-no-products-found .woocommerce-info {
+        margin-bottom: 0;
+    }
+
+    .col-3 {
+        width: 100%;
+        margin-bottom: 0px;
+    }
+
+    .col-9 {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .context-product .col-9 {
+        margin-bottom: 0;
+    }
+
+    .single-post .col-9 {
+        margin-bottom: 0;
+    }
+
+    .main-page-default .col-9,
+    .main-page-default.blog-page .col-9 {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .main-page-default .col-9>div,
+    .main-page-default.blog-page .col-9>div {
+        padding-left: 0;
+    }
+
+    .main-page-default .col-9>div,
+    .main-page-default.blog-page .col-9>div {
+        padding-right: 0;
+    }
+
+    .main-page-default.blog-page .col-9,
+    .main-page .col-9 {
+        order: 1;
+    }
+
+    .main-page-default.blog-page .col-3,
+    .main-page .col-3 {
+        order: 2;
+    }
+}
+
+// Medium devices (tablets, less than 768px)
+@media (max-width: 767.98px) {
+
+    // fix mobile input zoom
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    textarea {
+        // increase font size fix browser zoom, decrease padding to keep input height
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .wpcf7-form .contact-row1 .contact-col input::placeholder,
+    .wpcf7-form .contact-row2 textarea::placeholder
+     {
+        font-size: 0.875rem;
+    }
+
+    .wpcf7-form .contact-row1 .contact-col input,
+    .wpcf7-form .contact-row2 textarea
+     {
+        font-size: 1rem;
+    }
+
+    // Your CSS rules for medium devices
+
+    .gap-20,
+    .gap-30,
+    .gap-40 {
+        gap: 32px;
+
+    }
+
+    .box-hero,
+    .box-hero2 {
+        position: relative;
+    }
+
+    .box-hero::before,
+    .box-hero2::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, .2);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .box-hero .elementor-heading-title {
+        text-shadow:
+            0 1px 2px rgba(0, 0, 0, .55),
+            0 4px 14px rgba(0, 0, 0, .35);
+    }
+
+    .box-hero2 .elementor-heading-title {
+        text-shadow:
+            0 1px 2px rgba(255, 255, 255, .65),
+            0 0 10px rgba(255, 255, 255, .45);
+
+    }
+
+    .error404 .main-page-default .info-404 .oops {
+        font-size: 2rem;
+    }
+}
+
+// Small devices (landscape phones, less than 576px)
+@media (max-width: 575.98px) {
+    // Your CSS rules for small devices
+
+    .page .blog-comment-detail .comment-list .children {
+        padding-left: 30px;
+    }
+
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-left .comment-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-left {
+        gap: 15px;
+    }
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-left .comment-details {
+        width: calc(100% - 75px);
+    }
+
+    .page .leave-comments .comment-form .comment-notes {
+        line-height: 24px;
+    }
+}
+
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+
+    // Your CSS rules for extra small devices
+    #yith-woocompare-preview-bar .container {
+        flex-wrap: wrap;
+    }
+
+    #yith-woocompare-preview-bar .container .content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .gap-20,
+    .gap-30,
+    .gap-40 {
+        gap: 16px;
+
+    }
+}
+
+@media (max-width: 480px) {
+    .leave-comments .comment-form .name-email-wrap p {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 390px) {
+    .page .blog-comment-detail .comment-list .comment-item .comment-left .comment-details .comment-author {
+        line-height: 21px;
+    }
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-left .comment-details .comment-date {
+        font-size: 10px;
+        line-height: 18px;
+        margin-top: 0;
+    }
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-right .comment-reply a {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .page .blog-comment-detail .comment-list .comment-item .comment-left .comment-details .comment-text {
+        margin-top: 6px;
+    }
+}

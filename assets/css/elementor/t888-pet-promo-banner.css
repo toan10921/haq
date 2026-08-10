@@ -1,0 +1,95 @@
+/* T888 Pet Promo Banner Widget Styles */
+.t888-pet-promo-banner {
+    padding: 35px 35px;
+    border-radius: 0;
+    min-height: 270px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.t888-pet-promo-banner .promo-content {
+    position: relative;
+    z-index: 2;
+    max-width: 60%;
+}
+
+.t888-pet-promo-banner:hover {
+    transform: translateY(-5px);
+}
+
+.t888-pet-promo-banner h5.promo-subtitle {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    font-family: "Philosopher", "Times New Roman", serif;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+}
+
+.t888-pet-promo-banner p.promo-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+    font-family: "Jost", "Inter", sans-serif;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+}
+
+.t888-pet-promo-banner h2.promo-big-text {
+    font-size: 48px;
+    line-height: 1.1;
+    margin: 0 0 15px 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: "Poppins", "Inter", sans-serif;
+    letter-spacing: 0.01em;
+}
+
+.t888-pet-promo-banner .promo-button-wrap {
+    margin-top: 5px;
+}
+
+.t888-pet-promo-banner .promo-button-wrap .promo-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 9px 7px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: "Philosopher", "Times New Roman", serif;
+    letter-spacing: 0.02em;
+}
+
+/* Khi nút không có màu nền (Background trong suốt), xoá sạch padding để nó dóng thẳng hàng lề trái với các dòng text khác */
+.t888-pet-promo-banner .promo-button-wrap .promo-button[style*="background-color: transparent"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.t888-pet-promo-banner .promo-button-wrap .promo-button:hover {
+    opacity: 0.8 !important;
+}
+
+.t888-pet-promo-banner .promo-right-image {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 1;
+}
+
+.t888-pet-promo-banner .promo-right-image img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: bottom right;
+    display: block;
+}

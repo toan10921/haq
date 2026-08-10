@@ -1,0 +1,202 @@
+.fish-mega-menu-home2 {
+    padding: 50px;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    max-height: 598px;
+}
+
+.fish-mega-menu-home2__hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 275px;
+    margin-bottom: 45px;
+    /* padding: 30px 68px 30px 34px; */
+    overflow: hidden;
+    background-color: var(--fish-menu-banner-bg);
+    background-image: var(--fish-menu-banner-image);
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fish-mega-menu-home2__art {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.fish-mega-menu-home2__fish-image {
+    position: absolute;
+    left: 36px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    max-width: min(42%, 340px);
+    max-height: 190px;
+    height: auto;
+    display: block;
+}
+
+.fish-mega-menu-home2__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 475px;
+    margin-left: auto;
+    text-align: center;
+    color: var(--fish-menu-text);
+}
+
+.fish-mega-menu-home2__heading {
+       margin: -18px 0 23px;
+    color: inherit;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.fish-mega-menu-home2__discount {
+    margin-bottom: 48px;
+    color: inherit;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.fish-mega-menu-home2__button {
+    text-align: center;
+    padding: 16px 34.4px;
+    background: var(--fish-menu-button-bg);
+    color: var(--fish-menu-button-text);
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    transition: opacity .2s ease;
+}
+
+.fish-mega-menu-home2__button:hover {
+    color: var(--fish-menu-button-text);
+    opacity: .88;
+}
+
+.fish-mega-menu-home2__links-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    font-family: var(--font-philosopher);
+    margin: 0 0 26px;
+}
+
+.fish-mega-menu-home2__columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.fish-mega-menu-home2__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.fish-mega-menu-home2__list li {
+    margin: 0 0 15.5px;
+}
+
+.fish-mega-menu-home2__list li:last-child {
+    margin: 0;
+}
+
+.fish-mega-menu-home2__list a {
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.fish-mega-menu-home2__list a:hover {
+    color: #ffc326;
+}
+
+@media (max-width: 991px) {
+    .fish-mega-menu-home2 {
+        padding: 34px;
+    }
+
+    .fish-mega-menu-home2__hero {
+        min-height: 240px;
+        padding: 28px 36px;
+    }
+
+    .fish-mega-menu-home2__fish-image {
+        left: 24px;
+        max-width: min(40%, 260px);
+        max-height: 150px;
+    }
+
+    .fish-mega-menu-home2__content {
+        max-width: 300px;
+    }
+
+    .fish-mega-menu-home2__heading {
+        font-size: 20px;
+    }
+
+    .fish-mega-menu-home2__discount {
+        font-size: 44px;
+    }
+
+    .fish-mega-menu-home2__columns {
+        grid-template-columns: 1fr 1fr;
+        gap: 26px 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .fish-mega-menu-home2 {
+        padding: 20px;
+    }
+
+    .fish-mega-menu-home2__hero {
+        justify-content: center;
+        min-height: 200px;
+        padding: 24px 20px;
+    }
+
+    .fish-mega-menu-home2__art {
+        opacity: 0.28;
+    }
+
+    .fish-mega-menu-home2__fish-image {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: min(70%, 250px);
+        max-height: 130px;
+    }
+
+    .fish-mega-menu-home2__content {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .fish-mega-menu-home2__heading {
+        font-size: 18px;
+    }
+
+    .fish-mega-menu-home2__discount {
+        font-size: 36px;
+    }
+
+    .fish-mega-menu-home2__button {
+        min-width: 160px;
+        min-height: 46px;
+    }
+
+    .fish-mega-menu-home2__columns {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+}

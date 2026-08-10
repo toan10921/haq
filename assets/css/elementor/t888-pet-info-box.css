@@ -1,0 +1,72 @@
+.t888-pet-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    padding: 26px 0 22px 0;
+    
+}
+
+/* Gạch dọc ngăn cách bên TRÁI */
+.t888-pet-info-box::before {
+    content: '';
+    position: absolute;
+    left: -32px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 52px;
+    background-color: #ebebeb;
+}
+
+/* Ẩn gạch dọc qua tuỳ chọn "Hide Left Divider" trong cài đặt Elementor Widget */
+.t888-pet-info-box.hide-divider::before {
+    display: none !important;
+}
+.t888-pet-info-box .info-icon {
+    font-size: 38px;
+    line-height: 1;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.t888-pet-info-box .info-icon i {
+    display: block;
+}
+
+.t888-pet-info-box .info-icon svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}
+
+.t888-pet-info-box .info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.t888-pet-info-box h4.info-title {
+    font-family: var(--e-global-typography-primary-font-family), "Marcellus", serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-transform: uppercase !important;
+    color: #000000 !important;
+    margin: 0 0 1px 0 !important;
+    padding: 0 !important;
+    letter-spacing: 0.5px !important;
+}
+
+.t888-pet-info-box p.info-desc {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 0.7 !important;
+    color: #7a7a7a !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}

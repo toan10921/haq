@@ -1,0 +1,15 @@
+.t888-button{
+    display: inline-block;
+    padding: 16px 34px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.t888-button.style2{
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+}
+.t888-button.style2:hover{
+    color: var(--secondary-color);
+}
