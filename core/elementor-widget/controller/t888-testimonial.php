@@ -110,6 +110,49 @@ class T888_Testimonial extends T888_Widget_Base
             ]
         );
 
+        $repeater->add_control(
+            'avatar',
+            [
+                'label' => __('Avatar', 'nebon'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'position',
+            [
+                'label' => __('Position', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Engineer', 'nebon'),
+            ]
+        );
+
+        $repeater->add_control(
+            'company_logo',
+            [
+                'label' => __('Company Logo', 'nebon'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => '',
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'rating',
+            [
+                'label' => __('Rating', 'nebon'),
+                'type' => Controls_Manager::NUMBER,
+                'default' => 5,
+                'min' => 1,
+                'max' => 5,
+                'step' => 1,
+            ]
+        );
+
 
         $repeater->add_control(
             'content',

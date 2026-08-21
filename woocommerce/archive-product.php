@@ -172,6 +172,118 @@ class ArchiveShopPage
     public function render(): void
     {
 
+        // Reuse the Elementor body of the Product page for Shop and every
+        // product taxonomy. Some existing installations have not assigned the
+        // page in WooCommerce settings, so resolve the layout from several
+        // backwards-compatible candidates instead of dropping to the old
+        // theme archive/sidebar.
+        $shop_page_id = function_exists('wc_get_page_id') ? (int) wc_get_page_id('shop') : 0;
+        $product_page = get_page_by_path('san-pham', OBJECT, 'page');
+        $product_page_id = $product_page instanceof \WP_Post ? (int) $product_page->ID : 0;
+        $preferred_template_id = (int) get_theme_mod('t888_product_archive_template_id', 0);
+        $template_id = 0;
+
+        foreach (array_unique([$preferred_template_id, $shop_page_id, $product_page_id, 91]) as $candidate_id) {
+            $candidate_id = (int) $candidate_id;
+            if (
+                $candidate_id > 0
+                && get_post_status($candidate_id)
+                && trim((string) get_post_meta($candidate_id, '_elementor_data', true)) !== ''
+            ) {
+                $template_id = $candidate_id;
+                break;
+            }
+        }
+
+        $template_id = (int) apply_filters('t888_product_archive_template_id', $template_id);
+
+        // The Elementor template is rendered after wp_head() on archive pages.
+        // Enqueue its generated CSS before get_header() so container/grid rules
+        // are available when the page is first painted.
+        if (
+            did_action('elementor/loaded') &&
+            get_post_status($template_id) &&
+            class_exists('\Elementor\Core\Files\CSS\Post')
+        ) {
+            $elementor_css = new \Elementor\Core\Files\CSS\Post($template_id);
+            $elementor_css->enqueue();
+
+            // Elementor 4 stores container layout rules in separate atomic CSS
+            // files. Rendering a page manually does not enqueue these files, so
+            // load them here to preserve flex direction and responsive widths.
+            $uploads = wp_upload_dir();
+            if (empty($uploads['error'])) {
+                $atomic_css_dir = trailingslashit($uploads['basedir']) . 'elementor/css/';
+                $atomic_css_url = trailingslashit($uploads['baseurl']) . 'elementor/css/';
+                $atomic_styles = [
+                    [
+                        'handle' => 'base-desktop',
+                        'file'   => 'base-desktop.css',
+                        'media'  => 'all',
+                        'deps'   => [],
+                    ],
+                    [
+                        'handle' => 'local-' . $template_id . '-frontend-desktop',
+                        'file'   => 'local-' . $template_id . '-frontend-desktop.css',
+                        'media'  => 'all',
+                        'deps'   => ['base-desktop'],
+                    ],
+                    [
+                        'handle' => 'base-tablet',
+                        'file'   => 'base-tablet.css',
+                        'media'  => '(max-width: 1024px)',
+                        'deps'   => [],
+                    ],
+                    [
+                        'handle' => 'local-' . $template_id . '-frontend-tablet',
+                        'file'   => 'local-' . $template_id . '-frontend-tablet.css',
+                        'media'  => '(max-width: 1024px)',
+                        'deps'   => ['base-tablet'],
+                    ],
+                    [
+                        'handle' => 'base-mobile',
+                        'file'   => 'base-mobile.css',
+                        'media'  => '(max-width: 767px)',
+                        'deps'   => [],
+                    ],
+                    [
+                        'handle' => 'local-' . $template_id . '-frontend-mobile',
+                        'file'   => 'local-' . $template_id . '-frontend-mobile.css',
+                        'media'  => '(max-width: 767px)',
+                        'deps'   => ['base-mobile'],
+                    ],
+                ];
+
+                foreach ($atomic_styles as $atomic_style) {
+                    $atomic_css_path = $atomic_css_dir . $atomic_style['file'];
+                    if (!file_exists($atomic_css_path)) {
+                        continue;
+                    }
+
+                    wp_enqueue_style(
+                        $atomic_style['handle'],
+                        $atomic_css_url . $atomic_style['file'],
+                        $atomic_style['deps'],
+                        filemtime($atomic_css_path),
+                        $atomic_style['media']
+                    );
+                }
+            }
+        }
+
+        // Build the template before wp_head() so styles registered by its
+        // custom widgets are also printed in the document head.
+        $elementor_content = '';
+        if (
+            did_action('elementor/loaded') &&
+            class_exists('\Elementor\Plugin') &&
+            get_post_status($template_id)
+        ) {
+            $elementor_content = \Elementor\Plugin::instance()
+                ->frontend
+                ->get_builder_content_for_display($template_id, true);
+        }
+
         get_header('shop');
 
         /**
@@ -188,15 +300,20 @@ class ArchiveShopPage
         // fix unit test
         $ajax_class = $this->enable_ajax == 'on' ? 'products-ajax-wrapper' : 'products-not-ajax-wrapper';
         $sidebar_id  = $this->sidebar;
-$has_sidebar = ($this->sidebar_pos !== 'no' && !empty($sidebar_id) && $sidebar_id !== 'choose_one');
-$layout_pos_for_class = $has_sidebar ? $this->sidebar_pos : 'no';
+        $has_sidebar = ($this->sidebar_pos !== 'no' && !empty($sidebar_id) && $sidebar_id !== 'choose_one');
+        $layout_pos_for_class = $has_sidebar ? $this->sidebar_pos : 'no';
 ?>
-        <section id="main-content" class="main-page-default shop-page <?php echo t888f_get_main_class_sidebar($this->sidebar_pos); ?>">
+    <?php
+if (trim((string) $elementor_content) !== '') {
+    echo $elementor_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+} else {
+?>
+        <section id="main-content" class="main-page-default shop-page <?php echo esc_attr(t888f_get_main_class_sidebar($layout_pos_for_class)); ?>">
             <div class="container">
                 <div class="row">
-                    <?php  if ($has_sidebar && $this->sidebar_pos === 'left') {
-                t888f_get_side_bar('left', $sidebar_id, 'left');
-            }?>
+                    <?php if ($has_sidebar && $this->sidebar_pos === 'left') {
+                        t888f_get_side_bar('left', $sidebar_id, 'left');
+                    } ?>
                     <div id="<?php echo esc_attr($ajax_class); ?>" class="<?php echo t888f_get_sibling_class_sidebar($this->sidebar_pos); ?> d-flex flex-wrap col-product">
                         <?php
                         if ($wp_query->have_posts()) :
@@ -301,8 +418,8 @@ $layout_pos_for_class = $has_sidebar ? $this->sidebar_pos : 'no';
                     </div>
 
                     <?php if ($has_sidebar && $this->sidebar_pos === 'right') {
-                t888f_get_side_bar('right', $sidebar_id, 'right');
-            } ?>
+                                t888f_get_side_bar('right', $sidebar_id, 'right');
+                            } ?>
                 </div>
 
 
@@ -316,6 +433,9 @@ $layout_pos_for_class = $has_sidebar ? $this->sidebar_pos : 'no';
             <?php endif; ?>
             </div>
         </section>
+<?php
+}
+?>
 
 <?php
         /**

@@ -1,0 +1,78 @@
+.elementor-widget-t888-shop-product-grid .t888-shop-categories {
+    position: relative;
+    padding: 0 16px;
+    overflow-x: auto;
+    background: #f6f6f6;
+    scrollbar-width: thin;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    min-width: max-content;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 50px;
+    color: #111;
+    font-size: 16px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: color .25s ease;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: transparent;
+    content: "";
+    transition: background-color .25s ease;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link:hover,
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link.is-active {
+    color: #ea5501;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link.is-active {
+    font-weight: 700;
+}
+
+.elementor-widget-t888-shop-product-grid .t888-shop-categories__link.is-active::before {
+    background: #ea5501;
+}
+
+.elementor-widget-t888-shop-product-grid.is-category-loading > .elementor-widget-container {
+    opacity: .5;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.t888-shop-grid {
+    --t888-shop-columns: 3;
+    display: grid;
+    grid-template-columns: repeat(var(--t888-shop-columns), minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 32px;
+}
+
+.t888-shop-pagination { display: flex; justify-content: center; margin-top: 42px; }
+.t888-shop-pagination ul { display: flex; margin: 0; padding: 0; border: 1px solid #e8e8e8; list-style: none; }
+.t888-shop-pagination li + li { border-left: 1px solid #e8e8e8; }
+.t888-shop-pagination a,
+.t888-shop-pagination span { display: flex; align-items: center; justify-content: center; min-width: 38px; height: 38px; padding: 0 10px; color: #555; text-decoration: none; }
+.t888-shop-pagination .current { color: #ef4b00; }
+.t888-shop-grid__empty { margin: 0; padding: 24px; background: #f7f7f7; }
+
+@media (max-width: 767px) {
+    .elementor-widget-t888-shop-product-grid .t888-shop-categories { padding: 0 16px; }
+    .elementor-widget-t888-shop-product-grid .t888-shop-categories__list { gap: 20px; }
+    .t888-shop-grid { row-gap: 24px; }
+}

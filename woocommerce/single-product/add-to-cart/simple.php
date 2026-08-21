@@ -92,9 +92,9 @@ if ($product->is_in_stock()) :
 
 		<input type="hidden" name="add-to-cart" value="<?php echo esc_attr($product->get_id()); ?>" />
 
-		<div class="grouped-product-actions">
-			<div class="action1">
-				<div class="woocommerce-grouped-product-list-item__quantity">
+		<div class="grouped-product-actions product-detail__purchase">
+			<div class="action1 product-detail__purchase-row">
+				<div class="woocommerce-grouped-product-list-item__quantity product-detail__quantity">
 					<?php
 					do_action('woocommerce_before_add_to_cart_quantity');
 					woocommerce_quantity_input(array(
@@ -105,7 +105,7 @@ if ($product->is_in_stock()) :
 					do_action('woocommerce_after_add_to_cart_quantity');
 					?>
 				</div>
-				<button type="submit" class="single_add_to_cart_button button alt<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>">
+				<button type="submit" class="single_add_to_cart_button product-detail__purchase-button button alt<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>">
 					<?php echo esc_html($product->single_add_to_cart_text()); ?>
 				</button>
 

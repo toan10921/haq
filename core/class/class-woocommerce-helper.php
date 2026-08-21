@@ -88,6 +88,7 @@ if (class_exists("woocommerce")) {
                 add_action('wp_ajax_nopriv_t888_quickview_product', [$this, 'quick_view_product']);
                 // modify query shop, archive, product category, product tag
                 add_action('pre_get_posts', [$this, 'modify_param_woocommerce_main_query'], 20);
+                add_filter('posts_where', [$this, 'filter_main_query_by_product_name'], 10, 2);
 
                 // search form element
                 add_action('wp_ajax_ajax_search_form', [$this, 'ajax_search']);
@@ -95,7 +96,188 @@ if (class_exists("woocommerce")) {
                 // add set to cart elemet
                 add_action('wp_ajax_t888_add_set_to_cart', [$this, 't888_ajax_add_set_to_cart']);
                 add_action('wp_ajax_nopriv_t888_add_set_to_cart', [$this, 't888_ajax_add_set_to_cart']);
+
+                // Dedicated endpoint for the Elementor shop category filter.
+                // Do not fetch the full Elementor preview URL because preview
+                // nonces can return 403 for background requests.
+                add_action('wp_ajax_t888_filter_shop_products', [$this, 'ajax_filter_shop_products']);
+                add_action('wp_ajax_nopriv_t888_filter_shop_products', [$this, 'ajax_filter_shop_products']);
             }
+        }
+
+        public function ajax_filter_shop_products()
+        {
+            $category_slug = isset($_POST['category'])
+                ? sanitize_title(wp_unslash($_POST['category']))
+                : '';
+            $current_page = isset($_POST['page']) ? max(1, absint($_POST['page'])) : 1;
+            $per_page = isset($_POST['per_page']) ? absint($_POST['per_page']) : 9;
+            $per_page = max(1, min(48, $per_page));
+            $orderby = isset($_POST['orderby']) ? sanitize_key(wp_unslash($_POST['orderby'])) : 'menu_order';
+
+            $config = [];
+            if (!empty($_POST['config'])) {
+                $decoded_config = json_decode(wp_unslash($_POST['config']), true);
+                if (is_array($decoded_config)) {
+                    $config = $decoded_config;
+                }
+            }
+
+            $args = [
+                'post_type'           => 'product',
+                'post_status'         => 'publish',
+                'posts_per_page'      => $per_page,
+                'paged'               => $current_page,
+                'ignore_sticky_posts' => true,
+            ];
+
+            $tax_query = [];
+            $selected_categories = array_values(array_filter(array_map(
+                'absint',
+                (array) ($config['categories'] ?? [])
+            )));
+            if ($selected_categories) {
+                $tax_query[] = [
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_id',
+                    'terms'    => $selected_categories,
+                    'operator' => 'IN',
+                ];
+            }
+
+            if ($category_slug !== '') {
+                $category = get_term_by('slug', $category_slug, 'product_cat');
+                if (!$category instanceof \WP_Term) {
+                    wp_send_json_error(['message' => __('Invalid product category.', 'nebon')], 400);
+                }
+                $tax_query[] = [
+                    'taxonomy'         => 'product_cat',
+                    'field'            => 'term_id',
+                    'terms'            => [(int) $category->term_id],
+                    'operator'         => 'IN',
+                    'include_children' => true,
+                ];
+            }
+
+            if (function_exists('wc_get_product_visibility_term_ids')) {
+                $visibility = wc_get_product_visibility_term_ids();
+                if (!empty($visibility['exclude-from-catalog'])) {
+                    $tax_query[] = [
+                        'taxonomy' => 'product_visibility',
+                        'field'    => 'term_taxonomy_id',
+                        'terms'    => [$visibility['exclude-from-catalog']],
+                        'operator' => 'NOT IN',
+                    ];
+                }
+            }
+            if ($tax_query) {
+                $args['tax_query'] = array_merge(['relation' => 'AND'], $tax_query);
+            }
+
+            $min_price = isset($_POST['min_price']) && $_POST['min_price'] !== ''
+                ? (float) wp_unslash($_POST['min_price'])
+                : null;
+            $max_price = isset($_POST['max_price']) && $_POST['max_price'] !== ''
+                ? (float) wp_unslash($_POST['max_price'])
+                : null;
+            if ($min_price !== null || $max_price !== null) {
+                $args['meta_query'] = [[
+                    'key'     => '_price',
+                    'value'   => [$min_price ?? 0, $max_price ?? PHP_INT_MAX],
+                    'compare' => 'BETWEEN',
+                    'type'    => 'DECIMAL(10,2)',
+                ]];
+            }
+
+            $keyword = isset($_POST['product_search'])
+                ? sanitize_text_field(wp_unslash($_POST['product_search']))
+                : '';
+            if ($keyword !== '') {
+                $args['t888_product_name_search'] = $keyword;
+            }
+
+            switch ($orderby) {
+                case 'price':
+                    $args += ['meta_key' => '_price', 'orderby' => 'meta_value_num', 'order' => 'ASC'];
+                    break;
+                case 'price-desc':
+                    $args += ['meta_key' => '_price', 'orderby' => 'meta_value_num', 'order' => 'DESC'];
+                    break;
+                case 'popularity':
+                    $args += ['meta_key' => 'total_sales', 'orderby' => 'meta_value_num', 'order' => 'DESC'];
+                    break;
+                case 'rating':
+                    $args += ['meta_key' => '_wc_average_rating', 'orderby' => 'meta_value_num', 'order' => 'DESC'];
+                    break;
+                case 'date':
+                    $args += ['orderby' => 'date', 'order' => 'DESC'];
+                    break;
+                default:
+                    $args += ['orderby' => ['menu_order' => 'ASC', 'title' => 'ASC']];
+                    break;
+            }
+
+            $search_by_product_name = static function ($where, $query) {
+                $product_name = trim((string) $query->get('t888_product_name_search'));
+                if ($product_name === '') return $where;
+
+                global $wpdb;
+                $like = '%' . $wpdb->esc_like($product_name) . '%';
+                return $where . $wpdb->prepare(
+                    " AND {$wpdb->posts}.post_title LIKE %s",
+                    $like
+                );
+            };
+
+            add_filter('posts_where', $search_by_product_name, 10, 2);
+            try {
+                $query = new \WP_Query($args);
+            } finally {
+                remove_filter('posts_where', $search_by_product_name, 10);
+            }
+            $page_url = isset($_POST['page_url'])
+                ? esc_url_raw(wp_unslash($_POST['page_url']))
+                : wc_get_page_permalink('shop');
+            $page_url = wp_validate_redirect($page_url, wc_get_page_permalink('shop'));
+
+            $template_data = [
+                'query'                  => $query,
+                'current_page'           => $current_page,
+                'active_category_slug'   => $category_slug,
+                'show_category_filter'   => '',
+                'filter_categories'      => [],
+                'show_sale_badge'        => !empty($config['showSaleBadge']) ? 'yes' : '',
+                'show_contact_button'    => !empty($config['showContactButton']) ? 'yes' : '',
+                'contact_button_text'    => sanitize_text_field($config['contactButtonText'] ?? __('Liên hệ', 'nebon')),
+                'contact_button_link'    => [
+                    'url'         => esc_url_raw($config['contactButtonUrl'] ?? '#'),
+                    'is_external' => !empty($config['contactButtonExternal']),
+                    'nofollow'    => !empty($config['contactButtonNofollow']),
+                ],
+                'show_pagination'        => !empty($config['showPagination']) ? 'yes' : '',
+                'products_per_page'      => $per_page,
+                'categories'             => $selected_categories,
+                'pagination_base_url'    => $page_url,
+            ];
+
+            $html = tech888f_get_template_elementor_widget(
+                't888-shop-product-grid',
+                false,
+                $template_data,
+                false
+            );
+
+            $total = (int) $query->found_posts;
+            $start = $total ? (($current_page - 1) * $per_page) + 1 : 0;
+            $end = min($current_page * $per_page, $total);
+
+            wp_send_json_success([
+                'html'     => $html,
+                'category' => $category_slug,
+                'total'    => $total,
+                'start'    => $start,
+                'end'      => $end,
+            ]);
         }
 
         function modify_param_woocommerce_main_query($query)
@@ -167,6 +349,13 @@ if (class_exists("woocommerce")) {
                     $query->set('s', sanitize_text_field($_GET['s']));
                 }
 
+                if (!empty($_GET['product_search']) && is_scalar($_GET['product_search'])) {
+                    $query->set(
+                        't888_main_product_name_search',
+                        sanitize_text_field(wp_unslash((string) $_GET['product_search']))
+                    );
+                }
+
                 if (isset($_GET['product_cat']) && !empty($_GET['product_cat'])) {
                     $categories = explode(',', sanitize_text_field($_GET['product_cat']));
                     $tax_query[] = [
@@ -178,6 +367,29 @@ if (class_exists("woocommerce")) {
                     $query->set('tax_query', array_merge(['relation' => 'AND'], $tax_query));
                 }
             }
+        }
+
+        /**
+         * Restrict the WooCommerce archive query to product titles.
+         *
+         * The Shop Product Search widget uses `product_search` instead of the
+         * native `s` parameter so WordPress does not also search descriptions
+         * and excerpts.
+         */
+        public function filter_main_query_by_product_name($where, $query)
+        {
+            $keyword = trim((string) $query->get('t888_main_product_name_search'));
+            if ($keyword === '') {
+                return $where;
+            }
+
+            global $wpdb;
+            $like = '%' . $wpdb->esc_like($keyword) . '%';
+
+            return $where . $wpdb->prepare(
+                " AND {$wpdb->posts}.post_title LIKE %s",
+                $like
+            );
         }
 
         /**

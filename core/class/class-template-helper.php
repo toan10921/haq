@@ -43,6 +43,28 @@ if (!class_exists('TemplateHelper')) {
                     array('elementor-frontend'),
                     ELEMENTOR_VERSION
                 );
+
+                // Header/footer templates are rendered after wp_head(). Enqueue widget-specific
+                // styles here so Elementor Social Icons look identical in editor and frontend.
+                wp_enqueue_style(
+                    't888f-elementor-widget-social-icons',
+                    trailingslashit(ELEMENTOR_ASSETS_URL) . 'css/widget-social-icons.min.css',
+                    array('elementor-frontend'),
+                    ELEMENTOR_VERSION
+                );
+            }
+
+            // Header/footer content is rendered after wp_head(), so dependencies requested
+            // from inside a custom widget's render() method would otherwise be printed too late.
+            $button_css_path = get_template_directory() . '/assets/css/elementor/t888-button.css';
+            if (file_exists($button_css_path)) {
+                wp_enqueue_style(
+                    'elementor-t888-button',
+                    get_template_directory_uri() . '/assets/css/elementor/t888-button.css',
+                    array(),
+                    filemtime($button_css_path),
+                    'all'
+                );
             }
 
             // Enqueue the generated CSS file for this Elementor template.
@@ -392,6 +414,41 @@ if (!class_exists('TemplateHelper')) {
             // Enqueue main assets
             wp_enqueue_style('t888f-theme', get_template_directory_uri() . '/assets/css/theme.css', array(), ASSETS_VER, 'all');
             wp_enqueue_style('t888f-hien', get_template_directory_uri() . '/assets/css/woocommerce-template.css', array(), ASSETS_VER, 'all');
+            $contact_form_css_path = get_template_directory() . '/assets/css/components/contact-form.css';
+            if (file_exists($contact_form_css_path)) {
+                wp_enqueue_style(
+                    't888f-contact-form',
+                    get_template_directory_uri() . '/assets/css/components/contact-form.css',
+                    array('t888f-theme'),
+                    filemtime($contact_form_css_path),
+                    'all'
+                );
+            }
+            // The Elementor header is rendered after wp_head(), therefore its custom button
+            // cannot wait until render() to request this stylesheet.
+            $button_css_path = get_template_directory() . '/assets/css/elementor/t888-button.css';
+            if (file_exists($button_css_path)) {
+                wp_enqueue_style(
+                    'elementor-t888-button',
+                    get_template_directory_uri() . '/assets/css/elementor/t888-button.css',
+                    array('t888f-theme'),
+                    filemtime($button_css_path),
+                    'all'
+                );
+            }
+            $product_card_css_path = get_template_directory() . '/assets/css/components/product-card.css';
+            $product_card_css_ver = file_exists($product_card_css_path) ? filemtime($product_card_css_path) : ASSETS_VER;
+            wp_enqueue_style('t888f-product-card', get_template_directory_uri() . '/assets/css/components/product-card.css', array('t888f-theme'), $product_card_css_ver, 'all');
+            $industrial_counter_css_path = get_template_directory() . '/assets/css/components/industrial-counter.css';
+            if (file_exists($industrial_counter_css_path)) {
+                wp_enqueue_style(
+                    't888f-industrial-counter',
+                    get_template_directory_uri() . '/assets/css/components/industrial-counter.css',
+                    array('t888f-theme'),
+                    filemtime($industrial_counter_css_path),
+                    'all'
+                );
+            }
             // Enqueue main script
             wp_enqueue_script('t888f-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), ASSETS_VER, true);
             wp_enqueue_script('t888f-ajax', get_template_directory_uri() . '/assets/js/ajax.js', array('jquery'), ASSETS_VER, true);
@@ -414,7 +471,9 @@ if (!class_exists('TemplateHelper')) {
 
             // if (check_woocommerce_exists() && is_product()) {
             // import directly to grid-default.css because it is used in quickview
-            wp_enqueue_style('t888f-single-product', get_template_directory_uri() . '/assets/css/template-parts/layout/single-product.css', array(), ASSETS_VER, 'all');
+            $single_product_css_path = get_template_directory() . '/assets/css/template-parts/layout/single-product.css';
+            $single_product_css_ver = file_exists($single_product_css_path) ? filemtime($single_product_css_path) : ASSETS_VER;
+            wp_enqueue_style('t888f-single-product', get_template_directory_uri() . '/assets/css/template-parts/layout/single-product.css', array(), $single_product_css_ver, 'all');
             wp_enqueue_script('t888f-single-product', get_template_directory_uri() . '/assets/js/single-product.js', array('jquery'), ASSETS_VER, true);
             // }
             // check if is woocommerce page

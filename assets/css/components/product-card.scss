@@ -1,0 +1,171 @@
+.t888-shop-card {
+    min-width: 0;
+
+    &__media {
+        position: relative;
+        overflow: hidden;
+    }
+
+    &__image {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: #f3f7fb;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform .35s ease;
+        }
+    }
+
+    &:hover &__image img {
+        transform: scale(1.055);
+    }
+
+    &__sale {
+        position: absolute;
+        top: 9px;
+        right: 9px;
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: #ef4b00;
+        color: #fff;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    &__contact {
+        position: absolute !important;
+        z-index: 4;
+        inset: auto 0 0;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        margin: 0 !important;
+        padding: 8px 48px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #1f1f1f;
+        color: #fff !important;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.25;
+        text-align: center;
+        text-decoration: none !important;
+        box-shadow: none !important;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: transform .28s ease, opacity .28s ease, visibility .28s ease, background-color .25s ease;
+
+        &::after {
+            content: none !important;
+            display: none !important;
+        }
+
+        &:hover,
+        &:focus {
+            background: #ea5501;
+            color: #fff !important;
+        }
+    }
+
+    &:hover &__contact,
+    &:focus-within &__contact {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    &__contact-text {
+        display: block;
+    }
+
+    &__contact-icon {
+        position: absolute;
+        right: 9px;
+        display: grid;
+        place-items: center;
+        width: 29px;
+        height: 29px;
+        border-radius: 50%;
+        background: #090909;
+        color: #fff;
+
+        svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    &__meta {
+        padding-top: 14px;
+    }
+
+    &__title {
+        min-width: 0;
+        margin: 0;
+        color: #111;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.45;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            font-family: "space grotesk", serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 25px;
+            }
+    }
+
+    &__price {
+        color: #252525;
+        font-size: 12px;
+        line-height: 1.45;
+        white-space: nowrap;
+
+        del {
+            margin-right: 4px;
+            color: #999;
+            font-size: .88em;
+        }
+
+        ins {
+            background: none;
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    .t888-shop-card__contact {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 767px) {
+    .t888-shop-card__sale {
+        width: 36px;
+        height: 36px;
+    }
+}

@@ -2,7 +2,7 @@
 
 /** define global constant */
 
-define('ASSETS_VER', '1.5.5');
+define('ASSETS_VER', '1.5.6');
 
 /**
  * require global config
@@ -43,6 +43,7 @@ require_once trailingslashit(get_template_directory()) . 'core/customizer/custom
 require_once trailingslashit(get_template_directory()) . 'core/post-type/mega-page.php';
 require_once trailingslashit(get_template_directory()) . 'core/post-type/header-page.php';
 require_once trailingslashit(get_template_directory()) . 'core/post-type/footer-page.php';
+require_once trailingslashit(get_template_directory()) . 'core/post-type/team-member.php';
 
 
 require_once trailingslashit(get_template_directory()) . 'core/widget/list-post.php';
@@ -60,5 +61,6 @@ require_once trailingslashit(get_template_directory()) . 'core/custom-fields/met
 require_once trailingslashit(get_template_directory()) . 'core/custom-fields/metabox-page-controller.php';
 require_once trailingslashit(get_template_directory()) . 'core/custom-fields/metabox-header-controller.php';
 require_once trailingslashit(get_template_directory()) . 'core/custom-fields/metabox-footer-controller.php';
+require_once trailingslashit(get_template_directory()) . 'core/custom-fields/metabox-team-member-controller.php';
 
 require_once trailingslashit(get_template_directory()) . 'core/function.php';

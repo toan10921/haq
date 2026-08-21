@@ -86,6 +86,80 @@ class T888_Pet_Info_Box extends T888_Widget_Base
         );
 
         $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_title_section',
+            [
+                'label' => __('Title', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title_color',
+            [
+                'label' => __('Text Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t888-pet-info-box .info-title' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title_typography',
+                'selector' => '{{WRAPPER}} .t888-pet-info-box .info-title',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title_spacing',
+            [
+                'label' => __('Bottom Spacing', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['px', 'em'],
+                'range' => [
+                    'px' => ['min' => 0, 'max' => 100],
+                    'em' => ['min' => 0, 'max' => 10, 'step' => 0.1],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-pet-info-box .info-title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'style_description_section',
+            [
+                'label' => __('Description', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'description_color',
+            [
+                'label' => __('Text Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t888-pet-info-box .info-desc' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'selector' => '{{WRAPPER}} .t888-pet-info-box .info-desc',
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     protected function render()

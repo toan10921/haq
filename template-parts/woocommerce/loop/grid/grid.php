@@ -7,6 +7,36 @@ if (!isset($product) || !is_a($product, 'WC_Product')) {
     }
 }
 
+if (!empty($compact_card)) {
+    $contact_text = !empty($contact_button_text) ? $contact_button_text : __('Liên hệ', 'nebon');
+    $contact_url = !empty($contact_button_url) ? $contact_button_url : '#';
+    ?>
+    <article class="t888-shop-card" role="listitem">
+        <div class="t888-shop-card__media">
+            <a class="t888-shop-card__image" href="<?php echo esc_url($product->get_permalink()); ?>" aria-label="<?php echo esc_attr($product->get_name()); ?>">
+                <?php echo wp_kses_post($product->get_image('woocommerce_thumbnail', ['loading' => 'lazy'])); ?>
+                <?php if ($product->is_on_sale()) : ?>
+                    <span class="t888-shop-card__sale"><?php esc_html_e('Sale!', 'nebon'); ?></span>
+                <?php endif; ?>
+            </a>
+            <a class="t888-shop-card__contact" href="<?php echo esc_url($contact_url); ?>">
+                <span class="t888-shop-card__contact-text"><?php echo esc_html($contact_text); ?></span>
+                <span class="t888-shop-card__contact-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M7 17 17 7M10 7h7v7"/></svg>
+                </span>
+            </a>
+        </div>
+        <div class="t888-shop-card__meta">
+            <div class="t888-shop-card__price"><?php echo wp_kses_post($product->get_price_html()); ?></div>
+            <h3 class="t888-shop-card__title">
+                <a href="<?php echo esc_url($product->get_permalink()); ?>"><?php echo esc_html($product->get_name()); ?></a>
+            </h3>
+        </div>
+    </article>
+    <?php
+    return;
+}
+
 $opt_size_str = get_theme_mod('custom_grid_grid_setting', '');
 $opt_size_arr = [];
 if (preg_match('/^(\d{2,5})x(\d{2,5})$/', $opt_size_str, $m)) {

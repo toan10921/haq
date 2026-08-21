@@ -506,3 +506,171 @@ body.mobile-menu-open{ overflow: hidden; }
 .t888-menu-animation-fade .sub-menu {
     animation: fadeInDown 0.3s ease;
 }
+
+/* Style 5: horizontal navigation with a top active indicator. */
+.t888-menu-style5 {
+    position: relative;
+    z-index: 1001;
+    width: 100%;
+    background: #fff;
+    font-family: var(--font-family, Poppins, sans-serif);
+}
+
+.t888-menu-style5 ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.t888-menu-style5__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 0 16px;
+}
+
+.t888-menu-style5__list > li {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+
+.t888-menu-style5__list > li > a.menu-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    padding: 28px 10px 26px;
+    color: #474747;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 1.4;
+    text-decoration: none;
+    text-transform: none;
+    white-space: nowrap;
+    transition: color 0.2s ease;
+}
+
+.t888-menu-style5__list > li > a.menu-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: #ee4d0b;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.t888-menu-style5__list > li:hover > a.menu-link,
+.t888-menu-style5__list > li:focus-within > a.menu-link,
+.t888-menu-style5__list > li.current-menu-item > a.menu-link,
+.t888-menu-style5__list > li.current-menu-parent > a.menu-link,
+.t888-menu-style5__list > li.current-menu-ancestor > a.menu-link,
+.t888-menu-style5__list > li.current_page_item > a.menu-link,
+.t888-menu-style5__list > li.current_page_ancestor > a.menu-link {
+    color: #ee4d0b;
+}
+
+.t888-menu-style5__list > li:hover > a.menu-link::before,
+.t888-menu-style5__list > li:focus-within > a.menu-link::before,
+.t888-menu-style5__list > li.current-menu-item > a.menu-link::before,
+.t888-menu-style5__list > li.current-menu-parent > a.menu-link::before,
+.t888-menu-style5__list > li.current-menu-ancestor > a.menu-link::before,
+.t888-menu-style5__list > li.current_page_item > a.menu-link::before,
+.t888-menu-style5__list > li.current_page_ancestor > a.menu-link::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.t888-menu-style5__list li.menu-item-has-children > a.menu-link::after,
+.t888-menu-style5__list li.has-mega-menu > a.menu-link::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    margin: -4px 1px 0 9px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+    flex: 0 0 auto;
+}
+
+.t888-menu-style5__list .sub-menu,
+.t888-menu-style5__list .mega-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    margin: 0;
+    padding: 12px 0;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 1002;
+}
+
+.t888-menu-style5__list li:hover > .sub-menu,
+.t888-menu-style5__list li:focus-within > .sub-menu,
+.t888-menu-style5__list li:hover > .mega-menu,
+.t888-menu-style5__list li:focus-within > .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.t888-menu-style5__list .sub-menu li {
+    position: relative;
+}
+
+.t888-menu-style5__list .sub-menu a.menu-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 20px;
+    color: #474747;
+    font-size: 15px;
+    line-height: 1.4;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.t888-menu-style5__list .sub-menu a.menu-link:hover,
+.t888-menu-style5__list .sub-menu a.menu-link:focus {
+    color: #ee4d0b;
+    background: #fafafa;
+}
+
+.t888-menu-style5__list .sub-menu .sub-menu {
+    top: -12px;
+    left: 100%;
+}
+
+.t888-menu-style5__empty {
+    display: inline-block;
+    padding: 18px 20px;
+    color: #474747;
+    text-decoration: none;
+    border: 1px dashed #b5b5b5;
+}
+
+@media (max-width: 767px) {
+    .t888-menu-style5__list {
+        column-gap: 8px;
+    }
+
+    .t888-menu-style5__list > li > a.menu-link {
+        min-height: 72px;
+        padding-top: 20px;
+        padding-bottom: 18px;
+        font-size: 15px;
+    }
+}

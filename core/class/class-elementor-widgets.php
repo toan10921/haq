@@ -20,6 +20,7 @@ class Custom_Elementor_Widgets
 
     public static $list_widgets = [
         't888-slider',
+        't888-hero-slider',
         't888-title',
         't888-accordion',
         't888-testimonial',
@@ -52,6 +53,11 @@ class Custom_Elementor_Widgets
         't888-social-list',
         't888-list-post',
         't888-list-product',
+        't888-shop-toolbar',
+        't888-shop-product-grid',
+        't888-shop-search',
+        't888-shop-categories',
+        't888-shop-price-filter',
         't888-product-info',
         't888-button',
         't888-feature-products',
@@ -74,6 +80,8 @@ class Custom_Elementor_Widgets
         't888-pet-shop-carousel',
         't888-footer-newsletter',
         't888-footer-features',
+        't888-service-features',
+        't888-service-tabs',
         't888-footer-contact',
         't888-footer-social-payment',
         't888-footer-copyright',

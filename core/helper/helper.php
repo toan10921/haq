@@ -315,7 +315,7 @@ if (!function_exists('t888f_breadcrumb')) {
             $title_above_breadcrumb = __('Search Results for: ', 'nebon') . get_search_query();
         } elseif (is_404()) {
             $title_above_breadcrumb = __('404 Not Found', 'nebon');
-        } elseif (is_singular('product') || is_singular('post') || is_page()) {
+        } elseif (is_singular('product') || is_singular('post') || is_singular('team_member') || is_page()) {
             $title_above_breadcrumb = get_the_title();
         } else {
             $title_above_breadcrumb = '';
@@ -413,6 +413,18 @@ if (!function_exists('t888f_breadcrumb')) {
                         echo apply_filters('tech888f_output_content', $step) . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url(get_term_link($cat)) . '">' . esc_html($cat->name) . '</a>';
                     }
                 }
+            } elseif ($post_type === 'team_member') {
+                $team_archive_url = get_post_type_archive_link('team_member');
+
+                if ($team_archive_url) {
+                    echo apply_filters('tech888f_output_content', $step)
+                        . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($team_archive_url) . '">'
+                        . esc_html__('Team Members', 'nebon')
+                        . '</a>';
+                }
+
+                echo apply_filters('tech888f_output_content', $step)
+                    . '<span>' . esc_html(get_the_title()) . '</span>';
             }
         } elseif (is_page()) {
             $has_ancestor = false;

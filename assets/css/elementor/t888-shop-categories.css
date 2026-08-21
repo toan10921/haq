@@ -1,0 +1,73 @@
+.elementor-widget-t888-shop-categories .t888-shop-categories {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f6f6f6;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories::before {
+    position: absolute;
+    top: 0;
+    left: 24px;
+    width: 3px;
+    height: 9px;
+    background: #ef4b00;
+    content: "";
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__title {
+    margin: 0 0 20px;
+    color: #111;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__list {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__list .t888-shop-categories__list {
+    padding-left: 15px;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__item {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__link {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 0;
+    border-bottom: 1px solid #dedede;
+    color: #777;
+    font-size: 15px;
+    line-height: 1.35;
+    text-decoration: none;
+    transition: color .2s ease, padding-left .2s ease;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__item:last-child > .t888-shop-categories__link {
+    border-bottom: 0;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__link:hover,
+.elementor-widget-t888-shop-categories .t888-shop-categories__link.is-active {
+    padding-left: 4px;
+    color: #ef4b00;
+}
+
+.elementor-widget-t888-shop-categories .t888-shop-categories__count {
+    flex: 0 0 auto;
+    font-size: .9em;
+}

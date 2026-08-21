@@ -22,25 +22,17 @@ if (! defined('ABSPATH')) {
 
 global $product;
 ?>
-<div class="product_meta">
+<div class="product_meta product-detail__meta">
 	<?php do_action('woocommerce_product_meta_start'); ?>
 
-	
+	<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
 		<div class="meta_row">
-    <span class="meta_label"><?php esc_html_e('SKU:', 'nebon'); ?></span>
-    <span class="meta_value">
-        <?php
-        if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) {
-            // fix unit test
-			if ($sku = $product->get_sku()) {
-				echo esc_html($sku);
-			} else {
-				echo esc_html__('N/A', 'nebon');
-			}
-        }
-        ?>
-    </span>
-</div>
+			<span class="meta_label"><?php esc_html_e('SKU:', 'nebon'); ?></span>
+			<span class="meta_value">
+				<?php echo esc_html($product->get_sku() ?: __('N/A', 'nebon')); ?>
+			</span>
+		</div>
+	<?php endif; ?>
 
 
 	<?php

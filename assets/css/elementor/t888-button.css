@@ -13,3 +13,95 @@
 .t888-button.style2:hover{
     color: var(--secondary-color);
 }
+
+.t888-button-style3-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.t888-button.style3 {
+    --t888-button-style3-primary: #ea5501;
+    --t888-button-style3-hover: #ff5c00;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    min-height: 58px;
+    padding: 15px 32px;
+    border: 0;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    background: var(--t888-button-style3-primary);
+    color: #fff;
+    font-family: var(--font-family, Poppins, sans-serif);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.5s ease;
+}
+
+.t888-button.style3::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 38%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: skewX(-24deg);
+    transition: left 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Prevent the theme-wide .button::after overlay from changing this button to --third-color. */
+.t888-button.button.style3::after {
+    content: none !important;
+    display: none;
+}
+
+.t888-button.style3:hover,
+.t888-button.style3:focus {
+    background: var(--t888-button-style3-hover);
+    color: #fff;
+    text-decoration: none;
+}
+
+.t888-button.style3:hover::before,
+.t888-button.style3:focus::before {
+    left: 135%;
+}
+
+.t888-button.style3 .t888-button__text,
+.t888-button.style3 .t888-button__icon {
+    position: relative;
+    z-index: 1;
+}
+
+.t888-button.style3 .t888-button__text {
+    line-height: inherit;
+}
+
+.t888-button.style3 .t888-button__icon {
+    display: inline-flex;
+    margin-left: 14px;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.t888-button.style3 .t888-button__icon svg {
+    display: block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+}

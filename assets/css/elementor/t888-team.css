@@ -1,61 +1,192 @@
-.t888-team{
-    padding: 0 85px;
-    border: 1px solid var(--forth-color);
+.t888-team {
+    position: relative;
+    padding: 0;
+    border: 0;
 }
-.t888-team img{
+
+.t888-team .t888-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.t888-team .team-member-item {
+    position: relative;
+    padding-bottom: 10px;
+    overflow: visible;
+}
+
+.t888-team .member-profile-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.t888-team .member-profile-link:focus-visible {
+    outline: 2px solid #f15a00;
+    outline-offset: 4px;
+}
+
+.t888-team .member-photo {
+    position: relative;
+    overflow: hidden;
+    background: #f4f4f4;
+    clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 50px, 100% 100%, 0 100%);
+}
+
+.t888-team .member-photo img {
+    display: block;
     width: 100%;
     height: auto;
-    display: block;
-    aspect-ratio: 1.425;
+    aspect-ratio: 0.83;
     object-fit: cover;
+    object-position: center top;
+    transition: transform 0.45s ease;
 }
-.member-name{
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 16px;
+
+/* Thanh cam ở trạng thái mặc định. */
+.t888-team .member-photo::after {
+    content: "";
+    position: absolute;
+    top: 65px;
+    right: 0;
+    width: 5px;
+    height: 38px;
+    background: #f15a00;
+    transition: opacity 0.25s ease;
 }
-.member-position{
+
+.t888-team .member-name,
+.t888-team .member-position {
+    position: relative;
+    z-index: 3;
+    width: calc(100% - 112px);
+    margin-right: auto;
+    margin-left: auto;
+    box-sizing: border-box;
+    background: #fff;
     text-align: center;
+}
+
+.t888-team .member-name {
+    margin-top: -32px;
+    margin-bottom: 0;
+    padding: 23px 15px 4px;
+    color: #161616;
+    font-size: 24px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.t888-team .member-position {
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    padding: 5px 15px 28px;
+    border-bottom: 2px solid transparent;
+    color: #444;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: border-color 0.25s ease;
 }
-.member-socials{
+
+/* Social nằm trên ảnh và chỉ xuất hiện khi hover. */
+.t888-team .member-socials {
+    position: absolute;
+    z-index: 4;
+    top: 65px;
+    right: 0;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 50px;
+    gap: 0;
+    margin: 0;
+    padding: 0 8px;
+    background: #f15a00;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateX(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
 }
-.member-socials a{
+
+.t888-team .member-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 38px;
     height: 38px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--fifth-color);
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
 }
-.t888-team .swiper-button-prev{
-    left: 30px;
-     top: 35%;
-     border: none;
-     z-index: 5;
+
+/* Đổi biểu tượng Twitter cũ thành biểu tượng X như thiết kế. */
+.t888-team .member-socials a[aria-label="Twitter"] i {
+    display: none;
 }
-.t888-team .swiper-button-next{
-    right: 30px;
-     top: 35%;
-     border: none;
-     z-index: 5;
+
+.t888-team .member-socials a[aria-label="Twitter"]::before {
+    content: "X";
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.t888-team .member-socials a:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+}
+
+.t888-team .team-member-item:hover .member-photo::after,
+.t888-team .team-member-item:focus-within .member-photo::after {
+    opacity: 0;
+}
+
+.t888-team .team-member-item:hover .member-photo img {
+    transform: scale(1.02);
+}
+
+.t888-team .team-member-item:hover .member-socials,
+.t888-team .team-member-item:focus-within .member-socials {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+.t888-team .team-member-item:hover .member-position,
+.t888-team .team-member-item:focus-within .member-position {
+    border-bottom-color: #f15a00;
 }
 
 @media (max-width: 575px) {
-.t888-team{
-    padding: 0;
+    .t888-team .t888-team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .t888-team .member-photo {
+        clip-path: polygon(0 0, calc(100% - 38px) 0, 100% 38px, 100% 100%, 0 100%);
+    }
+
+    .t888-team .member-name,
+    .t888-team .member-position {
+        width: calc(100% - 50px);
+    }
+
+    .t888-team .member-name {
+        font-size: 21px;
+    }
+
+    .t888-team .member-photo::after,
+    .t888-team .member-socials {
+        top: 55px;
+    }
+
 }
-.t888-team .swiper-button-next{
-    right: 10px;
-    top: 29%;
-}
-.t888-team .swiper-button-prev{
-    left: 10px;
-    top: 29%;
-}
+
+@media (min-width: 576px) and (max-width: 1024px) {
+    .t888-team .t888-team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }

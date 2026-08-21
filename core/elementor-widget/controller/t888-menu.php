@@ -63,7 +63,7 @@ class T888_Menu extends T888_Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'options' => $menu_options,
                 'default' => '',
-                'description' => __('Choose a specific menu to display. If a theme location is selected below and has a menu assigned, that location will override this selection.', 'nebon'),
+                'description' => __('Choose the WordPress menu to display. Style 5 always uses this selected menu; other styles may use the assigned location below.', 'nebon'),
             ]
         );
 
@@ -74,7 +74,7 @@ class T888_Menu extends T888_Widget_Base
                 'type' => Controls_Manager::SELECT,
                 'options' => $this->get_all_menu_locations(),
                 'default' => '',
-                'description' => __('Select the theme location to display the menu. This will override the selected menu above if a menu is assigned to this location.', 'nebon'),
+                'description' => __('Optional location fallback. In Style 5 it is used only when Select Menu is empty.', 'nebon'),
             ]
         );
 
@@ -116,8 +116,133 @@ class T888_Menu extends T888_Widget_Base
                     'style2' => __('Style 2 - Header 4', 'nebon'),
                     'style3' => __('Style 3 - Mobile menu', 'nebon'),
                     'style4' => __('Style 4 - Vertical category menu', 'nebon'),
+                    'style5' => __('Style 5 - Top line navigation', 'nebon'),
                 ],
                 'default' => 'style1',
+            ]
+        );
+
+        $style5_repeater = new Repeater();
+
+        $this->add_control(
+            'style5_source',
+            [
+                'label' => __('Style 5 Menu Source', 'nebon'),
+                'type' => Controls_Manager::SELECT,
+                'default' => 'custom',
+                'options' => [
+                    'custom' => __('Custom Items', 'nebon'),
+                    'wordpress' => __('WordPress Menu (Recommended)', 'nebon'),
+                ],
+                'condition' => [
+                    'style' => 'style5-custom-legacy',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'style5_menu_id',
+            [
+                'label' => __('Select WordPress Menu', 'nebon'),
+                'type' => Controls_Manager::SELECT,
+                'options' => $menu_options,
+                'default' => '',
+                'description' => __('Build unlimited nested levels in Appearance > Menus, then select that menu here.', 'nebon'),
+                'condition' => [
+                    'style' => 'style5-custom-legacy',
+                    'style5_source' => 'wordpress',
+                ],
+            ]
+        );
+
+        $style5_repeater->add_control(
+            'item_label',
+            [
+                'label' => __('Menu Label', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Menu Item', 'nebon'),
+                'label_block' => true,
+            ]
+        );
+
+        $style5_repeater->add_control(
+            'item_link',
+            [
+                'label' => __('Link', 'nebon'),
+                'type' => Controls_Manager::URL,
+                'placeholder' => 'https://your-link.com',
+                'default' => [
+                    'url' => '#',
+                ],
+            ]
+        );
+
+        $style5_repeater->add_control(
+            'item_active',
+            [
+                'label' => __('Active Item', 'nebon'),
+                'type' => Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'nebon'),
+                'label_off' => __('No', 'nebon'),
+                'return_value' => 'yes',
+                'default' => '',
+            ]
+        );
+
+        $style5_repeater->add_control(
+            'submenu_items',
+            [
+                'label' => __('Submenu Items', 'nebon'),
+                'type' => Controls_Manager::TEXTAREA,
+                'rows' => 8,
+                'placeholder' => "Shop | /shop\n> Products | /products\n> Product Details | /product-details\n>> Product Manual | /manual",
+                'description' => __('One item per line: Label | URL. Add > at the start for a child, >> for a grandchild, and so on.', 'nebon'),
+            ]
+        );
+
+        $this->add_control(
+            'style5_items',
+            [
+                'label' => __('Menu Items', 'nebon'),
+                'type' => Controls_Manager::REPEATER,
+                'fields' => $style5_repeater->get_controls(),
+                'default' => [
+                    [
+                        'item_label' => __('Home', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'item_active' => 'yes',
+                    ],
+                    [
+                        'item_label' => __('About', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'submenu_items' => __('Our Story', 'nebon') . ' | #',
+                    ],
+                    [
+                        'item_label' => __('Pages', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'submenu_items' => __('Shop', 'nebon') . ' | #',
+                    ],
+                    [
+                        'item_label' => __('Elements', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'submenu_items' => __('Gallery', 'nebon') . ' | #',
+                    ],
+                    [
+                        'item_label' => __('Blog', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'submenu_items' => __('Latest Posts', 'nebon') . ' | #',
+                    ],
+                    [
+                        'item_label' => __('Contact', 'nebon'),
+                        'item_link' => ['url' => '#'],
+                        'submenu_items' => __('Contact Us', 'nebon') . ' | #',
+                    ],
+                ],
+                'title_field' => '{{{ item_label }}}',
+                'condition' => [
+                    'style' => 'style5-custom-legacy',
+                    'style5_source' => 'custom',
+                ],
             ]
         );
 

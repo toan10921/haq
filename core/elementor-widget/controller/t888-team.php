@@ -50,7 +50,7 @@ class T888_Team extends T888_Widget_Base
      */
     public function get_script_depends()
     {
-        return ['elementor-t888-team', 'swiper'];
+        return [];
     }
 
     /**
@@ -65,7 +65,7 @@ class T888_Team extends T888_Widget_Base
      */
     public function get_style_depends()
     {
-        return ['elementor-t888-team', 'e-swiper'];
+        return ['elementor-t888-team'];
     }
     /**
      * Get widget categories.
@@ -85,6 +85,32 @@ class T888_Team extends T888_Widget_Base
             [
                 'label' => __('Team Members', 'nebon'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+        $this->add_control(
+            'team_source',
+            [
+                'label' => __('Data Source', 'nebon'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'manual',
+                'options' => [
+                    'manual' => __('Manual', 'nebon'),
+                    'dynamic' => __('Dynamic Team Members', 'nebon'),
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'dynamic_posts_per_page',
+            [
+                'label' => __('Number of Members', 'nebon'),
+                'type' => \Elementor\Controls_Manager::NUMBER,
+                'min' => 1,
+                'max' => 50,
+                'default' => 12,
+                'condition' => [
+                    'team_source' => 'dynamic',
+                ],
             ]
         );
 
@@ -131,6 +157,17 @@ class T888_Team extends T888_Widget_Base
                         'label' => __('Position', 'nebon'),
                         'type' => \Elementor\Controls_Manager::TEXT,
                         'default' => __('CEO', 'nebon'),
+                    ],
+                    [
+                        'name' => 'profile_link',
+                        'label' => __('Profile Page Link', 'nebon'),
+                        'type' => \Elementor\Controls_Manager::URL,
+                        'placeholder' => __('https://example.com/team/member-name', 'nebon'),
+                        'default' => [
+                            'url' => '',
+                            'is_external' => false,
+                            'nofollow' => false,
+                        ],
                     ],
                     [
                         'name' => 'facebook',
@@ -235,6 +272,9 @@ class T888_Team extends T888_Widget_Base
 
                 ],
                 'title_field' => '{{{ name }}}',
+                'condition' => [
+                    'team_source' => 'manual',
+                ],
             ]
         );
 

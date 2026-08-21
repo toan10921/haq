@@ -41,7 +41,17 @@
     display: block;
     width: 1em;
     height: 1em;
-    fill: currentColor;
+    color: inherit;
+}
+
+.t888-pet-info-box .info-icon svg:not([fill="none"]),
+.t888-pet-info-box .info-icon svg [fill]:not([fill="none"]) {
+    fill: currentColor !important;
+}
+
+.t888-pet-info-box .info-icon svg[stroke]:not([stroke="none"]),
+.t888-pet-info-box .info-icon svg [stroke]:not([stroke="none"]) {
+    stroke: currentColor !important;
 }
 
 .t888-pet-info-box .info-content {
@@ -51,22 +61,64 @@
 }
 
 .t888-pet-info-box h4.info-title {
-    font-family: var(--e-global-typography-primary-font-family), "Marcellus", serif !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    line-height: 1.2 !important;
-    text-transform: uppercase !important;
-    color: #000000 !important;
-    margin: 0 0 1px 0 !important;
-    padding: 0 !important;
-    letter-spacing: 0.5px !important;
+    font-family: var(--e-global-typography-primary-font-family), "Marcellus", serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #000000;
+    margin: 0 0 1px 0;
+    padding: 0;
+    letter-spacing: 0.5px;
 }
 
 .t888-pet-info-box p.info-desc {
-    font-size: 13px !important;
-    font-weight: 400 !important;
-    line-height: 0.7 !important;
-    color: #7a7a7a !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 0.7;
+    color: #7a7a7a;
+    margin: 0;
+    padding: 0;
+}
+
+/* Contact information variant: orange clipped icon box. */
+.contact-info-card .t888-pet-info-box {
+    align-items: center;
+    padding: 0;
+}
+
+.contact-info-card .t888-pet-info-box::before {
+    display: none;
+}
+
+.contact-info-card .t888-pet-info-box .info-icon {
+    width: 70px;
+    height: 90px;
+    min-width: 70px;
+    margin-right: 28px;
+    box-sizing: border-box;
+    background-color: #f45100;
+    color: #ffffff !important;
+    font-size: 34px;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 16px) 0,
+        100% 16px,
+        100% 100%,
+        0 100%
+    );
+}
+
+.contact-info-card .t888-pet-info-box .info-icon svg {
+    width: 34px;
+    height: 34px;
+}
+
+@media (max-width: 767px) {
+    .contact-info-card .t888-pet-info-box .info-icon {
+        width: 64px;
+        height: 82px;
+        min-width: 64px;
+        margin-right: 20px;
+    }
 }

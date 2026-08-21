@@ -12,6 +12,7 @@ if ($query->have_posts()) :
                     $slug,
                     [
                         'animation_class' => $animation_class,
+                        'compact_card' => !empty($use_shop_card),
                     ],
                     true
                 );

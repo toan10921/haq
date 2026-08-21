@@ -28,60 +28,160 @@
 }
 
 /* style2 */
-/* .t888-testimonial.style2 .swiper-inner-testimonial{
-    align-items: flex-start;
-} */
+.t888-testimonial.style2 .swiper-slide {
+    height: auto;
+}
+
+.t888-testimonial.style2 .swiper-inner-testimonial{
+    position: relative;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 315px;
+    padding: 32px 30px 28px;
+    overflow: hidden;
+    background: #fff;
+    clip-path: polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%);
+}
+
+.t888-testimonial.style2 .testimonial-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.t888-testimonial.style2 .testimonial-author {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    gap: 18px;
+}
+
+.t888-testimonial.style2 .testimonial-avatar {
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    margin: 0;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.t888-testimonial.style2 .testimonial-author-info {
+    min-width: 0;
+}
+
+.t888-testimonial.style2 .testimonial-company-logo {
+    width: auto;
+    max-width: 100px;
+    max-height: 42px;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
 .t888-testimonial.style2 .content-testimonial{
     text-align: left;
     padding: 0;
-    font-size: 0.875rem;
-    line-height: 2.25rem;
-    /* opacity: 0.6; */
-}
-.t888-testimonial.style2 .name-testimonial{
-font-size: 1.5rem;
-line-height: 2.25rem;
-position: relative;
-padding-left: 60px;
-font-family: var(--font-philosopher);
-font-weight: bold;
-margin-top: 10px;
-}
-.t888-testimonial.style2 .name-testimonial::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50px;
-    height: 1px;
-    background-color: var(--primary-color);
-}
-.t888-testimonial.style2 .quote-icon-wrapper{
-    position: relative;
-}
-.t888-testimonial.style2 .quote-icon-wrapper  i{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.t888-testimonial.style2 .t888-pagination-line{
-    justify-content: center;
- padding-top: 60px;
-}
-.quote-rating-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-.rating-stars {
-    display: flex;
-    gap: 3px;
+    margin: 24px 0 28px;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #6f6f6f;
 }
 
-.rating-stars i {
+.t888-testimonial.style2 .name-testimonial{
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
     font-size: 18px;
-    color: #ffc107;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #262626;
+}
+
+.t888-testimonial.style2 .position-testimonial {
+    margin: 4px 0 0;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #6f6f6f;
+}
+
+.t888-testimonial.style2 .testimonial-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 58px;
+    padding-top: 28px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.t888-testimonial.style2 .t888-pagination-line{
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.t888-testimonial.style2 .rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.t888-testimonial.style2 .rating-stars i {
+    font-size: 18px;
+    color: #ee5209;
+}
+
+.t888-testimonial.style2 .testimonial-quote-mark {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    width: 63px;
+    height: 46px;
+}
+
+.t888-testimonial.style2 .testimonial-quote-mark svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.t888-testimonial.style2 .testimonial-quote-mark path {
+    fill: #fff;
+    stroke: #d9d9d9;
+    stroke-width: 1.2;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+@media (max-width: 575px) {
+    .t888-testimonial.style2 .swiper-inner-testimonial {
+        min-height: 0;
+        padding: 26px 22px 24px;
+        clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+    }
+
+    .t888-testimonial.style2 .testimonial-head {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .t888-testimonial.style2 .testimonial-author {
+        gap: 12px;
+    }
+
+    .t888-testimonial.style2 .testimonial-avatar {
+        width: 50px;
+        height: 50px;
+        flex-basis: 50px;
+    }
+
+    .t888-testimonial.style2 .testimonial-company-logo {
+        max-width: 76px;
+        max-height: 34px;
+    }
+
+    .t888-testimonial.style2 .content-testimonial {
+        margin: 22px 0 24px;
+        font-size: 16px;
+        line-height: 1.7;
+    }
 }

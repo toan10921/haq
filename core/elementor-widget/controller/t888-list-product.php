@@ -324,6 +324,12 @@ class T888_List_Product extends T888_Widget_Base
             $args['s'] = $search_query;
         }
 
+        if (!empty($_GET['product_search']) && is_scalar($_GET['product_search'])) {
+            $args['t888_main_product_name_search'] = sanitize_text_field(
+                wp_unslash((string) $_GET['product_search'])
+            );
+        }
+
         $min_price_val = isset($_GET['min_price']) ? floatval($_GET['min_price']) : null;
         $max_price_val = isset($_GET['max_price']) ? floatval($_GET['max_price']) : null;
 
@@ -393,6 +399,23 @@ class T888_List_Product extends T888_Widget_Base
 
         $tax_query = [];
 
+        if (!empty($_GET['product_cat'])) {
+            $requested_categories = wp_unslash($_GET['product_cat']);
+            $category_slugs = is_string($requested_categories)
+                ? array_values(array_filter(array_map('sanitize_title', explode(',', $requested_categories))))
+                : [];
+
+            if (!empty($category_slugs)) {
+                $tax_query[] = [
+                    'taxonomy'         => 'product_cat',
+                    'field'            => 'slug',
+                    'terms'            => $category_slugs,
+                    'operator'         => 'IN',
+                    'include_children' => true,
+                ];
+            }
+        }
+
         if (!empty($categories)) {
             $tax_query[] = [
                 'taxonomy' => 'product_cat',
@@ -452,8 +475,30 @@ class T888_List_Product extends T888_Widget_Base
         $style = isset($settings['style']) ? $settings['style'] : 'style1';
         $posts_per_page = isset($_GET['posts_per_page']) && is_numeric($_GET['posts_per_page'])
             ? intval($_GET['posts_per_page'])
-            : ($posts_per_page ?? isset($this->get_settings_for_display()['posts_per_page']) ? intval($this->get_settings_for_display()['posts_per_page']) : 12);
-        $query = $this->get_list_products_query($posts_per_page);
+            : max(1, intval($settings['posts_per_page'] ?? 12));
+
+        // Shop and product taxonomy pages already have a WooCommerce main
+        // query containing the current category/tag/filter context. Reusing it
+        // keeps the product loop, result count and pagination in sync. Normal
+        // pages and Elementor previews still use the widget's own query.
+        $use_archive_query = (
+            (function_exists('is_shop') && is_shop())
+            || (function_exists('is_product_taxonomy') && is_product_taxonomy())
+        ) && isset($GLOBALS['wp_query']) && $GLOBALS['wp_query'] instanceof \WP_Query;
+
+        if ($use_archive_query) {
+            // Clone the populated query so rendering this Elementor widget does
+            // not consume the global loop before wp_head() or another plugin
+            // needs the archive context.
+            $query = clone $GLOBALS['wp_query'];
+            $archive_per_page = (int) $query->get('posts_per_page');
+            if ($archive_per_page > 0) {
+                $posts_per_page = $archive_per_page;
+            }
+        } else {
+            $query = $this->get_list_products_query($posts_per_page);
+        }
+
         $settings['posts_per_page'] = $posts_per_page;
         $settings['query'] = $query;
         $per_page_options = $this->get_per_page_options();
@@ -471,9 +516,9 @@ class T888_List_Product extends T888_Widget_Base
         $settings['layout_styles'] = $layout_styles;
         $animation_class = $settings['thumb_animation'] ?? 'default-grid-thumb';
         $settings['animation_class'] = $animation_class;
-        $paged = get_query_var('paged') ?: 1;
+        $paged = max(1, (int) $query->get('paged'), (int) get_query_var('paged'));
         $total = (int) $query->found_posts;
-        $start = $paged > 1 ? ($paged - 1) * $posts_per_page + 1 : 1;
+        $start = $total > 0 ? (($paged - 1) * $posts_per_page) + 1 : 0;
         $end = min($start + $posts_per_page - 1, $total);
         $current_orderby = isset($_GET['orderby']) ? sanitize_text_field($_GET['orderby']) : $settings['order_by'] ?? 'date';
         $settings['paged'] = $paged;
@@ -498,7 +543,11 @@ class T888_List_Product extends T888_Widget_Base
             'orderby_options' => $orderby_options,
         ];
 
-        $settings['args'] = $this->get_args_query($posts_per_page);
+        $settings['args'] = $use_archive_query
+            ? $query->query_vars
+            : $this->get_args_query($posts_per_page);
+        $custom_classes = preg_split('/\s+/', trim((string) ($settings['_css_classes'] ?? '')));
+        $settings['use_shop_card'] = in_array('listsp', $custom_classes, true);
 
 
         // only render top filter if there are products to display

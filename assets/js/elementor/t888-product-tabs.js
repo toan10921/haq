@@ -1,6 +1,94 @@
 jQuery(document).ready(function ($) {
 
   /**
+   * Give Style 6 product cards the same visual action strip used by the
+  * Shop Product Grid without changing the widget query or PHP templates.
+  */
+  function enhanceStyle6Cards($root) {
+    var wrapperSelector = '.t888-product-tabs-wrapper.style6';
+    var $wrappers = $root.filter(wrapperSelector)
+      .add($root.find(wrapperSelector))
+      .add($root.closest(wrapperSelector));
+
+    $wrappers.addClass('listsp');
+
+    $wrappers.find('.grid-product-item').each(function () {
+      var $card = $(this);
+
+      if ($card.hasClass('t888-shop-card-look')) return;
+
+      var $media = $card.find('.product-thumbnail, .hcard-image-col').first();
+      var $productLink = $card.find('.product-link, .hcard-img-link, .product-title a, .hcard-title a').first();
+      var $meta = $card.find('.product-content, .hcard-info-col').first();
+      var $title = $card.find('.product-title, .hcard-title').first();
+      var $price = $card.find('.product-price, .hcard-price').first();
+      var productUrl = $productLink.attr('href');
+
+      // Reuse the exact presentation hooks used by List Product's compact card.
+      $card.addClass('t888-shop-card-look t888-shop-card');
+      $media.addClass('t888-shop-card__media');
+      $productLink.addClass('t888-shop-card__image');
+      $meta.addClass('t888-shop-card__meta');
+      $title.addClass('t888-shop-card__title');
+      $price.addClass('t888-shop-card__price');
+      $card.find('.product-badge.sale').addClass('t888-shop-card__sale');
+
+      // List Product renders WooCommerce's square 300x300 thumbnail. Style 6
+      // receives the full image, so prefer the same generated thumbnail when
+      // it exists and safely retain the original image when it does not.
+      $media.find('img.primary-img, .hcard-img-link img').first().each(function () {
+        var $image = $(this);
+        var originalUrl = $image.attr('src');
+
+        if (!originalUrl || $image.data('listsp-thumbnail-checked')) return;
+        $image.data('listsp-thumbnail-checked', true);
+
+        var urlParts = originalUrl.split('?');
+        var path = urlParts[0];
+        var query = urlParts.length > 1 ? '?' + urlParts.slice(1).join('?') : '';
+        var squareUrl = path.replace(/(?:-\d+x\d+)?(\.[a-z0-9]+)$/i, '-300x300$1') + query;
+
+        if (squareUrl === originalUrl) return;
+
+        var squareImage = new Image();
+        squareImage.onload = function () {
+          $image.removeAttr('srcset sizes').attr('src', squareUrl);
+        };
+        squareImage.src = squareUrl;
+      });
+
+      if ($price.length && !$price.find('.woocommerce-Price-amount').length) {
+        $price
+          .empty()
+          .addClass('t888-style6-empty-price')
+          .attr('hidden', 'hidden');
+        $price[0].style.setProperty('display', 'none', 'important');
+      }
+
+      if (!$media.length || !productUrl || $media.find('.t888-style6-product-link').length) return;
+
+      var productName = $.trim($card.find('.product-title, .hcard-title').first().text());
+      var ariaLabel = productName ? 'Liên hệ về ' + productName : 'Liên hệ';
+      var $actionLink = $('<a>', {
+        'class': 't888-style6-product-link t888-shop-card__contact',
+        'href': productUrl,
+        'aria-label': ariaLabel
+      });
+
+      $actionLink.append($('<span>', {
+        'class': 't888-style6-product-link__text t888-shop-card__contact-text',
+        'text': 'Liên hệ'
+      }));
+      $actionLink.append(
+        '<span class="t888-style6-product-link__icon t888-shop-card__contact-icon" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24"><path d="M7 17 17 7M10 7h7v7"/></svg>' +
+        '</span>'
+      );
+      $media.append($actionLink);
+    });
+  }
+
+  /**
    * Sync the visible time-panel inside a tab panel
    * to match the currently active time-filter button.
    */
@@ -30,6 +118,17 @@ jQuery(document).ready(function ($) {
     $wrapper.find('.t888-tab-panel').hide();
     var $targetPanel = $wrapper.find('.' + tabId);
     $targetPanel.show();
+
+    if ($wrapper.hasClass('style6')) {
+      enhanceStyle6Cards($targetPanel);
+      $targetPanel.removeClass('is-entering');
+      // Force a reflow so repeated visits to a tab replay the entrance effect.
+      void $targetPanel[0].offsetWidth;
+      $targetPanel.addClass('is-entering');
+      window.setTimeout(function () {
+        $targetPanel.removeClass('is-entering');
+      }, 320);
+    }
 
     // Sync time filter period to newly visible panel
     syncTimePanelForWrapper($wrapper, $targetPanel);
@@ -77,6 +176,14 @@ jQuery(document).ready(function ($) {
       var $panel = $(this);
       $panel.find('.t888-time-panel').hide();
       $panel.find('.t888-time-panel[data-period="' + period + '"]').show();
+    });
+  });
+
+  enhanceStyle6Cards($(document));
+
+  $(window).on('elementor/frontend/init', function () {
+    elementorFrontend.hooks.addAction('frontend/element_ready/t888-product-tabs.default', function ($scope) {
+      enhanceStyle6Cards($scope);
     });
   });
 });

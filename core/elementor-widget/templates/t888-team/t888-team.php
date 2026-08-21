@@ -1,17 +1,106 @@
 <?php
-$members = $team_list;
+
+$team_source = $team_source ?? 'manual';
+$members = isset($team_list) && is_array($team_list)
+    ? $team_list
+    : [];
+
+if ($team_source === 'dynamic') {
+    $members = [];
+
+    $team_query = new \WP_Query([
+        'post_type'      => 'team_member',
+        'post_status'    => 'publish',
+        'posts_per_page' => isset($dynamic_posts_per_page)
+            ? (int) $dynamic_posts_per_page
+            : 12,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ]);
+
+    while ($team_query->have_posts()) {
+        $team_query->the_post();
+
+        $member_id = get_the_ID();
+        $image_url = get_the_post_thumbnail_url(
+            $member_id,
+            'large'
+        );
+
+        if (!$image_url) {
+            $image_url = \Elementor\Utils::get_placeholder_image_src();
+        }
+
+        $members[] = [
+            'image' => [
+                'url' => $image_url,
+            ],
+            'image_position' => 'center top',
+            'name' => get_the_title(),
+            'position' => get_post_meta(
+                $member_id,
+                'team_position',
+                true
+            ),
+            'profile_link' => [
+                'url' => get_permalink($member_id),
+                'is_external' => false,
+                'nofollow' => false,
+            ],
+            'facebook' => [
+                'url' => get_post_meta(
+                    $member_id,
+                    'team_facebook',
+                    true
+                ),
+            ],
+            'instagram' => [
+                'url' => get_post_meta(
+                    $member_id,
+                    'team_instagram',
+                    true
+                ),
+            ],
+            'linkedin' => [
+                'url' => get_post_meta(
+                    $member_id,
+                    'team_linkedin',
+                    true
+                ),
+            ],
+        ];
+    }
+
+    wp_reset_postdata();
+}
+
 ?>
 <div class="t888-team">
-    <div class="t888-team-slider swiper-container eltech888-swiper-slider"
-        data-items="1"
-        data-loop="true"
-        data-speed="5000"
-        data-autoplay="no"
-        data-navigation="true"
-        data-effect="slide">
-        <div class="swiper-wrapper">
+    <div class="t888-team-grid">
             <?php foreach ($members as $member): ?>
-                <div class="swiper-slide team-member-item">
+                <?php
+                $profile_link = isset($member['profile_link']) && is_array($member['profile_link'])
+                    ? $member['profile_link']
+                    : [];
+                $profile_url = !empty($profile_link['url']) ? $profile_link['url'] : '';
+                $profile_target = !empty($profile_link['is_external']) ? '_blank' : '';
+                $profile_rel = [];
+                if (!empty($profile_link['nofollow'])) {
+                    $profile_rel[] = 'nofollow';
+                }
+                if ($profile_target === '_blank') {
+                    $profile_rel[] = 'noopener';
+                }
+                ?>
+                <article class="team-member-item">
+                    <?php if ($profile_url): ?>
+                        <a
+                            class="member-profile-link"
+                            href="<?php echo esc_url($profile_url); ?>"
+                            <?php if ($profile_target): ?>target="<?php echo esc_attr($profile_target); ?>"<?php endif; ?>
+                            <?php if ($profile_rel): ?>rel="<?php echo esc_attr(implode(' ', array_unique($profile_rel))); ?>"<?php endif; ?>
+                            aria-label="<?php echo esc_attr(sprintf(__('View profile: %s', 'nebon'), $member['name'])); ?>">
+                    <?php endif; ?>
                     <div class="member-photo">
                         <img
                             src="<?php echo esc_url($member['image']['url']); ?>"
@@ -21,6 +110,9 @@ $members = $team_list;
                     </div>
                     <h3 class="member-name"><?php echo esc_html($member['name']); ?></h3>
                     <p class="member-position"><?php echo esc_html($member['position']); ?></p>
+                    <?php if ($profile_url): ?>
+                        </a>
+                    <?php endif; ?>
                     <div class="member-socials">
                         <?php if (!empty($member['facebook']['url'])):
                             $url = $member['facebook']['url'];
@@ -111,11 +203,7 @@ $members = $team_list;
                         <?php endif; ?>
                     </div>
 
-                </div>
+                </article>
             <?php endforeach; ?>
-        </div>
-
-        <div class="swiper-button-prev"><i class="las la-angle-left"></i></div>
-        <div class="swiper-button-next"><i class="las la-angle-right"></i></div>
     </div>
 </div>

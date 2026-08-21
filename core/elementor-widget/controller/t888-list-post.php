@@ -65,7 +65,7 @@ class T888_List_Post extends T888_Widget_Base
      */
     public function get_style_depends()
     {
-        return [];
+        return ['elementor-t888-list-post'];
     }
     /**
      * Get widget categories.
@@ -98,6 +98,8 @@ class T888_List_Post extends T888_Widget_Base
                 'style3' => __('Grid', 'nebon'),
                 'style4' => __('Masonry', 'nebon'),
                 'style5' => __('Grid 2', 'nebon'),
+                'style6' => __('Featured Overlay', 'nebon'),
+                'style7' => __('Split Post Card', 'nebon'),
             ]
         ]
         );
@@ -154,16 +156,17 @@ class T888_List_Post extends T888_Widget_Base
         $this->add_control(
             'columns',
         [
-            'label' => __('Columns (for Grid + Masonry Style)', 'nebon'),
+            'label' => __('Columns (for Grid Styles)', 'nebon'),
             'type' => \Elementor\Controls_Manager::SELECT,
             'default' => '2',
             'options' => [
+                '1' => __('1 Column', 'nebon'),
                 '2' => __('2 Columns', 'nebon'),
                 '3' => __('3 Columns', 'nebon'),
                 '4' => __('4 Columns', 'nebon'),
             ],
             'condition' => [
-                'style' => ['style3', 'style4', 'style5'],
+                'style' => ['style3', 'style4', 'style5', 'style6', 'style7'],
             ],
         ]
         );
@@ -195,7 +198,7 @@ class T888_List_Post extends T888_Widget_Base
             'type' => Controls_Manager::NUMBER,
             'default' => 50,
             'condition' => [
-                'style' => 'style5',
+                'style' => ['style5', 'style6', 'style7'],
             ],
         ]
         );

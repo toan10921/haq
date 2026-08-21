@@ -14,11 +14,11 @@ $detail_style = get_post_meta($product_id, 'product_detail_style', true);
 $detail_style = $detail_style ? $detail_style : $default_style;
 
 ?>
-<div class="product-detail container">
-    <div class="row">
+<div class="product-detail product-detail--compact container">
+    <div class="row rs-wrap-summary product-detail__summary">
         <?php if ($detail_style  === 'sticky') : ?>
             <!-- STYLE 2: Vertical Gallery Sticky -->
-            <div class="col-6 thumb-gallery sticky-gallery" id="sticky-gallery">
+            <div class="col-6 thumb-gallery product-detail__gallery sticky-gallery" id="sticky-gallery">
                 <div class="vertical-gallery-static">
                     <?php
                     $all_attachments = array_merge([$thumb_id], $attachment_ids);
@@ -41,7 +41,7 @@ $detail_style = $detail_style ? $detail_style : $default_style;
                     ?>
                 </div>
             </div>
-            <div class="col-6 thumb-gallery hidden-desktop">
+            <div class="col-6 thumb-gallery product-detail__gallery hidden-desktop">
                 <?php if (!empty($thumb_id) || !empty($attachment_ids)) : ?>
                     <div class="detail-gallery">
                         <div class="wrap-detail-gallery">
@@ -75,7 +75,7 @@ $detail_style = $detail_style ? $detail_style : $default_style;
                                     <div class="swiper-button-next"></div>
                                 </div>
                             </div>
-                            <div class="main-gallery-wrapper">
+                            <div class="main-gallery-wrapper product-detail__media">
                                 <div class="main-gallery">
                                     <div class="swiper-wrapper">
                                         <?php foreach ($attachment_ids as $index => $attachment_id) : ?>
@@ -101,7 +101,7 @@ $detail_style = $detail_style ? $detail_style : $default_style;
                 <?php endif; ?>
             </div>
         <?php else : ?>
-            <div class="col-6 thumb-gallery">
+            <div class="col-6 thumb-gallery product-detail__gallery">
                 <?php if (!empty($thumb_id) || !empty($attachment_ids)) : ?>
                     <div class="detail-gallery">
                         <div class="wrap-detail-gallery">
@@ -138,7 +138,7 @@ $detail_style = $detail_style ? $detail_style : $default_style;
                                     <div class="swiper-button-next"></div>
                                 </div>
                             </div>
-                            <div class="main-gallery-wrapper">
+                            <div class="main-gallery-wrapper product-detail__media">
                                 <div class="main-gallery">
                                     <div class="swiper-wrapper">
                                         <?php foreach ($attachment_ids as $index => $attachment_id) :
@@ -171,9 +171,9 @@ $detail_style = $detail_style ? $detail_style : $default_style;
         $sticky_class = ($detail_style === 'sticky') ? 'sticky-layout' : '';
         $sticky_id = ($detail_style === 'sticky') ? 'id="sticky-content"' : '';
         ?>
-        <div class="col-6 info-content <?php echo esc_attr($sticky_class); ?>" <?php echo esc_attr($sticky_id); ?>>
+        <div class="col-6 info-content product-detail__content <?php echo esc_attr($sticky_class); ?>" <?php echo esc_attr($sticky_id); ?>>
 
-            <div class="summary entry-summary detail-info">
+            <div class="summary entry-summary detail-info product-detail__info">
                 <?php
                 /**
                  * Hook: woocommerce_single_product_summary.

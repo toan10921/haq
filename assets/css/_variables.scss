@@ -3,7 +3,7 @@ $primary-color: #000;
 // declare secondary color
 $secondary-color: #fff;
 // declare third color
-$third-color: #b88166;
+$third-color: #ef4b00;
 // declare forth color
 $forth-color: #e0e0e0;
 // declare fifth color
@@ -37,9 +37,9 @@ $gradient-color: linear-gradient(to right, $forth-color 0%, $third-color-rgba 69
 
 // declare font family
 
-$font-poppins: 'Poppins', sans-serif;
+$font-poppins: "space grotesk", serif;
 
-$font-philosopher: 'Philosopher', serif;
+$font-philosopher: "space grotesk", serif;
 
 :root {
     --primary-color: #{$primary-color};

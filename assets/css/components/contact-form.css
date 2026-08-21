@@ -1,0 +1,127 @@
+.contact-form-box {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 44px 50px 48px;
+    background-color: #f45100;
+    font-family: "Space Grotesk", sans-serif;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 50px) 0,
+        100% 44px,
+        100% 100%,
+        0 100%
+    );
+}
+
+.contact-form-box .wpcf7,
+.contact-form-box .wpcf7-form {
+    width: 100%;
+}
+
+.contact-form-box .wpcf7-form p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 0;
+    margin: 0 0 15px;
+}
+
+/* Contact Form 7 may append a <br> after each form tag. That extra line box
+   makes a field paragraph about 21px taller than the input itself. */
+.contact-form-box .wpcf7-form p > br {
+    display: none;
+}
+
+.contact-form-box .wpcf7-form-control-wrap {
+    display: block;
+    width: 100%;
+    line-height: 0;
+}
+
+.contact-form-box .wpcf7-form-control:not(.wpcf7-submit) {
+    display: block;
+    width: 100%;
+    min-height: 52px;
+    box-sizing: border-box;
+    padding: 14px 18px;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    font: inherit;
+    line-height: 1.5;
+}
+.contact-form-box textarea.wpcf7-form-control {
+    height: 114px;
+    min-height: 114px;
+    resize: vertical;
+}
+
+.contact-form-box input::placeholder,
+.contact-form-box textarea::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+.contact-form-box .wpcf7-form-control:not(.wpcf7-submit):focus {
+    border-color: #ffffff;
+}
+
+.contact-form-box .wpcf7-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    margin: 7px 0 0;
+    padding: 16px 24px;
+    color: #ffffff;
+    background-color: #202020;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.contact-form-box .wpcf7-submit:hover,
+.contact-form-box .wpcf7-submit:focus {
+    color: #202020;
+    background-color: #ffffff;
+}
+
+.contact-form-box .wpcf7-spinner {
+    vertical-align: middle;
+}
+
+.contact-form-box .wpcf7-not-valid-tip {
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.contact-form-box .wpcf7-response-output {
+    margin: 18px 0 0 !important;
+    padding: 10px 14px !important;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+@media (max-width: 767px) {
+    .contact-form-box {
+        padding: 36px 25px 40px;
+        clip-path: polygon(
+            0 0,
+            calc(100% - 36px) 0,
+            100% 32px,
+            100% 100%,
+            0 100%
+        );
+    }
+}

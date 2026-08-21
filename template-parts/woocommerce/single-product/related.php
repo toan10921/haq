@@ -86,6 +86,9 @@ if ($related_query->have_posts()) : ?>
                             <?php
                             t888f_get_template('woocommerce/loop/grid/grid', '', [
                                 'product' => $rel_product,
+                                'compact_card' => true,
+                                'contact_button_text' => __('Liên hệ', 'nebon'),
+                                'contact_button_url' => '#',
                                 'size'    => get_theme_mod('show_single_size_extra_display', 'product-grid-default'),
                                 'style'   => get_theme_mod('single_item_style_extra_display', 'default')
                             ], true);
