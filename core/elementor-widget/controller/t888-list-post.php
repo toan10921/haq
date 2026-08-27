@@ -100,6 +100,7 @@ class T888_List_Post extends T888_Widget_Base
                 'style5' => __('Grid 2', 'nebon'),
                 'style6' => __('Featured Overlay', 'nebon'),
                 'style7' => __('Split Post Card', 'nebon'),
+                'style8' => __('Post Card Grid', 'nebon'),
             ]
         ]
         );
@@ -170,6 +171,30 @@ class T888_List_Post extends T888_Widget_Base
             ],
         ]
         );
+
+        $this->add_responsive_control(
+            'style8_columns',
+        [
+            'label' => __('Columns', 'nebon'),
+            'type' => Controls_Manager::SELECT,
+            'default' => '3',
+            'tablet_default' => '2',
+            'mobile_default' => '1',
+            'options' => [
+                '1' => __('1 Column', 'nebon'),
+                '2' => __('2 Columns', 'nebon'),
+                '3' => __('3 Columns', 'nebon'),
+                '4' => __('4 Columns', 'nebon'),
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .blog-wrap.grid-style8 .posts-wrap' => '--t888-style8-columns: {{VALUE}};',
+            ],
+            'condition' => [
+                'style' => 'style8',
+            ],
+        ]
+        );
+
         $this->add_control(
             'gutter_spacing',
         [

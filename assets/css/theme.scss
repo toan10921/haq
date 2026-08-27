@@ -2538,3 +2538,64 @@ body.page:not(.elementor-page) {
         font-weight: 400 !important;
     }
 }
+.get-in-touch-form {
+    padding: 75px 80px 80px;
+    background: #f7f7f7;
+    border-top: 4px solid #f4510b;
+
+    .wpcf7-form {
+        width: 100%;
+    }
+
+    .contact-row1 {
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .contact-row1 .contact-col input {
+        min-height: 50px;
+        padding: 14px 19px;
+        background: #fff;
+        border: 1px solid #d5d5d5;
+    }
+
+    .contact-row2 textarea {
+        min-height: 150px;
+        height: 150px;
+        padding: 14px 19px;
+        background: #fff;
+    }
+
+    .contact-submit {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .contact-submit input[type="submit"] {
+        display: inline-flex;
+        background: #f4510b;
+        color: #fff;
+        padding: 17px 25px;
+        text-transform: none;
+    }
+
+    .contact-submit input[type="submit"]:hover {
+        background: #202020;
+    }
+}
+
+@media (max-width: 767px) {
+    .get-in-touch-form {
+        padding: 50px 20px;
+    }
+
+    .get-in-touch-form .contact-row1 {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .get-in-touch-form .contact-row1 .contact-col {
+        width: 100%;
+    }
+}

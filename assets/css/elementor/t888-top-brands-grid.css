@@ -3,6 +3,7 @@
   --t888-top-brands-grid-border: #e3e3e3;
   width: 100%;
   background: #ffffff;
+  padding: 0 12.5px;
 }
 
 .t888-top-brands-grid__header {
@@ -22,8 +23,8 @@
 .t888-top-brands-grid__grid {
   display: grid;
   grid-template-columns: repeat(var(--t888-top-brands-grid-columns), minmax(0, 1fr));
-  border-top: 1px solid var(--t888-top-brands-grid-border);
-  border-left: 1px solid var(--t888-top-brands-grid-border);
+  column-gap: 25px;
+  row-gap: 25px;
 }
 
 .t888-top-brands-grid__item {
@@ -33,6 +34,11 @@
   border-bottom: 1px solid var(--t888-top-brands-grid-border);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   transform-origin: center;
+  background-color: #fafafa;
+  height: 202px;
+  overflow: hidden;
+  -webkit-clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%);
 }
 
 .t888-top-brands-grid__item-inner {
@@ -80,6 +86,8 @@
 
   .t888-top-brands-grid__item {
     min-height: 120px;
+    -webkit-clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
   }
 
   .t888-top-brands-grid__item-inner {

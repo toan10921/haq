@@ -11,7 +11,7 @@
                     <a href="<?php echo get_permalink($prev_post->ID); ?>" class="post-nav-link d-block">
                         <span class="label text-uppercase">
                             <i class="las la-angle-left"></i>
-                            <?php _e('Previous Post', 'nebon'); ?>
+                            <?php _e('Bài viết trước', 'nebon'); ?>
                         </span>
                         <span class="navigation-title-post">
                             <?php echo esc_html(get_the_title($prev_post->ID)); ?>

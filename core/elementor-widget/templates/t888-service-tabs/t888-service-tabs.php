@@ -1,11 +1,19 @@
 <?php
 $service_items = isset($services) && is_array($services) ? $services : [];
 $tabs_id = 't888-service-tabs-' . sanitize_html_class($widget_id ?? uniqid());
+$service_tabs_style = ($style ?? 'style1') === 'style2' ? 'style2' : 'style1';
+$is_history_style = $service_tabs_style === 'style2';
 ?>
 
 <?php if (!empty($service_items)): ?>
-    <div id="<?php echo esc_attr($tabs_id); ?>" class="t888-service-tabs" data-t888-service-tabs>
-        <div class="t888-service-tabs__nav" role="tablist" aria-label="<?php esc_attr_e('Services', 'nebon'); ?>">
+    <section class="t888-service-tabs-section t888-service-tabs-section--<?php echo esc_attr($service_tabs_style); ?>">
+        <div id="<?php echo esc_attr($tabs_id); ?>" class="t888-service-tabs t888-service-tabs--<?php echo esc_attr($service_tabs_style); ?>" data-t888-service-tabs>
+        <div
+            class="t888-service-tabs__nav"
+            role="tablist"
+            aria-label="<?php echo esc_attr($is_history_style ? __('Company history', 'nebon') : __('Services', 'nebon')); ?>"
+            aria-orientation="<?php echo esc_attr($is_history_style ? 'horizontal' : 'vertical'); ?>"
+        >
             <?php foreach ($service_items as $index => $item):
                 $tab_id = $tabs_id . '-tab-' . $index;
                 $panel_id = $tabs_id . '-panel-' . $index;
@@ -76,7 +84,7 @@ $tabs_id = 't888-service-tabs-' . sanitize_html_class($widget_id ?? uniqid());
                             <ul class="t888-service-tabs__features">
                                 <?php foreach ($features as $feature): ?>
                                     <li>
-                                        <span class="t888-service-tabs__check" aria-hidden="true">&#10003;</span>
+                                        <span class="t888-service-tabs__check" aria-hidden="true"><?php echo $is_history_style ? '' : '&#10003;'; ?></span>
                                         <span><?php echo esc_html($feature); ?></span>
                                     </li>
                                 <?php endforeach; ?>
@@ -98,5 +106,6 @@ $tabs_id = 't888-service-tabs-' . sanitize_html_class($widget_id ?? uniqid());
                 </section>
             <?php endforeach; ?>
         </div>
-    </div>
+        </div>
+    </section>
 <?php endif; ?>

@@ -17,7 +17,7 @@
         <input class="t888-price-filter__max-input" type="hidden" name="max_price" value="<?php echo esc_attr($current_max); ?>"<?php echo !empty($is_full_range) ? ' disabled' : ''; ?>>
         <div class="t888-price-filter__footer">
             <button class="t888-price-filter__button" type="submit"><?php echo esc_html($button_text ?? __('Filter', 'nebon')); ?></button>
-            <span class="t888-price-filter__label"><?php esc_html_e('Price:', 'nebon'); ?> <b class="t888-price-filter__min-label"><?php echo esc_html($currency_symbol . number_format_i18n($current_min)); ?></b> — <b class="t888-price-filter__max-label"><?php echo esc_html($currency_symbol . number_format_i18n($current_max)); ?></b></span>
+            <span class="t888-price-filter__label"><?php esc_html_e('Giá:', 'nebon'); ?> <b class="t888-price-filter__min-label"><?php echo esc_html($currency_symbol . number_format_i18n($current_min)); ?></b> — <b class="t888-price-filter__max-label"><?php echo esc_html($currency_symbol . number_format_i18n($current_max)); ?></b></span>
         </div>
     </form>
 </aside>

@@ -230,6 +230,13 @@
 }
 
 /* style 6 */
+.t888-product-tabs-wrapper.style6 {
+  /* Time filter */
+  /* No Products Found State */
+}
+.t888-product-tabs-wrapper.style6 > .t888-product-tabs-content {
+  margin-top: 20px;
+}
 .t888-product-tabs-wrapper.style6 .t888-style6-head {
   display: flex;
   align-items: center;
@@ -300,9 +307,6 @@
 }
 .t888-product-tabs-wrapper.style6 .t888-style6-tab-arrow:hover {
   color: var(--third-color);
-}
-.t888-product-tabs-wrapper.style6 {
-  /* Time filter */
 }
 .t888-product-tabs-wrapper.style6 .t888-style6-time-filter {
   display: flex;
@@ -529,9 +533,6 @@
 .t888-product-tabs-wrapper.style6 .products.has-large-center .product-item.large-center-item .product-price {
   justify-content: center;
   font-size: 1.125rem !important;
-}
-.t888-product-tabs-wrapper.style6 {
-  /* No Products Found State */
 }
 .t888-product-tabs-wrapper.style6 .t888-no-products {
   display: flex;
@@ -771,6 +772,7 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   transition: border-color 0.2s ease, color 0.2s ease;
   text-decoration: none;
   color: #555;
+  font-size: 0;
 }
 .grid-horizontal-card .hcard-action-btn i {
   font-size: 17px;
@@ -785,9 +787,6 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   opacity: 0.4;
   cursor: default;
   pointer-events: none;
-}
-.grid-horizontal-card .hcard-action-btn {
-  font-size: 0;
 }
 
 /* ============ VERTICAL TAB NAV (match screenshot EXACT) ============ */
@@ -973,6 +972,11 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   --t888-style6-card-bg: #f3f7fb;
   --t888-style6-card-action: #1f1f1f;
   --t888-style6-card-accent: #ef4b00;
+  /* The vertical Style 6 card uses intrinsic source images. Remove those
+     images from document flow so the media remains the same 1:1 box as listsp. */
+  /* Apply the List Product dimensions without relying on JS-added classes. */
+  /* Style 6 prints "Contact" when a product has no WooCommerce price.
+     Hide that entire row; real prices always contain this amount class. */
 }
 .t888-product-tabs-wrapper.style6 .t888-tab-panel.is-entering {
   animation: t888-style6-panel-in 0.3s ease both;
@@ -993,10 +997,6 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   min-height: 0 !important;
   align-self: start !important;
   background: transparent !important;
-}
-.t888-product-tabs-wrapper.style6 {
-  /* The vertical Style 6 card uses intrinsic source images. Remove those
-     images from document flow so the media remains the same 1:1 box as listsp. */
 }
 .t888-product-tabs-wrapper.style6 .grid-product-item:not(.grid-horizontal-card) {
   width: 100% !important;
@@ -1112,9 +1112,6 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   text-decoration: none;
   white-space: normal !important;
   text-overflow: clip !important;
-}
-.t888-product-tabs-wrapper.style6 {
-  /* Apply the List Product dimensions without relying on JS-added classes. */
 }
 .t888-product-tabs-wrapper.style6 .grid-horizontal-card {
   display: block !important;
@@ -1457,10 +1454,6 @@ body .t888-product-tabs-wrapper.style6 .custom-star-rating span::before {
   min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-}
-.t888-product-tabs-wrapper.style6 {
-  /* Style 6 prints "Contact" when a product has no WooCommerce price.
-     Hide that entire row; real prices always contain this amount class. */
 }
 .t888-product-tabs-wrapper.style6 .product-price:not(:has(.woocommerce-Price-amount)),
 .t888-product-tabs-wrapper.style6 .hcard-price:not(:has(.woocommerce-Price-amount)) {

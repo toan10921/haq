@@ -67,7 +67,7 @@ if (!empty($custom_size_raw)) {
             </p>
         </div>
         <div class="read-more-share-wrap d-flex flex-wrap  justify-content-between">
-            <a href="<?php echo get_the_permalink(); ?>" class="read-more d-inline-block"><?php esc_html_e('Read more', 'nebon'); ?></a>
+            <a href="<?php echo get_the_permalink(); ?>" class="read-more d-inline-block"><?php esc_html_e('Đọc thêm', 'nebon'); ?></a>
         </div>
     </div>
 </div>

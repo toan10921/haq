@@ -31,8 +31,18 @@ class T888_Service_Tabs extends T888_Widget_Base
     {
         $this->start_controls_section(
             'section_services',
-            ['label' => esc_html__('Services', 'nebon')]
+            ['label' => esc_html__('Tabs', 'nebon')]
         );
+
+        $this->add_control('style', [
+            'label' => esc_html__('Style', 'nebon'),
+            'type' => Controls_Manager::SELECT,
+            'default' => 'style1',
+            'options' => [
+                'style1' => esc_html__('Style 1 - Services', 'nebon'),
+                'style2' => esc_html__('Style 2 - History', 'nebon'),
+            ],
+        ]);
 
         $repeater = new Repeater();
 
@@ -94,7 +104,7 @@ class T888_Service_Tabs extends T888_Widget_Base
         ];
 
         $this->add_control('services', [
-            'label' => esc_html__('Service Items', 'nebon'),
+            'label' => esc_html__('Tab Items', 'nebon'),
             'type' => Controls_Manager::REPEATER,
             'fields' => $repeater->get_controls(),
             'default' => [
@@ -124,6 +134,7 @@ class T888_Service_Tabs extends T888_Widget_Base
                 '{{WRAPPER}} .t888-service-tabs' => 'column-gap: {{SIZE}}{{UNIT}};',
                 '{{WRAPPER}} .t888-service-tabs__panel' => 'column-gap: {{SIZE}}{{UNIT}};',
             ],
+            'condition' => ['style' => 'style1'],
         ]);
 
         $this->add_responsive_control('nav_width', [
@@ -138,6 +149,7 @@ class T888_Service_Tabs extends T888_Widget_Base
             'selectors' => [
                 '{{WRAPPER}} .t888-service-tabs' => 'grid-template-columns: {{SIZE}}{{UNIT}} minmax(0, 1fr);',
             ],
+            'condition' => ['style' => 'style1'],
         ]);
 
         $this->add_responsive_control('image_height', [
@@ -148,6 +160,7 @@ class T888_Service_Tabs extends T888_Widget_Base
             'selectors' => [
                 '{{WRAPPER}} .t888-service-tabs__image' => 'height: {{SIZE}}{{UNIT}};',
             ],
+            'condition' => ['style' => 'style1'],
         ]);
 
         $this->end_controls_section();
@@ -210,6 +223,7 @@ class T888_Service_Tabs extends T888_Widget_Base
             'type' => Controls_Manager::COLOR,
             'default' => '#f45100',
             'selectors' => [
+                '{{WRAPPER}} .t888-service-tabs-section--style2' => '--t888-history-accent: {{VALUE}};',
                 '{{WRAPPER}} .t888-service-tabs__check' => 'color: {{VALUE}}; border-color: {{VALUE}};',
                 '{{WRAPPER}} .t888-service-tabs__link:hover' => 'color: {{VALUE}};',
             ],
@@ -250,6 +264,9 @@ class T888_Service_Tabs extends T888_Widget_Base
     {
         parent::render();
         $settings = $this->get_settings_for_display();
+        $settings['style'] = in_array(($settings['style'] ?? 'style1'), ['style1', 'style2'], true)
+            ? $settings['style']
+            : 'style1';
         $settings['widget_id'] = $this->get_id();
         tech888f_get_template_elementor_widget('t888-service-tabs', '', $settings, true);
     }

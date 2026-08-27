@@ -28,9 +28,9 @@ if (!function_exists('tech888f_comments_list')) {
 ?>
             <li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
                 <div class="comment-body">
-                    <?php esc_html_e('Pingback:', 'nebon'); ?>
+                    <?php esc_html_e('Liên kết đến:', 'nebon'); ?>
                     <?php comment_author_link(); ?>
-                    <?php edit_comment_link(esc_html__('Edit', 'nebon'), '<span class="edit-link">', '</span>'); ?>
+                    <?php edit_comment_link(esc_html__('Sửa', 'nebon'), '<span class="edit-link">', '</span>'); ?>
                 </div>
             <?php else : ?>
             <li <?php comment_class(empty($args['has_children']) ? '' : 'parent'); ?>>
@@ -42,7 +42,7 @@ if (!function_exists('tech888f_comments_list')) {
 
                         <div class="comment-details">
                             <div class="comment-date">
-                                <?php echo get_comment_date('M. j, Y') . ' at ' . get_comment_time('g:i a'); ?>
+                                <?php echo esc_html(get_comment_date('d/m/Y') . ' lúc ' . get_comment_time('H:i')); ?>
 
                             </div>
                             <div class="comment-author">
@@ -53,7 +53,7 @@ if (!function_exists('tech888f_comments_list')) {
                             <div class="comment-text">
                                 <?php
                                 if ($comment->comment_approved == '0') {
-                                    echo '<em>' . esc_html__('Your comment is awaiting moderation. This is a preview; your comment will be visible after it has been approved.', 'nebon') . '</em><br />';
+                                    echo '<em>' . esc_html__('Bình luận của bạn đang chờ duyệt và sẽ hiển thị sau khi được chấp thuận.', 'nebon') . '</em><br />';
                                 }
                                 comment_text();
                                 ?>
@@ -65,7 +65,7 @@ if (!function_exists('tech888f_comments_list')) {
                         <?php if (comments_open()) : ?>
                             <div class="comment-reply">
                                 <?php echo get_comment_reply_link(array_merge($args, array(
-                                    'reply_text' => esc_html__('REPLY', 'nebon'),
+                                    'reply_text' => esc_html__('TRẢ LỜI', 'nebon'),
                                     'depth'      => $depth,
                                     'max_depth'  => $args['max_depth']
                                 ))); ?>
@@ -89,7 +89,7 @@ $icon_class = get_theme_mod('logo_icon', 'las la-rainbow');
         <div class="t888-heading style2">
             <div class="title-wrapper">
                 <h3 class="title title-comment">
-                    <?php echo esc_html__('COMMENTS', 'nebon'); ?> ( <?php echo get_comments_number(); ?> )
+                    <?php echo esc_html__('BÌNH LUẬN', 'nebon'); ?> (<?php echo esc_html(get_comments_number()); ?>)
                 </h3>
 
             </div>
@@ -111,9 +111,9 @@ $icon_class = get_theme_mod('logo_icon', 'las la-rainbow');
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through 
         ?>
             <nav id="comment-nav-below" class="comment-navigation" role="navigation">
-                <h1 class="screen-reader-text"><?php esc_html_e('Comment navigation', 'nebon'); ?></h1>
-                <div class="nav-previous"><?php previous_comments_link(esc_html__('&larr; Older Comments', 'nebon')); ?></div>
-                <div class="nav-next"><?php next_comments_link(esc_html__('Newer Comments &rarr;', 'nebon')); ?></div>
+                <h1 class="screen-reader-text"><?php esc_html_e('Điều hướng bình luận', 'nebon'); ?></h1>
+                <div class="nav-previous"><?php previous_comments_link(esc_html__('&larr; Bình luận cũ hơn', 'nebon')); ?></div>
+                <div class="nav-next"><?php next_comments_link(esc_html__('Bình luận mới hơn &rarr;', 'nebon')); ?></div>
             </nav><!-- #comment-nav-below -->
         <?php endif; // check for comment navigation 
         ?>
@@ -125,7 +125,7 @@ $icon_class = get_theme_mod('logo_icon', 'las la-rainbow');
 // If comments are closed and there are comments, let's leave a little note, shall we?
 if (! comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) :
 ?>
-    <p class="no-comments"><?php esc_html_e('Comments are closed.', 'nebon'); ?></p>
+    <p class="no-comments"><?php esc_html_e('Bài viết đã đóng bình luận.', 'nebon'); ?></p>
 <?php endif; ?>
 
 
@@ -139,45 +139,37 @@ if (comments_open()) :
 
         ?>
 
-        <div class="t888-heading style2">
-            <div class="title-wrapper">
-                <h3 class="title title-comment">
-                    <?php echo esc_html__('LEAVE A COMMENT', 'nebon'); ?>
-                </h3>
-            </div>
+        <div class="comment-form-heading">
+            <h2><?php esc_html_e('Để lại bình luận', 'nebon'); ?></h2>
         </div>
 
         <?php
         $comment_form = array(
-            'title_reply' => 'Reply',
+            'title_reply' => esc_html__('Trả lời', 'nebon'),
             'fields' => array(
                 'author' => '<div class="name-email-wrap">
         <p class="contact-name">
-            <input class="border" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" placeholder="' . esc_attr__('Your Name*', 'nebon') . '" />
+            <input class="border" id="author" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" placeholder="' . esc_attr__('Họ và tên*', 'nebon') . '" required />
         </p>',
 
                 'email' => '<p class="contact-email">
-        <input class="border" id="email" name="email" type="text" value="' . esc_attr($commenter['comment_author_email']) . '" placeholder="' . esc_attr__('Your Email*', 'nebon') . '" />
-    </p>',
-
-                'phone' => '<p class="contact-phone">
-        <input class="border" id="phone" name="phone" type="text" value="" placeholder="' . esc_attr__('Mobile', 'nebon') . '" />
+        <input class="border" id="email" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" placeholder="' . esc_attr__('Email*', 'nebon') . '" required />
     </p></div>',
             ),
 
             'comment_field' =>  '<p class="contact-message">
-                                <textarea id="comment" class="border" rows="5" name="comment" aria-required="true" placeholder="' . esc_attr__('Your comment*', 'nebon') . '"></textarea>
+                                <textarea id="comment" class="border" rows="5" name="comment" required aria-required="true" placeholder="' . esc_attr__('Nội dung bình luận*', 'nebon') . '"></textarea>
                             </p>',
-            'must_log_in' => '<div class="must-log-in control-group"><p class="desc silver">' . sprintf(wp_kses_post(__('You must be <a href="%s">logged in</a> to post a comment.', 'nebon')), wp_login_url(apply_filters('the_permalink', get_permalink()))) . '</p></div >',
-            'logged_in_as' => '<div class="logged-in-as control-group"><p class="desc silver">' . sprintf(wp_kses_post(__('Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>', 'nebon')), admin_url('profile.php'), $user_identity, wp_logout_url(apply_filters('the_permalink', get_permalink()))) . '</p></div>',
-            'comment_notes_before' => '<p class="comment-notes">' . esc_html__('Your email address will not be published. Required fields are marked *', 'nebon') . '</p>',
+            'must_log_in' => '<div class="must-log-in control-group"><p class="desc silver">' . sprintf(wp_kses_post(__('Bạn cần <a href="%s">đăng nhập</a> để gửi bình luận.', 'nebon')), wp_login_url(apply_filters('the_permalink', get_permalink()))) . '</p></div>',
+            'logged_in_as' => '<div class="logged-in-as control-group"><p class="desc silver">' . sprintf(wp_kses_post(__('Bạn đang đăng nhập với tài khoản <a href="%1$s">%2$s</a>. <a href="%3$s" title="Đăng xuất khỏi tài khoản này">Đăng xuất?</a>', 'nebon')), admin_url('profile.php'), $user_identity, wp_logout_url(apply_filters('the_permalink', get_permalink()))) . '</p></div>',
+            'comment_notes_before' => '<p class="comment-notes">' . esc_html__('Địa chỉ email của bạn sẽ không được công khai. Các trường bắt buộc được đánh dấu *', 'nebon') . '</p>',
             'comment_notes_after' => '',
             'id_form'              => 'commentform',
             'id_submit'            => 'submit',
             'title_reply' => '',
-            'title_reply_to'       => esc_html__('Leave a Reply %s', 'nebon'),
-            'cancel_reply_link'    => esc_html__('Cancel reply', 'nebon'),
-            'label_submit'         => esc_html__('POST COMMENT', 'nebon'),
+            'title_reply_to'       => esc_html__('Trả lời %s', 'nebon'),
+            'cancel_reply_link'    => esc_html__('Hủy trả lời', 'nebon'),
+            'label_submit'         => esc_html__('Gửi bình luận', 'nebon'),
             'class_submit'         => 'submit-btn button',
             'submit_button' => '<button name="%1$s" type="submit" id="%2$s" class="%3$s">%4$s</button>',
         );

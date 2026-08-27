@@ -952,7 +952,7 @@ add_action('wp_head', function () {
 
 
 add_action('wp_head', function () {
-    $container_width = get_theme_mod('custom_container_width', '1432');
+    $container_width = get_theme_mod('custom_container_width', '100%');
     if (!empty($container_width)) {
         if (is_numeric($container_width)) {
             $container_width .= 'px';

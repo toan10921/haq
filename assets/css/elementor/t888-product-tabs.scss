@@ -242,6 +242,10 @@
 
 /* style 6 */
 .t888-product-tabs-wrapper.style6 {
+    > .t888-product-tabs-content {
+        margin-top: 20px;
+    }
+
     .t888-style6-head {
         display: flex;
         align-items: center;
@@ -1003,8 +1007,6 @@ body .t888-product-tabs-wrapper.style6 {
     .t888-style6-head-right {
         display: none !important;
     }
-
-
 
 
     .t888-vertical-ad-box {

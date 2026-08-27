@@ -412,7 +412,9 @@ if (!class_exists('TemplateHelper')) {
         {
             self::enqueue_lib_assets();
             // Enqueue main assets
-            wp_enqueue_style('t888f-theme', get_template_directory_uri() . '/assets/css/theme.css', array(), ASSETS_VER, 'all');
+            $theme_css_path = get_template_directory() . '/assets/css/theme.css';
+            $theme_css_ver = file_exists($theme_css_path) ? filemtime($theme_css_path) : ASSETS_VER;
+            wp_enqueue_style('t888f-theme', get_template_directory_uri() . '/assets/css/theme.css', array(), $theme_css_ver, 'all');
             wp_enqueue_style('t888f-hien', get_template_directory_uri() . '/assets/css/woocommerce-template.css', array(), ASSETS_VER, 'all');
             $contact_form_css_path = get_template_directory() . '/assets/css/components/contact-form.css';
             if (file_exists($contact_form_css_path)) {
@@ -462,7 +464,9 @@ if (!class_exists('TemplateHelper')) {
             // check if is single post
 
             if (is_single() && get_post_type() == 'post') {
-                wp_enqueue_style('t888f-single-post', get_template_directory_uri() . '/assets/css/template-parts/layout/single-post.css', array(), ASSETS_VER, 'all');
+                $single_post_css_path = get_template_directory() . '/assets/css/template-parts/layout/single-post.css';
+                $single_post_css_ver = file_exists($single_post_css_path) ? filemtime($single_post_css_path) : ASSETS_VER;
+                wp_enqueue_style('t888f-single-post', get_template_directory_uri() . '/assets/css/template-parts/layout/single-post.css', array('t888f-theme'), $single_post_css_ver, 'all');
 
                 // add post tags to global variable meet tags cloud widget requirement,
                 //  custom only for nebon theme  

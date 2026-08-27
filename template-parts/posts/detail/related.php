@@ -4,7 +4,7 @@ if (!is_singular('post')) {
     return;
 }
 
-$title       = get_theme_mod('related_title', __('RELATED POSTS', 'nebon'));
+$title       = get_theme_mod('related_title', __('BÀI VIẾT LIÊN QUAN', 'nebon'));
 $icon_class  = get_theme_mod('related_post_heading_icon', 'las la-rainbow');
 $num_post    = absint(get_theme_mod('related_num_post', 3)); // fallback = 3
 $responsive  = trim(get_theme_mod('related_custom_number', ''));

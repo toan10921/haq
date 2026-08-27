@@ -65,6 +65,9 @@
   z-index: 0;
   pointer-events: none;
 }
+.breadcrumb .col-12 {
+  padding-left: 10%;
+}
 .breadcrumb .breadcrumb-title {
   margin-bottom: 2px;
   margin-top: 0;
@@ -986,6 +989,7 @@ body.no-scroll {
   padding: 0.875rem 1.25rem;
   margin-right: 0;
   border: 1px solid var(--forth-color);
+  width: 100%;
 }
 .wp-block-tag-cloud a.current-tag {
   color: var(--secondary-color);
@@ -3554,7 +3558,7 @@ ol.wp-block-latest-comments li a:hover {
   padding: 0;
   margin: 0;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   width: 100vw;
   left: 50%;
   transform: translateX(-50%);
@@ -6417,6 +6421,59 @@ body.page:not(.elementor-page) .entry-content p {
   cursor: pointer !important;
   border-radius: 0 !important;
   font-weight: 400 !important;
+}
+
+.get-in-touch-form {
+  padding: 75px 80px 80px;
+  background: #f7f7f7;
+  border-top: 4px solid #f4510b;
+}
+.get-in-touch-form .wpcf7-form {
+  width: 100%;
+}
+.get-in-touch-form .contact-row1 {
+  gap: 25px;
+  margin-bottom: 30px;
+}
+.get-in-touch-form .contact-row1 .contact-col input {
+  min-height: 50px;
+  padding: 14px 19px;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+}
+.get-in-touch-form .contact-row2 textarea {
+  min-height: 150px;
+  height: 150px;
+  padding: 14px 19px;
+  background: #fff;
+}
+.get-in-touch-form .contact-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.get-in-touch-form .contact-submit input[type=submit] {
+  display: inline-flex;
+  background: #f4510b;
+  color: #fff;
+  padding: 17px 25px;
+  text-transform: none;
+}
+.get-in-touch-form .contact-submit input[type=submit]:hover {
+  background: #202020;
+}
+
+@media (max-width: 767px) {
+  .get-in-touch-form {
+    padding: 50px 20px;
+  }
+  .get-in-touch-form .contact-row1 {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .get-in-touch-form .contact-row1 .contact-col {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=theme.css.map */

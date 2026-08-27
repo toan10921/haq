@@ -85,16 +85,16 @@ class T888_List_Product extends T888_Widget_Base
         return ['t888-elements'];
     }
 
-    public function get_product_order_by()
+   public function get_product_order_by()
     {
-        return [
-            'menu_order' => __('Default sorting', 'nebon'),
-            'popularity' => __('Sort by popularity', 'nebon'),
-            'rating'     => __('Sort by average rating', 'nebon'),
-            'date'       => __('Sort by latest', 'nebon'),
-            'price'      => __('Sort by price: low to high', 'nebon'),
-            'price-desc' => __('Sort by price: high to low', 'nebon'),
-        ];
+    return [
+        'menu_order' => __('Sắp xếp mặc định', 'nebon'),
+        'popularity' => __('Theo độ phổ biến', 'nebon'),
+        'rating'     => __('Theo đánh giá trung bình', 'nebon'),
+        'date'       => __('Sản phẩm mới nhất', 'nebon'),
+        'price'      => __('Giá từ thấp đến cao', 'nebon'),
+        'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
+    ];
     }
 
     /**

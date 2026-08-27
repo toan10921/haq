@@ -95,7 +95,42 @@ class T888_Testimonial extends T888_Widget_Base
                 'options' => [
                     '' => __('Default', 'nebon'),
                     'style2' => __('Style 2', 'nebon'),
+                    'style3' => __('Style 3 - Industrial Split', 'nebon'),
                 ]
+            ]
+        );
+
+        $this->add_control(
+            'style3_image',
+            [
+                'label' => __('Main Image', 'nebon'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+                'condition' => ['style' => 'style3'],
+            ]
+        );
+
+        $this->add_control(
+            'style3_eyebrow',
+            [
+                'label' => __('Eyebrow', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('TESTIMONIALS', 'nebon'),
+                'label_block' => true,
+                'condition' => ['style' => 'style3'],
+            ]
+        );
+
+        $this->add_control(
+            'style3_heading',
+            [
+                'label' => __('Heading', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('What Client Say', 'nebon'),
+                'label_block' => true,
+                'condition' => ['style' => 'style3'],
             ]
         );
 
@@ -118,6 +153,16 @@ class T888_Testimonial extends T888_Widget_Base
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
                 ],
+            ]
+        );
+
+        $repeater->add_control(
+            'quote_title',
+            [
+                'label' => __('Testimonial Title', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => __('Best Company!', 'nebon'),
+                'label_block' => true,
             ]
         );
 
@@ -172,6 +217,97 @@ class T888_Testimonial extends T888_Widget_Base
                 'title_field' => '{{{ title }}}',
             ]
         );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style3_layout',
+            [
+                'label' => __('Style 3 Layout', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['style' => 'style3'],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'style3_min_height',
+            [
+                'label' => __('Minimum Height', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => ['px' => ['min' => 420, 'max' => 900]],
+                'default' => ['size' => 635, 'unit' => 'px'],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-testimonial-style3' => 'min-height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'style3_image_width',
+            [
+                'label' => __('Image Width', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'size_units' => ['%'],
+                'range' => ['%' => ['min' => 30, 'max' => 70]],
+                'default' => ['size' => 49, 'unit' => '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-testimonial-style3' => '--t888-testimonial-image-width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'style3_content_padding',
+            [
+                'label' => __('Content Padding', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', '%'],
+                'default' => [
+                    'top' => 70,
+                    'right' => 90,
+                    'bottom' => 65,
+                    'left' => 110,
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-testimonial-style3__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style3_colors',
+            [
+                'label' => __('Style 3 Colors', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+                'condition' => ['style' => 'style3'],
+            ]
+        );
+
+        $style3_colors = [
+            'style3_background_color' => [__('Background', 'nebon'), '#1f1f1f', '--t888-testimonial-bg'],
+            'style3_heading_color' => [__('Heading', 'nebon'), '#ffffff', '--t888-testimonial-heading'],
+            'style3_text_color' => [__('Text', 'nebon'), '#c8c8c8', '--t888-testimonial-text'],
+            'style3_accent_color' => [__('Accent', 'nebon'), '#f45100', '--t888-testimonial-accent'],
+            'style3_divider_color' => [__('Divider', 'nebon'), '#484848', '--t888-testimonial-divider'],
+        ];
+
+        foreach ($style3_colors as $control_id => $color_data) {
+            $this->add_control(
+                $control_id,
+                [
+                    'label' => $color_data[0],
+                    'type' => Controls_Manager::COLOR,
+                    'default' => $color_data[1],
+                    'selectors' => [
+                        '{{WRAPPER}} .t888-testimonial-style3' => $color_data[2] . ': {{VALUE}};',
+                    ],
+                ]
+            );
+        }
 
         $this->end_controls_section();
     }
