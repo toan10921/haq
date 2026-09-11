@@ -21,6 +21,22 @@
 
             var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
             var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
+            var tabList = root.querySelector('[role="tablist"]');
+            var mobileQuery = window.matchMedia('(max-width: 767px)');
+
+            function syncOrientation() {
+                if (tabList && root.classList.contains('t888-service-tabs--style2')) {
+                    tabList.setAttribute('aria-orientation', mobileQuery.matches ? 'vertical' : 'horizontal');
+                }
+            }
+
+            syncOrientation();
+
+            if (mobileQuery.addEventListener) {
+                mobileQuery.addEventListener('change', syncOrientation);
+            } else if (mobileQuery.addListener) {
+                mobileQuery.addListener(syncOrientation);
+            }
 
             function activateTab(nextTab, moveFocus) {
                 var panelId = nextTab.getAttribute('aria-controls');

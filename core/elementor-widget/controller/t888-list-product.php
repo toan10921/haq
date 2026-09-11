@@ -51,7 +51,7 @@ class T888_List_Product extends T888_Widget_Base
      */
     public function get_script_depends()
     {
-        return [];
+        return ['elementor-t888-list-product', 'elementor-t888-product-tabs'];
     }
 
     /**
@@ -66,12 +66,41 @@ class T888_List_Product extends T888_Widget_Base
      */
     public function get_style_depends()
     {
-        return [];
+        return ['elementor-t888-list-product', 'elementor-t888-product-tabs'];
+    }
+
+    public function enque_styles()
+    {
+        parent::enque_styles();
+
+        $popup_css_path = get_template_directory() . '/assets/css/elementor/t888-product-tabs.css';
+        if (file_exists($popup_css_path)) {
+            wp_register_style(
+                'elementor-t888-product-tabs',
+                get_template_directory_uri() . '/assets/css/elementor/t888-product-tabs.css',
+                [],
+                filemtime($popup_css_path),
+                'all'
+            );
+            wp_enqueue_style('elementor-t888-product-tabs');
+        }
     }
 
     public function enque_scripts()
     {
         parent::enque_scripts();
+
+        $popup_js_path = get_template_directory() . '/assets/js/elementor/t888-product-tabs.js';
+        if (file_exists($popup_js_path)) {
+            wp_register_script(
+                'elementor-t888-product-tabs',
+                get_template_directory_uri() . '/assets/js/elementor/t888-product-tabs.js',
+                ['jquery'],
+                filemtime($popup_js_path),
+                true
+            );
+            wp_enqueue_script('elementor-t888-product-tabs');
+        }
 
         wp_localize_script('elementor-t888-list-product', 't888_ajax_object ', [
             'ajax_url' => admin_url('admin-ajax.php'),
@@ -272,6 +301,18 @@ class T888_List_Product extends T888_Widget_Base
                     'pagination' => __('Pagination', 'nebon'),
                     'loadmore'   => __('Load More', 'nebon'),
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'contact_form_shortcode',
+            [
+                'label' => __('Contact Form 7 Shortcode', 'nebon'),
+                'type' => Controls_Manager::TEXT,
+                'default' => '[contact-form-7 id="ced3843" title="popup lien he"]',
+                'placeholder' => '[contact-form-7 id="ced3843" title="popup lien he"]',
+                'description' => __('Paste the Contact Form 7 shortcode used by the inquiry popup.', 'nebon'),
+                'label_block' => true,
             ]
         );
 
@@ -548,6 +589,17 @@ class T888_List_Product extends T888_Widget_Base
             : $this->get_args_query($posts_per_page);
         $custom_classes = preg_split('/\s+/', trim((string) ($settings['_css_classes'] ?? '')));
         $settings['use_shop_card'] = in_array('listsp', $custom_classes, true);
+        $settings['inquiry_popup_id'] = 't888-list-product-' . sanitize_html_class($this->get_id()) . '-inquiry';
+
+        $contact_form_shortcode = trim((string) ($settings['contact_form_shortcode'] ?? ''));
+        $settings['contact_form_html'] = '';
+        if (
+            $contact_form_shortcode !== ''
+            && shortcode_exists('contact-form-7')
+            && preg_match('/^\s*\[contact-form-7\b/i', $contact_form_shortcode)
+        ) {
+            $settings['contact_form_html'] = do_shortcode($contact_form_shortcode);
+        }
 
 
         // only render top filter if there are products to display

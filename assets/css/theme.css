@@ -72,7 +72,7 @@
   margin-bottom: 2px;
   margin-top: 0;
   position: relative;
-  font-size: 2.25rem;
+  font-size: 30px !important;
   line-height: normal;
 }
 .breadcrumb nav {
@@ -108,7 +108,7 @@
     margin-bottom: 50px;
   }
   .breadcrumb .breadcrumb-title {
-    font-size: 1.875rem;
+    font-size: 24px !important;
   }
 }
 @media (max-width: 767px) {
@@ -119,7 +119,7 @@
     margin-bottom: 3.125rem;
   }
   .breadcrumb .breadcrumb-title {
-    font-size: 1.5rem;
+    font-size: 20px !important;
     line-height: 2.25rem;
   }
   .breadcrumb-parallax.parallax {
@@ -769,6 +769,7 @@
   line-height: 1.5rem;
   color: var(--primary-color);
   opacity: 0.5;
+  display: none;
 }
 .show-filter .show-filter-right .custom-dropdown {
   margin: 0;
@@ -982,6 +983,7 @@ body.no-scroll {
   margin-bottom: 48px;
 }
 .wp-block-tag-cloud a {
+  width: 100%;
   font-size: 0.875rem !important;
   color: var(--ninth-color);
   background: var(--secondary-color);
@@ -989,7 +991,6 @@ body.no-scroll {
   padding: 0.875rem 1.25rem;
   margin-right: 0;
   border: 1px solid var(--forth-color);
-  width: 100%;
 }
 .wp-block-tag-cloud a.current-tag {
   color: var(--secondary-color);
@@ -3485,7 +3486,7 @@ ol.wp-block-latest-comments li a:hover {
   .shop-layout-4-cols,
   .shop-layout-5-cols,
   .shop-layout-6-cols {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
   .products.grid {
     margin-bottom: 40px;
@@ -3538,6 +3539,17 @@ ol.wp-block-latest-comments li a:hover {
   .products .product-item .grid-product-item .product-item-inner .product-thumbnail-outer::after,
   .products .product-item .grid-product-item .product-item-inner .product-thumbnail-outer::before {
     content: none !important;
+  }
+}
+@media (max-width: 575px) {
+  .shop-layout-3-cols,
+  .shop-layout-4-cols,
+  .shop-layout-5-cols,
+  .shop-layout-6-cols {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .products.grid {
+    margin-bottom: 40px;
   }
 }
 @media (max-width: 480px) {

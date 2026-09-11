@@ -239,7 +239,7 @@ body.t888-mobile-menu-open {
 }
 .menu-toggle-mobile i{
     font-size: 24px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     cursor: pointer;
 }
 .mobile-menu-wrapper .mobile-menu-inner .mobile-menu-list{
@@ -261,9 +261,11 @@ body.t888-mobile-menu-open {
     font-family: var(--font-family);
     position: relative;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 17px;
     height: 50px;
+    line-height: 28.9px;
     transition: all 0.3s ease;
+    font-weight: 400px;
 }
 .mobile-menu-wrapper .mobile-menu-inner .mobile-menu-list li:first-child a{
     border-top: none;
@@ -351,6 +353,9 @@ body.t888-mobile-menu-open {
     background: rgba(0,0,0,0.08);
     border-bottom: 2px solid var(--third-color);
     color: var(--primary-color)
+}
+.mobile-menu-tabs .tab-btn[data-tab="category-menu"] {
+    display: none;
 }
 
 .tab-content {

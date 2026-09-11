@@ -106,7 +106,7 @@
     position: absolute;
     z-index: 1;
     right: 8px;
-    bottom: -35px;
+    bottom: -20px;
     color: rgba(0, 0, 0, .045);
     font-family: Arial, sans-serif;
     font-size: clamp(120px, 11vw, 178px);
@@ -208,8 +208,9 @@
 
 @media (max-width: 767px) {
     .t888-service-features-grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
 
     .t888-service-feature-card {

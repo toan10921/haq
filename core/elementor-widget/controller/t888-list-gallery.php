@@ -93,6 +93,18 @@ class T888_List_Gallery extends T888_Widget_Base
             ]
         );
 
+        $this->add_control(
+            'autoplay',
+            [
+                'label'        => __('Auto Slide', 'nebon'),
+                'type'         => Controls_Manager::SWITCHER,
+                'label_on'     => __('On', 'nebon'),
+                'label_off'    => __('Off', 'nebon'),
+                'return_value' => 'yes',
+                'default'      => 'yes',
+            ]
+        );
+
         $this->end_controls_section();
     }
 

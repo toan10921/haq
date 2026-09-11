@@ -248,6 +248,7 @@ function handleClickChangeQuantityMiniCart() {
                     paged: nextPage,
                     query_vars: $btn.attr('data-query-vars'),
                     style: $btn.data('style'),
+                    use_shop_card: $btn.attr('data-use-shop-card'),
                     slug: $btn.data('slug')
                 },
                 beforeSend: function () {

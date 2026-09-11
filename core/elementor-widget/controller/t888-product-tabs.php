@@ -217,6 +217,16 @@ class T888_Product_Tabs extends T888_Widget_Base
             ],
         ]);
 
+        $this->add_control('style6_contact_form_shortcode', [
+            'label' => __('Style 6: Contact Form 7 Shortcode', 'nebon'),
+            'type' => Controls_Manager::TEXT,
+            'placeholder' => '[contact-form-7 id="123" title="Yêu cầu báo giá"]',
+            'description' => __('Paste a Contact Form 7 shortcode. Leave empty to use the first published Contact Form 7 form.', 'nebon'),
+            'condition' => [
+                'style' => 'style6',
+            ],
+        ]);
+
         $this->add_control('style6_enable_center_product', [
 
             'label' => __('Style 6: Center Large Product', 'nebon'),

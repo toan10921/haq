@@ -1,5 +1,4 @@
 .industrial-stats {
-  display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   align-items: start !important;
   gap: clamp(24px, 3vw, 40px) !important;

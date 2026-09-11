@@ -3199,3 +3199,74 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
         }
     }
 }
+/* Responsive nội dung trang chi tiết sản phẩm */
+@media (max-width: 1024px) {
+    .single-product {
+        .woocommerce-Tabs-panel--description {
+            padding-inline: 24px;
+
+            h1 {
+                font-size: 28px;
+                line-height: 1.15;
+                overflow-wrap: anywhere;
+            }
+            h2 {
+                font-size: 24px;
+            }
+
+            img,
+            video,
+            iframe {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .vc_row,
+            .vc_column-inner,
+            .wpb_wrapper {
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            table {
+                display: block;
+                max-width: 100%;
+                overflow-x: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .single-product {
+        .woocommerce-Tabs-panel--description {
+            padding-inline: 16px;
+
+            h1 {
+                font-size: 26px;
+                line-height: 1.2;
+            }
+
+            h2 {
+                font-size: 23px;
+                line-height: 1.25;
+            }
+        }
+    }
+}
+
+@media (max-width: 565px) {
+    .single-product {
+        .woocommerce-Tabs-panel--description {
+            padding-inline: 12px;
+
+            h1 {
+                font-size: 23px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    }
+}

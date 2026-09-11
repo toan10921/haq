@@ -138,7 +138,7 @@
 .t888-industrial-hero__background img {
     display: block;
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
     object-position: center;
     backface-visibility: hidden;
@@ -177,8 +177,7 @@
 .t888-industrial-hero__title-wrap,
 .t888-industrial-hero__title-mask,
 .t888-industrial-hero__description-wrap,
-.t888-industrial-hero__button-wrap,
-.t888-industrial-hero__play-wrap {
+.t888-industrial-hero__button-wrap {
     overflow: hidden;
 }
 
@@ -219,9 +218,8 @@
     gap: 22px;
 }
 
-/* Keep actions hidden until JavaScript has applied their animation start state. */
-.t888-industrial-hero:not(.is-animation-ready) .t888-industrial-hero__button,
-.t888-industrial-hero:not(.is-animation-ready) .t888-industrial-hero__play {
+/* Keep the action hidden until JavaScript has applied its animation start state. */
+.t888-industrial-hero:not(.is-animation-ready) .t888-industrial-hero__button {
     opacity: 0;
     visibility: hidden;
 }
@@ -261,40 +259,12 @@
     stroke-linejoin: round;
 }
 
-.t888-industrial-hero__play {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 58px;
-    height: 58px;
-    border: 1px solid rgba(255, 255, 255, 0.72);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
 .t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__title,
 .t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__title-mask,
 .t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__description,
-.t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__button,
-.t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__play {
+.t888-industrial-hero.is-content-animating .t888-industrial-hero__slide.is-active .t888-industrial-hero__button {
     backface-visibility: hidden;
     will-change: transform;
-}
-
-.t888-industrial-hero__play:hover,
-.t888-industrial-hero__play:focus {
-    border-color: var(--t888-hero-accent);
-    background-color: var(--t888-hero-accent);
-    color: #fff;
-}
-
-.t888-industrial-hero__play svg {
-    width: 22px;
-    height: 22px;
-    margin-left: 3px;
-    fill: currentColor;
 }
 
 .t888-industrial-hero__arrows {
@@ -366,8 +336,12 @@
 
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .t888-industrial-hero__arrows { display: none; }
+
+    .t888-industrial-hero__slides {
+        touch-action: pan-y;
+    }
 }
 
 @media (max-width: 800px) {

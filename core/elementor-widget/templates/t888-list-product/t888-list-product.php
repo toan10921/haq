@@ -1,4 +1,14 @@
 <?php
+$inquiry_popup_id = !empty($inquiry_popup_id)
+    ? sanitize_html_class($inquiry_popup_id)
+    : 't888-list-product-inquiry';
+$contact_form_html = is_string($contact_form_html ?? null) ? $contact_form_html : '';
+?>
+<div
+    class="t888-list-product-wrapper"
+    data-inquiry-modal-id="<?php echo esc_attr($inquiry_popup_id); ?>"
+>
+<?php
 if ($query->have_posts()) :
     $backup = $GLOBALS['wp_query'];
     $GLOBALS['wp_query'] = $query;
@@ -41,8 +51,19 @@ endif;
             data-query-vars='<?php echo wp_json_encode( $args, JSON_UNESCAPED_UNICODE ); ?>'
             data-template-view="<?php echo esc_attr( $template_view ); ?>"
             data-style="<?php echo esc_attr( $view ); ?>"
+            data-use-shop-card="<?php echo !empty($use_shop_card) ? 'yes' : 'no'; ?>"
             data-slug="<?php echo esc_attr( $slug ); ?>">
       <?php esc_html_e( 'Load More', 'nebon' ); ?>
     </button>
   </div>
 <?php endif; ?>
+
+<?php
+if (!empty($use_shop_card)) {
+    t888f_get_template('woocommerce/product-inquiry-modal', '', [
+        'inquiry_popup_id' => $inquiry_popup_id,
+        'contact_form_html' => $contact_form_html,
+    ], true);
+}
+?>
+</div>

@@ -451,8 +451,11 @@ if (!class_exists('TemplateHelper')) {
                     'all'
                 );
             }
-            // Enqueue main script
-            wp_enqueue_script('t888f-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), ASSETS_VER, true);
+            // Use the file timestamp so slider fixes are not hidden by an old
+            // browser/CDN copy of the main script.
+            $main_script_path = get_template_directory() . '/assets/js/script.js';
+            $main_script_ver = file_exists($main_script_path) ? filemtime($main_script_path) : ASSETS_VER;
+            wp_enqueue_script('t888f-script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), $main_script_ver, true);
             wp_enqueue_script('t888f-ajax', get_template_directory_uri() . '/assets/js/ajax.js', array('jquery'), ASSETS_VER, true);
             wp_enqueue_script('t888f-ajax-filters', get_template_directory_uri() . '/assets/js/ajax-filters.js', array('jquery'), ASSETS_VER, true);
             // add global variable to the script

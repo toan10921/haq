@@ -1,5 +1,6 @@
 <?php
 $title = $title ?? ($settings['title'] ?? '');
+$autoplay = $autoplay ?? ($settings['autoplay'] ?? 'yes');
 $items = $items ?? ($settings['items'] ?? []); // nhận từ render()
 ?>
 
@@ -14,13 +15,13 @@ $items = $items ?? ($settings['items'] ?? []); // nhận từ render()
          data-loop="yes"
          data-navigation="true"
          data-speed="5000"
-         data-autoplay="yes"
+         data-autoplay="<?php echo esc_attr($autoplay); ?>"
          data-effect="slide"
          data-items-widescreen="6"
-         data-items-laptop="4"
-         data-items-tablet-extra="3"
-         data-items-tablet="3"
-         data-items-mobile-extra="2"
+         data-items-laptop="6"
+         data-items-tablet-extra="6"
+         data-items-tablet="4"
+         data-items-mobile-extra="4"
          data-items-mobile="2"
          data-space-widescreen="30"
          data-space-laptop="30"

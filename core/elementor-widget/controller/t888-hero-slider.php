@@ -122,16 +122,6 @@ class T888_Hero_Slider extends T888_Widget_Base
             ],
         ]);
 
-        $repeater->add_control('play_link', [
-            'label' => __('Play Video Link', 'nebon'),
-            'type' => Controls_Manager::URL,
-            'placeholder' => 'https://www.youtube.com/watch?v=...',
-            'default' => [
-                'url' => '#',
-            ],
-            'description' => __('Leave empty to hide the play button.', 'nebon'),
-        ]);
-
         $this->add_control('slides', [
             'label' => __('Hero Slides', 'nebon'),
             'type' => Controls_Manager::REPEATER,
@@ -143,7 +133,6 @@ class T888_Hero_Slider extends T888_Widget_Base
                     'description' => __('Industrial solutions built with precision, experience, and a commitment to lasting performance.', 'nebon'),
                     'button_text' => __('Explore More', 'nebon'),
                     'button_link' => ['url' => '#'],
-                    'play_link' => ['url' => '#'],
                     'background_image' => ['url' => Utils::get_placeholder_image_src()],
                 ],
                 [
@@ -151,7 +140,6 @@ class T888_Hero_Slider extends T888_Widget_Base
                     'description' => __('Reliable engineering and manufacturing capabilities for the industries that move the world.', 'nebon'),
                     'button_text' => __('Explore More', 'nebon'),
                     'button_link' => ['url' => '#'],
-                    'play_link' => ['url' => '#'],
                     'background_image' => ['url' => Utils::get_placeholder_image_src()],
                 ],
             ],
@@ -493,16 +481,6 @@ class T888_Hero_Slider extends T888_Widget_Base
             ],
             'selectors' => [
                 '{{WRAPPER}} .t888-industrial-hero__button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-            ],
-        ]);
-
-        $this->add_control('play_size', [
-            'label' => __('Play Button Size', 'nebon'),
-            'type' => Controls_Manager::SLIDER,
-            'range' => ['px' => ['min' => 40, 'max' => 120]],
-            'default' => ['unit' => 'px', 'size' => 58],
-            'selectors' => [
-                '{{WRAPPER}} .t888-industrial-hero__play' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
             ],
         ]);
 

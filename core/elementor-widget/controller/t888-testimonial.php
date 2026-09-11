@@ -271,7 +271,7 @@ class T888_Testimonial extends T888_Widget_Base
                     'isLinked' => false,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .t888-testimonial-style3__content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .t888-testimonial-style3' => '--t888-testimonial-padding-top: {{TOP}}{{UNIT}}; --t888-testimonial-padding-right: {{RIGHT}}{{UNIT}}; --t888-testimonial-padding-bottom: {{BOTTOM}}{{UNIT}}; --t888-testimonial-padding-left: {{LEFT}}{{UNIT}};',
                 ],
             ]
         );

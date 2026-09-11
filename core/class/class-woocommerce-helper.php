@@ -484,6 +484,9 @@ if (class_exists("woocommerce")) {
             add_action('t888f_after_product', [$this, 't888f_single_upsell_product'], 15);
             add_action('t888f_after_product', [$this, 't888f_single_related_product'], 20);
             add_action('t888f_after_product', [$this, 't888f_single_lastest_product'], 25);
+            // Render before WordPress prints footer scripts so Contact Form 7
+            // can enqueue any assets it needs while processing the shortcode.
+            add_action('wp_footer', [$this, 't888f_single_product_inquiry_modal'], 5);
             add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 6);
             add_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 11);
             add_action('woocommerce_single_product_summary', [$this, 't888f_viewing_question'], 12);
@@ -510,6 +513,31 @@ if (class_exists("woocommerce")) {
 
         public function enqueue_woocommerce_assets()
         {
+            if (is_product()) {
+                $inquiry_style_path = get_template_directory() . '/assets/css/elementor/t888-product-tabs.css';
+                $inquiry_script_path = get_template_directory() . '/assets/js/elementor/t888-product-tabs.js';
+
+                if (file_exists($inquiry_style_path)) {
+                    wp_enqueue_style(
+                        'elementor-t888-product-tabs',
+                        get_template_directory_uri() . '/assets/css/elementor/t888-product-tabs.css',
+                        [],
+                        filemtime($inquiry_style_path),
+                        'all'
+                    );
+                }
+
+                if (file_exists($inquiry_script_path)) {
+                    wp_enqueue_script(
+                        'elementor-t888-product-tabs',
+                        get_template_directory_uri() . '/assets/js/elementor/t888-product-tabs.js',
+                        ['jquery'],
+                        filemtime($inquiry_script_path),
+                        true
+                    );
+                }
+            }
+
             if ((is_shop() || is_product_category()) && get_theme_mod('shop_ajax_general') === 'on') {
                 $script_path = '/assets/js/ajax.js';
                 wp_enqueue_script(
@@ -645,6 +673,37 @@ if (class_exists("woocommerce")) {
             t888f_get_template('woocommerce/single-product/related', get_post_format(), array(), true);
         }
 
+        /**
+         * Render the shared inquiry popup used by compact product cards on a
+         * single product page.
+         */
+        public function t888f_single_product_inquiry_modal()
+        {
+            if (!is_product()) {
+                return;
+            }
+
+            $contact_form_html = '';
+            $contact_form_shortcode = apply_filters(
+                't888f_single_product_inquiry_form_shortcode',
+                '[contact-form-7 id="ced3843" title="popup lien he"]'
+            );
+            $contact_form_shortcode = trim((string) $contact_form_shortcode);
+
+            if (
+                $contact_form_shortcode !== ''
+                && shortcode_exists('contact-form-7')
+                && preg_match('/^\s*\[contact-form-7\b/i', $contact_form_shortcode)
+            ) {
+                $contact_form_html = do_shortcode($contact_form_shortcode);
+            }
+
+            t888f_get_template('woocommerce/product-inquiry-modal', '', [
+                'inquiry_popup_id' => 't888-global-inquiry-modal',
+                'contact_form_html' => $contact_form_html,
+            ], true);
+        }
+
 
         function short_des_list_product()
         {
@@ -765,6 +824,7 @@ if (class_exists("woocommerce")) {
             $paged = max(1, (int) ($_POST['paged'] ?? 1));
             $slug  = sanitize_text_field($_POST['slug'] ?? 'product');
             $style = sanitize_text_field($_POST['style'] ?? 'list');
+            $use_shop_card = sanitize_text_field($_POST['use_shop_card'] ?? 'no') === 'yes';
 
             $template_view = ($style === 'grid')
                 ? 'woocommerce/loop/grid/grid'
@@ -789,6 +849,7 @@ if (class_exists("woocommerce")) {
                     'template_view' => $template_view,
                     'style'         => $style,
                     'slug'          => $slug,
+                    'use_shop_card' => $use_shop_card,
                 ],
                 false
             );

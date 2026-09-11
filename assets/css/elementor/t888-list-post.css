@@ -414,7 +414,7 @@
 }
 
 .blog-wrap.grid-style7 .posts-wrap {
-    display: grid !important;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
     width: 100%;
@@ -570,6 +570,14 @@
         grid-row: 2;
         min-height: 275px;
     }
+    .blog-wrap.grid-style7 .posts-wrap {
+    display: flex;
+    grid-template-columns: 2fr;
+    gap: 20px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
 }
 
 @media (max-width: 767px) {
@@ -579,6 +587,7 @@
     .blog-wrap.grid-style7 .posts-wrap.grid-columns-4 {
         grid-template-columns: 1fr;
         gap: 20px;
+        display: block;
     }
 
     .grid-style7-item .split-post-card {

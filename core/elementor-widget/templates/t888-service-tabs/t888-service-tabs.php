@@ -22,6 +22,7 @@ $is_history_style = $service_tabs_style === 'style2';
                 <button
                     id="<?php echo esc_attr($tab_id); ?>"
                     class="t888-service-tabs__tab<?php echo $is_active ? ' is-active' : ''; ?>"
+                    style="--t888-service-tab-order: <?php echo esc_attr($index * 2); ?>;"
                     type="button"
                     role="tab"
                     aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>"
@@ -58,6 +59,7 @@ $is_history_style = $service_tabs_style === 'style2';
                 <section
                     id="<?php echo esc_attr($panel_id); ?>"
                     class="t888-service-tabs__panel<?php echo $is_active ? ' is-active' : ''; ?>"
+                    style="--t888-service-tab-order: <?php echo esc_attr(($index * 2) + 1); ?>;"
                     role="tabpanel"
                     aria-labelledby="<?php echo esc_attr($tab_id); ?>"
                     <?php echo $is_active ? '' : 'hidden'; ?>
@@ -85,7 +87,7 @@ $is_history_style = $service_tabs_style === 'style2';
                                 <?php foreach ($features as $feature): ?>
                                     <li>
                                         <span class="t888-service-tabs__check" aria-hidden="true"><?php echo $is_history_style ? '' : '&#10003;'; ?></span>
-                                        <span><?php echo esc_html($feature); ?></span>
+                                        <span class="rs-feature-text"><?php echo esc_html($feature); ?></span>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>

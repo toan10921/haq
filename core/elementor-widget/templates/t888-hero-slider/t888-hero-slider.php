@@ -84,13 +84,6 @@ $t888_hero_link_attributes = static function ($link, $fallback = '') {
             if (!empty($button_link['is_external'])) $button_rel[] = 'noopener noreferrer';
             $button_rel_attr = $button_rel ? ' rel="' . esc_attr(implode(' ', $button_rel)) . '"' : '';
 
-            $play_link = (isset($slide['play_link']) && is_array($slide['play_link'])) ? $slide['play_link'] : [];
-            $play_url = !empty($play_link['url']) ? $play_link['url'] : '';
-            $play_target = !empty($play_link['is_external']) ? ' target="_blank"' : '';
-            $play_rel = [];
-            if (!empty($play_link['nofollow'])) $play_rel[] = 'nofollow';
-            if (!empty($play_link['is_external'])) $play_rel[] = 'noopener noreferrer';
-            $play_rel_attr = $play_rel ? ' rel="' . esc_attr(implode(' ', $play_rel)) . '"' : '';
             $is_active = $index === 0;
         ?>
             <article
@@ -146,14 +139,6 @@ $t888_hero_link_attributes = static function ($link, $fallback = '') {
                                     <a class="t888-industrial-hero__button" href="<?php echo esc_url($button_url); ?>"<?php echo apply_filters('tech888f_output_content', $button_target . $button_rel_attr); ?>>
                                         <span><?php echo esc_html($button_text); ?></span>
                                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                                    </a>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if ($play_url !== '') : ?>
-                                <div class="t888-industrial-hero__play-wrap">
-                                    <a class="t888-industrial-hero__play" href="<?php echo esc_url($play_url); ?>" aria-label="<?php esc_attr_e('Play video', 'nebon'); ?>"<?php echo apply_filters('tech888f_output_content', $play_target . $play_rel_attr); ?>>
-                                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 7l8 5-8 5V7z"/></svg>
                                     </a>
                                 </div>
                             <?php endif; ?>

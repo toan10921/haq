@@ -367,6 +367,50 @@
         }
     }
 }
+@media (max-width: 1024px) {
+    .t888-service-tabs{
+        display: block;
+    }
+    .t888-service-tabs__panels{
+        margin-top: 20px;
+    }
+    .t888-service-tabs__panel.is-active{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .t888-service-tabs__content{
+        padding-left: 20px;
+    }
+    .t888-service-tabs__title{
+        font-size: 26px;
+        line-height: 36px;
+        margin: 0 0 15px;
+    }
+    .t888-service-tabs__description{
+        margin: 0 0 25px;
+        font-size: 17px;
+        line-height: 28.9px;
+    }
+    .t888-service-tabs__features{
+        gap: 14px;
+    }
+    .rs-feature-text{
+        font-size: 16px;
+        line-height: 30px;
+        color: #656567;
+    }
+    .elementor-heading-title {
+    font-family: "Space Grotesk", Sans-serif;
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 85px;
+    letter-spacing: 5.6px;
+    color: #ECECEC;
+    margin-top: 20px;
+    }
+}
 
 @media (max-width: 767px) {
     .t888-service-tabs {
@@ -374,7 +418,7 @@
         row-gap: 28px;
 
         &__nav {
-            display: grid;
+            display: block;
             grid-auto-flow: column;
             grid-auto-columns: minmax(220px, 80%);
             overflow-x: auto;
@@ -397,44 +441,98 @@
         &__title {
             font-size: 28px;
         }
+        &__media{
+            flex-basis: auto;
+            
+        }
+    }
+    .t888-service-tabs-section--style1{
+        .t888-service-tabs__panel.is-active{
+            display: flex;
+            flex-direction: column;
+            row-gap: 28px;
+        }
     }
 
     .t888-service-tabs.t888-service-tabs--style2 {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 7px;
+
         .t888-service-tabs__nav {
-            display: flex;
-            gap: 0;
-            margin-bottom: 34px;
-            overflow-x: auto;
+            display: contents;
+            margin: 0;
+            overflow: visible;
             padding: 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
         }
 
         .t888-service-tabs__tab {
-            flex: 0 0 150px;
-            min-height: 52px;
-            padding: 11px 16px;
-            scroll-snap-align: start;
+            order: var(--t888-service-tab-order);
+            justify-content: flex-start;
+            width: 100%;
+            min-height: 48px;
+            padding: 11px 18px;
+            border: 0 !important;
+            background: #fff !important;
+            font-size: 14px;
+            text-align: left;
+
+            &::before {
+                display: none;
+            }
         }
 
-        .t888-service-tabs__panel.is-active {
-            display: grid;
-            grid-template-columns: 1fr;
-            row-gap: 28px;
+        .t888-service-tabs__panels {
+            display: contents;
+            margin: 0;
+        }
+
+        .t888-service-tabs__panel {
+            order: var(--t888-service-tab-order);
+            width: 100%;
+            margin-top: -7px;
+            padding: 28px 18px 30px;
+            box-sizing: border-box;
+            background: #fff;
+
+            &.is-active {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+            }
         }
 
         .t888-service-tabs__media {
-            height: 260px;
+            max-width: 414px;
+            height: auto;
+            aspect-ratio: 414 / 280;
         }
 
         .t888-service-tabs__title {
-            font-size: 22px;
+            margin-bottom: 16px;
+            font-size: 20px;
         }
 
         .t888-service-tabs__description {
-            line-height: 1.8;
+            margin-bottom: 22px;
+            font-size: 14px;
+            line-height: 1.75;
+        }
+
+        .t888-service-tabs__features {
+            gap: 10px;
+
+            li {
+                font-size: 14px;
+            }
+
+            .rs-feature-text {
+                font-size: inherit;
+                line-height: inherit;
+            }
         }
     }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

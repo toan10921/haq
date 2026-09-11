@@ -9,7 +9,6 @@ if (!isset($product) || !is_a($product, 'WC_Product')) {
 
 if (!empty($compact_card)) {
     $contact_text = !empty($contact_button_text) ? $contact_button_text : __('Liên hệ', 'nebon');
-    $contact_url = !empty($contact_button_url) ? $contact_button_url : '#';
     ?>
     <article class="t888-shop-card" role="listitem">
         <div class="t888-shop-card__media">
@@ -19,12 +18,18 @@ if (!empty($compact_card)) {
                     <span class="t888-shop-card__sale"><?php esc_html_e('Sale!', 'nebon'); ?></span>
                 <?php endif; ?>
             </a>
-            <a class="t888-shop-card__contact" href="<?php echo esc_url($contact_url); ?>">
+            <button
+                class="t888-shop-card__contact t888-inquiry-trigger"
+                type="button"
+                data-product-name="<?php echo esc_attr($product->get_name()); ?>"
+                data-product-url="<?php echo esc_url($product->get_permalink()); ?>"
+                aria-label="<?php echo esc_attr(sprintf(__('Liên hệ về %s', 'nebon'), $product->get_name())); ?>"
+            >
                 <span class="t888-shop-card__contact-text"><?php echo esc_html($contact_text); ?></span>
                 <span class="t888-shop-card__contact-icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24"><path d="M7 17 17 7M10 7h7v7"/></svg>
                 </span>
-            </a>
+            </button>
         </div>
         <div class="t888-shop-card__meta">
             <div class="t888-shop-card__price"><?php echo wp_kses_post($product->get_price_html()); ?></div>

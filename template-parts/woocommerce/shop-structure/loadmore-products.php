@@ -16,7 +16,10 @@ if ($query->have_posts()) :
             t888f_get_template(
                 $template_view,
                 $slug,
-                ['product' => $product],
+                [
+                    'product' => $product,
+                    'compact_card' => !empty($use_shop_card),
+                ],
                 true
             );
             ?>

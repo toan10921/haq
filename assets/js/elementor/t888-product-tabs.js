@@ -1,5 +1,135 @@
 jQuery(document).ready(function ($) {
 
+  var $inquiryModal = $();
+  var inquiryLastTrigger = null;
+  var inquiryHideTimer = null;
+
+  function closeInquiryModal() {
+    if (!$inquiryModal.length || !$inquiryModal.hasClass('is-open')) return;
+
+    var $modalToHide = $inquiryModal;
+    $modalToHide.removeClass('is-open').attr('aria-hidden', 'true');
+    $('body').removeClass('t888-inquiry-open');
+    window.clearTimeout(inquiryHideTimer);
+    inquiryHideTimer = window.setTimeout(function () {
+      $modalToHide.attr('hidden', 'hidden');
+    }, 220);
+
+    if (inquiryLastTrigger) {
+      inquiryLastTrigger.focus();
+    }
+  }
+
+  function setContactFormProduct($modal, productName, productUrl) {
+    var $form = $modal.find('.wpcf7-form').first();
+    if (!$form.length) return;
+
+    var setValue = function (names, fallbackName, value) {
+      var $fields = $();
+      names.forEach(function (name) {
+        $fields = $fields.add($form.find('[name="' + name + '"]'));
+      });
+
+      if (!$fields.length) {
+        $fields = $('<input>', { type: 'hidden', name: fallbackName }).appendTo($form);
+      }
+
+      $fields.val(value).trigger('change');
+    };
+
+    setValue(['product-name', 'product_name', 'san-pham'], 'product-name', productName);
+    setValue(['product-url', 'product_url', 'duong-dan-san-pham'], 'product-url', productUrl);
+  }
+
+  function openInquiryModal(trigger, productName, productUrl) {
+    var $wrapper = $(trigger).closest('[data-inquiry-modal-id]');
+    var modalId = $wrapper.attr('data-inquiry-modal-id');
+    var modal = modalId ? document.getElementById(modalId) : null;
+
+    // Product cards outside Style 6 (related/upsell/latest on a single
+    // product page) use the shared modal rendered in the footer.
+    if (!modal) {
+      modal = document.getElementById('t888-global-inquiry-modal');
+    }
+
+    if (!modal) {
+      // Keep a useful fallback for pages where the modal was not rendered.
+      if (productUrl) window.location.href = productUrl;
+      return;
+    }
+
+    if ($inquiryModal.length && $inquiryModal[0] !== modal) {
+      closeInquiryModal();
+    }
+
+    inquiryLastTrigger = trigger;
+    window.clearTimeout(inquiryHideTimer);
+    $inquiryModal = $(modal);
+
+    // Elementor containers and widget wrappers can apply inherited form and
+    // typography styles. Keep every inquiry popup in the same DOM context so
+    // Product Tabs, List Product and single-product cards look identical.
+    if (!$inquiryModal.parent().is('body')) {
+      $inquiryModal.appendTo(document.body);
+    }
+
+    $inquiryModal.data({ productName: productName, productUrl: productUrl });
+    $inquiryModal.removeAttr('hidden').attr('aria-hidden', 'false');
+    $inquiryModal.find('.t888-product-inquiry-modal__product strong').text(productName);
+    $inquiryModal.find('.wpcf7-response-output').empty();
+    setContactFormProduct($inquiryModal, productName, productUrl);
+    $('body').addClass('t888-inquiry-open');
+
+    // Force the initial state to render before the opening transition.
+    void modal.offsetWidth;
+    $inquiryModal.addClass('is-open');
+    window.setTimeout(function () {
+      var $firstField = $inquiryModal.find('.wpcf7-form input:not([type="hidden"]), .wpcf7-form textarea, .wpcf7-form select').filter(':visible').first();
+      ($firstField.length ? $firstField : $inquiryModal.find('.t888-product-inquiry-modal__close')).trigger('focus');
+    }, 80);
+  }
+
+  $(document).on('click', '.t888-product-inquiry-modal', function (event) {
+    if (event.target === this || $(event.target).closest('.t888-product-inquiry-modal__close').length) {
+      $inquiryModal = $(this);
+      closeInquiryModal();
+    }
+  });
+
+  $(document).on('keydown', '.t888-product-inquiry-modal', function (event) {
+    $inquiryModal = $(this);
+
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      closeInquiryModal();
+      return;
+    }
+
+    if (event.key !== 'Tab') return;
+
+    var $focusable = $inquiryModal.find('button:not(:disabled), input:not([type="hidden"]), textarea, select, a[href]').filter(':visible');
+    if (!$focusable.length) return;
+
+    var first = $focusable[0];
+    var last = $focusable[$focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  });
+
+  document.addEventListener('wpcf7mailsent', function (event) {
+    var $modal = $(event.target).closest('.t888-product-inquiry-modal');
+    if (!$modal.length) return;
+
+    window.setTimeout(function () {
+      setContactFormProduct($modal, $modal.data('productName') || '', $modal.data('productUrl') || '');
+    }, 0);
+  });
+
   /**
    * Give Style 6 product cards the same visual action strip used by the
   * Shop Product Grid without changing the widget query or PHP templates.
@@ -69,9 +199,11 @@ jQuery(document).ready(function ($) {
 
       var productName = $.trim($card.find('.product-title, .hcard-title').first().text());
       var ariaLabel = productName ? 'Liên hệ về ' + productName : 'Liên hệ';
-      var $actionLink = $('<a>', {
+      var $actionLink = $('<button>', {
         'class': 't888-style6-product-link t888-shop-card__contact',
-        'href': productUrl,
+        'type': 'button',
+        'data-product-name': productName,
+        'data-product-url': productUrl,
         'aria-label': ariaLabel
       });
 
@@ -87,6 +219,17 @@ jQuery(document).ready(function ($) {
       $media.append($actionLink);
     });
   }
+
+  $(document).on('click', '.t888-product-tabs-wrapper.style6 .t888-style6-product-link, .t888-inquiry-trigger', function (event) {
+    event.preventDefault();
+
+    var $button = $(this);
+    var $card = $button.closest('.grid-product-item, .t888-shop-card');
+    var productName = $button.attr('data-product-name') || $.trim($card.find('.product-title, .hcard-title, .t888-shop-card__title').first().text());
+    var productUrl = $button.attr('data-product-url') || $card.find('.product-link, .hcard-img-link, .product-title a, .hcard-title a, .t888-shop-card__title a').first().attr('href') || window.location.href;
+
+    openInquiryModal(this, productName || 'Sản phẩm cần tư vấn', productUrl);
+  });
 
   /**
    * Sync the visible time-panel inside a tab panel

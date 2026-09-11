@@ -85,11 +85,38 @@ if (empty($tabs_resolved)) {
 }
 
 $tab_group_id = 't888-tabs-' . wp_rand(1000, 99999);
+$inquiry_popup_id = $tab_group_id . '-inquiry';
+$contact_form_shortcode = trim((string) ($style6_contact_form_shortcode ?? ''));
+
+if ($contact_form_shortcode === '' && post_type_exists('wpcf7_contact_form')) {
+    $contact_form_ids = get_posts([
+        'post_type' => 'wpcf7_contact_form',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+        'fields' => 'ids',
+        'orderby' => 'date',
+        'order' => 'ASC',
+    ]);
+
+    if (!empty($contact_form_ids)) {
+        $contact_form_shortcode = sprintf('[contact-form-7 id="%d"]', (int) $contact_form_ids[0]);
+    }
+}
+
+$contact_form_html = '';
+if (
+    $contact_form_shortcode !== ''
+    && shortcode_exists('contact-form-7')
+    && preg_match('/^\s*\[contact-form-7\b/i', $contact_form_shortcode)
+) {
+    $contact_form_html = do_shortcode($contact_form_shortcode);
+}
 ?>
 
 <div class="t888-product-tabs-wrapper style6 <?php echo esc_attr($layout_class); ?>"
     style="background-color: <?php echo esc_attr($background_color); ?>;"
-    data-tab-group="<?php echo esc_attr($tab_group_id); ?>">
+    data-tab-group="<?php echo esc_attr($tab_group_id); ?>"
+    data-inquiry-modal-id="<?php echo esc_attr($inquiry_popup_id); ?>">
     <div class="t888-style6-head<?php echo $enable_time_filter ? ' has-time-filter' : ''; ?>">
         <?php if ($tab_layout_style === 'vertical' && !empty($vertical_nav_title)): ?>
             <div class="t888-vertical-nav-title"><?php echo esc_html($vertical_nav_title); ?></div>
@@ -300,4 +327,11 @@ $tab_group_id = 't888-tabs-' . wp_rand(1000, 99999);
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php
+    t888f_get_template('woocommerce/product-inquiry-modal', '', [
+        'inquiry_popup_id' => $inquiry_popup_id,
+        'contact_form_html' => $contact_form_html,
+    ], true);
+    ?>
 </div>

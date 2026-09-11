@@ -28,8 +28,8 @@ $main_image_url = !empty($style3_image['url']) ? $style3_image['url'] : '';
 
         <div class="t888-testimonial style3 swiper-container eltech888-swiper-slider"
             data-items="1"
-            data-space="30"
-            data-loop="yes"
+            data-space="0"
+            data-loop="no"
             data-speed="5000"
             data-autoplay="no"
             data-navigation="yes"

@@ -387,7 +387,7 @@
   .shop-layout-4-cols,
   .shop-layout-5-cols,
   .shop-layout-6-cols {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 
   .products.grid {
@@ -476,6 +476,19 @@
   .products .product-item .grid-product-item .product-item-inner .product-thumbnail-outer::after,
   .products .product-item .grid-product-item .product-item-inner .product-thumbnail-outer::before {
     content: none !important;
+  }
+}
+@media (max-width: 575px) {
+
+  .shop-layout-3-cols,
+  .shop-layout-4-cols,
+  .shop-layout-5-cols,
+  .shop-layout-6-cols {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .products.grid {
+    margin-bottom: 40px;
   }
 }
 
