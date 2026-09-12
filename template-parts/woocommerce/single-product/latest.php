@@ -18,7 +18,7 @@ if ($latest_query->have_posts()): ?>
     <div class="related-products container">
         <div class="related-products">
             <?php
-        $title = get_theme_mod('latest_products_heading_title', __('Latest Products', 'nebon'));
+        $title = get_theme_mod('latest_products_heading_title', __('Sản phẩm mới', 'nebon'));
 
          ?>
             <div class="t888-heading style2">

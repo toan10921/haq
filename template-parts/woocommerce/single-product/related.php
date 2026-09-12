@@ -45,7 +45,7 @@ $related_query = new WP_Query($args);
 if ($related_query->have_posts()) : ?>
     <div class="related-products container">
         <?php
-        $title = get_theme_mod('related_products_heading_title', __('You May Also Like', 'nebon'));
+        $title = get_theme_mod('related_products_heading_title', __('Sản phẩm liên quan', 'nebon'));
         // $icon_class = get_theme_mod('related_products_heading_icon', 'las la-rainbow');
         // ?>
 

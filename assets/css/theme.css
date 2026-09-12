@@ -72,7 +72,7 @@
   margin-bottom: 2px;
   margin-top: 0;
   position: relative;
-  font-size: 30px !important;
+  font-size: 30px;
   line-height: normal;
 }
 .breadcrumb nav {
@@ -769,7 +769,6 @@
   line-height: 1.5rem;
   color: var(--primary-color);
   opacity: 0.5;
-  display: none;
 }
 .show-filter .show-filter-right .custom-dropdown {
   margin: 0;
@@ -5770,7 +5769,7 @@ body.scrolled .sticky-on.is-sticky-active {
   }
 }
 .related-products {
-  margin-bottom: 65px;
+  margin-bottom: 20px;
 }
 .related-products .t888-heading.style2 {
   margin-bottom: 35px;

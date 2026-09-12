@@ -64,7 +64,7 @@ class T888_Search_Form extends T888_Widget_Base
         $this->add_control('placeholder', [
             'label' => __('Placeholder Text', 'nebon'),
             'type' => \Elementor\Controls_Manager::TEXT,
-            'default' => __('What are you searching for ?', 'nebon'),
+            'default' => __('Tìm kiếm sản phẩm…', 'nebon'),
         ]);
 
         $this->add_control('post_type', [
@@ -120,10 +120,17 @@ protected function render()
     $show_categories = $settings['show_categories'] ?? 'yes';
     $ajax_search     = $settings['ajax_search'] ?? 'yes';
 
-    $raw        = isset($settings['placeholder']) ? (string) $settings['placeholder'] : '';
-    $placeholder= (trim($raw) !== '') ? $raw : __('What are you searching for?', 'nebon');
+    $raw = isset($settings['placeholder']) ? trim((string) $settings['placeholder']) : '';
+    $legacy_placeholders = ['What are you searching for ?', 'What are you searching for?'];
+    $placeholder = ($raw === '' || in_array($raw, $legacy_placeholders, true))
+        ? 'Tìm kiếm sản phẩm…'
+        : $raw;
 
     $post_type  = $settings['post_type'] ?? 'post';
+
+    $form_action = ($post_type === 'product' && function_exists('wc_get_page_permalink'))
+        ? wc_get_page_permalink('shop')
+        : home_url('/');
 
     $categories = ($show_categories === 'yes') ? $this->getObjectCategories($post_type) : [];
 
@@ -144,13 +151,13 @@ protected function render()
                     </svg>
 
                     <form class="search-form <?php echo esc_attr($ajax_search === 'yes' ? 'search-ajax' : ''); ?>"
-                          action="<?php echo esc_url(home_url('/')); ?>">
+                          action="<?php echo esc_url($form_action); ?>" method="get" role="search">
 
                         <a href="javascript:void(0)" class="overlay-close js-overlay-close">
                             <i class="las la-times"></i>
                         </a>
 
-                        <input name="s" type="text"
+                        <input name="<?php echo esc_attr($post_type === 'product' ? 'product_search' : 's'); ?>" type="search"
                                placeholder="<?php echo esc_attr($placeholder); ?>"
                                autocomplete="off"
                                class="input-search fw-normal title14" />
@@ -158,7 +165,7 @@ protected function render()
                         <?php if ($show_categories === 'yes' && !empty($categories)) : ?>
                             <div class="custom-dropdown custom-dropdown-categories">
                                 <div class="custom-dropdown-toggle-search position-relative">
-                                    <?php esc_html_e('All Categories', 'nebon'); ?>
+                                    <?php esc_html_e('Tất cả danh mục', 'nebon'); ?>
                                 </div>
                                 <ul class="custom-dropdown-menu-categories">
                                     <?php foreach ($categories as $category): ?>
@@ -171,8 +178,8 @@ protected function render()
                                 </ul>
                             </div>
 
-                            <select name="category" class="form-select d-none">
-                                <option value=""><?php esc_html_e('All Categories', 'nebon'); ?></option>
+                            <select name="<?php echo esc_attr($post_type === 'product' ? 'product_cat' : 'category_name'); ?>" class="form-select d-none">
+                                <option value=""><?php echo esc_html('Tất cả danh mục'); ?></option>
                                 <?php foreach ($categories as $category): ?>
                                     <option value="<?php echo esc_attr($category->slug); ?>">
                                         <?php echo esc_html($category->name); ?>
@@ -182,14 +189,15 @@ protected function render()
                         <?php endif; ?>
 
                         <input type="hidden" name="post_type" value="<?php echo esc_attr($post_type); ?>" />
+                        <input type="hidden" name="t888_search_form" value="1" />
                         <button type="submit" class="btn btn-primary btn-search title24 secondary d-flex align-items-center justify-content-end">
                             <i class="las la-search"></i>
                         </button>
 
                         <div class="list-search-results"
-                             data-search_min_length="<?php echo esc_attr__('Please enter at least 3 characters.', 'nebon'); ?>">
+                             data-search_min_length="<?php echo esc_attr('Vui lòng nhập ít nhất 3 ký tự.'); ?>">
                             <p class="text-center m-0">
-                                <?php echo esc_html__('Please enter key search to display results.', 'nebon'); ?>
+                                <?php echo esc_html('Vui lòng nhập từ khóa để hiển thị kết quả.'); ?>
                             </p>
                         </div>
                     </form>

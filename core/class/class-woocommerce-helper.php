@@ -74,6 +74,7 @@ if (class_exists("woocommerce")) {
                 add_action('wp_ajax_t888_update_cart_item_quantity', [$this, 'update_cart_item_quantity']);
                 add_action('wp_ajax_nopriv_t888_update_cart_item_quantity', [$this, 'update_cart_item_quantity']);
                 add_action('template_redirect', [$this, 't888f_track_product_views']);
+                add_action('template_redirect', [$this, 'redirect_search_form_submission'], 5);
                 add_action('wp_enqueue_scripts', [$this, 'enqueue_woocommerce_assets']);
 
                 // add ajax action for my account
@@ -278,6 +279,110 @@ if (class_exists("woocommerce")) {
                 'start'    => $start,
                 'end'      => $end,
             ]);
+        }
+
+        /**
+         * Route product searches submitted by the Elementor Search Form.
+         *
+         * An empty keyword opens the selected category. An unambiguous exact
+         * title match opens that product; all other searches stay on the shop
+         * page and use the product grid's title-only filtering.
+         */
+        public function redirect_search_form_submission()
+        {
+            if (
+                is_admin() ||
+                wp_doing_ajax() ||
+                empty($_GET['t888_search_form']) ||
+                (isset($_GET['post_type']) && sanitize_key(wp_unslash($_GET['post_type'])) !== 'product')
+            ) {
+                return;
+            }
+
+            $keyword = isset($_GET['product_search']) && is_scalar($_GET['product_search'])
+                ? trim(sanitize_text_field(wp_unslash((string) $_GET['product_search'])))
+                : '';
+            $category_slug = isset($_GET['product_cat']) && is_scalar($_GET['product_cat'])
+                ? sanitize_title(wp_unslash((string) $_GET['product_cat']))
+                : '';
+            $shop_url = wc_get_page_permalink('shop');
+            $category = null;
+
+            if ($category_slug !== '') {
+                $category = get_term_by('slug', $category_slug, 'product_cat');
+                if (!$category instanceof \WP_Term) {
+                    $category_slug = '';
+                    $category = null;
+                }
+            }
+
+            if ($keyword === '') {
+                $target_url = $shop_url;
+                if ($category instanceof \WP_Term) {
+                    $term_url = get_term_link($category);
+                    if (!is_wp_error($term_url)) {
+                        $target_url = $term_url;
+                    }
+                }
+
+                wp_safe_redirect($target_url);
+                exit;
+            }
+
+            $args = [
+                'post_type'           => 'product',
+                'post_status'         => 'publish',
+                'posts_per_page'      => 2,
+                'fields'              => 'ids',
+                'no_found_rows'       => true,
+                'ignore_sticky_posts' => true,
+                'suppress_filters'    => false,
+                't888_exact_product_title' => $keyword,
+            ];
+
+            if ($category instanceof \WP_Term) {
+                $args['tax_query'] = [[
+                    'taxonomy'         => 'product_cat',
+                    'field'            => 'term_id',
+                    'terms'            => [(int) $category->term_id],
+                    'include_children' => true,
+                ]];
+            }
+
+            $exact_title_filter = static function ($where, $query) {
+                $title = trim((string) $query->get('t888_exact_product_title'));
+                if ($title === '') {
+                    return $where;
+                }
+
+                global $wpdb;
+                return $where . $wpdb->prepare(
+                    " AND LOWER({$wpdb->posts}.post_title) = LOWER(%s)",
+                    $title
+                );
+            };
+
+            add_filter('posts_where', $exact_title_filter, 10, 2);
+            try {
+                $exact_products = get_posts($args);
+            } finally {
+                remove_filter('posts_where', $exact_title_filter, 10);
+            }
+
+            // Duplicate product titles are ambiguous, so show the filtered
+            // result list instead of choosing one product arbitrarily.
+            if (count($exact_products) === 1) {
+                wp_safe_redirect(get_permalink($exact_products[0]));
+                exit;
+            }
+
+            $query_args = ['product_search' => $keyword];
+            if ($category_slug !== '') {
+                $query_args['product_cat'] = $category_slug;
+            }
+
+            wp_safe_redirect(add_query_arg($query_args, $shop_url));
+            exit;
         }
 
         function modify_param_woocommerce_main_query($query)
@@ -490,6 +595,8 @@ if (class_exists("woocommerce")) {
             add_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 6);
             add_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 11);
             add_action('woocommerce_single_product_summary', [$this, 't888f_viewing_question'], 12);
+            add_filter('yith_wcwl_show_add_to_wishlist', [$this, 'hide_single_product_wishlist_button']);
+            add_action('woocommerce_single_product_summary', [$this, 't888f_single_product_contact_button'], 31);
             add_action('woocommerce_single_product_summary', [$this, 't888f_image_safe_checkout'], 40);
             add_filter('woocommerce_product_review_comment_form_args', [$this, 'customize_woocommerce_review_form'],);
             // add_action('woocommerce_single_product_summary', [$this, 't888f_product_tabs'], 40);
@@ -589,6 +696,38 @@ if (class_exists("woocommerce")) {
                 'woocommerce/single-product-structure/wishlist-compare',
                 '',
                 ['product_id' => (int) $product_id, 'product' => $product],
+                true
+            );
+        }
+
+        /**
+         * Replace YITH's automatically inserted single-product wishlist
+         * button with the shared product inquiry action.
+         */
+        public function hide_single_product_wishlist_button($show_button): bool
+        {
+            return is_product() ? false : (bool) $show_button;
+        }
+
+        public function t888f_single_product_contact_button(): void
+        {
+            if (!is_product()) {
+                return;
+            }
+
+            global $product;
+            $current_product = $product instanceof \WC_Product
+                ? $product
+                : wc_get_product(get_queried_object_id());
+
+            if (!$current_product) {
+                return;
+            }
+
+            t888f_get_template(
+                'woocommerce/single-product-structure/contact-button',
+                '',
+                ['product' => $current_product],
                 true
             );
         }
@@ -1447,24 +1586,39 @@ if (class_exists("woocommerce")) {
         public function ajax_search()
         {
 
-            $search_query = isset($_POST['s']) ? sanitize_text_field($_POST['s']) : '';
-            $post_type = isset($_POST['post_type']) ? sanitize_text_field($_POST['post_type']) : 'post';
-            $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+            $search_query = isset($_POST['s']) ? sanitize_text_field(wp_unslash($_POST['s'])) : '';
+            $post_type = isset($_POST['post_type']) ? sanitize_key(wp_unslash($_POST['post_type'])) : 'post';
+            $category = isset($_POST['category']) ? sanitize_title(wp_unslash($_POST['category'])) : '';
+            if (!in_array($post_type, ['post', 'product'], true)) {
+                $post_type = 'post';
+            }
 
             $shop_url = get_permalink(wc_get_page_id('shop'));
             // build param url from search query
-            $param_url = add_query_arg([
-                's' => $search_query,
-                'post_type' => $post_type,
-                'category' => $category,
-            ], $shop_url);
+            $param_url = ($post_type === 'product')
+                ? add_query_arg(array_filter([
+                    'product_search' => $search_query,
+                    'product_cat' => $category,
+                ]), $shop_url)
+                : add_query_arg(array_filter([
+                    's' => $search_query,
+                    'post_type' => $post_type,
+                    'category_name' => $category,
+                ]), home_url('/'));
 
             $args = [
-                's' => $search_query,
                 'post_type' => $post_type,
                 'posts_per_page' => 10,
                 'post_status' => 'publish',
             ];
+
+            if ($post_type === 'product') {
+                // Keep product suggestions consistent with the shop results:
+                // search product names, not descriptions or excerpts.
+                $args['t888_main_product_name_search'] = $search_query;
+            } else {
+                $args['s'] = $search_query;
+            }
 
             if (!empty($category)) {
                 if ($post_type == 'post') {

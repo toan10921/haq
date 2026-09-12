@@ -44,7 +44,7 @@
             <p><?php echo get_the_excerpt(); ?></p>
         </div>
         <div class="read-more-share-wrap d-flex flex-wrap  justify-content-between">
-            <a href="<?php echo get_the_permalink(); ?>" class="read-more d-inline-block primary button"><?php esc_html_e('Read More', 'nebon'); ?></a>
+            <a href="<?php echo get_the_permalink(); ?>" class="read-more d-inline-block primary button"><?php esc_html_e('Đọc thêm', 'nebon'); ?></a>
         </div>
     </div>
 </div>

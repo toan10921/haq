@@ -49,7 +49,7 @@ global $product;
 	);
 	?>
 	<div class="meta_row">
-		<span class="meta_label"><?php esc_html_e('Categories:', 'nebon'); ?></span>
+		<span class="meta_label"><?php esc_html_e('Danh mục:', 'nebon'); ?></span>
 		<span class="meta_value"><?php echo wp_kses_post($categories_list); ?></span>
 	</div>
 
@@ -67,7 +67,7 @@ global $product;
 	);
 	?>
 	<div class="meta_row">
-		<span class="meta_label"><?php esc_html_e('Tags:', 'nebon'); ?></span>
+		<span class="meta_label"><?php esc_html_e('Thẻ:', 'nebon'); ?></span>
 		<span class="meta_value"><?php echo wp_kses_post($tags_list); ?></span>
 	</div>
 	<?php

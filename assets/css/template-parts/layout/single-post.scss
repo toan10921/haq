@@ -1146,7 +1146,9 @@ input[type="submit"] {
     width: 100%;
     grid-template-columns: 7.5fr 2.5fr;
 
-    &--right,
+    &--right{
+        padding-right: 0px;
+    }
     &--left {
         padding-right: 40px;
     }

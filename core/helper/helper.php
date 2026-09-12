@@ -952,18 +952,23 @@ add_action('wp_head', function () {
 
 
 add_action('wp_head', function () {
-    $container_width = get_theme_mod('custom_container_width', '100%');
-    if (!empty($container_width)) {
-        if (is_numeric($container_width)) {
-            $container_width .= 'px';
-        }
+    $container_width = trim((string) get_theme_mod('custom_container_width', '1432'));
 
-        echo '<style>
-            .container, .site-content .container {
-                max-width: ' . esc_attr($container_width) . ';
-            }
-        </style>';
+    // Let the theme's normal .container rule handle the layout instead of
+    // printing a redundant max-width: 100% override on every page.
+    if ($container_width === '' || $container_width === '100%') {
+        return;
     }
+
+    if (is_numeric($container_width)) {
+        $container_width .= 'px';
+    }
+
+    echo '<style>
+        .container, .site-content .container {
+            max-width: ' . esc_attr($container_width) . ';
+        }
+    </style>';
 });
 function t888_sanitize_list_share_social($input)
 {

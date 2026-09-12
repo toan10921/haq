@@ -16,22 +16,22 @@ jQuery(document).ready(function ($) {
     console.log('[SEARCH] click category:', category, 'form found:', $wrapForm.length);
 
     $wrapForm.find('.custom-dropdown-toggle-search').text($a.text());
-    $wrapForm.find('select[name="category"]').val(category);
+    $wrapForm.find('select[name="product_cat"], select[name="category_name"]').val(category);
 
     if ($wrapForm.hasClass('search-ajax')) {
       console.log('[SEARCH] trigger keyup.search due to category change');
-      $wrapForm.find('input[name="s"]').trigger('keyup.search');
+      $wrapForm.find('input.input-search').trigger('keyup.search');
     }
   });
 
-  $(document).on('click', '.search-ajax input[name="s"]', function (e) {
+  $(document).on('click', '.search-ajax input.input-search', function (e) {
     e.preventDefault();
     e.stopPropagation();
     console.log('[SEARCH] input clicked, add .active to form');
     $(this).closest('.search-ajax').addClass('active');
   });
 
-  $(document).on('keyup.search', '.search-ajax input[name="s"]', function () {
+  $(document).on('keyup.search', '.search-ajax input.input-search', function () {
     const $inp = $(this);
     const $wrap = $inp.closest('.search-ajax');
     const query = $inp.val();
@@ -45,7 +45,7 @@ jQuery(document).ready(function ($) {
       return;
     }
 
-    const category = $wrap.find('select[name="category"]').val();
+    const category = $wrap.find('select[name="product_cat"], select[name="category_name"]').val() || '';
     const postType = $wrap.find('input[name="post_type"]').val();
     console.log('[SEARCH] perform AJAX with:', { query, category, postType });
 
@@ -68,12 +68,12 @@ jQuery(document).ready(function ($) {
           if (response && response.success) {
             $wrap.find('.list-search-results').html(response.data);
           } else {
-            $wrap.find('.list-search-results').html('<p class="text-center m-0">No results</p>');
+            $wrap.find('.list-search-results').html('<p class="text-center m-0">Không tìm thấy kết quả</p>');
           }
         },
         error: function (xhr) {
           console.warn('[SEARCH] AJAX error:', xhr.status, xhr.responseText);
-          $wrap.find('.list-search-results').html('<p class="text-center m-0">Request error</p>');
+          $wrap.find('.list-search-results').html('<p class="text-center m-0">Không thể tải kết quả tìm kiếm</p>');
         }
       });
     }, 500);

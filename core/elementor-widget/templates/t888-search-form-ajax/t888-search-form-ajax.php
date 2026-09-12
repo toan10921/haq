@@ -45,13 +45,13 @@ if ($query->have_posts()) :
         </ul>
     </div>
     <a href="<?php echo esc_url($param_url); ?>" class="btn-view-all button d-block text-center fw-normal text-uppercase">
-        <?php echo esc_html__('View All Products', 'nebon'); ?>
+        <?php echo esc_html('Xem tất cả sản phẩm'); ?>
     </a>
 <?php
 else :
 ?>
     <div class="no-results">
-        <p class="m-0 text-center"><?php echo esc_html__('No products found matching your search criteria.', 'nebon'); ?></p>
+        <p class="m-0 text-center"><?php echo esc_html('Không tìm thấy sản phẩm phù hợp.'); ?></p>
     </div>
 <?php
 endif;

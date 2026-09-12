@@ -13,6 +13,73 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
     display: none;
 }
 
+.single-product .t888-single-product-contact-wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 0 24px;
+}
+
+.single-product .t888-single-product-contact-wrap .t888-single-product-contact {
+    position: relative;
+    display: inline-flex !important;
+    width: auto !important;
+    min-width: 150px !important;
+    height: 50px !important;
+    min-height: 50px !important;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 10px 48px 10px 22px;
+    border: 0;
+    border-radius: 0;
+    background: #1f1f1f !important;
+    color: #fff !important;
+    box-shadow: none;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.25;
+    text-transform: none;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease;
+
+    &:hover,
+    &:focus-visible {
+        background: #ea5501 !important;
+        color: #fff !important;
+    }
+
+    &__text {
+        display: block !important;
+        color: inherit !important;
+        font-size: 14px !important;
+        line-height: 1.25 !important;
+    }
+
+    &__icon {
+        position: absolute;
+        right: 9px;
+        display: grid;
+        width: 29px;
+        height: 29px;
+        place-items: center;
+        border-radius: 50%;
+        background: #090909;
+        color: #fff;
+    }
+
+    &__icon svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+}
+
 .product-detail {
     margin-bottom: 68px;
 
@@ -2007,7 +2074,6 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
 .products-slider {
     position: relative;
     margin-top: 34px;
-    margin-bottom: 70px;
 
     .related-products-slider {
         position: relative;

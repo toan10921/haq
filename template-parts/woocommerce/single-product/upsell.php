@@ -22,7 +22,7 @@ if (!empty($upsell_ids)) {
         <div class="related-products container">
             <div class="related-products">
                 <?php
-                    $title = get_theme_mod('upsell_products_heading_title', __('You May Also Like', 'nebon'));
+                    $title = get_theme_mod('upsell_products_heading_title', __('Sản phẩm liên quan', 'nebon'));
                     ?>
                 <div class="t888-heading style2">
                     <div class="title-wrapper">
