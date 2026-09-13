@@ -120,7 +120,7 @@ class T888_Accordion extends T888_Widget_Base
                         'default' => 'uppercase',
                     ],
                     'font_family' => [
-                        'default' => 'Philosopher',
+                        'default' => 'Montserrat',
                     ],
                     'font_weight' => [
                         'default' => '700',
@@ -161,7 +161,7 @@ class T888_Accordion extends T888_Widget_Base
                         ],
                     ],
                     'font_family' => [
-                        'default' => 'Poppins',
+                        'default' => 'Montserrat',
                     ],
                     'font_weight' => [
                         'default' => '400',

@@ -14,7 +14,7 @@
     &__title {
         margin: 0;
         color: #111111;
-        font-family: "Philosopher", serif;
+        font-family: var(--font-family);
         font-size: 28px;
         font-weight: 700;
         line-height: 1.15;
@@ -124,7 +124,7 @@
     &__card-title {
         margin: 0 0 8px;
         color: #111111;
-        font-family: "Philosopher", serif;
+        font-family: var(--font-family);
         font-size: 18px;
         font-weight: 700;
         line-height: 1.2;
@@ -134,7 +134,7 @@
     &__count {
         display: block;
         color: #2b2b2b;
-        font-family: "Poppins", sans-serif;
+        font-family: var(--font-family);
         font-size: 14px;
         font-weight: 500;
         line-height: 1.4;

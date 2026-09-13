@@ -14,7 +14,7 @@
   margin: 0;
   font-size: 20px;
   text-transform: uppercase;
-  font-family: "Philosopher", serif;
+  font-family: var(--font-family);
   font-weight: 700;
   color: #111;
   letter-spacing: 0.5px;
@@ -102,7 +102,7 @@
   font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
-  font-family: "Philosopher", serif;
+  font-family: var(--font-family);
   color: #111;
   letter-spacing: 0.5px;
 }
@@ -112,8 +112,7 @@
   font-weight: 500;
   color: #000000;
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-family);
 }
-
 
 /*# sourceMappingURL=t888-pet-category-carousel.css.map */

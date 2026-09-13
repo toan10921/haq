@@ -85,7 +85,7 @@
 .t888-service-feature-title {
     margin: 0 0 18px;
     color: #090909;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     font-size: 24px;
     font-weight: 700;
     line-height: 1.25;
@@ -95,7 +95,7 @@
 .t888-service-feature-description {
     margin: 0;
     color: #555;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.75;

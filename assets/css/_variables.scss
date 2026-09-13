@@ -37,9 +37,9 @@ $gradient-color: linear-gradient(to right, $forth-color 0%, $third-color-rgba 69
 
 // declare font family
 
-$font-poppins: "space grotesk", serif;
+$font-poppins: "Montserrat", sans-serif;
 
-$font-philosopher: "space grotesk", serif;
+$font-philosopher: "Montserrat", sans-serif;
 
 :root {
     --primary-color: #{$primary-color};
@@ -59,6 +59,8 @@ $font-philosopher: "space grotesk", serif;
     font-family: #{$font-poppins};
     --font-family: #{$font-poppins};
     --font-philosopher: #{$font-philosopher};
+    --font-poppins-library: "Poppins", sans-serif;
+    --font-philosopher-library: "Philosopher", serif;
     --title8: #{$title8};
     --title10: #{$title10};
     --title12: #{$title12};

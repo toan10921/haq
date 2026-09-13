@@ -542,7 +542,7 @@ if (!class_exists('TemplateHelper')) {
             // Add Google Fonts for Gutenberg editor
             wp_enqueue_style(
                 'google-fonts-gutenberg',
-                'https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,900;1,400;1,900&display=swap',
+                'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,900;1,400;1,900&display=swap',
                 array(),
                 null
             );
@@ -625,7 +625,7 @@ if (!class_exists('TemplateHelper')) {
             add_theme_support('editor-styles');
             add_editor_style('assets/admin/css/gutenberg-editor.css');
             // add google fonts & line-awesome for gutenberg editor
-            add_editor_style('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+            add_editor_style('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,400;0,900;1,400;1,900&display=swap');
             add_editor_style('assets/css/libs/line-awesome.min.css');
 
             // Block editor friendly
@@ -806,7 +806,8 @@ if (!class_exists('TemplateHelper')) {
                     0 =>
                     // 'Material+Symbols+Outlined:wght@100',
                     'Philosopher:ital,wght@0,400;0,700;1,400;1,700',
-                    'Poppins:ital,wght@0,400;0,900;1,400;1,900'
+                    'Poppins:ital,wght@0,400;0,900;1,400;1,900',
+                    'Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900'
 
                 )
             );

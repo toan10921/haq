@@ -452,7 +452,7 @@
     border-radius: 999px;
     background: #1d90fd;
     color: #fff;
-    font-family: "Poppins", sans-serif;
+    font-family: var(--font-family);
     font-size: 13px;
     font-weight: 600;
     line-height: 1.2;
@@ -461,8 +461,8 @@
 .category-showcase-title {
     display: block;
     color: #fff;
-    font-family: 'Space Grotesk';
-    font-size: clamp(24px, 2.15vw, 31px);
+    font-family: var(--font-family);
+    font-size: clamp(23px, 2.15vw, 30px);
     font-weight: 700;
     line-height: 1.22;
     letter-spacing: -.025em;

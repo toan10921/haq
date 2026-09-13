@@ -1607,7 +1607,7 @@ body .t888-product-tabs-wrapper.style6 {
         .product-title a,
         .hcard-title a {
             color: inherit !important;
-            font-family: "space grotesk", serif;
+            font-family: var(--font-family);
             font-size: inherit;
             font-weight: inherit;
             line-height: inherit;
@@ -1819,7 +1819,7 @@ body.t888-inquiry-open {
     place-items: center;
     overflow-y: auto;
     background: rgba(7, 15, 29, .68);
-    font-family: "Space Grotesk", Arial, sans-serif;
+    font-family: var(--font-family);
     font-style: normal;
     line-height: normal;
     letter-spacing: normal;

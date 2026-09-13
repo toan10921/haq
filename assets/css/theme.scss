@@ -47,6 +47,15 @@ body.header_item-template {
     font-family: var(--font-family);
 }
 
+// Optional font utilities. Poppins and Philosopher stay loaded for explicit use.
+.use-font-poppins {
+    font-family: var(--font-poppins-library) !important;
+}
+
+.use-font-philosopher {
+    font-family: var(--font-philosopher-library) !important;
+}
+
 // define common class
 
 .text-center {
@@ -114,6 +123,15 @@ body.header_item-template {
 
 body {
     @extend .m-0;
+    font-family: var(--font-family);
+}
+
+// Keep Elementor global typography aligned with the theme default.
+body[class*="elementor-kit-"] {
+    --e-global-typography-primary-font-family: "Montserrat" !important;
+    --e-global-typography-secondary-font-family: "Montserrat" !important;
+    --e-global-typography-text-font-family: "Montserrat" !important;
+    --e-global-typography-accent-font-family: "Montserrat" !important;
 }
 
 a {

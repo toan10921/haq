@@ -6,7 +6,7 @@
         margin-bottom: 25px !important;
         
         .logo-text { 
-            font-family: 'Poppins', serif !important; 
+            font-family: var(--font-family) !important;
             font-size: 38px !important; 
             margin: 0 !important; 
             color: #000 !important; 
@@ -27,7 +27,7 @@
             font-size: 14px !important; 
             line-height: 1.4 !important;
             font-weight: 400 !important;
-            font-family: 'Poppins', sans-serif !important;
+            font-family: var(--font-family) !important;
             
             &.contact-address {
                 max-width: 320px !important;
@@ -55,7 +55,7 @@
             font-size: 18px !important; 
             font-weight: 700 !important; 
             color: #000 !important; 
-            font-family: 'Poppins', serif !important;
+            font-family: var(--font-family) !important;
             line-height: 1 !important;
         }
     }
@@ -98,7 +98,7 @@
         flex: 0 0 auto !important;
         
         h2, h3, h4, h5, .links-title { 
-            font-family: 'Philosopher', serif !important; 
+            font-family: var(--font-family) !important;
             font-size: 18px !important; 
             font-weight: 700 !important; 
             color: #000 !important; 
@@ -113,7 +113,7 @@
             list-style: none !important;
             padding: 0 !important;
             margin: 0 !important;
-            font-family: 'Poppins', sans-serif !important;
+            font-family: var(--font-family) !important;
             font-weight: normal !important;
             
             li, .elementor-icon-list-item {
@@ -146,7 +146,7 @@
         margin-bottom: 35px !important;
         
         .social-title { 
-            font-family: 'Philosopher', serif !important; 
+            font-family: var(--font-family) !important;
             font-size: 18px !important; 
             font-weight: 700 !important; 
             color: #000 !important; 
@@ -204,7 +204,7 @@
 
     .payment-section {
         .payment-title { 
-            font-family: 'Philosopher', serif !important; 
+            font-family: var(--font-family) !important;
             font-size: 18px !important; 
             font-weight: 700 !important; 
             color: #000 !important; 

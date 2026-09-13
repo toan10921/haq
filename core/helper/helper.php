@@ -1232,7 +1232,10 @@ if (!function_exists('t888f_resolve_typography')) {
                 }
             }
         } else {
-            $family = $mode ?: 'Philosopher';
+            // Legacy standard-theme keys now resolve to the current primary font.
+            $family = in_array($mode, ['Philosopher', 'Poppins'], true)
+                ? 'Montserrat'
+                : ($mode ?: 'Montserrat');
         }
 
         if ($mode === 'upload_font') {

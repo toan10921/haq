@@ -47,7 +47,7 @@
                 .feature-content {
                     .feature-title {
                         margin: 0 0 5px 0 !important;
-                        font-family: 'Philosopher', serif !important;
+                        font-family: var(--font-family) !important;
                         font-size: 20px !important;
                         font-weight: 700 !important;
                         color: #ffffff !important;
@@ -63,7 +63,7 @@
                         color: #ffffff !important;
                         opacity: 0.9 !important;
                         font-weight: 300 !important;
-                        font-family: 'Poppins', sans-serif !important;
+                        font-family: var(--font-family) !important;
                     }
                 }
             }
