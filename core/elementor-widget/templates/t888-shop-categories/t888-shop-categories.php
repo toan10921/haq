@@ -1,6 +1,9 @@
 <?php
 $terms = is_wp_error($terms) ? [] : $terms;
-$all_url = remove_query_arg(['product_cat', 'product-page', 'paged']);
+// Always build category links from page 1. Removing only the query argument
+// does not remove pretty-permalink paths such as /page/2/.
+$category_base_url = get_pagenum_link(1);
+$all_url = remove_query_arg(['product_cat', 'product-page', 'paged'], $category_base_url);
 $all_text = __('Tất cả', 'nebon');
 $default_product_category_id = (int) ($default_product_category_id ?? 0);
 $by_parent = [];
@@ -13,7 +16,7 @@ $render_terms = function ($parent = 0) use (&$render_terms, $by_parent, $active_
             || $term->slug === 'uncategorized';
         $url = $is_all
             ? $all_url
-            : add_query_arg('product_cat', $term->slug, remove_query_arg(['product-page', 'paged']));
+            : add_query_arg('product_cat', $term->slug, $all_url);
         $is_active = $is_all ? $active_slug === '' : $active_slug === $term->slug;
         $label = $is_all ? $all_text : $term->name;
         echo '<li class="t888-shop-categories__item"><a class="t888-shop-categories__link' . ($is_active ? ' is-active' : '') . '" href="' . esc_url($url) . '"><span>' . esc_html($label) . '</span>';
@@ -39,7 +42,7 @@ $render_terms = function ($parent = 0) use (&$render_terms, $by_parent, $active_
             <?php foreach ($terms as $term) :
                 $is_all = ($default_product_category_id > 0 && (int) $term->term_id === $default_product_category_id)
                     || $term->slug === 'uncategorized';
-                $url = $is_all ? $all_url : add_query_arg('product_cat', $term->slug, remove_query_arg(['product-page', 'paged']));
+                $url = $is_all ? $all_url : add_query_arg('product_cat', $term->slug, $all_url);
                 $is_active = $is_all ? $active_slug === '' : $active_slug === $term->slug;
                 $label = $is_all ? $all_text : $term->name; ?>
                 <li class="t888-shop-categories__item">

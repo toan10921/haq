@@ -60,7 +60,7 @@ class T888_Shop_Search extends T888_Widget_Base
             'selectors' => ['{{WRAPPER}} .t888-shop-search' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
         ]);
         $this->add_control('accent_color', [
-            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#ef4b00',
+            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#1d90fd',
             'selectors' => ['{{WRAPPER}} .t888-shop-search::before' => 'background-color: {{VALUE}};'],
         ]);
         $this->end_controls_section();

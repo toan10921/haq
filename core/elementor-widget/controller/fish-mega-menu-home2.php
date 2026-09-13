@@ -81,7 +81,7 @@ class Fish_Mega_Menu_Home2 extends T888_Widget_Base
             [
                 'label' => __('Banner Background', 'nebon'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#b96a3f',
+                'default' => '#1d90fd',
             ]
         );
 

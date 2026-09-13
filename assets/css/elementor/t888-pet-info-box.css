@@ -81,7 +81,7 @@
     padding: 0;
 }
 
-/* Contact information variant: orange clipped icon box. */
+/* Contact information variant: blue clipped icon box. */
 .contact-info-card .t888-pet-info-box {
     align-items: center;
     padding: 0;
@@ -97,7 +97,7 @@
     min-width: 70px;
     margin-right: 28px;
     box-sizing: border-box;
-    background-color: #f45100;
+    background-color: #1d90fd;
     color: #ffffff !important;
     font-size: 34px;
     clip-path: polygon(

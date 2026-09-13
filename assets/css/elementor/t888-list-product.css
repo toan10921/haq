@@ -107,7 +107,7 @@
 
 .listsp .product-badge.hot,
 .listsp .product-badge.sale {
-    background: #ef4b00;
+    background: #1d90fd;
 }
 
 .listsp .add-cart-quickview {
@@ -137,7 +137,7 @@
 }
 
 .listsp .add-cart-quickview:hover {
-    background: #ea5501;
+    background: #1d90fd;
 }
 
 .listsp .add-cart-quickview a,
@@ -222,7 +222,7 @@
 }
 
 .listsp .pag-nav .current {
-    color: #ef4b00;
+    color: #1d90fd;
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -237,5 +237,11 @@
     .listsp .product-badge {
         width: 36px;
         height: 36px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .t888-list-product-wrapper.is-empty {
+        margin-bottom: 100px;
     }
 }

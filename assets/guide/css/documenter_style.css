@@ -33,7 +33,7 @@ body{
 footer, header, section {
 	display:block;
 }
-a{ color:#f3734f !important; text-decoration:none; cursor:pointer; }
+a{ color:#1d90fd !important; text-decoration:none; cursor:pointer; }
 a:hover { text-decoration:underline }
 p, ul, ol{
 	margin:18px 0;
@@ -104,7 +104,7 @@ strong{
 #documenter_sidebar a.current, 
 #documenter_sidebar a:active, 
 #documenter_sidebar a:hover{
-	color:#f3734f !important;
+	color:#1d90fd !important;
 }
 #documenter_copyright {
     text-align: center;
@@ -168,7 +168,7 @@ hr{
 	border-top:1px solid #404040;
 }
 #documenter_sidebar ol  li  a.actived{
-	color: #f3734f !important; 
+	color: #1d90fd !important;
 }
 #documenter_sidebar ol > li > a.actived{
 	background:#404040; 
@@ -335,7 +335,7 @@ hr{
 }
 .demo{text-align:center; padding-top:50px; padding:30px;}
 .demo a{
-	background:#f3734f;
+	background:#1d90fd;
 	padding:20px 60px 18px 60px;
 	color:#fff !important;
 	text-decoration:none;

@@ -136,7 +136,7 @@
     justify-content: center;
     min-height: 40px;
     padding: 10px 16px;
-    background: #f4510b;
+    background: #1d90fd;
     color: #fff;
     font-size: 14px;
     font-weight: 600;
@@ -154,7 +154,7 @@
     flex: 0 0 44px;
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 50%;
-    color: #f4510b;
+    color: #1d90fd;
     text-decoration: none;
     transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
 }
@@ -168,13 +168,13 @@
 }
 
 .grid-style6-item .featured-post-category:hover {
-    background: #d94306;
+    background: #1d90fd;
     color: #fff;
 }
 
 .grid-style6-item .featured-post-action:hover {
-    border-color: #f4510b;
-    background: #f4510b;
+    border-color: #1d90fd;
+    background: #1d90fd;
     color: #fff;
     transform: translateX(3px);
 }
@@ -277,7 +277,7 @@
     align-items: center;
     min-height: 30px;
     padding: 7px 16px;
-    background: #f4510b;
+    background: #1d90fd;
     color: #fff;
     font-size: 15px;
     font-weight: 500;
@@ -366,18 +366,18 @@
 }
 
 .grid-style8-item .post-card8-title a:hover {
-    color: #f4510b;
+    color: #1d90fd;
 }
 
 .grid-style8-item .post-card8-category:hover,
 .grid-style8-item .post-card8-category:focus-visible {
-    background: #d94306;
+    background: #1d90fd;
     color: #fff;
 }
 
 .grid-style8-item .post-card8-action:hover,
 .grid-style8-item .post-card8-action:focus-visible {
-    background: #f4510b;
+    background: #1d90fd;
     color: #fff;
     transform: translateX(3px);
 }
@@ -511,7 +511,7 @@
     min-height: 38px;
     margin-top: auto;
     padding: 10px 15px;
-    background: #f4510b;
+    background: #1d90fd;
     color: #fff;
     font-size: 14px;
     font-weight: 600;
@@ -543,11 +543,11 @@
 }
 
 .grid-style7-item .split-post-title a:hover {
-    color: #f4510b;
+    color: #1d90fd;
 }
 
 .grid-style7-item .split-post-category:hover {
-    background: #d94306;
+    background: #1d90fd;
     color: #fff;
 }
 

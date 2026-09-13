@@ -206,7 +206,7 @@ class T888_Button extends T888_Widget_Base
         $this->add_control('style3_background_color', [
             'label' => __('Background Color', 'nebon'),
             'type' => Controls_Manager::COLOR,
-            'default' => '#ea5501',
+            'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-button.style3' => '--t888-button-style3-primary: {{VALUE}}; background-color: {{VALUE}};',
             ],
@@ -230,7 +230,7 @@ class T888_Button extends T888_Widget_Base
         $this->add_control('style3_hover_background_color', [
             'label' => __('Background Color', 'nebon'),
             'type' => Controls_Manager::COLOR,
-            'default' => '#ff5c00',
+            'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-button.style3' => '--t888-button-style3-hover: {{VALUE}};',
                 '{{WRAPPER}} .t888-button.style3:hover, {{WRAPPER}} .t888-button.style3:focus' => 'background-color: {{VALUE}};',

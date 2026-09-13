@@ -211,7 +211,7 @@ class T888_Title extends T888_Widget_Base
             [
                 'label' => __('Line Color', 'nebon'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#b88166',
+                'default' => '#1d90fd',
                 'selectors' => [
                     '{{WRAPPER}} .t888-heading .line ' => 'background-color: {{VALUE}} !important;',
                 ],

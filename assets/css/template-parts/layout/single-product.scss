@@ -46,7 +46,7 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
 
     &:hover,
     &:focus-visible {
-        background: #ea5501 !important;
+        background: #1d90fd !important;
         color: #fff !important;
     }
 
@@ -665,7 +665,7 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
                             gap: 10px;
 
                             .variation-color-item {
-                                border: 1px solid rgba(184, 129, 102, .3);
+                                border: 1px solid rgba(29, 144, 253, .3);
                                 border-radius: 50%;
                                 padding: .3125rem;
 
@@ -2037,13 +2037,17 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
                         background-color: var(--primary-color) !important;
                         color: var(--secondary-color) !important;
                         border: none;
-                        padding: 12px 35px ! important;
-                        font-size: 13px ! important;
-                        font-weight: 700 ! important;
+                        padding: 12px 35px !important;
+                        font-size: 13px !important;
+                        font-weight: 700 !important;
                         transition: background-color .3s ease;
-                        border-radius: 0 ! important;
-                        line-height: 19px ! important;
+                        border-radius: 0 !important;
+                        line-height: 19px !important;
 
+                        &:hover,
+                        &:focus-visible {
+                            background-color: #1d90fd !important;
+                        }
                     }
                 }
 
@@ -3164,7 +3168,7 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
                         min-width: 128px;
                         height: 40px;
                         padding: 10px 20px;
-                        background: #ef4b00;
+                        background: #1d90fd;
                         font-size: 13px;
                         font-weight: 600;
                         text-transform: none;
@@ -3204,7 +3208,7 @@ body.single-product:has(.sticky-add-to-cart) #yith-woocompare-preview-bar {
                 text-align: center;
 
                 &.active {
-                    background: #ef4b00 !important;
+                    background: #1d90fd !important;
                 }
 
                 &::after {

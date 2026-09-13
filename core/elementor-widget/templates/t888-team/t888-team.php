@@ -5,6 +5,9 @@ $members = isset($team_list) && is_array($team_list)
     ? $team_list
     : [];
 
+// Temporarily disable links to individual team member pages.
+$profile_links_enabled = false;
+
 if ($team_source === 'dynamic') {
     $members = [];
 
@@ -82,7 +85,9 @@ if ($team_source === 'dynamic') {
                 $profile_link = isset($member['profile_link']) && is_array($member['profile_link'])
                     ? $member['profile_link']
                     : [];
-                $profile_url = !empty($profile_link['url']) ? $profile_link['url'] : '';
+                $profile_url = $profile_links_enabled && !empty($profile_link['url'])
+                    ? $profile_link['url']
+                    : '';
                 $profile_target = !empty($profile_link['is_external']) ? '_blank' : '';
                 $profile_rel = [];
                 if (!empty($profile_link['nofollow'])) {

@@ -53,7 +53,7 @@ class T888_Shop_Categories extends T888_Widget_Base
             'selectors' => ['{{WRAPPER}} .t888-shop-categories' => 'background-color: {{VALUE}};'],
         ]);
         $this->add_control('accent', [
-            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#ef4b00',
+            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-shop-categories::before' => 'background-color: {{VALUE}};',
                 '{{WRAPPER}} .t888-shop-categories__link:hover' => 'color: {{VALUE}};',

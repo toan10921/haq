@@ -291,7 +291,7 @@ class T888_Testimonial extends T888_Widget_Base
             'style3_background_color' => [__('Background', 'nebon'), '#1f1f1f', '--t888-testimonial-bg'],
             'style3_heading_color' => [__('Heading', 'nebon'), '#ffffff', '--t888-testimonial-heading'],
             'style3_text_color' => [__('Text', 'nebon'), '#c8c8c8', '--t888-testimonial-text'],
-            'style3_accent_color' => [__('Accent', 'nebon'), '#f45100', '--t888-testimonial-accent'],
+            'style3_accent_color' => [__('Accent', 'nebon'), '#1d90fd', '--t888-testimonial-accent'],
             'style3_divider_color' => [__('Divider', 'nebon'), '#484848', '--t888-testimonial-divider'],
         ];
 

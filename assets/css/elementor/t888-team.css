@@ -23,7 +23,7 @@
 }
 
 .t888-team .member-profile-link:focus-visible {
-    outline: 2px solid #f15a00;
+    outline: 2px solid #1d90fd;
     outline-offset: 4px;
 }
 
@@ -52,7 +52,7 @@
     right: 0;
     width: 5px;
     height: 38px;
-    background: #f15a00;
+    background: #1d90fd;
     transition: opacity 0.25s ease;
 }
 
@@ -101,7 +101,7 @@
     gap: 0;
     margin: 0;
     padding: 0 8px;
-    background: #f15a00;
+    background: #1d90fd;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -157,7 +157,7 @@
 
 .t888-team .team-member-item:hover .member-position,
 .t888-team .team-member-item:focus-within .member-position {
-    border-bottom-color: #f15a00;
+    border-bottom-color: #1d90fd;
 }
 
 @media (max-width: 575px) {

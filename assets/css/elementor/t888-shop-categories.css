@@ -11,7 +11,7 @@
     left: 24px;
     width: 3px;
     height: 9px;
-    background: #ef4b00;
+    background: #1d90fd;
     content: "";
 }
 
@@ -64,7 +64,7 @@
 .elementor-widget-t888-shop-categories .t888-shop-categories__link:hover,
 .elementor-widget-t888-shop-categories .t888-shop-categories__link.is-active {
     padding-left: 4px;
-    color: #ef4b00;
+    color: #1d90fd;
 }
 
 .elementor-widget-t888-shop-categories .t888-shop-categories__count {

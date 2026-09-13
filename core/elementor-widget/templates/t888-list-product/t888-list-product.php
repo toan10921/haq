@@ -3,13 +3,14 @@ $inquiry_popup_id = !empty($inquiry_popup_id)
     ? sanitize_html_class($inquiry_popup_id)
     : 't888-list-product-inquiry';
 $contact_form_html = is_string($contact_form_html ?? null) ? $contact_form_html : '';
+$has_products = $query->have_posts();
 ?>
 <div
-    class="t888-list-product-wrapper"
+    class="t888-list-product-wrapper<?php echo $has_products ? '' : ' is-empty'; ?>"
     data-inquiry-modal-id="<?php echo esc_attr($inquiry_popup_id); ?>"
 >
 <?php
-if ($query->have_posts()) :
+if ($has_products) :
     $backup = $GLOBALS['wp_query'];
     $GLOBALS['wp_query'] = $query;
 ?>
@@ -35,7 +36,7 @@ if ($query->have_posts()) :
     $GLOBALS['wp_query'] = $backup;
      wp_reset_postdata();
 else :
-    echo '<p>' . __('No product found.', 'nebon') . '</p>';
+    echo '<p class="t888-list-product-empty">' . esc_html__('Không tìm thấy sản phẩm', 'nebon') . '</p>';
 endif;
 ?>
 <?php if (($pagination_type = $pagination_type ?? '') === 'pagination') : ?>

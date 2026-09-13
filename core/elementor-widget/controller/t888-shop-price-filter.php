@@ -59,7 +59,7 @@ class T888_Shop_Price_Filter extends T888_Widget_Base
             'selectors' => ['{{WRAPPER}} .t888-price-filter' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};'],
         ]);
         $this->add_control('accent', [
-            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#ef4b00',
+            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-price-filter::before' => 'background-color: {{VALUE}};',
                 '{{WRAPPER}} .t888-price-filter__range-fill' => 'background-color: {{VALUE}};',

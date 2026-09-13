@@ -158,7 +158,7 @@ class T888_Tip_List extends T888_Widget_Base
             [
                 'label' => __('Background Color', 'nebon'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#b88166',
+                'default' => '#1d90fd',
                 'selectors' => [
                     '{{WRAPPER}} .t888-tip-item .tip-number' => 'background-color: {{VALUE}};',
                 ],

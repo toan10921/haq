@@ -179,7 +179,7 @@ class T888_Service_Features extends T888_Widget_Base
             [
                 'label' => esc_html__('Hover Background', 'nebon'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#f45100',
+                'default' => '#1d90fd',
                 'selectors' => [
                     '{{WRAPPER}} .t888-service-features--style1 .t888-service-feature-card:hover' => 'background-color: {{VALUE}};',
                 ],
@@ -239,7 +239,7 @@ class T888_Service_Features extends T888_Widget_Base
             [
                 'label' => esc_html__('Icon Color', 'nebon'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#f45100',
+                'default' => '#1d90fd',
                 'selectors' => [
                     '{{WRAPPER}} .t888-service-feature-icon' => 'color: {{VALUE}};',
                 ],

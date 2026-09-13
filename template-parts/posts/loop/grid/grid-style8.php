@@ -49,7 +49,7 @@ $reading_minutes = max(1, (int) ceil($word_count / 200));
 
             <div class="post-card8-footer">
                 <span class="post-card8-reading-time">
-                    <?php echo esc_html(sprintf(_n('%s min read', '%s min read', $reading_minutes, 'nebon'), number_format_i18n($reading_minutes))); ?>
+                    <?php echo esc_html(sprintf(_n('%s phút đọc', '%s phút đọc', $reading_minutes, 'nebon'), number_format_i18n($reading_minutes))); ?>
                 </span>
                 <a class="post-card8-action" href="<?php echo esc_url($permalink); ?>" aria-label="<?php echo esc_attr(sprintf(__('Read %s', 'nebon'), $title)); ?>">
                     <i class="las la-arrow-right" aria-hidden="true"></i>

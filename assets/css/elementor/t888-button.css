@@ -21,8 +21,8 @@
 }
 
 .t888-button.style3 {
-    --t888-button-style3-primary: #ea5501;
-    --t888-button-style3-hover: #ff5c00;
+    --t888-button-style3-primary: #1d90fd;
+    --t888-button-style3-hover: #1d90fd;
     display: flex;
     align-items: center;
     justify-content: space-around;

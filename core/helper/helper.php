@@ -120,6 +120,19 @@ if (!function_exists('t888f_breadcrumb')) {
         // }
         // Get Customizer settings
         $breadcrumb_background = get_theme_mod('background_breadcrumb', '#5a4e4f');
+        $breadcrumb_position_key = get_theme_mod('breadcrumb_background_position', 'center_center');
+        $breadcrumb_positions = array(
+            'left_top' => 'left top',
+            'left_center' => 'left center',
+            'left_bottom' => 'left bottom',
+            'center_top' => 'center top',
+            'center_center' => 'center center',
+            'center_bottom' => 'center bottom',
+            'right_top' => 'right top',
+            'right_center' => 'right center',
+            'right_bottom' => 'right bottom',
+        );
+        $breadcrumb_position = $breadcrumb_positions[$breadcrumb_position_key] ?? 'center center';
         $breadcrumb_image = '';
         if (is_singular('post')) {
             $custom_image_id = get_post_meta(get_the_ID(), 'custom_post_breadcrumb_image', true);
@@ -235,7 +248,7 @@ if (!function_exists('t888f_breadcrumb')) {
         $breadcrumb_style = "background-color: {$breadcrumb_background};";
 
         if (!empty($breadcrumb_image)) {
-            $breadcrumb_style .= " background-image: url('{$breadcrumb_image}'); background-size: cover; background-repeat: no-repeat;";
+            $breadcrumb_style .= " background-image: url('{$breadcrumb_image}'); background-size: cover; background-repeat: no-repeat; background-position: {$breadcrumb_position};";
         }
 
 
@@ -284,9 +297,7 @@ if (!function_exists('t888f_breadcrumb')) {
 
 
         if (function_exists('is_shop') && is_shop()) {
-            $title_above_breadcrumb = function_exists('woocommerce_page_title')
-                ? woocommerce_page_title(false)
-                : __('Shop', 'nebon');
+            $title_above_breadcrumb = __('SẢN PHẨM ', 'nebon');
         } elseif (function_exists('is_product_category') && is_product_category()) {
             $title_above_breadcrumb = single_term_title('', false);
         } elseif (function_exists('is_product_tag') && is_product_tag()) {
@@ -304,7 +315,7 @@ if (!function_exists('t888f_breadcrumb')) {
             $posts_page_id = (int) get_option('page_for_posts');
             $title_above_breadcrumb = $posts_page_id
                 ? get_the_title($posts_page_id)
-                : __('Blog', 'nebon');
+                : __('BÀI VIẾT', 'nebon');
         } elseif (is_category()) {
             $title_above_breadcrumb = single_cat_title('', false);
         } elseif (is_tag()) {
@@ -331,17 +342,33 @@ if (!function_exists('t888f_breadcrumb')) {
         // Home link
         echo '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url(home_url('/')) . '"><i class="las la-home home-breadcrumb"></i></a>';
 
-        $blog_url = '';
-        if (get_option('page_for_posts')) {
+        // Use the existing Elementor posts page as the breadcrumb destination.
+        $posts_listing_page = get_page_by_path('bai-viet', OBJECT, 'page');
+        $blog_url = ($posts_listing_page && $posts_listing_page->post_status === 'publish')
+            ? get_permalink($posts_listing_page->ID)
+            : '';
+
+        // Fall back to WordPress's configured posts page when needed.
+        if (!$blog_url && get_option('page_for_posts')) {
             $blog_url = get_permalink(get_option('page_for_posts'));
         }
         if (!$blog_url) {
-            $blog_url = home_url('/blog/');
+            $blog_url = home_url('/bai-viet/');
         }
 
 
-        $shop_url = '';
-        if (function_exists('wc_get_page_id')) {
+        // Use the existing Elementor product page as the breadcrumb destination.
+        $product_listing_page = get_page_by_path('san-pham', OBJECT, 'page');
+        $shop_url = ($product_listing_page && $product_listing_page->post_status === 'publish')
+            ? get_permalink($product_listing_page->ID)
+            : '';
+
+        // Fall back to WooCommerce's configured Shop page when needed.
+        if (!$shop_url && function_exists('wc_get_page_permalink')) {
+            $shop_url = wc_get_page_permalink('shop');
+        }
+
+        if (!$shop_url && function_exists('wc_get_page_id')) {
             $shop_id = wc_get_page_id('shop');
             if ($shop_id && $shop_id > 0) {
                 $shop_url = get_permalink($shop_id);
@@ -356,29 +383,29 @@ if (!function_exists('t888f_breadcrumb')) {
         }
 
         if (!$shop_url) {
-            $shop_url = home_url('/shop/');
+            $shop_url = home_url('/san-pham/');
         }
 
         // Handle different page types
         if (is_home() && !is_front_page()) {
 
-            echo '<span>' . esc_html__('Blog', 'nebon') . '</span>';
+            echo '<span>' . esc_html__('BÀI VIẾT', 'nebon') . '</span>';
         } elseif (is_front_page()) {
             echo '<span>' . esc_html__('Home', 'nebon') . '</span>';
         } elseif (function_exists('is_shop') && is_shop()) {
 
             echo apply_filters('tech888f_output_content', $step)
                 . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
-                . esc_html__('Shop', 'nebon')
+                . esc_html__('Sản phẩm', 'nebon')
                 . '</a>';
         } elseif (check_woocommerce_exists() && get_post_type() === 'page' && get_option('woocommerce_shop_page_id') && get_the_ID() == get_option('woocommerce_shop_page_id')) {
-            echo '<span>' . esc_html__('Shop', 'nebon') . '</span>';
+            echo '<span>' . esc_html__('Sản phẩm', 'nebon') . '</span>';
         } elseif (is_single()) {
             $post_type = get_post_type();
             if ($post_type === 'post') {
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($blog_url) . '">'
-                    . esc_html__('Blog', 'nebon')
+                    . esc_html__('BÀI VIẾT', 'nebon')
                     . '</a>';
 
                 $categories = get_the_category();
@@ -397,7 +424,7 @@ if (!function_exists('t888f_breadcrumb')) {
             } elseif ($post_type === 'product' && function_exists('check_woocommerce_exists')) {
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
-                    . esc_html__('Shop', 'nebon')
+                    . esc_html__('SẢN PHẨM', 'nebon')
                     . '</a>';
 
                 $terms = get_the_terms($post->ID, 'product_cat');
@@ -442,7 +469,7 @@ if (!function_exists('t888f_breadcrumb')) {
         } elseif (is_tag()) {
             echo apply_filters('tech888f_output_content', $step)
                 . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($blog_url) . '">'
-                . esc_html__('Blog', 'nebon')
+                . esc_html__('BÀI VIẾT', 'nebon')
                 . '</a>';
 
             $tag = get_queried_object();
@@ -451,7 +478,7 @@ if (!function_exists('t888f_breadcrumb')) {
             if (is_category()) {
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($blog_url) . '">'
-                    . esc_html__('Blog', 'nebon')
+                    . esc_html__('BÀI VIẾT', 'nebon')
                     . '</a>';
 
                 $category = get_queried_object();
@@ -468,7 +495,7 @@ if (!function_exists('t888f_breadcrumb')) {
             } elseif (is_tax('product_cat')) {
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
-                    . esc_html__('Shop', 'nebon')
+                    . esc_html__('Sản phẩm', 'nebon')
                     . '</a>';
 
                 $term = get_queried_object();
@@ -485,7 +512,7 @@ if (!function_exists('t888f_breadcrumb')) {
             } elseif (is_tax('product_tag')) {
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
-                    . esc_html__('Shop', 'nebon')
+                    . esc_html__('Sản phẩm', 'nebon')
                     . '</a>';
 
                 $tag = get_queried_object();
@@ -498,7 +525,7 @@ if (!function_exists('t888f_breadcrumb')) {
 
                 echo apply_filters('tech888f_output_content', $step)
                     . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
-                    . esc_html__('Shop', 'nebon')
+                    . esc_html__('Sản phẩm', 'nebon')
                     . '</a>';
 
                 $brand_term = get_queried_object();
@@ -888,7 +915,7 @@ add_action('wp_head', function () {
     $typo_main = t888f_resolve_typography($menu_mode, $google_main, $uploaded_main, $weight_main);
 
     $font_color = get_theme_mod('menu_style_font_color', '#ffffff');
-    $hover_color = get_theme_mod('hover_color', '#b88166');
+    $hover_color = get_theme_mod('hover_color', '#1d90fd');
     $bg_hover_color = get_theme_mod('background_hover_color', 'transparent');
     $font_size = (int) get_theme_mod('menu_style_font_size', 14);
     if ($font_size <= 0)
@@ -907,7 +934,7 @@ add_action('wp_head', function () {
     $typo_sub = t888f_resolve_typography($sub_mode, $google_sub, $uploaded_sub, $weight_sub);
 
     $sub_font_color = get_theme_mod('menu_sub_style_font_color', '#ffffff');
-    $sub_hover_color = get_theme_mod('hover_sub_color', '#b88166');
+    $sub_hover_color = get_theme_mod('hover_sub_color', '#1d90fd');
     $sub_bg_hover_color = get_theme_mod('background_sub_hover_color', 'transparent');
     $sub_font_size = (int) get_theme_mod('menu_sub_style_font_size', 16);
     if ($sub_font_size <= 0)

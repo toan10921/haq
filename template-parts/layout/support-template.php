@@ -6,7 +6,7 @@
     $title_link_intro  = get_theme_mod('title_link_intro', __('Buy Now', 'nebon'));
     $main_color1         = get_theme_mod('t888_main_color1', '#000000');
     $main_color1_switch  = get_theme_mod('t888_main_color1-switch', '#cccccc');
-    $main_color2         = get_theme_mod('t888_main_color2', '#b88166');
+    $main_color2         = get_theme_mod('t888_main_color2', '#1d90fd');
     $main_color2_switch  = get_theme_mod('t888_main_color2_switch', '#ffde00');
     $link_support        = get_theme_mod('link_support', 'https://7uptheme.net/');
     $link_guide          = get_theme_mod('link_guide', 'https://7uptheme.net/');
@@ -54,14 +54,14 @@
 
         <h4><?php esc_html_e('Choose main color', 'nebon'); ?></h4>
         <div class="d-flex align-items-center justify-content-center" style="gap:10px;">
-            <div style="border: 1px solid rgba(184,129,102,.3); border-radius: 50%;">
+            <div style="border: 1px solid rgba(29, 144, 253, .3); border-radius: 50%;">
                 <button class="switch-color color-toggle-btn active"
                     data-var="--third-color"
                     data-color="<?php echo esc_attr($main_color2); ?>"
                     style="background:<?php echo esc_attr($main_color2); ?>;">
                 </button>
             </div>
-            <div style="border: 1px solid rgba(184,129,102,.3); border-radius: 50%;">
+            <div style="border: 1px solid rgba(29, 144, 253, .3); border-radius: 50%;">
                 <button class="switch-color color-toggle-btn"
                     data-var="--third-color"
                     data-color="<?php echo esc_attr($main_color2_switch); ?>"
@@ -71,14 +71,14 @@
         </div>
         <h4><?php esc_html_e('Choose main color 2', 'nebon'); ?></h4>
         <div class="d-flex align-items-center justify-content-center" style="gap:10px;">
-            <div style="border: 1px solid rgba(184,129,102,.3); border-radius: 50%;">
+            <div style="border: 1px solid rgba(29, 144, 253, .3); border-radius: 50%;">
                 <button class="switch-color color-toggle-btn active"
                     data-var="--primary-color"
                     data-color="<?php echo esc_attr($main_color1); ?>"
                     style="background:<?php echo esc_attr($main_color1); ?>;">
                 </button>
             </div>
-            <div style="border: 1px solid rgba(184,129,102,.3); border-radius: 50%;">
+            <div style="border: 1px solid rgba(29, 144, 253, .3); border-radius: 50%;">
                 <button class="switch-color color-toggle-btn"
                     data-var="--primary-color"
                     data-color="<?php echo esc_attr($main_color1_switch); ?>"

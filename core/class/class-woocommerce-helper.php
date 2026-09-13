@@ -861,7 +861,7 @@ if (class_exists("woocommerce")) {
             if (isset($args['fields']['author'])) {
                 $args['fields']['author'] = str_replace(
                     '<input',
-                    '<input placeholder="' . esc_attr__('Your Name*', 'nebon') . '"',
+                    '<input placeholder="' . esc_attr__('Tên của bạn*', 'nebon') . '"',
                     $args['fields']['author']
                 );
             }
@@ -870,7 +870,7 @@ if (class_exists("woocommerce")) {
             if (isset($args['fields']['email'])) {
                 $args['fields']['email'] = str_replace(
                     '<input',
-                    '<input placeholder="' . esc_attr__('Your Email*', 'nebon') . '"',
+                    '<input placeholder="' . esc_attr__('Email của bạn*', 'nebon') . '"',
                     $args['fields']['email']
                 );
             }
@@ -879,7 +879,7 @@ if (class_exists("woocommerce")) {
             if (isset($args['comment_field'])) {
                 $args['comment_field'] = str_replace(
                     '<textarea',
-                    '<textarea placeholder="' . esc_attr__('Your comment*', 'nebon') . '"',
+                    '<textarea placeholder="' . esc_attr__('phản hồi của bạn*', 'nebon') . '"',
                     $args['comment_field']
                 );
             }

@@ -145,7 +145,7 @@ class T888_Top_Brands_Grid extends T888_Widget_Base
             [
                 'label' => __('Header Background', 'nebon'),
                 'type' => Controls_Manager::COLOR,
-                'default' => '#fdbb23',
+                'default' => '#1d90fd',
                 'selectors' => [
                     '{{WRAPPER}} .t888-top-brands-grid__header' => 'background-color: {{VALUE}};',
                 ],

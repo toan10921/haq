@@ -273,7 +273,7 @@ class T888_Featured_Categories extends T888_Widget_Base
     $this->add_control('style4_accent_color', [
         'label' => __('Accent Color', 'nebon'),
         'type' => Controls_Manager::COLOR,
-        'default' => '#f45100',
+        'default' => '#1d90fd',
         'selectors' => [
             '{{WRAPPER}} .category-showcase-count, {{WRAPPER}} .category-showcase-action' => 'background-color: {{VALUE}};',
             '{{WRAPPER}} .category-showcase-nav:hover, {{WRAPPER}} .category-showcase-nav:focus-visible' => 'border-color: {{VALUE}}; background-color: {{VALUE}};',

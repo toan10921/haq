@@ -603,7 +603,7 @@
 
     &--scheme-yellow-black {
         border-color: #e5e5e5;
-        border-top: 8px solid #f5b400;
+        border-top: 8px solid #1d90fd;
 
         .t888-vertical-menu__header {
             background: #050505;
@@ -650,7 +650,7 @@
             min-width: 16px;
             font-size: 16px;
             text-align: center;
-            color: #f5b400;
+            color: #1d90fd;
         }
 
         .t888-vertical-menu__list > li > a.menu-link::after {
@@ -665,13 +665,13 @@
         .t888-vertical-menu__list > li:hover > a.menu-link::after,
         .t888-vertical-menu__list > li.current-menu-item > a.menu-link::after,
         .t888-vertical-menu__list > li.current-menu-ancestor > a.menu-link::after {
-            color: #f5b400;
+            color: #1d90fd;
         }
 
         .t888-vertical-menu__list > li:hover > a.menu-link,
         .t888-vertical-menu__list > li.current-menu-item > a.menu-link,
         .t888-vertical-menu__list > li.current-menu-ancestor > a.menu-link {
-            color: #f5b400;
+            color: #1d90fd;
         }
 
         .t888-vertical-menu__body,
@@ -685,7 +685,7 @@
         .t888-vertical-menu__list > li:hover > a.menu-link,
         .t888-vertical-menu__list > li.current-menu-item > a.menu-link,
         .t888-vertical-menu__list > li.current-menu-ancestor > a.menu-link {
-            color: #f5b400;
+            color: #1d90fd;
         }
 
         .t888-vertical-menu__extra--text-h2 {
@@ -713,7 +713,7 @@
         }
 
         .t888-vertical-menu__text-link-item a:hover h2 {
-            color: #f5b400;
+            color: #1d90fd;
         }
     }
 }

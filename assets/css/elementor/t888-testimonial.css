@@ -126,7 +126,7 @@
 
 .t888-testimonial.style2 .rating-stars i {
     font-size: 18px;
-    color: #ee5209;
+    color: #1d90fd;
 }
 
 .t888-testimonial.style2 .testimonial-quote-mark {
@@ -192,7 +192,7 @@
     --t888-testimonial-bg: #1f1f1f;
     --t888-testimonial-heading: #fff;
     --t888-testimonial-text: #c8c8c8;
-    --t888-testimonial-accent: #f45100;
+    --t888-testimonial-accent: #1d90fd;
     --t888-testimonial-divider: #484848;
     --t888-testimonial-padding-top: 70px;
     --t888-testimonial-padding-right: 90px;

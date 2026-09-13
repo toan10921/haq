@@ -27,7 +27,7 @@
     position: relative;
     margin: 0;
     overflow: hidden;
-    border-top: 3px solid #f45100;
+    border-top: 3px solid #1d90fd;
     background: #f1f1f1;
 }
 
@@ -57,7 +57,7 @@
     box-sizing: border-box;
     min-height: 661px;
     padding: 61px 90px 69px;
-    background: #f45100;
+    background: #1d90fd;
     border-radius: 3px;
     color: #ffffff;
     text-align: center;
@@ -297,7 +297,7 @@
 }
 
 .team-profile__fact a:hover {
-    color: #f45100;
+    color: #1d90fd;
 }
 
 .team-profile__socials {
@@ -323,7 +323,7 @@
 .team-profile__socials a:hover,
 .team-profile__socials a:focus {
     color: #ffffff;
-    background: #f45100;
+    background: #1d90fd;
 }
 
 .team-profile__section {
@@ -373,7 +373,7 @@
     width: 46px;
     height: 46px;
     overflow: hidden;
-    color: #f45100;
+    color: #1d90fd;
     background: #f4f4f4;
     border-radius: 50%;
     font-size: 22px;
@@ -437,7 +437,7 @@
     inset: 0 auto 0 0;
     display: block;
     max-width: 100%;
-    background: #f45100;
+    background: #1d90fd;
 }
 
 @media (max-width: 1024px) {

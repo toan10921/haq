@@ -1,7 +1,7 @@
 <?php
 $main_color1       = get_theme_mod('t888_main_color1', '#000000');
 $main_color1_switch = get_theme_mod('t888_main_color1-switch', '#ffffff');
-$main_color2       = get_theme_mod('t888_main_color2', '#b88166');
+$main_color2       = get_theme_mod('t888_main_color2', '#1d90fd');
 $main_color2_switch = get_theme_mod('t888_main_color2_switch', '#cccccc');
 ?>
 

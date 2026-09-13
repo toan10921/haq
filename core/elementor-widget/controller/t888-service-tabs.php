@@ -200,7 +200,7 @@ class T888_Service_Tabs extends T888_Widget_Base
         $this->add_control('nav_active_background', [
             'label' => esc_html__('Active Background', 'nebon'),
             'type' => Controls_Manager::COLOR,
-            'default' => '#f45100',
+            'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-service-tabs__tab.is-active' => 'background-color: {{VALUE}};',
             ],
@@ -221,7 +221,7 @@ class T888_Service_Tabs extends T888_Widget_Base
         $this->add_control('accent_color', [
             'label' => esc_html__('Accent Color', 'nebon'),
             'type' => Controls_Manager::COLOR,
-            'default' => '#f45100',
+            'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-service-tabs-section--style2' => '--t888-history-accent: {{VALUE}};',
                 '{{WRAPPER}} .t888-service-tabs__check' => 'color: {{VALUE}}; border-color: {{VALUE}};',

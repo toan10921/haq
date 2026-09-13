@@ -563,7 +563,7 @@ body.mobile-menu-open{ overflow: hidden; }
     right: 0;
     left: 0;
     height: 3px;
-    background: #ee4d0b;
+    background: #1d90fd;
     opacity: 0;
     transform: scaleX(0);
     transform-origin: center;
@@ -577,7 +577,7 @@ body.mobile-menu-open{ overflow: hidden; }
 .t888-menu-style5__list > li.current-menu-ancestor > a.menu-link,
 .t888-menu-style5__list > li.current_page_item > a.menu-link,
 .t888-menu-style5__list > li.current_page_ancestor > a.menu-link {
-    color: #ee4d0b;
+    color: #1d90fd;
 }
 
 .t888-menu-style5__list > li:hover > a.menu-link::before,
@@ -650,7 +650,7 @@ body.mobile-menu-open{ overflow: hidden; }
 
 .t888-menu-style5__list .sub-menu a.menu-link:hover,
 .t888-menu-style5__list .sub-menu a.menu-link:focus {
-    color: #ee4d0b;
+    color: #1d90fd;
     background: #fafafa;
 }
 
@@ -678,4 +678,121 @@ body.mobile-menu-open{ overflow: hidden; }
         padding-bottom: 18px;
         font-size: 15px;
     }
+}
+
+/* Fluid sizing for Elementor-built HAQ headers. */
+.haq-responsive-header {
+    padding-inline: clamp(0px, 0vw, 68px) !important;
+}
+
+.haq-responsive-header > .e-con-inner,
+.haq-responsive-header.e-con {
+    column-gap: clamp(12px, 2vw, 40px) !important;
+}
+
+.haq-responsive-header .elementor-widget-image img {
+    width: clamp(78px, 6vw, 112px) !important;
+    height: auto !important;
+}
+
+.haq-responsive-header .t888-menu-style5__list {
+    flex-wrap: nowrap !important;
+    column-gap: clamp(5px, 0.85vw, 16px) !important;
+}
+
+.haq-responsive-header .t888-menu-style5__list > li {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.haq-responsive-header .t888-menu-style5__list > li > a.menu-link {
+    min-height: clamp(76px, 5.3vw, 100px) !important;
+    padding: clamp(18px, 1.45vw, 28px) clamp(4px, 0.5vw, 10px) !important;
+    font-size: clamp(14px, 0.9vw, 17px) !important;
+}
+
+.haq-responsive-header i,
+.haq-responsive-header svg {
+    max-width: clamp(17px, 1.15vw, 21px);
+}
+
+.haq-responsive-header .elementor-button {
+    padding: clamp(13px, 1vw, 18px) clamp(18px, 1.8vw, 34px) !important;
+    font-size: clamp(14px, 0.85vw, 16px) !important;
+    white-space: nowrap !important;
+}
+
+/* Elementor currently stores 40px right padding and a 20px gap on this header row. */
+.haq-responsive-header .haq-header-content,
+.haq-responsive-header .elementor-element-62458fe {
+    --column-gap: clamp(8px, 1.05vw, 20px);
+    padding-left: clamp(0px, 1vw, 57px) !important;
+    padding-right: clamp(10px, 1vw, 40px) !important;
+    column-gap: var(--column-gap) !important;
+}
+
+.haq-responsive-header .t888-button.style3 {
+    width: clamp(150px, 10.42vw, 200px) !important;
+    min-height: clamp(50px, 3.03vw, 58px) !important;
+    padding: clamp(12px, 0.78vw, 15px) clamp(18px, 1.67vw, 32px) !important;
+    font-size: clamp(14px, 0.94vw, 18px) !important;
+}
+
+.haq-responsive-header .t888-button.style3 .t888-button__text {
+    white-space: nowrap;
+}
+
+/* Keep the header action group aligned and evenly spaced. */
+.haq-responsive-header .haq-header-actions,
+.haq-responsive-header .elementor-element-9d4cffd {
+    display: flex !important;
+    width: auto !important;
+    flex: 0 0 auto;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    column-gap: clamp(14px, 1.25vw, 24px) !important;
+}
+
+.haq-responsive-header .haq-header-actions > .elementor-element,
+.haq-responsive-header .elementor-element-9d4cffd > .elementor-element {
+    width: auto !important;
+    margin: 0 !important;
+    flex: 0 0 auto;
+}
+
+.haq-responsive-header .overlay-search-outer,
+.haq-responsive-header .block-search-element {
+    display: flex;
+    width: clamp(36px, 2.6vw, 50px) !important;
+    height: clamp(36px, 2.6vw, 50px) !important;
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.haq-responsive-header .block-search-element .toggle-search {
+    display: flex;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.haq-responsive-header .t888-button-style3-wrap {
+    width: auto !important;
+    margin: 0 !important;
+}
+@media (max-width: 1200px) {
+  .haq-responsive-header .gtranslate_wrapper{
+    flex-direction: column;
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .mw150{
+    max-width: 150px;
+}
 }

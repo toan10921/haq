@@ -5,7 +5,7 @@ $banner_button_text = $banner_button_text ?? __('SHOP NOW', 'nebon');
 $banner_button_link_url = $banner_button_link['url'] ?? '#';
 $banner_button_target = !empty($banner_button_link['is_external']) ? ' target="_blank"' : '';
 $banner_button_nofollow = !empty($banner_button_link['nofollow']) ? ' rel="nofollow"' : '';
-$banner_background = $banner_background ?? '#b96a3f';
+$banner_background = $banner_background ?? '#1d90fd';
 $banner_background_image_url = $banner_background_image['url'] ?? '';
 $banner_text_color = $banner_text_color ?? '#ffffff';
 $button_background = $button_background ?? '#ffffff';

@@ -91,7 +91,7 @@ class T888_Shop_Product_Grid extends T888_Widget_Base
             'selectors' => ['{{WRAPPER}} .t888-shop-categories__link' => 'color: {{VALUE}};'],
         ]);
         $this->add_control('category_filter_active_color', [
-            'label' => __('Active Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#ea5501',
+            'label' => __('Active Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-shop-categories__link:hover' => 'color: {{VALUE}};',
                 '{{WRAPPER}} .t888-shop-categories__link.is-active' => 'color: {{VALUE}};',
@@ -145,7 +145,7 @@ class T888_Shop_Product_Grid extends T888_Widget_Base
             'selectors' => ['{{WRAPPER}} .t888-shop-card__price' => 'color: {{VALUE}};'],
         ]);
         $this->add_control('accent_color', [
-            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#EA5501',
+            'label' => __('Accent Color', 'nebon'), 'type' => Controls_Manager::COLOR, 'default' => '#1d90fd',
             'selectors' => [
                 '{{WRAPPER}} .t888-shop-card__sale' => 'background-color: {{VALUE}};',
                 '{{WRAPPER}} .t888-shop-pagination .current' => 'color: {{VALUE}};',

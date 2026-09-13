@@ -97,7 +97,7 @@ function t888_output_custom_color_variables()
 {
     $color1_main   = get_theme_mod('t888_main_color1', '#000000');
     $color1_switch = get_theme_mod('t888_main_color1-switch', '#cccccc');
-    $color2_main   = get_theme_mod('t888_main_color2', '#b88166');
+    $color2_main   = get_theme_mod('t888_main_color2', '#1d90fd');
     $color2_switch = get_theme_mod('t888_main_color2_switch', '#ffde00');
 
     echo '<script>';

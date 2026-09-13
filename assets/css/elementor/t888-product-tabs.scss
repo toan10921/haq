@@ -854,7 +854,7 @@ body .t888-product-tabs-wrapper.style6 {
     .hcard-rating {
         display: flex;
         gap: 2px;
-        color: #f5a623;
+        color: #1d90fd;
         font-size: 15px;
         line-height: 1;
         margin-bottom: 5px;
@@ -1143,7 +1143,7 @@ body .t888-product-tabs-wrapper.style6 {
 .t888-product-tabs-wrapper.style6 {
     --t888-style6-card-bg: #f3f7fb;
     --t888-style6-card-action: #1f1f1f;
-    --t888-style6-card-accent: #ef4b00;
+    --t888-style6-card-accent: #1d90fd;
 
     .t888-tab-panel.is-entering {
         animation: t888-style6-panel-in .3s ease both;
@@ -1443,7 +1443,7 @@ body .t888-product-tabs-wrapper.style6 {
             padding: 0;
             place-items: center;
             border-radius: 50%;
-            background: #ef4b00;
+            background: #1d90fd;
             color: #fff;
             font-size: 11px;
             font-weight: 700;
@@ -1903,8 +1903,8 @@ body.t888-inquiry-open {
             height: 9px;
             flex: 0 0 auto;
             border-radius: 50%;
-            background: #f4511e;
-            box-shadow: 0 0 0 4px rgba(244, 81, 30, .14);
+            background: #1d90fd;
+            box-shadow: 0 0 0 4px rgba(29, 144, 253, .14);
         }
     }
 }
@@ -1979,7 +1979,7 @@ body.t888-inquiry-open {
     margin-top: 2px;
     place-items: center;
     border-radius: 50%;
-    background: #f4511e;
+    background: #1d90fd;
     color: #fff;
     font-family: Arial, sans-serif;
     font-size: 11px;
@@ -2042,7 +2042,7 @@ body.t888-inquiry-open {
         }
 
         b {
-            color: #f4511e;
+            color: #1d90fd;
         }
     }
 
@@ -2081,8 +2081,8 @@ body.t888-inquiry-open {
         }
 
         &:focus {
-            border-color: #f4511e;
-            box-shadow: 0 0 0 3px rgba(244, 81, 30, .1);
+            border-color: #1d90fd;
+            box-shadow: 0 0 0 3px rgba(29, 144, 253, .1);
         }
     }
 
@@ -2102,7 +2102,7 @@ body.t888-inquiry-open {
     .wpcf7-not-valid-tip {
         display: block;
         margin-top: 5px;
-        color: #bd351f;
+        color: #1d90fd;
         font-size: 11px;
         font-weight: 500;
         line-height: 1.35;
@@ -2134,7 +2134,7 @@ body.t888-inquiry-open {
     .wpcf7 form.aborted .wpcf7-response-output,
     .wpcf7 form.spam .wpcf7-response-output {
         background: #fff0ed;
-        color: #bd351f;
+        color: #1d90fd;
     }
 
     .wpcf7-spinner {
@@ -2220,7 +2220,7 @@ body.t888-inquiry-open {
 
     &.is-error:not(:empty) {
         background: #fff0ed;
-        color: #bd351f;
+        color: #1d90fd;
     }
 }
 
@@ -2236,9 +2236,9 @@ body.t888-inquiry-open {
     padding: 9px 16px;
     border: 0;
     border-radius: 5px;
-    background: #f4511e;
+    background: #1d90fd;
     color: #fff;
-    box-shadow: 0 7px 18px rgba(244, 81, 30, .2);
+    box-shadow: 0 7px 18px rgba(29, 144, 253, .2);
     font-family: inherit;
     font-size: 12.5px;
     font-weight: 700;
@@ -2248,9 +2248,9 @@ body.t888-inquiry-open {
 
     &:hover,
     &:focus-visible {
-        background: #dd4315;
+        background: #1d90fd;
         color: #fff;
-        box-shadow: 0 9px 22px rgba(244, 81, 30, .27);
+        box-shadow: 0 9px 22px rgba(29, 144, 253, .27);
         transform: translateY(-1px);
     }
 
@@ -2290,7 +2290,7 @@ body.t888-inquiry-open {
     padding: 14px;
     border-radius: 4px;
     background: #fff0ed;
-    color: #bd351f;
+    color: #1d90fd;
     font-size: 13px;
     font-weight: 600;
     line-height: 1.5;
@@ -2304,13 +2304,13 @@ body.t888-inquiry-open {
     text-align: center;
 
     a {
-        color: #f4511e;
+        color: #1d90fd;
         font-weight: 700;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: #d94114;
+            color: #1d90fd;
             text-decoration: underline;
         }
     }
@@ -2346,6 +2346,13 @@ body.t888-inquiry-open {
 
         .wpcf7-form {
             display: block;
+        }
+
+        // iOS Safari zooms the page when a focused form control is below 16px.
+        input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]),
+        textarea,
+        select {
+            font-size: 16px !important;
         }
     }
 

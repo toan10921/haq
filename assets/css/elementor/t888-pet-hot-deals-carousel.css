@@ -366,7 +366,7 @@
 .t888-pet-hot-deals-module .grid-horizontal-card .hcard-rating {
   display: flex;
   gap: 2px;
-  color: #f5a623;
+  color: #1d90fd;
   font-size: 15px;
   line-height: 1;
 }
@@ -460,7 +460,7 @@
 }
 
 .t888-pet-hot-deals-module .star-rating {
-  color: #ffc107;
+  color: #1d90fd;
   font-size: 13px;
   display: inline-block;
 }
@@ -499,11 +499,11 @@
 /* Home 2 variant */
 .pet-hotdeal-home2 {
     .t888-pet-hot-deals-module {
-        background-color: #ffe192;
+        background-color: #1d90fd;
         padding: 24px 30px 30px;
     }
     .t888-pet-hot-deals-module .hot-deals-header .header-nav button:hover{
-      background-color: #ffc326;
+      background-color: #1d90fd;
     }
 
     .t888-pet-hot-deals-module .hot-deals-header {

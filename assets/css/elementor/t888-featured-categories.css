@@ -450,7 +450,7 @@
     margin-bottom: 16px;
     padding: 7px 15px;
     border-radius: 999px;
-    background: #f45100;
+    background: #1d90fd;
     color: #fff;
     font-family: "Poppins", sans-serif;
     font-size: 13px;
@@ -477,7 +477,7 @@
     height: 50px;
     margin-top: 22px;
     border-radius: 50%;
-    background: #f45100;
+    background: #1d90fd;
     color: #fff;
     font-size: 22px;
     line-height: 1;
@@ -545,8 +545,8 @@
 
 .category-showcase-nav:hover,
 .category-showcase-nav:focus-visible {
-    border-color: #f45100;
-    background: #f45100;
+    border-color: #1d90fd;
+    background: #1d90fd;
     color: #fff;
 }
 

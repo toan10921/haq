@@ -850,17 +850,30 @@ class Customizer_Settings
         ));
 
         // Background Position
-        $wp_customize->add_setting('background_position', array(
+        $wp_customize->add_setting('breadcrumb_background_position', array(
             'transport' => 'refresh',
-            'default' => 'default',
-            'sanitize_callback' => 'sanitize_text_field',
+            'default' => 'center_center',
+            'sanitize_callback' => function ($value) {
+                $allowed = array(
+                    'left_top',
+                    'left_center',
+                    'left_bottom',
+                    'center_top',
+                    'center_center',
+                    'center_bottom',
+                    'right_top',
+                    'right_center',
+                    'right_bottom',
+                );
+
+                return in_array($value, $allowed, true) ? $value : 'center_center';
+            },
         ));
-        $wp_customize->add_control('background_position', array(
-            'label' => __('Background Position', 'nebon'),
+        $wp_customize->add_control('breadcrumb_background_position', array(
+            'label' => __('Breadcrumb Background Position', 'nebon'),
             'type' => 'select',
             'section' => 'breadcumb',
             'choices' => array(
-                'default' => __('Background Position', 'nebon'),
                 'left_top' => __('Left Top', 'nebon'),
                 'left_center' => __('Left Center', 'nebon'),
                 'left_bottom' => __('Left Bottom', 'nebon'),
@@ -1301,7 +1314,7 @@ class Customizer_Settings
 
         // Main Color 2
         $wp_customize->add_setting('t888_main_color2', array(
-            'default' => '#b88166',
+            'default' => '#1d90fd',
             'transport' => 'refresh',
             'sanitize_callback' => 'sanitize_hex_color',
         ));
@@ -1704,7 +1717,7 @@ class Customizer_Settings
         // Hover Sub Colour
         $wp_customize->add_setting('hover_sub_color', array(
             'transport' => 'refresh',
-            'default' => '#b88166',
+            'default' => '#1d90fd',
             'sanitize_callback' => 'sanitize_hex_color',
         ));
         $wp_customize->add_control(new WP_Customize_Color_Control(
