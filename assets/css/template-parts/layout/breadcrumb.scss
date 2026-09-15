@@ -1,14 +1,13 @@
 .breadcrumb {
     list-style: none;
     padding: 0;
-    padding-top: 6rem;
-    padding-bottom: 5.625rem;
+    padding-top: 50px;
+    padding-bottom: 50px;
     margin-bottom: 6.25rem;
     color: var(--secondary-color);
     font-size: 0.875rem;
     line-height: 2.25rem;
     flex-wrap: wrap;
-    height: 250px;
     position: relative;
     text-transform: uppercase;
     background-color: var(--third-color);
@@ -21,9 +20,6 @@
         z-index: 0;
         pointer-events: none;
 
-    }
-    .col-12{
-        padding-left:10%;
     }
     .breadcrumb-title {
         margin-bottom: 2px;

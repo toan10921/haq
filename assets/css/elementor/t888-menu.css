@@ -544,7 +544,6 @@ body.mobile-menu-open{ overflow: hidden; }
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 100px;
     padding: 28px 10px 26px;
     color: #474747;
     font-size: 17px;
@@ -685,11 +684,6 @@ body.mobile-menu-open{ overflow: hidden; }
     padding-inline: clamp(0px, 0vw, 68px) !important;
 }
 
-.haq-responsive-header > .e-con-inner,
-.haq-responsive-header.e-con {
-    column-gap: clamp(12px, 2vw, 40px) !important;
-}
-
 .haq-responsive-header .elementor-widget-image img {
     width: clamp(78px, 6vw, 112px) !important;
     height: auto !important;
@@ -706,7 +700,6 @@ body.mobile-menu-open{ overflow: hidden; }
 }
 
 .haq-responsive-header .t888-menu-style5__list > li > a.menu-link {
-    min-height: clamp(76px, 5.3vw, 100px) !important;
     padding: clamp(18px, 1.45vw, 28px) clamp(4px, 0.5vw, 10px) !important;
     font-size: clamp(14px, 0.9vw, 17px) !important;
 }
