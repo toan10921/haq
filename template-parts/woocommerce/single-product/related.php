@@ -33,8 +33,8 @@ $args = [
     'tax_query' => [
         [
             'taxonomy' => 'product_cat',
-            'field'    => 'term_id',
-            'terms'    => $leaf_terms,
+            'field' => 'term_id',
+            'terms' => $leaf_terms,
             'operator' => 'IN',
         ]
     ],
@@ -42,7 +42,7 @@ $args = [
 
 $related_query = new WP_Query($args);
 
-if ($related_query->have_posts()) : ?>
+if ($related_query->have_posts()): ?>
     <div class="related-products container">
         <?php
         $title = get_theme_mod('related_products_heading_title', __('Sản phẩm liên quan', 'nebon'));
@@ -55,33 +55,19 @@ if ($related_query->have_posts()) : ?>
             </div>
         </div>
         <div class="products-slider">
-            <div class="swiper-container eltech888-swiper-slider related-products-slider"
-                data-items="4"
-                data-space="0"
-                data-loop="false"
-                data-navigation="true"
-                data-pagination="bullets"
-                data-speed="3000"
-              
-                data-effect="slide"
-                data-items-widescreen="5"
-                data-items-laptop="4"
-                data-items-tablet-extra="3"
-                data-items-tablet="3"
-                data-items-mobile-extra="2"
-                data-items-mobile="2"
-                data-space-widescreen="1"
-                data-space-laptop="1"
-                data-space-tablet-extra="1"
-                data-space-tablet="1"
-                data-space-mobile-extra="1"
-                data-space-mobile="1">
+            <div class="swiper-container eltech888-swiper-slider related-products-slider" data-items="4" data-space="0"
+                data-loop="false" data-navigation="true" data-pagination="bullets" data-speed="3000" data-effect="slide"
+                data-items-widescreen="5" data-items-laptop="4" data-items-tablet-extra="3" data-items-tablet="3"
+                data-items-mobile-extra="2" data-items-mobile="2" data-space-widescreen="1" data-space-laptop="1"
+                data-space-tablet-extra="1" data-space-tablet="1" data-space-mobile-extra="1" data-space-mobile="1">
 
                 <div class="swiper-wrapper products">
-                    <?php while ($related_query->have_posts()) : $related_query->the_post();
+                    <?php while ($related_query->have_posts()):
+                        $related_query->the_post();
                         $rel_product = wc_get_product(get_the_ID());
-                        if (!$rel_product || !$rel_product->is_visible()) continue;
-                    ?>
+                        if (!$rel_product || !$rel_product->is_visible())
+                            continue;
+                        ?>
                         <div class="swiper-slide product-item">
                             <?php
                             t888f_get_template('woocommerce/loop/grid/grid', '', [
@@ -89,8 +75,8 @@ if ($related_query->have_posts()) : ?>
                                 'compact_card' => true,
                                 'contact_button_text' => __('Liên hệ', 'nebon'),
                                 'contact_button_url' => '#',
-                                'size'    => get_theme_mod('show_single_size_extra_display', 'product-grid-default'),
-                                'style'   => get_theme_mod('single_item_style_extra_display', 'default')
+                                'size' => get_theme_mod('show_single_size_extra_display', 'product-grid-default'),
+                                'style' => get_theme_mod('single_item_style_extra_display', 'default')
                             ], true);
                             ?>
                         </div>
@@ -100,7 +86,8 @@ if ($related_query->have_posts()) : ?>
                 <div class="swiper-pagination t888-pagination-line"></div>
             </div>
 
-
+            <div class="swiper-button-prev"><i class="las la-angle-left"></i></div>
+            <div class="swiper-button-next"><i class="las la-angle-right"></i></div>
         </div>
     </div>
 <?php endif;

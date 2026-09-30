@@ -41,12 +41,16 @@ if (class_exists("woocommerce")) {
         /**
          * Prevent cloning of the instance.
          */
-        private function __clone() {}
+        private function __clone()
+        {
+        }
 
         /**
          * Prevent unserializing of the instance.
          */
-        public function __wakeup() {}
+        public function __wakeup()
+        {
+        }
 
         /**
          * WoocommerceHelper constructor.
@@ -125,10 +129,10 @@ if (class_exists("woocommerce")) {
             }
 
             $args = [
-                'post_type'           => 'product',
-                'post_status'         => 'publish',
-                'posts_per_page'      => $per_page,
-                'paged'               => $current_page,
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'posts_per_page' => $per_page,
+                'paged' => $current_page,
                 'ignore_sticky_posts' => true,
             ];
 
@@ -140,8 +144,8 @@ if (class_exists("woocommerce")) {
             if ($selected_categories) {
                 $tax_query[] = [
                     'taxonomy' => 'product_cat',
-                    'field'    => 'term_id',
-                    'terms'    => $selected_categories,
+                    'field' => 'term_id',
+                    'terms' => $selected_categories,
                     'operator' => 'IN',
                 ];
             }
@@ -152,10 +156,10 @@ if (class_exists("woocommerce")) {
                     wp_send_json_error(['message' => __('Invalid product category.', 'nebon')], 400);
                 }
                 $tax_query[] = [
-                    'taxonomy'         => 'product_cat',
-                    'field'            => 'term_id',
-                    'terms'            => [(int) $category->term_id],
-                    'operator'         => 'IN',
+                    'taxonomy' => 'product_cat',
+                    'field' => 'term_id',
+                    'terms' => [(int) $category->term_id],
+                    'operator' => 'IN',
                     'include_children' => true,
                 ];
             }
@@ -165,8 +169,8 @@ if (class_exists("woocommerce")) {
                 if (!empty($visibility['exclude-from-catalog'])) {
                     $tax_query[] = [
                         'taxonomy' => 'product_visibility',
-                        'field'    => 'term_taxonomy_id',
-                        'terms'    => [$visibility['exclude-from-catalog']],
+                        'field' => 'term_taxonomy_id',
+                        'terms' => [$visibility['exclude-from-catalog']],
                         'operator' => 'NOT IN',
                     ];
                 }
@@ -182,12 +186,14 @@ if (class_exists("woocommerce")) {
                 ? (float) wp_unslash($_POST['max_price'])
                 : null;
             if ($min_price !== null || $max_price !== null) {
-                $args['meta_query'] = [[
-                    'key'     => '_price',
-                    'value'   => [$min_price ?? 0, $max_price ?? PHP_INT_MAX],
-                    'compare' => 'BETWEEN',
-                    'type'    => 'DECIMAL(10,2)',
-                ]];
+                $args['meta_query'] = [
+                    [
+                        'key' => '_price',
+                        'value' => [$min_price ?? 0, $max_price ?? PHP_INT_MAX],
+                        'compare' => 'BETWEEN',
+                        'type' => 'DECIMAL(10,2)',
+                    ]
+                ];
             }
 
             $keyword = isset($_POST['product_search'])
@@ -220,7 +226,8 @@ if (class_exists("woocommerce")) {
 
             $search_by_product_name = static function ($where, $query) {
                 $product_name = trim((string) $query->get('t888_product_name_search'));
-                if ($product_name === '') return $where;
+                if ($product_name === '')
+                    return $where;
 
                 global $wpdb;
                 $like = '%' . $wpdb->esc_like($product_name) . '%';
@@ -242,23 +249,23 @@ if (class_exists("woocommerce")) {
             $page_url = wp_validate_redirect($page_url, wc_get_page_permalink('shop'));
 
             $template_data = [
-                'query'                  => $query,
-                'current_page'           => $current_page,
-                'active_category_slug'   => $category_slug,
-                'show_category_filter'   => '',
-                'filter_categories'      => [],
-                'show_sale_badge'        => !empty($config['showSaleBadge']) ? 'yes' : '',
-                'show_contact_button'    => !empty($config['showContactButton']) ? 'yes' : '',
-                'contact_button_text'    => sanitize_text_field($config['contactButtonText'] ?? __('Liên hệ', 'nebon')),
-                'contact_button_link'    => [
-                    'url'         => esc_url_raw($config['contactButtonUrl'] ?? '#'),
+                'query' => $query,
+                'current_page' => $current_page,
+                'active_category_slug' => $category_slug,
+                'show_category_filter' => '',
+                'filter_categories' => [],
+                'show_sale_badge' => !empty($config['showSaleBadge']) ? 'yes' : '',
+                'show_contact_button' => !empty($config['showContactButton']) ? 'yes' : '',
+                'contact_button_text' => sanitize_text_field($config['contactButtonText'] ?? __('Liên hệ', 'nebon')),
+                'contact_button_link' => [
+                    'url' => esc_url_raw($config['contactButtonUrl'] ?? '#'),
                     'is_external' => !empty($config['contactButtonExternal']),
-                    'nofollow'    => !empty($config['contactButtonNofollow']),
+                    'nofollow' => !empty($config['contactButtonNofollow']),
                 ],
-                'show_pagination'        => !empty($config['showPagination']) ? 'yes' : '',
-                'products_per_page'      => $per_page,
-                'categories'             => $selected_categories,
-                'pagination_base_url'    => $page_url,
+                'show_pagination' => !empty($config['showPagination']) ? 'yes' : '',
+                'products_per_page' => $per_page,
+                'categories' => $selected_categories,
+                'pagination_base_url' => $page_url,
             ];
 
             $html = tech888f_get_template_elementor_widget(
@@ -273,11 +280,11 @@ if (class_exists("woocommerce")) {
             $end = min($current_page * $per_page, $total);
 
             wp_send_json_success([
-                'html'     => $html,
+                'html' => $html,
                 'category' => $category_slug,
-                'total'    => $total,
-                'start'    => $start,
-                'end'      => $end,
+                'total' => $total,
+                'start' => $start,
+                'end' => $end,
             ]);
         }
 
@@ -330,23 +337,25 @@ if (class_exists("woocommerce")) {
             }
 
             $args = [
-                'post_type'           => 'product',
-                'post_status'         => 'publish',
-                'posts_per_page'      => 2,
-                'fields'              => 'ids',
-                'no_found_rows'       => true,
+                'post_type' => 'product',
+                'post_status' => 'publish',
+                'posts_per_page' => 2,
+                'fields' => 'ids',
+                'no_found_rows' => true,
                 'ignore_sticky_posts' => true,
-                'suppress_filters'    => false,
+                'suppress_filters' => false,
                 't888_exact_product_title' => $keyword,
             ];
 
             if ($category instanceof \WP_Term) {
-                $args['tax_query'] = [[
-                    'taxonomy'         => 'product_cat',
-                    'field'            => 'term_id',
-                    'terms'            => [(int) $category->term_id],
-                    'include_children' => true,
-                ]];
+                $args['tax_query'] = [
+                    [
+                        'taxonomy' => 'product_cat',
+                        'field' => 'term_id',
+                        'terms' => [(int) $category->term_id],
+                        'include_children' => true,
+                    ]
+                ];
             }
 
             $exact_title_filter = static function ($where, $query) {
@@ -401,15 +410,15 @@ if (class_exists("woocommerce")) {
                     $query->set('posts_per_page', intval($_GET['posts_per_page']));
                 }
 
-                $tax_query  = [];
+                $tax_query = [];
                 $meta_query = [];
 
                 if (!empty($_GET['brand'])) {
                     $brands = explode(',', sanitize_text_field($_GET['brand']));
                     $tax_query[] = [
                         'taxonomy' => 'product_brand',
-                        'field'    => 'slug',
-                        'terms'    => $brands,
+                        'field' => 'slug',
+                        'terms' => $brands,
                         'operator' => 'IN',
                     ];
                 }
@@ -424,8 +433,8 @@ if (class_exists("woocommerce")) {
 
                         $tax_query[] = array(
                             'taxonomy' => $key,
-                            'field'    => 'slug',
-                            'terms'    => $terms,
+                            'field' => 'slug',
+                            'terms' => $terms,
                             'operator' => 'IN',
                         );
                     }
@@ -436,10 +445,10 @@ if (class_exists("woocommerce")) {
                     $max_price = isset($_GET['max_price']) ? floatval($_GET['max_price']) : PHP_INT_MAX;
 
                     $meta_query[] = [
-                        'key'     => '_price',
-                        'value'   => [$min_price, $max_price],
+                        'key' => '_price',
+                        'value' => [$min_price, $max_price],
                         'compare' => 'BETWEEN',
-                        'type'    => 'DECIMAL',
+                        'type' => 'DECIMAL',
                     ];
                 }
 
@@ -465,8 +474,8 @@ if (class_exists("woocommerce")) {
                     $categories = explode(',', sanitize_text_field($_GET['product_cat']));
                     $tax_query[] = [
                         'taxonomy' => 'product_cat',
-                        'field'    => 'slug',
-                        'terms'    => $categories,
+                        'field' => 'slug',
+                        'terms' => $categories,
                         'operator' => 'IN',
                     ];
                     $query->set('tax_query', array_merge(['relation' => 'AND'], $tax_query));
@@ -554,8 +563,8 @@ if (class_exists("woocommerce")) {
             remove_action('woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
             // Remove add to cart in list products
             // remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
-            if( function_exists('YITH_WCWL_Frontend') ){
-                   remove_action('woocommerce_after_add_to_cart_form', array(YITH_WCWL_Frontend(), 'print_button'), 5);
+            if (function_exists('YITH_WCWL_Frontend')) {
+                remove_action('woocommerce_after_add_to_cart_form', array(YITH_WCWL_Frontend(), 'print_button'), 5);
             }
             // remove action upsell single product
             remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
@@ -571,7 +580,7 @@ if (class_exists("woocommerce")) {
             add_action('woocommerce_before_main_content', [$this, 't888f_woocommerce_breadcrumb'], 20);
             // add_action('woocommerce_before_main_content', [$this, 't888f_before_woocommerce_main_content'], 10);
             // add_action('woocommerce_after_main_content', [$this, 't888f_after_woocommerce_main_content'], 10);
-            add_action('t888f_before_woocommerce_content',  [$this, 't888f_before_woocommerce_main_content'], 10);
+            add_action('t888f_before_woocommerce_content', [$this, 't888f_before_woocommerce_main_content'], 10);
             add_action('t888f_after_woocommerce_content', [$this, 't888f_after_woocommerce_main_content'], 10);
             add_action('woocommerce_after_single_product_summary', [$this, 't888f_before_product_tab'], 1);
             add_action('t888f_after_product_tabs', [$this, 't888f_after_product_tab'], 10);
@@ -598,7 +607,7 @@ if (class_exists("woocommerce")) {
             add_filter('yith_wcwl_show_add_to_wishlist', [$this, 'hide_single_product_wishlist_button']);
             add_action('woocommerce_single_product_summary', [$this, 't888f_single_product_contact_button'], 31);
             add_action('woocommerce_single_product_summary', [$this, 't888f_image_safe_checkout'], 40);
-            add_filter('woocommerce_product_review_comment_form_args', [$this, 'customize_woocommerce_review_form'],);
+            add_filter('woocommerce_product_review_comment_form_args', [$this, 'customize_woocommerce_review_form'], );
             // add_action('woocommerce_single_product_summary', [$this, 't888f_product_tabs'], 40);
             add_action('woocommerce_after_shop_loop_item_title', [$this, 'short_des_list_product'], 5);
             // add_action('woocommerce_before_shop_loop', [$this, 'custom_woocommerce_ordering'], 30);
@@ -670,7 +679,8 @@ if (class_exists("woocommerce")) {
                 $views = get_post_meta($post->ID, 'product_view_count', true);
                 $views = $views ? intval($views) : 0;
 
-                if (!isset($_SESSION)) session_start();
+                if (!isset($_SESSION))
+                    session_start();
                 $key = 'viewed_' . $post->ID;
                 if (empty($_SESSION[$key])) {
                     $_SESSION[$key] = true;
@@ -735,16 +745,16 @@ if (class_exists("woocommerce")) {
 
         function custom_woocommerce_ordering()
         {
-            if (! is_shop() && ! is_product_category()) {
+            if (!is_shop() && !is_product_category()) {
                 return;
             }
 
             $orderby_options = array(
                 'menu_order' => esc_html__('Default sorting', 'nebon'),
                 'popularity' => esc_html__('Sort by popularity', 'nebon'),
-                'rating'     => esc_html__('Sort by average rating', 'nebon'),
-                'date'       => esc_html__('Sort by latest', 'nebon'),
-                'price'      => esc_html__('Sort by price: low to high', 'nebon'),
+                'rating' => esc_html__('Sort by average rating', 'nebon'),
+                'date' => esc_html__('Sort by latest', 'nebon'),
+                'price' => esc_html__('Sort by price: low to high', 'nebon'),
                 'price-desc' => esc_html__('Sort by price: high to low', 'nebon'),
             );
 
@@ -766,19 +776,19 @@ if (class_exists("woocommerce")) {
 
         function t888f_show_single_product_data()
         {
-            $show_latest     = get_theme_mod('show_latest_products', 'on');
-            $show_upsell     = get_theme_mod('show_upsell_product_extra_display', 'on');
-            $show_related    = get_theme_mod('show_related_products_extra_display', 'on');
-            $number     = get_theme_mod('single_number_extra_display', '4');
-            $size       = get_theme_mod('show_single_size_extra_display', '');
-            $item_style   = get_theme_mod('single_item_style_extra_display', '');
+            $show_latest = get_theme_mod('show_latest_products', 'off');
+            $show_upsell = get_theme_mod('show_upsell_product_extra_display', 'on');
+            $show_related = get_theme_mod('show_related_products_extra_display', 'on');
+            $number = get_theme_mod('single_number_extra_display', '4');
+            $size = get_theme_mod('show_single_size_extra_display', '');
+            $item_style = get_theme_mod('single_item_style_extra_display', '');
             $attr = array(
-                'show_latest'   => $show_latest,
-                'show_upsell'   => $show_upsell,
-                'show_related'  => $show_related,
-                'number'        => $number,
-                'size'          => $size,
-                'item_style'    => $item_style
+                'show_latest' => $show_latest,
+                'show_upsell' => $show_upsell,
+                'show_related' => $show_related,
+                'number' => $number,
+                'size' => $size,
+                'item_style' => $item_style
             );
             return $attr;
         }
@@ -795,7 +805,7 @@ if (class_exists("woocommerce")) {
 
         public function t888f_single_lastest_product()
         {
-            if (get_theme_mod('show_latest_products', 'on') !== 'on') {
+            if (get_theme_mod('show_latest_products', 'off') !== 'on') {
                 return;
             }
 
@@ -961,7 +971,7 @@ if (class_exists("woocommerce")) {
         {
 
             $paged = max(1, (int) ($_POST['paged'] ?? 1));
-            $slug  = sanitize_text_field($_POST['slug'] ?? 'product');
+            $slug = sanitize_text_field($_POST['slug'] ?? 'product');
             $style = sanitize_text_field($_POST['style'] ?? 'list');
             $use_shop_card = sanitize_text_field($_POST['use_shop_card'] ?? 'no') === 'yes';
 
@@ -975,7 +985,7 @@ if (class_exists("woocommerce")) {
             }
 
             $query_vars['no_found_rows'] = false;
-            $query_vars['post_status']   = $query_vars['post_status'] ?? 'publish';
+            $query_vars['post_status'] = $query_vars['post_status'] ?? 'publish';
             $query_vars['paged'] = $paged;
 
             $query = new \WP_Query($query_vars);
@@ -984,19 +994,19 @@ if (class_exists("woocommerce")) {
                 'woocommerce/shop-structure/loadmore-products',
                 '',
                 [
-                    'query'         => $query,
+                    'query' => $query,
                     'template_view' => $template_view,
-                    'style'         => $style,
-                    'slug'          => $slug,
+                    'style' => $style,
+                    'slug' => $slug,
                     'use_shop_card' => $use_shop_card,
                 ],
                 false
             );
 
             wp_send_json_success([
-                'html'       => $html,
-                'max_pages'  => (int) $query->max_num_pages,
-                'next_page'  => (int) $paged,
+                'html' => $html,
+                'max_pages' => (int) $query->max_num_pages,
+                'next_page' => (int) $paged,
                 'have_posts' => (bool) $query->have_posts(),
             ]);
         }
@@ -1009,10 +1019,10 @@ if (class_exists("woocommerce")) {
          */
         public function load_more_product_tabs()
         {
-            $paged          = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
-            $filter_mode    = sanitize_text_field($_POST['filter_mode'] ?? 'categories');
+            $paged = isset($_POST['paged']) ? intval($_POST['paged']) : 1;
+            $filter_mode = sanitize_text_field($_POST['filter_mode'] ?? 'categories');
             $product_filter = sanitize_text_field($_POST['product_filter'] ?? 'new');
-            $product_limit  = intval($_POST['product_limit'] ?? 8);
+            $product_limit = intval($_POST['product_limit'] ?? 8);
 
             if ($filter_mode === 'products' && !empty($_POST['product_ids'])) {
                 $product_ids = array_map('intval', $_POST['product_ids']);
@@ -1181,7 +1191,9 @@ if (class_exists("woocommerce")) {
          *
          * @return void
          */
-        public function t888f_woocommerce_template_single_upsale() {}
+        public function t888f_woocommerce_template_single_upsale()
+        {
+        }
 
         /**
          * Add custom tabs to WooCommerce products.
@@ -1197,7 +1209,7 @@ if (class_exists("woocommerce")) {
                     if (isset($data_tab['tab_content']) && $data_tab['tab_content'] != ' ') {
                         $tabs['t888f_custom_tab_' . $key] = array(
                             'title' => (!empty($data_tab['title']) ? $data_tab['title'] : $key),
-                            'priority' => (!empty($data_tab['priority']) ? (int)$data_tab['priority'] : 50),
+                            'priority' => (!empty($data_tab['priority']) ? (int) $data_tab['priority'] : 50),
                             'callback' => 't888f_render_tab',
                             'content' => apply_filters('the_content', $data_tab['tab_content']) //this allows shortcodes in custom tabs
                         );
@@ -1209,17 +1221,19 @@ if (class_exists("woocommerce")) {
         public function t888f_add_custom_tab($tabs)
         {
             global $post;
-            if (!$post) return $tabs;
+            if (!$post)
+                return $tabs;
 
-            $title    = get_post_meta($post->ID, 'add_custom_tab_title', true);
-            $content  = get_post_meta($post->ID, 'add_custom_tab_content', true);
+            $title = get_post_meta($post->ID, 'add_custom_tab_title', true);
+            $content = get_post_meta($post->ID, 'add_custom_tab_content', true);
             $priority = intval(get_post_meta($post->ID, 'priority', true));
 
-            if (!$priority) $priority = 50;
+            if (!$priority)
+                $priority = 50;
 
             if ($title && $content) {
                 $tabs['custom_tab'] = [
-                    'title'    => $title,
+                    'title' => $title,
                     'priority' => $priority,
                     'callback' => function () use ($content) {
                         echo wpautop(do_shortcode($content));
@@ -1259,7 +1273,8 @@ if (class_exists("woocommerce")) {
         public function t888f_before_product_tab()
         {
             global $post;
-            if (! $post) return;
+            if (!$post)
+                return;
             $meta_value = get_post_meta($post->ID, 'append_content_before_product_tab_custom', true);
             if (empty($meta_value) || $meta_value === 'choose_one' || $meta_value === '0') {
                 $meta_value = get_theme_mod('append_content_before_product_tab', null);
@@ -1271,7 +1286,8 @@ if (class_exists("woocommerce")) {
         public function t888f_after_product_tab()
         {
             global $post;
-            if (! $post) return;
+            if (!$post)
+                return;
             $meta_value = get_post_meta($post->ID, 'append_content_after_product_tab_custom', true);
             if (empty($meta_value) || $meta_value === 'choose_one' || $meta_value === '0') {
                 $meta_value = get_theme_mod('append_content_after_product_tab', null);
@@ -1287,7 +1303,8 @@ if (class_exists("woocommerce")) {
                 return;
             }
             global $post;
-            if (! $post) return;
+            if (!$post)
+                return;
             $meta_value = get_post_meta($post->ID, 'append_content_before_product_page_custom', true);
             if (empty($meta_value) || $meta_value === 'choose_one' || $meta_value === '0') {
                 $meta_value = get_theme_mod('append_content_before_product_page', null);
@@ -1302,7 +1319,8 @@ if (class_exists("woocommerce")) {
                 return;
             }
             global $post;
-            if (! $post) return;
+            if (!$post)
+                return;
             $meta_value = get_post_meta($post->ID, 'append_content_after_product_page_custom', true);
             if (empty($meta_value) || $meta_value === 'choose_one' || $meta_value === '0') {
                 $meta_value = get_theme_mod('append_content_after_product_page', null);
@@ -1452,10 +1470,12 @@ if (class_exists("woocommerce")) {
                 'post_type' => 'product',
                 'post__in' => array($product_id)
             ));
-            if (empty($style)) $style = '';
+            if (empty($style))
+                $style = '';
             if ($query->have_posts()):
                 echo '<div class="woocommerce single-product product-popup-content ' . esc_attr($style) . '"><div class="product detail-product">';
-                while ($query->have_posts()) : $query->the_post();
+                while ($query->have_posts()):
+                    $query->the_post();
 
                     t888f_get_template('woocommerce/single-product/detail', $style, false, true);
                 endwhile;
@@ -1467,16 +1487,16 @@ if (class_exists("woocommerce")) {
         public function yith_wishlist_button($args = array())
         {
             $defaults = array(
-                'text'       => '',
-                'icon'       => '',
-                'class'      => '',
-                'echo'       => true,
+                'text' => '',
+                'icon' => '',
+                'class' => '',
+                'echo' => true,
                 'product_id' => 0,
             );
             $args = wp_parse_args($args, $defaults);
 
             $pid = (int) $args['product_id'];
-            if (! $pid) {
+            if (!$pid) {
                 global $product;
                 if ($product instanceof WC_Product) {
                     $pid = (int) $product->get_id();
@@ -1490,18 +1510,21 @@ if (class_exists("woocommerce")) {
             if (function_exists('yith_wcwl_is_product_in_wishlist')) {
                 $in_wishlist = yith_wcwl_is_product_in_wishlist($pid);
                 if ($in_wishlist) {
-                    $args['text']  = $args['text'] ?: esc_html__('Added to Wishlist', 'nebon');
-                    $args['icon']  = '<i class="la la-check" aria-hidden="true"></i>';
+                    $args['text'] = $args['text'] ?: esc_html__('Added to Wishlist', 'nebon');
+                    $args['icon'] = '<i class="la la-check" aria-hidden="true"></i>';
                     $args['class'] = trim($args['class'] . ' added');
                 }
             }
 
-            if (empty($args['text']))  $args['text']  = esc_html__('Wishlist', 'nebon');
-            if (empty($args['icon']))  $args['icon']  = '<i class="lar la-heart" aria-hidden="true"></i>';
-            if (empty($args['class'])) $args['class'] = 'yith-wcwl-add-to-wishlist-button';
+            if (empty($args['text']))
+                $args['text'] = esc_html__('Wishlist', 'nebon');
+            if (empty($args['icon']))
+                $args['icon'] = '<i class="lar la-heart" aria-hidden="true"></i>';
+            if (empty($args['class']))
+                $args['class'] = 'yith-wcwl-add-to-wishlist-button';
 
             if (defined('YITH_WCWL') || function_exists('yith_wcwl_is_product_in_wishlist')) {
-                $url  = esc_url(add_query_arg('add_to_wishlist', $pid));
+                $url = esc_url(add_query_arg('add_to_wishlist', $pid));
                 $html = sprintf(
                     '<a title="%s" href="%s" class="add_to_wishlist wishlist-link %s" rel="nofollow" data-product-id="%d" data-product-title="%s">%s</a>',
                     esc_attr($args['text']),
@@ -1513,7 +1536,7 @@ if (class_exists("woocommerce")) {
                 );
             }
 
-            if (! empty($args['echo'])) {
+            if (!empty($args['echo'])) {
                 echo apply_filters('tech888f_output_content', $html);
                 return;
             }
@@ -1524,16 +1547,16 @@ if (class_exists("woocommerce")) {
         public function yith_compare_button($args = array())
         {
             $defaults = array(
-                'text'       => '',
-                'icon'       => '',
-                'class'      => '',
+                'text' => '',
+                'icon' => '',
+                'class' => '',
                 'product_id' => 0,
-                'echo'       => true,
+                'echo' => true,
             );
             $args = wp_parse_args($args, $defaults);
 
             $pid = (int) $args['product_id'];
-            if (! $pid) {
+            if (!$pid) {
                 global $product;
                 if ($product instanceof WC_Product) {
                     $pid = (int) $product->get_id();
@@ -1545,14 +1568,16 @@ if (class_exists("woocommerce")) {
             if (class_exists('\YITH_WooCompare_Products_List')) {
                 $in_compare = \YITH_WooCompare_Products_List::instance()->has($pid);
                 if ($in_compare) {
-                    $args['text']  = $args['text'] ?: esc_html__('Added to Compare', 'nebon');
-                    $args['icon']  = '<i class="la la-check" aria-hidden="true"></i>';
+                    $args['text'] = $args['text'] ?: esc_html__('Added to Compare', 'nebon');
+                    $args['icon'] = '<i class="la la-check" aria-hidden="true"></i>';
                     $args['class'] = trim($args['class'] . ' added');
                 }
             }
 
-            if (empty($args['text']))  $args['text'] = esc_html__('Compare', 'nebon');
-            if (empty($args['icon']))  $args['icon'] = '<i class="la la-refresh" aria-hidden="true"></i>';
+            if (empty($args['text']))
+                $args['text'] = esc_html__('Compare', 'nebon');
+            if (empty($args['icon']))
+                $args['icon'] = '<i class="la la-refresh" aria-hidden="true"></i>';
 
             $html = '';
 
@@ -1560,7 +1585,7 @@ if (class_exists("woocommerce")) {
                 $cp_link = add_query_arg(
                     array(
                         'action' => 'yith-woocompare-add-product',
-                        'id'     => $pid,
+                        'id' => $pid,
                     )
                 );
 
