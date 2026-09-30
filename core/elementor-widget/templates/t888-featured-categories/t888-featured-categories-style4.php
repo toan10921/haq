@@ -9,6 +9,14 @@ $transition_speed = max(200, min(3000, (int) ($style4_transition_speed ?? 650)))
 $show_navigation = ($style4_navigation ?? 'yes') === 'yes';
 $categories = [];
 
+// Keep category cards inside the Elementor Product page instead of sending
+// visitors to WooCommerce's default /product-category/{slug}/ archive.
+$product_page = get_page_by_path('san-pham', OBJECT, 'page');
+if (!$product_page instanceof \WP_Post) {
+    $product_page = get_page_by_path('sanpham', OBJECT, 'page');
+}
+$product_page_url = $product_page instanceof \WP_Post ? get_permalink($product_page) : '';
+
 foreach ($category_items as $item) {
     $term_id = !empty($item['category_select']) ? absint($item['category_select']) : 0;
     $term = $term_id ? get_term($term_id, 'product_cat') : null;
@@ -17,7 +25,9 @@ foreach ($category_items as $item) {
         continue;
     }
 
-    $term_link = get_term_link($term);
+    $term_link = $product_page_url
+        ? add_query_arg('product_cat', $term->slug, $product_page_url)
+        : get_term_link($term);
     if (is_wp_error($term_link)) {
         continue;
     }

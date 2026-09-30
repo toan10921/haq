@@ -294,9 +294,37 @@ if (!function_exists('t888f_breadcrumb')) {
         echo '<div class="col-12">';
         $title_above_breadcrumb = '';
 
+        // The Elementor product listing keeps category filtering in the
+        // product_cat query parameter. Resolve it here so the page heading and
+        // breadcrumb describe the selected category instead of the static
+        // Product page title.
+        $requested_product_category = null;
+        $is_product_listing_page = is_page(array('san-pham', 'sanpham'));
+        if (
+            $is_product_listing_page
+            && isset($_GET['product_cat'])
+            && is_scalar($_GET['product_cat'])
+        ) {
+            $requested_product_category_slug = sanitize_title(
+                wp_unslash((string) $_GET['product_cat'])
+            );
 
+            if ($requested_product_category_slug !== '' && $requested_product_category_slug !== 'all') {
+                $category = get_term_by(
+                    'slug',
+                    $requested_product_category_slug,
+                    'product_cat'
+                );
 
-        if (function_exists('is_shop') && is_shop()) {
+                if ($category instanceof \WP_Term) {
+                    $requested_product_category = $category;
+                }
+            }
+        }
+
+        if ($requested_product_category instanceof \WP_Term) {
+            $title_above_breadcrumb = $requested_product_category->name;
+        } elseif (function_exists('is_shop') && is_shop()) {
             $title_above_breadcrumb = __('SẢN PHẨM ', 'nebon');
         } elseif (function_exists('is_product_category') && is_product_category()) {
             $title_above_breadcrumb = single_term_title('', false);
@@ -336,7 +364,11 @@ if (!function_exists('t888f_breadcrumb')) {
                 . esc_html($title_above_breadcrumb) . '</h1>';
         }
 
-        echo '<nav aria-label="breadcrumb-text" style="' . esc_attr($breadcrumb_trail_style) . '">';
+        $product_breadcrumb_label = $is_product_listing_page ? get_the_title() : '';
+        $product_breadcrumb_data = $is_product_listing_page
+            ? ' data-product-label="' . esc_attr($product_breadcrumb_label) . '"'
+            : '';
+        echo '<nav aria-label="breadcrumb-text" style="' . esc_attr($breadcrumb_trail_style) . '"' . $product_breadcrumb_data . '>';
 
 
         // Home link
@@ -454,18 +486,28 @@ if (!function_exists('t888f_breadcrumb')) {
                     . '<span>' . esc_html(get_the_title()) . '</span>';
             }
         } elseif (is_page()) {
-            $has_ancestor = false;
+            if ($requested_product_category instanceof \WP_Term) {
+                echo apply_filters('tech888f_output_content', $step)
+                    . '<a class="t888-product-breadcrumb-base" style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($shop_url) . '">'
+                    . esc_html(get_the_title())
+                    . '</a>';
 
-            if ($post->post_parent) {
-                $ancestors = get_post_ancestors(get_the_ID());
-                $ancestors = array_reverse($ancestors);
-                foreach ($ancestors as $ancestor) {
-                    echo apply_filters('tech888f_output_content', $step) . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url(get_permalink($ancestor)) . '">' . get_the_title($ancestor) . '</a>';
+                echo apply_filters('tech888f_output_content', $step)
+                    . '<span class="t888-product-breadcrumb-category">' . esc_html($requested_product_category->name) . '</span>';
+            } else {
+                $has_ancestor = false;
+
+                if ($post->post_parent) {
+                    $ancestors = get_post_ancestors(get_the_ID());
+                    $ancestors = array_reverse($ancestors);
+                    foreach ($ancestors as $ancestor) {
+                        echo apply_filters('tech888f_output_content', $step) . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url(get_permalink($ancestor)) . '">' . get_the_title($ancestor) . '</a>';
+                    }
+                    $has_ancestor = true;
                 }
-                $has_ancestor = true;
-            }
 
-            echo apply_filters('tech888f_output_content', $has_ancestor ? $step : '') . '<span>' . get_the_title() . '</span>';
+                echo apply_filters('tech888f_output_content', $has_ancestor ? $step : '') . '<span>' . get_the_title() . '</span>';
+            }
         } elseif (is_tag()) {
             echo apply_filters('tech888f_output_content', $step)
                 . '<a style="' . esc_attr($breadcrumb_trail_style) . '" href="' . esc_url($blog_url) . '">'

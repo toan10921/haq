@@ -172,18 +172,22 @@ class ArchiveShopPage
     public function render(): void
     {
 
-        // Reuse the Elementor body of the Product page for Shop and every
-        // product taxonomy. Some existing installations have not assigned the
-        // page in WooCommerce settings, so resolve the layout from several
-        // backwards-compatible candidates instead of dropping to the old
-        // theme archive/sidebar.
+        // Use the Shop page layout for the main shop archive, but use the
+        // public Product page layout for product categories/tags/attributes.
+        // Some existing installations have not assigned the page in
+        // WooCommerce settings, so keep backwards-compatible fallbacks.
         $shop_page_id = function_exists('wc_get_page_id') ? (int) wc_get_page_id('shop') : 0;
         $product_page = get_page_by_path('san-pham', OBJECT, 'page');
         $product_page_id = $product_page instanceof \WP_Post ? (int) $product_page->ID : 0;
         $preferred_template_id = (int) get_theme_mod('t888_product_archive_template_id', 0);
         $template_id = 0;
 
-        foreach (array_unique([$preferred_template_id, $shop_page_id, $product_page_id, 91]) as $candidate_id) {
+        $is_product_taxonomy = function_exists('is_product_taxonomy') && is_product_taxonomy();
+        $template_candidates = $is_product_taxonomy
+            ? [$preferred_template_id, $product_page_id, 91, $shop_page_id]
+            : [$preferred_template_id, $shop_page_id, $product_page_id, 91];
+
+        foreach (array_unique($template_candidates) as $candidate_id) {
             $candidate_id = (int) $candidate_id;
             if (
                 $candidate_id > 0

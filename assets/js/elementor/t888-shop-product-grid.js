@@ -80,6 +80,63 @@
         });
     }
 
+    function updateProductBreadcrumb(category) {
+        var title = document.querySelector('.breadcrumb-title');
+        var nav = document.querySelector('nav[aria-label="breadcrumb-text"][data-product-label]');
+        if (!title || !nav) return;
+
+        var productLabel = nav.dataset.productLabel || title.textContent.trim() || 'Sản phẩm';
+        var categoryLabel = '';
+
+        if (category) {
+            var matchingLink = Array.prototype.find.call(
+                document.querySelectorAll('.t888-shop-categories__link'),
+                function (categoryLink) {
+                    return getCategory(categoryLink) === category;
+                }
+            );
+            var labelNode = matchingLink ? matchingLink.querySelector('span') : null;
+            categoryLabel = labelNode ? labelNode.textContent.trim() : category;
+        }
+
+        title.textContent = categoryLabel || productLabel;
+
+        var homeLink = nav.querySelector('a');
+        if (!homeLink) return;
+        while (homeLink.nextSibling) nav.removeChild(homeLink.nextSibling);
+
+        function appendSeparator() {
+            var separator = document.createElement('i');
+            separator.className = 'las la-angle-right step-breadcrumb';
+            separator.setAttribute('aria-hidden', 'true');
+            nav.appendChild(separator);
+        }
+
+        var productUrl = new URL(window.location.href);
+        ['product_cat', 'product-page', 'paged'].forEach(function (key) {
+            productUrl.searchParams.delete(key);
+        });
+
+        appendSeparator();
+        if (categoryLabel) {
+            var productLink = document.createElement('a');
+            productLink.className = 't888-product-breadcrumb-base';
+            productLink.href = productUrl.toString();
+            productLink.textContent = productLabel;
+            nav.appendChild(productLink);
+            appendSeparator();
+
+            var categoryNode = document.createElement('span');
+            categoryNode.className = 't888-product-breadcrumb-category';
+            categoryNode.textContent = categoryLabel;
+            nav.appendChild(categoryNode);
+        } else {
+            var productNode = document.createElement('span');
+            productNode.textContent = productLabel;
+            nav.appendChild(productNode);
+        }
+    }
+
     function updateToolbar(data) {
         var text = 'Showing ' + data.start + '-' + data.end + ' of ' + data.total + ' results';
         document.querySelectorAll('.t888-shop-toolbar__result').forEach(function (result) {
@@ -152,6 +209,7 @@
 
             replaceResults(currentWidget, response.data.html);
             updateCategoryState(response.data.category || '');
+            updateProductBreadcrumb(response.data.category || '');
             updateToolbar(response.data);
             if (updateHistory !== false) {
                 window.history.pushState({}, '', targetUrl.toString());
