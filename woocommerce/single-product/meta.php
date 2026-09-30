@@ -16,7 +16,7 @@
  * @version     9.7.0
  */
 
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
 	exit;
 }
 
@@ -25,7 +25,7 @@ global $product;
 <div class="product_meta product-detail__meta">
 	<?php do_action('woocommerce_product_meta_start'); ?>
 
-	<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))) : ?>
+	<?php if (wc_product_sku_enabled() && ($product->get_sku() || $product->is_type('variable'))): ?>
 		<div class="meta_row">
 			<span class="meta_label"><?php esc_html_e('SKU:', 'nebon'); ?></span>
 			<span class="meta_value">
@@ -60,24 +60,26 @@ global $product;
 		'',
 		''
 	);
-	$tags_list = str_replace(
-		',',
-		'<span style="color: var(--primary-color); font-weight: 400">,</span>',
-		$tags_list
-	);
-	?>
-	<div class="meta_row">
-		<span class="meta_label"><?php esc_html_e('Thẻ:', 'nebon'); ?></span>
-		<span class="meta_value"><?php echo wp_kses_post($tags_list); ?></span>
-	</div>
+	if (false && !empty($tags_list)):
+		$tags_list = str_replace(
+			',',
+			'<span style="color: var(--primary-color); font-weight: 400">,</span>',
+			$tags_list
+		);
+		?>
+		<div class="meta_row">
+			<span class="meta_label"><?php esc_html_e('Thẻ:', 'nebon'); ?></span>
+			<span class="meta_value"><?php echo wp_kses_post($tags_list); ?></span>
+		</div>
+	<?php endif; ?>
 	<?php
 	$brands = wp_get_post_terms($product->get_id(), 'product_brand');
-	if (!empty($brands) && !is_wp_error($brands)) :
-	?>
+	if (!empty($brands) && !is_wp_error($brands)):
+		?>
 		<div class="meta_row">
 			<span class="meta_label"><?php esc_html_e('Brand:', 'nebon'); ?></span>
 			<span class="meta_value">
-				<?php foreach ($brands as $brand) : ?>
+				<?php foreach ($brands as $brand): ?>
 					<a href="<?php echo esc_url(get_term_link($brand)); ?>">
 						<?php echo esc_html($brand->name); ?>
 					</a>
