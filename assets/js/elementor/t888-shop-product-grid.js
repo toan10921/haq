@@ -198,13 +198,21 @@
       return;
     }
 
+    var category = getCategory(link);
+    updateCategoryState(category);
+
     if (activeRequest) activeRequest.abort();
     var request = new AbortController();
     activeRequest = request;
+
+    var currentResults = currentWidget.querySelector(".t888-shop-results");
+    if (currentResults && currentResults.offsetHeight > 0) {
+      currentResults.style.minHeight = currentResults.offsetHeight + "px";
+    }
+
     currentWidget.classList.add("is-category-loading");
 
     var config = getFilterConfig(currentWidget);
-    var category = getCategory(link);
     var requestedPage = getRequestedPage(link);
     var targetUrl = new URL(link.href, window.location.href);
     var formData = new FormData();
@@ -259,6 +267,10 @@
         if (activeRequest !== request) return;
         activeRequest = null;
         currentWidget.classList.remove("is-category-loading");
+        var updatedResults = currentWidget.querySelector(".t888-shop-results");
+        if (updatedResults) {
+          updatedResults.style.minHeight = "";
+        }
       });
   }
 
@@ -308,7 +320,6 @@
   function syncCategoryFromUrl() {
     var currentUrl = new URL(window.location.href);
     var category = currentUrl.searchParams.get("product_cat") || "";
-    if (!category) return;
 
     var matchingLink = Array.prototype.find.call(
       document.querySelectorAll(".t888-shop-categories__link"),
@@ -317,12 +328,10 @@
       },
     );
 
-    if (matchingLink) loadProductGrid(matchingLink, false);
+    if (matchingLink) {
+      loadProductGrid(matchingLink, false);
+    }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", syncCategoryFromUrl);
-  } else {
-    syncCategoryFromUrl();
-  }
+  window.addEventListener("popstate", syncCategoryFromUrl);
 })(jQuery);

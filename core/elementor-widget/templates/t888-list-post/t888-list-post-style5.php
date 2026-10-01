@@ -103,7 +103,7 @@ $query = new WP_Query($args);
     </div>
 
     <?php
-    if ($show_pagination !== 'no') {
+    if ($show_pagination === 'yes') {
         tech888f_paging_nav($query, $pagination_style, true);
     }
     wp_reset_postdata();
