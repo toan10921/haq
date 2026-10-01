@@ -219,6 +219,13 @@ if (class_exists("woocommerce")) {
                 case 'date':
                     $args += ['orderby' => 'date', 'order' => 'DESC'];
                     break;
+                case 'title':
+                case 'name':
+                    $args += ['orderby' => 'title', 'order' => 'ASC'];
+                    break;
+                case 'title-desc':
+                    $args += ['orderby' => 'title', 'order' => 'DESC'];
+                    break;
                 default:
                     $args += ['orderby' => ['menu_order' => 'ASC', 'title' => 'ASC']];
                     break;
@@ -618,6 +625,8 @@ if (class_exists("woocommerce")) {
 
             // custom ordering
             add_action('t888f_custom_woocommerce_ordering', [$this, 'custom_woocommerce_ordering'], 30);
+            add_filter('woocommerce_catalog_orderby', [$this, 'custom_catalog_orderby']);
+            add_filter('woocommerce_get_catalog_ordering_args', [$this, 'custom_catalog_ordering_args']);
             // custom wishlist compare buttons
             add_action('t888f_custom_add_wishlist_compare_buttons', [$this, 'custom_add_wishlist_compare_buttons'], 15, 2);
 
@@ -756,6 +765,8 @@ if (class_exists("woocommerce")) {
                 'date' => esc_html__('Sort by latest', 'nebon'),
                 'price' => esc_html__('Sort by price: low to high', 'nebon'),
                 'price-desc' => esc_html__('Sort by price: high to low', 'nebon'),
+                'title' => esc_html__('Sort by name: A to Z', 'nebon'),
+                'title-desc' => esc_html__('Sort by name: Z to A', 'nebon'),
             );
 
             $current_orderby = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : 'date';
@@ -763,6 +774,26 @@ if (class_exists("woocommerce")) {
                 'orderby_options' => $orderby_options,
                 'current_orderby' => $current_orderby
             ), true);
+        }
+
+        public function custom_catalog_orderby($sortby)
+        {
+            $sortby['title'] = esc_html__('Sort by name: A to Z', 'nebon');
+            $sortby['title-desc'] = esc_html__('Sort by name: Z to A', 'nebon');
+            return $sortby;
+        }
+
+        public function custom_catalog_ordering_args($args)
+        {
+            $orderby_value = isset($_GET['orderby']) ? sanitize_text_field(wp_unslash($_GET['orderby'])) : '';
+            if ($orderby_value === 'title' || $orderby_value === 'name') {
+                $args['orderby'] = 'title';
+                $args['order'] = 'ASC';
+            } elseif ($orderby_value === 'title-desc') {
+                $args['orderby'] = 'title';
+                $args['order'] = 'DESC';
+            }
+            return $args;
         }
 
         /**

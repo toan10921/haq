@@ -740,7 +740,7 @@ body.mobile-menu-open {
 }
 
 .haq-responsive-header .t888-button.style3 {
-  width: clamp(150px, 10.42vw, 200px) !important;
+  /* width: clamp(150px, 10.42vw, 200px) !important; */
   min-height: clamp(50px, 3.03vw, 58px) !important;
   padding: clamp(12px, 0.78vw, 15px) clamp(18px, 1.67vw, 32px) !important;
   font-size: clamp(14px, 0.94vw, 18px) !important;

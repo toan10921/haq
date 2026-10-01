@@ -1,30 +1,67 @@
 <?php
 $show_filter = ($show_category_filter ?? '') === 'yes';
-if ($show_filter) :
-    $filter_base_url = remove_query_arg(['product_cat', 'product-page', 'paged']);
-    $all_is_active = empty($active_category_slug);
-    ?>
-    <nav class="t888-shop-categories" aria-label="<?php esc_attr_e('Product categories', 'nebon'); ?>">
-        <div class="t888-shop-categories__list" role="list">
-            <a
-                class="t888-shop-categories__link<?php echo $all_is_active ? ' is-active' : ''; ?>"
-                href="<?php echo esc_url($filter_base_url); ?>"
-                data-product-category=""
-                <?php echo $all_is_active ? 'aria-current="true"' : ''; ?>
-            ><?php echo esc_html(!empty($all_categories_label) ? $all_categories_label : __('Tất cả', 'nebon')); ?></a>
-            <?php foreach ((array) ($filter_categories ?? []) as $category) :
-                $is_active = ($active_category_slug ?? '') === $category->slug;
-                $category_url = add_query_arg('product_cat', $category->slug, $filter_base_url);
-                ?>
-                <a
-                    class="t888-shop-categories__link<?php echo $is_active ? ' is-active' : ''; ?>"
-                    href="<?php echo esc_url($category_url); ?>"
-                    data-product-category="<?php echo esc_attr($category->slug); ?>"
-                    <?php echo $is_active ? 'aria-current="true"' : ''; ?>
-                ><?php echo esc_html($category->name); ?></a>
-            <?php endforeach; ?>
-        </div>
-    </nav>
+$show_sorting_dropdown = !isset($show_sorting) || $show_sorting === 'yes';
+$current_orderby = isset($_GET['orderby']) ? sanitize_key(wp_unslash($_GET['orderby'])) : ($default_orderby ?? 'menu_order');
+$orderby_options = [
+    'menu_order' => __('Sắp xếp mặc định', 'nebon'),
+    'date'       => __('Sản phẩm mới nhất', 'nebon'),
+    'popularity' => __('Theo độ phổ biến', 'nebon'),
+    'rating'     => __('Theo đánh giá trung bình', 'nebon'),
+    'price'      => __('Giá từ thấp đến cao', 'nebon'),
+    'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
+    'title'      => __('Theo tên: A-Z', 'nebon'),
+    'title-desc' => __('Theo tên: Z-A', 'nebon'),
+];
+?>
+
+<?php if ($show_filter || $show_sorting_dropdown) : ?>
+    <div class="t888-shop-header d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+        <?php if ($show_filter) :
+            $filter_base_url = remove_query_arg(['product_cat', 'product-page', 'paged']);
+            $all_is_active = empty($active_category_slug);
+            ?>
+            <nav class="t888-shop-categories" aria-label="<?php esc_attr_e('Product categories', 'nebon'); ?>">
+                <div class="t888-shop-categories__list" role="list">
+                    <a
+                        class="t888-shop-categories__link<?php echo $all_is_active ? ' is-active' : ''; ?>"
+                        href="<?php echo esc_url($filter_base_url); ?>"
+                        data-product-category=""
+                        <?php echo $all_is_active ? 'aria-current="true"' : ''; ?>
+                    ><?php echo esc_html(!empty($all_categories_label) ? $all_categories_label : __('Tất cả', 'nebon')); ?></a>
+                    <?php foreach ((array) ($filter_categories ?? []) as $category) :
+                        $is_active = ($active_category_slug ?? '') === $category->slug;
+                        $category_url = add_query_arg('product_cat', $category->slug, $filter_base_url);
+                        ?>
+                        <a
+                            class="t888-shop-categories__link<?php echo $is_active ? ' is-active' : ''; ?>"
+                            href="<?php echo esc_url($category_url); ?>"
+                            data-product-category="<?php echo esc_attr($category->slug); ?>"
+                            <?php echo $is_active ? 'aria-current="true"' : ''; ?>
+                        ><?php echo esc_html($category->name); ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </nav>
+        <?php else : ?>
+            <div></div>
+        <?php endif; ?>
+
+        <?php if ($show_sorting_dropdown) : ?>
+            <div class="t888-shop-sorting ms-auto">
+                <form class="t888-shop-sorting__form d-flex align-items-center gap-2" method="get">
+                    <?php foreach ($_GET as $key => $value) :
+                        if (in_array($key, ['orderby', 'product-page', 'paged'], true) || is_array($value)) continue; ?>
+                        <input type="hidden" name="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr(sanitize_text_field(wp_unslash($value))); ?>">
+                    <?php endforeach; ?>
+                    <label class="screen-reader-text" for="t888-grid-orderby"><?php esc_html_e('Product order', 'nebon'); ?></label>
+                    <select id="t888-grid-orderby" class="t888-shop-toolbar__select form-select form-select-sm" name="orderby" onchange="this.form.submit()">
+                        <?php foreach ($orderby_options as $value => $label) : ?>
+                            <option value="<?php echo esc_attr($value); ?>" <?php selected($current_orderby, $value); ?>><?php echo esc_html($label); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </form>
+            </div>
+        <?php endif; ?>
+    </div>
 <?php endif; ?>
 
 <?php

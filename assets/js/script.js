@@ -1512,4 +1512,89 @@ jQuery(function ($) {
   $(document).on("shop_ajax_content_loaded t888_shop_filtered", function () {
     $("body").removeClass("no-scroll");
   });
+
+  /* GTranslate Custom Click Dropdown Switcher */
+  function initGTranslateDropdown() {
+    var $gt = $('.gtranslate_wrapper, [class*="gt_container"], .gt_switcher');
+    if (!$gt.length) return;
+
+    $gt.each(function () {
+      var $container = $(this);
+
+      // Create .gt-selected-label if missing
+      if (!$container.find(".gt-selected-label").length) {
+        $container.prepend('<div class="gt-selected-label"></div>');
+      }
+      var $label = $container.find(".gt-selected-label");
+
+      // Create .gt-dropdown-menu if missing
+      if (!$container.find(".gt-dropdown-menu").length) {
+        $container.append('<div class="gt-dropdown-menu"></div>');
+      }
+      var $menu = $container.find(".gt-dropdown-menu");
+
+      // Move ALL language links into dropdown menu
+      $container.children("a.glink, .gt_option").each(function () {
+        $menu.append($(this));
+      });
+
+      // Update label HTML from active language or first language
+      var $active = $menu.find("a.gt-current-lang");
+      if (!$active.length) {
+        $active = $menu.find("a.glink").first();
+      }
+      if ($active.length) {
+        $label.html($active.html());
+      }
+    });
+
+    // Click on container toggles open/close or selects item
+    $(document)
+      .off("click.gtToggle")
+      .on(
+        "click.gtToggle",
+        '.gtranslate_wrapper, [class*="gt_container"], .gt_switcher',
+        function (e) {
+          var $clickedLink = $(e.target).closest(".gt-dropdown-menu a.glink");
+          if ($clickedLink.length) {
+            var $container = $(this);
+            $container.find("a.glink").removeClass("gt-current-lang");
+            $clickedLink.addClass("gt-current-lang");
+            $container.find(".gt-selected-label").html($clickedLink.html());
+            $(
+              '.gtranslate_wrapper, [class*="gt_container"], .gt_switcher',
+            ).removeClass("gt-is-open");
+            return; // allow GTranslate link event to fire
+          }
+
+          e.stopPropagation();
+          var $this = $(this);
+          var isOpen = $this.hasClass("gt-is-open");
+          $(
+            '.gtranslate_wrapper, [class*="gt_container"], .gt_switcher',
+          ).removeClass("gt-is-open");
+          if (!isOpen) {
+            $this.addClass("gt-is-open");
+          }
+        },
+      );
+
+    // Click outside closes dropdown
+    $(document)
+      .off("click.gtClose")
+      .on("click.gtClose", function (e) {
+        if (
+          !$(e.target).closest(
+            '.gtranslate_wrapper, [class*="gt_container"], .gt_switcher',
+          ).length
+        ) {
+          $(
+            '.gtranslate_wrapper, [class*="gt_container"], .gt_switcher',
+          ).removeClass("gt-is-open");
+        }
+      });
+  }
+
+  initGTranslateDropdown();
+  setTimeout(initGTranslateDropdown, 1000);
 });

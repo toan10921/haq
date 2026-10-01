@@ -114,16 +114,18 @@ class T888_List_Product extends T888_Widget_Base
         return ['t888-elements'];
     }
 
-   public function get_product_order_by()
+    public function get_product_order_by()
     {
-    return [
-        'menu_order' => __('Sắp xếp mặc định', 'nebon'),
-        'popularity' => __('Theo độ phổ biến', 'nebon'),
-        'rating'     => __('Theo đánh giá trung bình', 'nebon'),
-        'date'       => __('Sản phẩm mới nhất', 'nebon'),
-        'price'      => __('Giá từ thấp đến cao', 'nebon'),
-        'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
-    ];
+        return [
+            'menu_order' => __('Sắp xếp mặc định', 'nebon'),
+            'popularity' => __('Theo độ phổ biến', 'nebon'),
+            'rating' => __('Theo đánh giá trung bình', 'nebon'),
+            'date' => __('Sản phẩm mới nhất', 'nebon'),
+            'price' => __('Giá từ thấp đến cao', 'nebon'),
+            'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
+            'title' => __('Theo tên: A-Z', 'nebon'),
+            'title-desc' => __('Theo tên: Z-A', 'nebon'),
+        ];
     }
 
     /**
@@ -299,7 +301,7 @@ class T888_List_Product extends T888_Widget_Base
                 'default' => 'pagination',
                 'options' => [
                     'pagination' => __('Pagination', 'nebon'),
-                    'loadmore'   => __('Load More', 'nebon'),
+                    'loadmore' => __('Load More', 'nebon'),
                 ],
             ]
         );
@@ -376,10 +378,10 @@ class T888_List_Product extends T888_Widget_Base
 
         if ($min_price_val !== null || $max_price_val !== null) {
             $price_query = [
-                'key'     => '_price',
-                'type'    => 'NUMERIC',
+                'key' => '_price',
+                'type' => 'NUMERIC',
                 'compare' => 'BETWEEN',
-                'value'   => [
+                'value' => [
                     $min_price_val ?? 0,
                     $max_price_val ?? 999999,
                 ],
@@ -422,8 +424,14 @@ class T888_List_Product extends T888_Widget_Base
                 break;
 
             case 'title':
+            case 'name':
                 $args['orderby'] = 'title';
                 $args['order'] = 'ASC';
+                break;
+
+            case 'title-desc':
+                $args['orderby'] = 'title';
+                $args['order'] = 'DESC';
                 break;
 
             case 'menu_order':
@@ -448,10 +456,10 @@ class T888_List_Product extends T888_Widget_Base
 
             if (!empty($category_slugs)) {
                 $tax_query[] = [
-                    'taxonomy'         => 'product_cat',
-                    'field'            => 'slug',
-                    'terms'            => $category_slugs,
-                    'operator'         => 'IN',
+                    'taxonomy' => 'product_cat',
+                    'field' => 'slug',
+                    'terms' => $category_slugs,
+                    'operator' => 'IN',
                     'include_children' => true,
                 ];
             }
@@ -469,8 +477,8 @@ class T888_List_Product extends T888_Widget_Base
             $brand_slugs = explode(',', sanitize_text_field($_GET['brand']));
             $tax_query[] = [
                 'taxonomy' => 'product_brand',
-                'field'    => 'slug',
-                'terms'    => $brand_slugs,
+                'field' => 'slug',
+                'terms' => $brand_slugs,
                 'operator' => 'IN',
             ];
         }
@@ -480,8 +488,8 @@ class T888_List_Product extends T888_Widget_Base
                 $terms = explode(',', sanitize_text_field($value));
                 $tax_query[] = [
                     'taxonomy' => $key,
-                    'field'    => 'slug',
-                    'terms'    => $terms,
+                    'field' => 'slug',
+                    'terms' => $terms,
                     'operator' => 'IN',
                 ];
             }
