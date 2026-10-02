@@ -305,36 +305,89 @@ class T888_Slider extends T888_Widget_Base
             ]
         );
 
+        $repeater->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'repeater_title_typography',
+                'label' => __('Title Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .slide-title',
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'custom_style',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $repeater->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'repeater_title2_typography',
+                'label' => __('Title 2 Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .slide-title-2',
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'custom_style',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
+        $repeater->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'repeater_description_typography',
+                'label' => __('Description Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} {{CURRENT_ITEM}} .slide-description',
+                'conditions' => [
+                    'terms' => [
+                        [
+                            'name' => 'custom_style',
+                            'value' => 'yes',
+                        ],
+                    ],
+                ],
+            ]
+        );
+
         $repeater->end_controls_tab();
 
         $repeater->end_controls_tabs();
-      
-            $repeater->add_control(
+
+        $repeater->add_control(
             'slide_badge_text',
             [
                 'label' => __('Badge Text (e.g. NEW)', 'nebon'),
-                'type' => Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXTAREA,
                 'default' => __('NEW', 'nebon'),
+                'rows' => 2,
                 'label_block' => true,
             ]
-            );
-            $repeater->add_control(
-                'slide_badge_text_color',
-                [
-                    'label' => __('Badge Text Color', 'nebon'),
-                    'type' => \Elementor\Controls_Manager::COLOR,
-                    'default' => '#ffffff',
-                    'selectors' => [
-                        '{{WRAPPER}} {{CURRENT_ITEM}} .slide-badge' => 'color: {{VALUE}};',
-                    ],
-                ]
-            );
+        );
+        $repeater->add_control(
+            'slide_badge_text_color',
+            [
+                'label' => __('Badge Text Color', 'nebon'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} {{CURRENT_ITEM}} .slide-badge' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
         $repeater->add_control(
             'slide_title',
             [
                 'label' => __('Slide Title', 'nebon'),
-                'type' => Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXTAREA,
                 'default' => __('Your Slide Title', 'nebon'),
+                'rows' => 3,
                 'label_block' => true,
             ]
         );
@@ -353,8 +406,9 @@ class T888_Slider extends T888_Widget_Base
             'slide_title2',
             [
                 'label' => __('Slide Title 2', 'nebon'),
-                'type' => Controls_Manager::TEXT,
+                'type' => Controls_Manager::TEXTAREA,
                 'default' => __('Your Slide Title 2', 'nebon'),
+                'rows' => 3,
                 'label_block' => true,
             ]
         );
@@ -419,7 +473,7 @@ class T888_Slider extends T888_Widget_Base
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slide-btn' => 'background-color: {{VALUE}};',
                 ],
             ]
-            );
+        );
         $repeater->add_control(
             'slide_button_link',
             [
@@ -459,7 +513,7 @@ class T888_Slider extends T888_Widget_Base
                     '{{WRAPPER}} {{CURRENT_ITEM}} .slide-btn2' => 'background-color: {{VALUE}};',
                 ],
             ]
-            );
+        );
         $repeater->add_control(
             'slide_button_link2',
             [
@@ -495,7 +549,7 @@ class T888_Slider extends T888_Widget_Base
             [
                 'label' => __('Navigation', 'nebon'),
                 'type' => Controls_Manager::SELECT,
-                'default' => 'dots',
+                'default' => 'both',
                 'options' => [
                     'both' => __('Arrows and Dots', 'nebon'),
                     'arrows' => __('Arrows', 'nebon'),
@@ -752,6 +806,77 @@ class T888_Slider extends T888_Widget_Base
         $this->end_controls_section();
 
         $this->start_controls_section(
+            'section_style_badge',
+            [
+                'label' => __('Badge', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'badge_spacing',
+            [
+                'label' => __('Spacing', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-badge' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'badge_margin',
+            [
+                'label' => __('Margin', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-badge' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_color',
+            [
+                'label' => __('Text Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .slide-badge' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'badge_bg_color',
+            [
+                'label' => __('Background Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .slide-badge' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .slide-badge::after' => 'border-top-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'badge_typography',
+                'label' => __('Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} .slide-badge',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'section_style_title',
             [
                 'label' => __('Title', 'nebon'),
@@ -771,7 +896,21 @@ class T888_Slider extends T888_Widget_Base
                     ],
                 ],
                 'selectors' => [
+                    '{{WRAPPER}} .slide-title' => 'margin-bottom: {{SIZE}}{{UNIT}}',
                     '{{WRAPPER}} .swiper-slide-inner .elementor-slide-heading:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'heading_margin',
+            [
+                'label' => __('Margin', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .swiper-slide-inner .elementor-slide-heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -782,9 +921,77 @@ class T888_Slider extends T888_Widget_Base
                 'label' => __('Text Color', 'nebon'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
+                    '{{WRAPPER}} .slide-title' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .elementor-slide-heading' => 'color: {{VALUE}}',
-
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'heading_typography',
+                'label' => __('Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} .slide-title, {{WRAPPER}} .elementor-slide-heading',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'section_style_title2',
+            [
+                'label' => __('Title 2', 'nebon'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'title2_spacing',
+            [
+                'label' => __('Spacing', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-title-2' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'title2_margin',
+            [
+                'label' => __('Margin', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-title-2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'title2_color',
+            [
+                'label' => __('Text Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .slide-title-2' => 'color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'title2_typography',
+                'label' => __('Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} .slide-title-2',
             ]
         );
 
@@ -810,7 +1017,21 @@ class T888_Slider extends T888_Widget_Base
                     ],
                 ],
                 'selectors' => [
+                    '{{WRAPPER}} .slide-description' => 'margin-bottom: {{SIZE}}{{UNIT}}',
                     '{{WRAPPER}} .swiper-slide-inner .elementor-slide-description:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'description_margin',
+            [
+                'label' => __('Margin', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .swiper-slide-inner .elementor-slide-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -821,9 +1042,18 @@ class T888_Slider extends T888_Widget_Base
                 'label' => __('Text Color', 'nebon'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
+                    '{{WRAPPER}} .slide-description' => 'color: {{VALUE}}',
                     '{{WRAPPER}} .elementor-slide-description' => 'color: {{VALUE}}',
-
                 ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'description_typography',
+                'label' => __('Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} .slide-description, {{WRAPPER}} .elementor-slide-description',
             ]
         );
 
@@ -847,6 +1077,29 @@ class T888_Slider extends T888_Widget_Base
             ]
         );
 
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'button_typography',
+                'label' => __('Typography', 'nebon'),
+                'selector' => '{{WRAPPER}} .slide-btn, {{WRAPPER}} .slide-btn2, {{WRAPPER}} .elementor-slide-button',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'button_margin',
+            [
+                'label' => __('Margin', 'nebon'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%', 'rem'],
+                'selectors' => [
+                    '{{WRAPPER}} .slide-btn' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .slide-btn2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .elementor-slide-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
         $this->add_control(
             'button_border_width',
             [
@@ -860,6 +1113,8 @@ class T888_Slider extends T888_Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .elementor-slide-button' => 'border-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slide-btn' => 'border-width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slide-btn2' => 'border-width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -877,6 +1132,8 @@ class T888_Slider extends T888_Widget_Base
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .elementor-slide-button' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slide-btn' => 'border-radius: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .slide-btn2' => 'border-radius: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -1014,20 +1271,53 @@ class T888_Slider extends T888_Widget_Base
         $this->add_control(
             'arrows_size',
             [
-                'label' => __('Arrows Size', 'nebon'),
+                'label' => __('Arrows Icon Size', 'nebon'),
                 'type' => Controls_Manager::SLIDER,
                 'range' => [
                     'px' => [
-                        'min' => 20,
+                        'min' => 10,
                         'max' => 60,
                     ],
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-swiper-button' => 'font-size: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} .t888-slider-arrow svg' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'navigation' => ['arrows', 'both'],
                 ],
+            ]
+        );
+
+        $this->add_control(
+            'arrows_box_size',
+            [
+                'label' => __('Arrows Box Size', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 30,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-slider-arrow' => 'width: {{SIZE}}{{UNIT}} !important; height: {{SIZE}}{{UNIT}} !important;',
+                ],
+                'condition' => [
+                    'navigation' => ['arrows', 'both'],
+                ],
+            ]
+        );
+
+        $this->start_controls_tabs('arrows_style_tabs', [
+            'condition' => [
+                'navigation' => ['arrows', 'both'],
+            ],
+        ]);
+
+        $this->start_controls_tab(
+            'arrows_style_normal',
+            [
+                'label' => __('Normal', 'nebon'),
             ]
         );
 
@@ -1037,7 +1327,70 @@ class T888_Slider extends T888_Widget_Base
                 'label' => __('Arrows Color', 'nebon'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .elementor-swiper-button' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .t888-slider-arrow' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrows_bg_color',
+            [
+                'label' => __('Background Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t888-slider-arrow' => 'background-color: {{VALUE}} !important; border-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->start_controls_tab(
+            'arrows_style_hover',
+            [
+                'label' => __('Hover', 'nebon'),
+            ]
+        );
+
+        $this->add_control(
+            'arrows_hover_color',
+            [
+                'label' => __('Arrows Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t888-slider-arrow:hover' => 'color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'arrows_hover_bg_color',
+            [
+                'label' => __('Background Color', 'nebon'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .t888-slider-arrow:hover' => 'background-color: {{VALUE}} !important; border-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_control(
+            'arrows_border_radius',
+            [
+                'label' => __('Border Radius', 'nebon'),
+                'type' => Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .t888-slider-arrow' => 'border-radius: {{SIZE}}{{UNIT}} !important;',
                 ],
                 'condition' => [
                     'navigation' => ['arrows', 'both'],
@@ -1142,7 +1495,7 @@ class T888_Slider extends T888_Widget_Base
         foreach ($settings['slides'] as $slide) {
             $image_desktop = $slide['background_image']['url'] ?? '';
             $image_mobile = $slide['background_image_mobile']['url'] ?? $image_desktop;
-$slide_badge_text = $slide['slide_badge_text'] ?? '';
+            $slide_badge_text = $slide['slide_badge_text'] ?? '';
             $slide_title = $slide['slide_title'] ?? '';
             $slide_title2 = $slide['slide_title2'] ?? '';
             $slide_description = $slide['slide_description'] ?? '';
@@ -1167,16 +1520,16 @@ $slide_badge_text = $slide['slide_badge_text'] ?? '';
             $slide_html .= '<div class="slide-content">';
 
             if (!empty($slide_badge_text)) {
-                $slide_html .= '<div class="slide-badge" style="color:' . esc_attr($slide['slide_badge_text_color']) . ';">' . esc_html($slide_badge_text) . '</div>';
+                $slide_html .= '<div class="slide-badge" style="color:' . esc_attr($slide['slide_badge_text_color']) . ';">' . wp_kses_post(nl2br($slide_badge_text)) . '</div>';
             }
             if (!empty($slide_title)) {
-                $slide_html .= '<div class="slide-title">' . esc_html($slide_title) . '</div>';
+                $slide_html .= '<div class="slide-title">' . wp_kses_post(nl2br($slide_title)) . '</div>';
             }
             if (!empty($slide_title2)) {
-                $slide_html .= '<div class="slide-title-2">' . esc_html($slide_title2) . '</div>';
+                $slide_html .= '<div class="slide-title-2">' . wp_kses_post(nl2br($slide_title2)) . '</div>';
             }
             if (!empty($slide_description)) {
-                $slide_html .= '<div class="slide-description">' . esc_html($slide_description) . '</div>';
+                $slide_html .= '<div class="slide-description">' . wp_kses_post(nl2br($slide_description)) . '</div>';
             }
             if (!empty($slide_button_text)) {
                 $slide_html .= '<a href="' . esc_url($slide_button_link) . '" class="slide-btn"' . $slide_button_target . $slide_button_rel . '>';
@@ -1224,14 +1577,10 @@ $slide_badge_text = $slide['slide_badge_text'] ?? '';
         $show_dots = in_array($settings['navigation'], ['dots', 'both']);
         $show_arrows = in_array($settings['navigation'], ['arrows', 'both']);
         $slides_count = count($settings['slides']);
-?>
+        ?>
         <div class="elementor-swiper t888-home-slider">
-            <div class="swiper-container eltech888-swiper-slider"
-                dir="<?php echo esc_attr($direction); ?>"
-                data-item-desktop="1"
-                data-item-tablet="1"
-                data-item-mobile="1"
-                data-pagination="bullets"
+            <div class="swiper-container eltech888-swiper-slider" dir="<?php echo esc_attr($direction); ?>"
+                data-item-desktop="1" data-item-tablet="1" data-item-mobile="1" data-pagination="bullets"
                 data-animation="<?php echo esc_attr($settings['content_animation']); ?>"
                 data-autoplay="<?php echo esc_attr($settings['autoplay']); ?>"
                 data-speed="<?php echo esc_attr($settings['autoplay_speed'] ?? ''); ?>"
@@ -1239,10 +1588,8 @@ $slide_badge_text = $slide['slide_badge_text'] ?? '';
                 data-pause-on-interaction="<?php echo esc_attr($settings['pause_on_interaction'] ?? ''); ?>"
                 data-infinite="<?php echo esc_attr($settings['infinite'] ?? ''); ?>"
                 data-effect="<?php echo esc_attr($settings['transition'] ?? ''); ?>"
-                data-transition-speed="<?php echo esc_attr($settings['transition_speed'] ?? ''); ?>"
-                data-item="1"
-                data-dots="<?php echo esc_attr($show_dots); ?>"
-                data-arrows="<?php echo esc_attr($show_arrows); ?>">
+                data-transition-speed="<?php echo esc_attr($settings['transition_speed'] ?? ''); ?>" data-item="1"
+                data-dots="<?php echo esc_attr($show_dots); ?>" data-arrows="<?php echo esc_attr($show_arrows); ?>">
                 <div class="swiper-wrapper elementor-slides">
                     <?php echo implode('', $slides); ?>
                 </div>
@@ -1252,20 +1599,26 @@ $slide_badge_text = $slide['slide_badge_text'] ?? '';
                         <div class="swiper-pagination mmm t888-pagination-line"></div>
                     <?php endif; ?>
                     <?php if ($show_arrows): ?>
-                        <div class="elementor-swiper-button elementor-swiper-button-prev swiper-button-prev">
-                            <i class="eicon-chevron-<?php echo esc_attr($prev); ?>" aria-hidden="true"></i>
-                            <span class="elementor-screen-only"><?php _e('Previous', 'nebon'); ?></span>
-                        </div>
-                        <div class="elementor-swiper-button elementor-swiper-button-next swiper-button-next">
-                            <i class="eicon-chevron-<?php echo esc_attr($next); ?>" aria-hidden="true"></i>
-                            <span class="elementor-screen-only"><?php _e('Next', 'nebon'); ?></span>
+                        <div class="t888-slider-arrows">
+                            <button class="t888-slider-arrow t888-slider-prev swiper-button-prev" type="button"
+                                aria-label="<?php esc_attr_e('Previous slide', 'nebon'); ?>">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M19 12H5M11 18l-6-6 6-6" />
+                                </svg>
+                            </button>
+                            <button class="t888-slider-arrow t888-slider-next swiper-button-next" type="button"
+                                aria-label="<?php esc_attr_e('Next slide', 'nebon'); ?>">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M5 12h14M13 6l6 6-6 6" />
+                                </svg>
+                            </button>
                         </div>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
         </div>
 
-<?php
+        <?php
     }
 
 

@@ -721,7 +721,7 @@ main logic: post item margin bottom 3.75rem, pagination margin bottom 3.75rem, w
 
 .main-page .entry-content {
   font-size: 0.875rem;
-  line-height: normal;
+  line-height: 1.6;
 }
 
 /** default paginations */
@@ -2304,18 +2304,31 @@ body.scrolled .sticky-on.is-sticky-active {
 }
 
 // default style for p tags
-body.page:not(.elementor-page) {
-  .entry-content {
+body.page:not(.elementor-page),
+body.single,
+body.single-post {
+  .entry-content,
+  .post_content,
+  .detail-content-wrap {
     p {
       color: var(--ninth-color);
-      line-height: 1.875rem;
+      line-height: 1.6;
     }
   }
 }
 
+.detail-content-wrap,
+.post_content,
+.w-post-elm.post_content,
 .entry-content,
 .entry-summary,
 .wp-block-post-content {
+  line-height: 1.6;
+
+  p {
+    line-height: 1.6;
+  }
+
   .page-links {
     display: flex;
     justify-content: center;

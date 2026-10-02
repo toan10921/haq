@@ -493,14 +493,17 @@
 }
 
 .detail-content-wrap,
+.post_content,
+.entry-content,
 .comment-list .comment-item .comment-text {
     font-size: 0.875rem;
     // color: var(--ninth-color);
     // fix line-height for detail content default
-    line-height: 1.875rem;
+    line-height: 1.6;
 
     p {
         color: var(--ninth-color);
+        line-height: 1.6;
     }
 
     a {
@@ -1254,13 +1257,16 @@ input[type="submit"] {
 }
 
 .single-post-content {
-    .detail-content-wrap {
+    .detail-content-wrap,
+    .post_content,
+    .entry-content {
         font-size: 0.9375rem;
-        line-height: 1.85;
+        line-height: 1.6;
 
         p {
             margin-top: 0;
             margin-bottom: 22px;
+            line-height: 1.6;
         }
 
         h2,
