@@ -77,14 +77,14 @@ class T888_Shop_Product_Grid extends T888_Widget_Base
             'type' => Controls_Manager::SELECT,
             'default' => 'menu_order',
             'options' => [
-                'menu_order' => __('Default sorting', 'nebon'),
-                'date' => __('Latest', 'nebon'),
-                'popularity' => __('Popularity', 'nebon'),
-                'rating' => __('Rating', 'nebon'),
-                'price' => __('Price: low to high', 'nebon'),
-                'price-desc' => __('Price: high to low', 'nebon'),
-                'title' => __('Name: A to Z', 'nebon'),
-                'title-desc' => __('Name: Z to A', 'nebon'),
+                'menu_order' => __('Thứ tự mặc định', 'nebon'),
+                'date' => __('Mới nhất', 'nebon'),
+                'popularity' => __('Theo mức độ phổ biến', 'nebon'),
+                'rating' => __('Theo điểm đánh giá', 'nebon'),
+                'price' => __('Giá từ thấp đến cao', 'nebon'),
+                'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
+                'title' => __('Theo tên: A đến Z', 'nebon'),
+                'title-desc' => __('Theo tên: Z đến A', 'nebon'),
             ],
         ]);
         $this->add_control('show_sorting', [

@@ -759,14 +759,14 @@ if (class_exists("woocommerce")) {
             }
 
             $orderby_options = array(
-                'menu_order' => esc_html__('Default sorting', 'nebon'),
-                'popularity' => esc_html__('Sort by popularity', 'nebon'),
-                'rating' => esc_html__('Sort by average rating', 'nebon'),
-                'date' => esc_html__('Sort by latest', 'nebon'),
-                'price' => esc_html__('Sort by price: low to high', 'nebon'),
-                'price-desc' => esc_html__('Sort by price: high to low', 'nebon'),
-                'title' => esc_html__('Sort by name: A to Z', 'nebon'),
-                'title-desc' => esc_html__('Sort by name: Z to A', 'nebon'),
+                'menu_order' => esc_html__('Thứ tự mặc định', 'nebon'),
+                'popularity' => esc_html__('Theo mức độ phổ biến', 'nebon'),
+                'rating' => esc_html__('Theo điểm đánh giá', 'nebon'),
+                'date' => esc_html__('Mới nhất', 'nebon'),
+                'price' => esc_html__('Giá từ thấp đến cao', 'nebon'),
+                'price-desc' => esc_html__('Giá từ cao đến thấp', 'nebon'),
+                'title' => esc_html__('Theo tên: A đến Z', 'nebon'),
+                'title-desc' => esc_html__('Theo tên: Z đến A', 'nebon'),
             );
 
             $current_orderby = isset($_GET['orderby']) ? wc_clean($_GET['orderby']) : 'date';
@@ -778,9 +778,16 @@ if (class_exists("woocommerce")) {
 
         public function custom_catalog_orderby($sortby)
         {
-            $sortby['title'] = esc_html__('Sort by name: A to Z', 'nebon');
-            $sortby['title-desc'] = esc_html__('Sort by name: Z to A', 'nebon');
-            return $sortby;
+            return array(
+                'menu_order' => esc_html__('Thứ tự mặc định', 'nebon'),
+                'popularity' => esc_html__('Theo mức độ phổ biến', 'nebon'),
+                'rating' => esc_html__('Theo điểm đánh giá', 'nebon'),
+                'date' => esc_html__('Mới nhất', 'nebon'),
+                'price' => esc_html__('Giá từ thấp đến cao', 'nebon'),
+                'price-desc' => esc_html__('Giá từ cao đến thấp', 'nebon'),
+                'title' => esc_html__('Theo tên: A đến Z', 'nebon'),
+                'title-desc' => esc_html__('Theo tên: Z đến A', 'nebon'),
+            );
         }
 
         public function custom_catalog_ordering_args($args)

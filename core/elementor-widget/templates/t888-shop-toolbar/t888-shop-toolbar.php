@@ -16,14 +16,14 @@
             <select id="t888-orderby-<?php echo esc_attr($widget_id ?? wp_unique_id()); ?>"
                 class="t888-shop-toolbar__select" name="orderby" onchange="this.form.submit()">
                 <?php foreach ([
-                    'menu_order' => __('Default sorting', 'nebon'),
-                    'popularity' => __('Sort by popularity', 'nebon'),
-                    'rating' => __('Sort by average rating', 'nebon'),
-                    'date' => __('Sort by latest', 'nebon'),
-                    'price' => __('Sort by price: low to high', 'nebon'),
-                    'price-desc' => __('Sort by price: high to low', 'nebon'),
-                    'title' => __('Sort by name: A to Z', 'nebon'),
-                    'title-desc' => __('Sort by name: Z to A', 'nebon'),
+                    'menu_order' => __('Thứ tự mặc định', 'nebon'),
+                    'popularity' => __('Theo mức độ phổ biến', 'nebon'),
+                    'rating' => __('Theo điểm đánh giá', 'nebon'),
+                    'date' => __('Mới nhất', 'nebon'),
+                    'price' => __('Giá từ thấp đến cao', 'nebon'),
+                    'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
+                    'title' => __('Theo tên: A đến Z', 'nebon'),
+                    'title-desc' => __('Theo tên: Z đến A', 'nebon'),
                 ] as $value => $label): ?>
                     <option value="<?php echo esc_attr($value); ?>" <?php selected($current_orderby, $value); ?>>
                         <?php echo esc_html($label); ?>

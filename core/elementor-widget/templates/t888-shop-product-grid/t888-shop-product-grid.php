@@ -3,14 +3,14 @@ $show_filter = ($show_category_filter ?? '') === 'yes';
 $show_sorting_dropdown = !isset($show_sorting) || $show_sorting === 'yes';
 $current_orderby = isset($_GET['orderby']) ? sanitize_key(wp_unslash($_GET['orderby'])) : ($default_orderby ?? 'menu_order');
 $orderby_options = [
-    'menu_order' => __('Sắp xếp mặc định', 'nebon'),
-    'date'       => __('Sản phẩm mới nhất', 'nebon'),
-    'popularity' => __('Theo độ phổ biến', 'nebon'),
-    'rating'     => __('Theo đánh giá trung bình', 'nebon'),
+    'menu_order' => __('Thứ tự mặc định', 'nebon'),
+    'popularity' => __('Theo mức độ phổ biến', 'nebon'),
+    'rating'     => __('Theo điểm đánh giá', 'nebon'),
+    'date'       => __('Mới nhất', 'nebon'),
     'price'      => __('Giá từ thấp đến cao', 'nebon'),
     'price-desc' => __('Giá từ cao đến thấp', 'nebon'),
-    'title'      => __('Theo tên: A-Z', 'nebon'),
-    'title-desc' => __('Theo tên: Z-A', 'nebon'),
+    'title'      => __('Theo tên: A đến Z', 'nebon'),
+    'title-desc' => __('Theo tên: Z đến A', 'nebon'),
 ];
 ?>
 
