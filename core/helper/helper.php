@@ -61,6 +61,26 @@ if (!function_exists('t888f_product_description_footer')) {
     }
 }
 
+if (!function_exists('t888f_get_product_contact_phone_default')) {
+    function t888f_get_product_contact_phone_default()
+    {
+        return '0966 525 4299';
+    }
+}
+
+if (!function_exists('t888f_get_product_contact_info_default')) {
+    function t888f_get_product_contact_info_default()
+    {
+        $phone = t888f_get_product_contact_phone_default();
+        $phone_href = preg_replace('/[^\d+]/', '', $phone);
+
+        return '<p><strong>CÔNG TY CỔ PHẦN HAQ</strong></p>
+<p>Địa chỉ: Số 146, Đường Lê Quang Đạo, Phường Từ Liêm, TP. Hà Nội</p>
+<p>Hotline: <a href="tel:' . esc_attr($phone_href) . '">' . esc_html($phone) . '</a></p>
+<p>Email: <a href="mailto:sales01@haq.vn">sales01@haq.vn</a></p>';
+    }
+}
+
 /**
  * Get template part for widgets
  * @param string $view_name

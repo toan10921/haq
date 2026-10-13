@@ -494,9 +494,11 @@ if (!class_exists('TemplateHelper')) {
             // if (check_woocommerce_exists() && is_product()) {
             // import directly to grid-default.css because it is used in quickview
             $single_product_css_path = get_template_directory() . '/assets/css/template-parts/layout/single-product.css';
+            $single_product_js_path = get_template_directory() . '/assets/js/single-product.js';
             $single_product_css_ver = file_exists($single_product_css_path) ? filemtime($single_product_css_path) : ASSETS_VER;
+            $single_product_js_ver = file_exists($single_product_js_path) ? filemtime($single_product_js_path) : ASSETS_VER;
             wp_enqueue_style('t888f-single-product', get_template_directory_uri() . '/assets/css/template-parts/layout/single-product.css', array(), $single_product_css_ver, 'all');
-            wp_enqueue_script('t888f-single-product', get_template_directory_uri() . '/assets/js/single-product.js', array('jquery'), ASSETS_VER, true);
+            wp_enqueue_script('t888f-single-product', get_template_directory_uri() . '/assets/js/single-product.js', array('jquery'), $single_product_js_ver, true);
             // }
             // check if is woocommerce page
             // use swiper in global for page use shop elementor widget

@@ -2948,6 +2948,33 @@ class Customizer_Settings
             )
         ));
 
+        $wp_customize->add_setting('product_contact_phone', array(
+            'transport' => 'refresh',
+            'default' => t888f_get_product_contact_phone_default(),
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control('product_contact_phone', array(
+            'label' => __('Số điện thoại', 'nebon'),
+            'description' => __('Hiển thị trên nút gọi điện cạnh nút Liên hệ ở mỗi sản phẩm.', 'nebon'),
+            'type' => 'text',
+            'section' => 'product_setting_extra_display',
+        ));
+
+        $wp_customize->add_setting('product_contact_info', array(
+            'transport' => 'refresh',
+            'default' => t888f_get_product_contact_info_default(),
+            'sanitize_callback' => 'wp_kses_post',
+        ));
+        $wp_customize->add_control(new WP_Customize_Editor_Control(
+            $wp_customize,
+            'product_contact_info',
+            array(
+                'label' => __('Thông tin liên hệ', 'nebon'),
+                'description' => __('Hiển thị dưới phần danh mục trên mỗi trang sản phẩm.', 'nebon'),
+                'section' => 'product_setting_extra_display',
+            )
+        ));
+
         // Show User Guide
         $wp_customize->add_setting('show_user_guide', array(
             'transport' => 'refresh',

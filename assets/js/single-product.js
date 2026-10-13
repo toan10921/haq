@@ -236,11 +236,37 @@ jQuery(document).ready(function ($) {
 
 
 
+    function initShortDescriptionToggle() {
+        $('.t888-short-description').each(function () {
+            var $wrap = $(this);
+            var content = $wrap.find('.woocommerce-product-details__short-description').get(0);
+            var $button = $wrap.find('.t888-short-description__more');
+            if (!content || !$button.length || $wrap.data('toggleReady')) {
+                return;
+            }
+
+            $wrap.data('toggleReady', true);
+
+            if (content.scrollHeight <= content.clientHeight + 1) {
+                $wrap.removeClass('is-collapsed');
+                return;
+            }
+
+            $button.prop('hidden', false).attr('aria-expanded', 'false');
+            $button.on('click', function () {
+                var collapsed = $wrap.toggleClass('is-collapsed').hasClass('is-collapsed');
+                $button.text(collapsed ? $button.data('labelMore') : $button.data('labelLess'));
+                $button.attr('aria-expanded', collapsed ? 'false' : 'true');
+            });
+        });
+    }
+
     initScrollFollowByTop();
     adjustThumbHeight();
     handleInitSwiperGallery();
     handleStickyAddToCartVisibility();
     initAccordionProductTabs();
+    initShortDescriptionToggle();
 
     $(window).on('resize', function () {
         setTimeout(function () {
@@ -254,6 +280,7 @@ jQuery(document).ready(function ($) {
             handleInitSwiperGallery();
             adjustThumbHeight();
             initScrollFollowByTop();
+            initShortDescriptionToggle();
         }, 500);
     });
 

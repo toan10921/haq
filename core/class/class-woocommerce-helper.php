@@ -613,6 +613,7 @@ if (class_exists("woocommerce")) {
             add_action('woocommerce_single_product_summary', [$this, 't888f_viewing_question'], 12);
             add_filter('yith_wcwl_show_add_to_wishlist', [$this, 'hide_single_product_wishlist_button']);
             add_action('woocommerce_single_product_summary', [$this, 't888f_single_product_contact_button'], 31);
+            add_action('woocommerce_single_product_summary', [$this, 't888f_single_product_contact_info'], 45);
             add_action('woocommerce_single_product_summary', [$this, 't888f_image_safe_checkout'], 40);
             add_filter('woocommerce_product_review_comment_form_args', [$this, 'customize_woocommerce_review_form'], );
             // add_action('woocommerce_single_product_summary', [$this, 't888f_product_tabs'], 40);
@@ -747,6 +748,20 @@ if (class_exists("woocommerce")) {
                 'woocommerce/single-product-structure/contact-button',
                 '',
                 ['product' => $current_product],
+                true
+            );
+        }
+
+        public function t888f_single_product_contact_info(): void
+        {
+            if (!is_product()) {
+                return;
+            }
+
+            t888f_get_template(
+                'woocommerce/single-product-structure/contact-info',
+                '',
+                [],
                 true
             );
         }
