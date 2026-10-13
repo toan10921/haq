@@ -30,4 +30,5 @@ $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Descri
 
 
     <?php the_content(); ?>
+    <?php t888f_product_description_footer(); ?>
 

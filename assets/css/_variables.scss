@@ -30,6 +30,9 @@ $title18: 1.125rem;
 $title24: 1.5rem;
 $title36: 2.25rem;
 $title48: 3rem;
+$content-text-size: 18px;
+$content-text-color: #000;
+$content-text-opacity: 0.9;
 
 
 // declare gradient color
@@ -53,7 +56,7 @@ $font-philosopher: "Montserrat", sans-serif;
     --ninth-color: #{$ninth-color};
     --tenth-color: #{$tenth-color};
     --third-color-rgba: #{$third-color-rgba};
-    font-size: 1rem;
+    font-size: 18px;
     // line-height: 1.3125rem; fix line-height
     line-height: 1.313;
     font-family: #{$font-poppins};
@@ -71,6 +74,9 @@ $font-philosopher: "Montserrat", sans-serif;
     --title36: #{$title36};
     --title48: #{$title48};
     --gradient-color: #{$gradient-color};
+    --content-text-size: #{$content-text-size};
+    --content-text-color: #{$content-text-color};
+    --content-text-opacity: #{$content-text-opacity};
 }
 
 

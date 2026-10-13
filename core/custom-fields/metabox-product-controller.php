@@ -234,6 +234,14 @@ class MetaboxProductController
                 ),
 
                 array(
+                    'id'    => 'hide_product_description_footer',
+                    'name'  => esc_html__('Hide product description footer', 'nebon'),
+                    'type'  => 'checkbox',
+                    'desc'  => esc_html__('Hide the shared description footer from Theme Options on this product.', 'nebon'),
+                    'std'   => 0,
+                    'tab'   => 'advanced',
+                ),
+                array(
                     'id'    => 'product_tab_style',
                     'name'  => esc_html__('Product tab style', 'nebon'),
                     'type'  => 'select',

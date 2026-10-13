@@ -11,7 +11,8 @@ namespace T888Core;
 
 use Elementor\Custom_Elementor_Widgets;
 
-if (!defined('ABSPATH')) return;
+if (!defined('ABSPATH'))
+    return;
 
 /** 
  * Class TemplateHelper: define some methods to help load view templates, add actions, and filters in WordPress, all actions and filters of the theme should be defined here
@@ -26,16 +27,19 @@ if (!class_exists('TemplateHelper')) {
         private static function enqueue_elementor_template_assets($template_id)
         {
             $template_id = (int) $template_id;
-            if ($template_id <= 0) return;
-            if (!class_exists('\\Elementor\\Plugin')) return;
+            if ($template_id <= 0)
+                return;
+            if (!class_exists('\\Elementor\\Plugin'))
+                return;
 
             $plugin = \Elementor\Plugin::instance();
-            if (!isset($plugin->frontend)) return;
+            if (!isset($plugin->frontend))
+                return;
 
             // Ensure Elementor base/widget CSS (e.g. widget-divider) is printed in <head>.
             $plugin->frontend->enqueue_styles();
             $plugin->frontend->enqueue_scripts();
-            
+
             if (defined('ELEMENTOR_ASSETS_URL') && defined('ELEMENTOR_VERSION')) {
                 wp_enqueue_style(
                     't888f-elementor-widget-divider',
@@ -154,10 +158,14 @@ if (!class_exists('TemplateHelper')) {
         }
 
         // Prevent cloning of the instance
-        private function __clone() {}
+        private function __clone()
+        {
+        }
 
         // Prevent unserializing of the instance
-        public function __wakeup() {}
+        public function __wakeup()
+        {
+        }
 
 
         /**
@@ -171,27 +179,34 @@ if (!class_exists('TemplateHelper')) {
          * @since 1.0
          */
 
-        static function _load_view_template($view_name,  $slug = '',  $data = array(),  $echo = FALSE, $template_dir = '/template-parts')
+        static function _load_view_template($view_name, $slug = '', $data = array(), $echo = FALSE, $template_dir = '/template-parts')
         {
             $template_path = get_template_directory();
             $stylesheet_path = get_stylesheet_directory();
             if (!empty($slug)) {
                 $path = $stylesheet_path . $template_dir . '/' . $view_name . '-' . $slug . '.php';
-                if ($template_path != $stylesheet_path && is_file($path)) $template = $path;
-                else $template =  get_template_directory() . $template_dir . '/' . $view_name . '-' . $slug . '.php';
+                if ($template_path != $stylesheet_path && is_file($path))
+                    $template = $path;
+                else
+                    $template = get_template_directory() . $template_dir . '/' . $view_name . '-' . $slug . '.php';
                 if (!is_file($template)) {
                     $path = $stylesheet_path . $template_dir . '/' . $view_name . '.php';
-                    if ($template_path != $stylesheet_path && is_file($path)) $template = $path;
-                    else $template = get_template_directory() . $template_dir . '/' . $view_name . '.php';
+                    if ($template_path != $stylesheet_path && is_file($path))
+                        $template = $path;
+                    else
+                        $template = get_template_directory() . $template_dir . '/' . $view_name . '.php';
                 }
             } else {
                 $path = $stylesheet_path . $template_dir . '/' . $view_name . '.php';
-                if ($template_path != $stylesheet_path && is_file($path)) $template = $path;
-                else $template = get_template_directory() . $template_dir . '/' . $view_name . '.php';
+                if ($template_path != $stylesheet_path && is_file($path))
+                    $template = $path;
+                else
+                    $template = get_template_directory() . $template_dir . '/' . $view_name . '.php';
             }
             //Allow Template be filter
             $template = apply_filters('tech888f_load_view', $template, $view_name, $slug);
-            if ($data) extract($data);
+            if ($data)
+                extract($data);
             if (file_exists($template)) {
                 if (!$echo) {
 
@@ -538,7 +553,7 @@ if (!class_exists('TemplateHelper')) {
                 ASSETS_VER,
                 'all'
             );
-            
+
             // Add Google Fonts for Gutenberg editor
             wp_enqueue_style(
                 'google-fonts-gutenberg',
@@ -634,9 +649,9 @@ if (!class_exists('TemplateHelper')) {
             add_theme_support('responsive-embeds');
 
             add_theme_support('custom-logo', array(
-                'height'      => 55,
-                'width'       => 145,
-                'flex-width'  => true,
+                'height' => 55,
+                'width' => 145,
+                'flex-width' => true,
                 'flex-height' => true,
             ));
 
@@ -656,7 +671,7 @@ if (!class_exists('TemplateHelper')) {
             add_image_size('post-list2', 470, 400, true);
             add_image_size('post-list3', 505, 273, true);
             add_image_size('product-list-default', 327, 482, true); // 327px by 482px, cropped
-            add_image_size('product-detail-main', 550, 825, true); // 550px by 825px, cropped
+            add_image_size('product-detail-main', 600, 600, true); // 550px by 825px, cropped
             add_image_size('product-grid-boxsale', 370, 410, true); // 370px by 410px, cropped
             // add_image_size('product-grid-default', 327, 482, true); // 276px by 408px, cropped
             add_image_size('product-feature-products', 265, 387, true); // 265px by 387px, cropped
@@ -691,23 +706,23 @@ if (!class_exists('TemplateHelper')) {
         static function _add_sidebars(): void
         {
             register_sidebar(array(
-                'name'          => __('Blog Sidebar', 'nebon'),
-                'id'            => 'blog-sidebar',
-                'description'   => __('A blog sidebar for use.', 'nebon'),
+                'name' => __('Blog Sidebar', 'nebon'),
+                'id' => 'blog-sidebar',
+                'description' => __('A blog sidebar for use.', 'nebon'),
                 'before_widget' => '<div class="widget">',
-                'after_widget'  => '</div>',
-                'before_title'  => '<h2 class="widget-title title">',
-                'after_title'   => '</h2>',
+                'after_widget' => '</div>',
+                'before_title' => '<h2 class="widget-title title">',
+                'after_title' => '</h2>',
             ));
 
             register_sidebar(array(
-                'name'          => __('WooCommerce Sidebar', 'nebon'),
-                'id'            => 'woocommerce-sidebar',
-                'description'   => __('Sidebar for WooCommerce pages.', 'nebon'),
+                'name' => __('WooCommerce Sidebar', 'nebon'),
+                'id' => 'woocommerce-sidebar',
+                'description' => __('Sidebar for WooCommerce pages.', 'nebon'),
                 'before_widget' => '<div class="widget %2$s">',
-                'after_widget'  => '</div>', // HTML after each widget.
-                'before_title'  => '<h2 class="widget-title">',
-                'after_title'   => '</h2>',
+                'after_widget' => '</div>', // HTML after each widget.
+                'before_title' => '<h2 class="widget-title">',
+                'after_title' => '</h2>',
             ));
         }
 
@@ -789,7 +804,9 @@ if (!class_exists('TemplateHelper')) {
          * @return void
          */
 
-        static function _after_switch_theme(): void {}
+        static function _after_switch_theme(): void
+        {
+        }
 
         /**
          * Action to add custom classes to the head tag
@@ -804,8 +821,8 @@ if (!class_exists('TemplateHelper')) {
             GoogleFont::getFontHtml(
                 array(
                     0 =>
-                    // 'Material+Symbols+Outlined:wght@100',
-                    'Philosopher:ital,wght@0,400;0,700;1,400;1,700',
+                        // 'Material+Symbols+Outlined:wght@100',
+                        'Philosopher:ital,wght@0,400;0,700;1,400;1,700',
                     'Poppins:ital,wght@0,400;0,900;1,400;1,900',
                     'Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900'
 
@@ -839,7 +856,8 @@ if (!class_exists('TemplateHelper')) {
                     ], $atts);
 
                     $id = intval($atts['id']);
-                    if (!$id) return '';
+                    if (!$id)
+                        return '';
 
                     if (did_action('elementor/loaded')) {
                         // Render with CSS enabled so widgets (e.g. divider) work on non-Elementor pages.
@@ -854,11 +872,12 @@ if (!class_exists('TemplateHelper')) {
         public static function render_preloader()
         {
             $enable = get_theme_mod('preload', 'off');
-            if ($enable !== 'on') return;
+            if ($enable !== 'on')
+                return;
 
-            $bg_color     = get_theme_mod('background_preload', '#ffffff');
-            $style        = get_theme_mod('preload_style', 'style1');
-            $preload_img  = get_theme_mod('preload_image');
+            $bg_color = get_theme_mod('background_preload', '#ffffff');
+            $style = get_theme_mod('preload_style', 'style1');
+            $preload_img = get_theme_mod('preload_image');
             t888f_get_template('common/preload', '', array(
                 'bg_color' => $bg_color,
                 'style' => $style,

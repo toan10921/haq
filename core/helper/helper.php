@@ -20,6 +20,47 @@ if (!function_exists('t888f_get_template')) {
     }
 }
 
+if (!function_exists('t888f_get_product_description_footer_default')) {
+    function t888f_get_product_description_footer_default()
+    {
+        return '<p>Nếu bạn cần hỗ trợ tư vấn về giải pháp của chúng tôi, đừng ngần ngại liên hệ:</p>
+<ul>
+<li><strong>CÔNG TY CỔ PHẦN HAQ</strong></li>
+<li>Địa chỉ: Số 146, Đường Lê Quang Đạo, Phường Từ Liêm, TP. Hà Nội</li>
+<li>Hotline: <a href="tel:09665254299">0966 525 4299</a></li>
+<li>Email: <a href="mailto:sales01@haq.vn">sales01@haq.vn</a></li>
+<li>Website: <a href="https://haq.vn" target="_blank" rel="noopener">https://haq.vn</a></li>
+</ul>';
+    }
+}
+
+if (!function_exists('t888f_product_description_footer')) {
+    function t888f_product_description_footer()
+    {
+        if (!is_singular('product')) {
+            return;
+        }
+
+        if (get_theme_mod('show_product_description_footer', 'on') !== 'on') {
+            return;
+        }
+
+        $product_id = get_the_ID();
+        $hide_footer = $product_id ? get_post_meta($product_id, 'hide_product_description_footer', true) : '';
+        if (!empty($hide_footer) && $hide_footer !== '0') {
+            return;
+        }
+
+        $content = get_theme_mod('product_description_footer', t888f_get_product_description_footer_default());
+        $content = trim((string) $content);
+        if ($content === '') {
+            return;
+        }
+
+        echo '<div class="product-description-footer">' . wp_kses_post(do_shortcode(wpautop($content))) . '</div>';
+    }
+}
+
 /**
  * Get template part for widgets
  * @param string $view_name

@@ -496,14 +496,20 @@
 .post_content,
 .entry-content,
 .comment-list .comment-item .comment-text {
-    font-size: 0.875rem;
+    font-size: var(--content-text-size);
     // color: var(--ninth-color);
     // fix line-height for detail content default
-    line-height: 1.6;
+    line-height: 1.7;
 
-    p {
-        color: var(--ninth-color);
-        line-height: 1.6;
+    p,
+    li,
+    td,
+    dd,
+    dt {
+        font-size: var(--content-text-size) !important;
+        color: var(--content-text-color) !important;
+        opacity: var(--content-text-opacity);
+        line-height: 1.7;
     }
 
     a {
@@ -1249,9 +1255,10 @@ input[type="submit"] {
 
         .short-description-post {
             margin-bottom: 22px !important;
-            color: var(--ninth-color);
-            font-size: 1rem;
-            line-height: 1.8;
+            color: var(--content-text-color) !important;
+            opacity: var(--content-text-opacity);
+            font-size: var(--content-text-size) !important;
+            line-height: 1.7;
         }
     }
 }
@@ -1260,13 +1267,16 @@ input[type="submit"] {
     .detail-content-wrap,
     .post_content,
     .entry-content {
-        font-size: 0.9375rem;
-        line-height: 1.6;
+        font-size: var(--content-text-size);
+        line-height: 1.7;
 
         p {
             margin-top: 0;
             margin-bottom: 22px;
-            line-height: 1.6;
+            font-size: var(--content-text-size) !important;
+            color: var(--content-text-color) !important;
+            opacity: var(--content-text-opacity);
+            line-height: 1.7;
         }
 
         h2,

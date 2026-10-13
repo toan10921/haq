@@ -3,6 +3,7 @@
 namespace T888Core;
 
 use T888Core\WP_Customize_Alpha_Color_Control;
+use T888Core\WP_Customize_Editor_Control;
 use WP_Customize_Upload_Control;
 use WP_Customize_Color_Control;
 use  WP_Customize_Media_Control;
@@ -2910,6 +2911,41 @@ class Customizer_Settings
                 'off' => __('Off', 'nebon'),
             ),
             'section' => 'product_setting_general',
+        ));
+
+        // Product description footer
+        $wp_customize->add_setting('show_product_description_footer', array(
+            'transport' => 'refresh',
+            'default' => 'on',
+            'sanitize_callback' => 'sanitize_text_field',
+        ));
+        $wp_customize->add_control('show_product_description_footer', array(
+            'label' => __('Show product description footer', 'nebon'),
+            'description' => __('Append shared content to the end of every product description.', 'nebon'),
+            'type' => 'radio',
+            'choices' => array(
+                'on' => __('On', 'nebon'),
+                'off' => __('Off', 'nebon'),
+            ),
+            'section' => 'product_setting_extra_display',
+        ));
+
+        $wp_customize->add_setting('product_description_footer', array(
+            'transport' => 'refresh',
+            'default' => t888f_get_product_description_footer_default(),
+            'sanitize_callback' => 'wp_kses_post',
+        ));
+        $wp_customize->add_control(new WP_Customize_Editor_Control(
+            $wp_customize,
+            'product_description_footer',
+            array(
+                'label' => __('Product description footer', 'nebon'),
+                'description' => __('This content appears at the end of the product description tab on every product.', 'nebon'),
+                'section' => 'product_setting_extra_display',
+                'active_callback' => function ($control) {
+                    return $control->manager->get_setting('show_product_description_footer')->value() === 'on';
+                },
+            )
         ));
 
         // Show User Guide

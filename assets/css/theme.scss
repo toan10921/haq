@@ -720,7 +720,7 @@ main logic: post item margin bottom 3.75rem, pagination margin bottom 3.75rem, w
 }
 
 .main-page .entry-content {
-  font-size: 0.875rem;
+  font-size: var(--content-text-size);
   line-height: 1.6;
 }
 
@@ -2303,6 +2303,25 @@ body.scrolled .sticky-on.is-sticky-active {
   }
 }
 
+// Shared body text for product description and post content
+.woocommerce-Tabs-panel--description,
+.product-description-footer,
+.detail-content-wrap,
+.post_content,
+.w-post-elm.post_content,
+.entry-content {
+  p,
+  li,
+  td,
+  dd,
+  dt {
+    font-size: var(--content-text-size) !important;
+    color: var(--content-text-color) !important;
+    opacity: var(--content-text-opacity);
+    line-height: 1.7;
+  }
+}
+
 // default style for p tags
 body.page:not(.elementor-page),
 body.single,
@@ -2311,8 +2330,10 @@ body.single-post {
   .post_content,
   .detail-content-wrap {
     p {
-      color: var(--ninth-color);
-      line-height: 1.6;
+      color: var(--content-text-color) !important;
+      opacity: var(--content-text-opacity);
+      font-size: var(--content-text-size) !important;
+      line-height: 1.7;
     }
   }
 }
