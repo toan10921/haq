@@ -121,3 +121,128 @@
   max-width: 900px;
   margin: 0 auto;
 }
+
+.haq-quote-form {
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+.haq-quote-form__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.haq-quote-form__field,
+.haq-quote-form__submit {
+  min-width: 0;
+}
+
+.haq-quote-form br {
+  display: none;
+}
+
+.haq-quote-form .wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.haq-quote-form .wpcf7-form-control:not(.wpcf7-submit) {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid #e3e8ef;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1f2937;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  box-shadow: none;
+  outline: none;
+  appearance: none;
+}
+
+.haq-quote-form .haq-quote-form__field--message textarea.wpcf7-form-control {
+  height: 78px;
+  min-height: 78px;
+  padding-top: 14px;
+  resize: none;
+}
+
+.haq-quote-form input::placeholder,
+.haq-quote-form textarea::placeholder {
+  color: #98a2b3;
+  opacity: 1;
+  font-family: "Montserrat", sans-serif;
+}
+
+.haq-quote-form .wpcf7-form-control:not(.wpcf7-submit):focus {
+  border-color: #1d90fd;
+  box-shadow: 0 0 0 3px rgba(29, 144, 253, 0.12);
+}
+
+.haq-quote-form__submit {
+  margin-top: 14px;
+}
+
+.haq-quote-form .wpcf7-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  width: 100%;
+  margin: 0;
+  padding: 16px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: #1d90fd;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.2s ease;
+}
+
+.haq-quote-form .wpcf7-submit::after {
+  content: none;
+  display: none;
+}
+
+.haq-quote-form .wpcf7-submit:hover,
+.haq-quote-form .wpcf7-submit:focus {
+  background: #0b7ae0;
+  color: #ffffff;
+}
+
+.haq-quote-form .wpcf7-not-valid-tip {
+  display: block;
+  margin-top: 6px;
+  color: #d92d20;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.haq-quote-form .wpcf7-spinner {
+  display: block;
+  margin: 10px auto 0;
+}
+
+.wpcf7-form.haq-quote-form-root .wpcf7-response-output {
+  margin: 14px 0 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 767px) {
+  .haq-quote-form__grid {
+    grid-template-columns: 1fr;
+  }
+}

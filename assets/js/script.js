@@ -709,7 +709,88 @@ jQuery(document).ready(function ($) {
     });
   }
 
+  function isCounterNumber(value) {
+    if (typeof value === "number") return Number.isFinite(value);
+    if (typeof value !== "string") return false;
+    const normalized = value.trim().replace(/,/g, "");
+    if (!normalized) return false;
+    return /^-?\d+(\.\d+)?$/.test(normalized);
+  }
+
+  function isTextCounter($el) {
+    return $el.closest(".counter-text").length > 0;
+  }
+
+  function staticCounterText($el) {
+    const raw = $el.attr("data-to-value");
+    return raw == null ? "" : String(raw).trim();
+  }
+
+  function freezeTextCounter($el) {
+    const text = staticCounterText($el);
+    $el.each(function () {
+      if (this.dataset.haqTextFrozen === "1" && this.textContent === text) return;
+      const replacement = this.cloneNode(false);
+      replacement.dataset.haqTextFrozen = "1";
+      replacement.classList.add("is-text");
+      replacement.textContent = text;
+      this.replaceWith(replacement);
+    });
+  }
+
+  function freezeTextCounters(root) {
+    const $root = root ? $(root) : $(document);
+    $root.find(".elementor-counter-number").each(function () {
+      const $number = $(this);
+      const rawText = staticCounterText($number);
+      if (isCounterNumber(rawText) && !isTextCounter($number)) return;
+      freezeTextCounter($number);
+    });
+  }
+
+  function patchElementorTextCounter() {
+    if (!$.fn.numerator || $.fn.numerator.__haqTextSafe) return;
+    const original = $.fn.numerator;
+    const patched = function (options) {
+      const toValue = options && options.toValue;
+      const textMode = !isCounterNumber(toValue) || isTextCounter(this);
+      if (!textMode) return original.apply(this, arguments);
+
+      return this.each(function () {
+        freezeTextCounter($(this));
+      });
+    };
+    patched.__haqTextSafe = true;
+    $.fn.numerator = patched;
+  }
+
+  let textCounterHooked = false;
+
+  function bindTextCounters() {
+    patchElementorTextCounter();
+    freezeTextCounters();
+    if (
+      textCounterHooked ||
+      !window.elementorFrontend ||
+      !elementorFrontend.hooks
+    ) {
+      return;
+    }
+    textCounterHooked = true;
+    elementorFrontend.hooks.addAction(
+      "frontend/element_ready/counter.default",
+      function ($scope) {
+        patchElementorTextCounter();
+        freezeTextCounters($scope);
+      },
+      1,
+    );
+  }
+
   function handleElementorScript() {
+    bindTextCounters();
+    $(window).on("elementor/frontend/init", bindTextCounters);
+
     // editor mode
     if ($(".elementor-editor-active").length) {
       function waitForAllElements(selector, callback) {
@@ -749,6 +830,11 @@ jQuery(document).ready(function ($) {
           $(window).trigger("resize");
         });
       }
+
+      waitForAllElements(".elementor-counter-number", function () {
+        patchElementorTextCounter();
+        freezeTextCounters();
+      });
     }
     // frontend mode
     $(window).on("elementor/frontend/init", function () {

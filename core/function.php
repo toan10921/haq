@@ -202,6 +202,82 @@ add_filter('upload_mimes', function ($m) {
 });
 
 
+function haq_is_contact_page_form($contact_form)
+{
+    if (!is_object($contact_form) || !method_exists($contact_form, 'title')) {
+        return false;
+    }
+
+    if ($contact_form->title() === 'formlienhe_tranglienhe') {
+        return true;
+    }
+
+    return method_exists($contact_form, 'hash') && $contact_form->hash() === '62a4f12';
+}
+
+function haq_contact_page_form_markup()
+{
+    return '<div class="haq-quote-form">'
+        . '<div class="haq-quote-form__grid">'
+        . '<div class="haq-quote-form__field">[text* your-name autocomplete:name placeholder "Họ và tên *"]</div>'
+        . '<div class="haq-quote-form__field">[tel* your-phone autocomplete:tel placeholder "Số điện thoại *"]</div>'
+        . '<div class="haq-quote-form__field">[text company-name autocomplete:organization placeholder "Tên công ty"]</div>'
+        . '<div class="haq-quote-form__field">[email* your-email autocomplete:email placeholder "Email *"]</div>'
+        . '<div class="haq-quote-form__field">[text your-need placeholder "Nhu cầu: Báo giá / Tư vấn / Khác"]</div>'
+        . '<div class="haq-quote-form__field haq-quote-form__field--message">[textarea your-message placeholder "Mã hàng, quy cách, số lượng, thời gian cần..."]</div>'
+        . '</div>'
+        . '<div class="haq-quote-form__submit">[submit "GỬI YÊU CẦU LIÊN HỆ"]</div>'
+        . '</div>';
+}
+
+add_filter('wpcf7_contact_form_properties', function ($properties, $contact_form) {
+    if (!haq_is_contact_page_form($contact_form)) {
+        return $properties;
+    }
+
+    $properties['form'] = haq_contact_page_form_markup();
+
+    if (!empty($properties['mail']['body'])) {
+        $extra_lines = array(
+            'company-name' => 'Tên công ty: [company-name]',
+            'your-need' => 'Nhu cầu: [your-need]',
+            'your-message' => 'Nội dung: [your-message]',
+        );
+
+        foreach ($extra_lines as $tag => $line) {
+            if (strpos($properties['mail']['body'], '[' . $tag . ']') === false) {
+                $properties['mail']['body'] = rtrim($properties['mail']['body']) . "\n" . $line;
+            }
+        }
+    }
+
+    return $properties;
+}, 10, 2);
+
+add_filter('wpcf7_autop_or_not', function ($autop) {
+    if (!class_exists('WPCF7_ContactForm')) {
+        return $autop;
+    }
+
+    $contact_form = WPCF7_ContactForm::get_current();
+
+    return haq_is_contact_page_form($contact_form) ? false : $autop;
+});
+
+add_filter('wpcf7_form_class_attr', function ($class) {
+    if (!class_exists('WPCF7_ContactForm')) {
+        return $class;
+    }
+
+    $contact_form = WPCF7_ContactForm::get_current();
+
+    if (haq_is_contact_page_form($contact_form)) {
+        $class .= ' haq-quote-form-root';
+    }
+
+    return $class;
+});
+
 add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     $allowed = [

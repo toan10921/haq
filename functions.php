@@ -2,7 +2,7 @@
 
 /** define global constant */
 
-define('ASSETS_VER', '1.5.6');
+define('ASSETS_VER', '1.5.7');
 
 /**
  * require global config
