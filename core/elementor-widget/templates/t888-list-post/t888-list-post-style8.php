@@ -13,7 +13,10 @@ if (isset($_GET['paged'])) {
     $paged = max(1, (int) $_GET['paged']);
 }
 
-$active_cat = isset($_GET['post_cat']) ? sanitize_text_field($_GET['post_cat']) : 'all';
+$active_cat = isset($_GET['post_cat']) ? sanitize_text_field(wp_unslash($_GET['post_cat'])) : 'all';
+$search_query = isset($_GET['post_q']) ? sanitize_text_field(wp_unslash($_GET['post_q'])) : '';
+$search_query = trim(preg_replace('/\s+/u', ' ', $search_query));
+$search_query = function_exists('mb_substr') ? mb_substr($search_query, 0, 80) : substr($search_query, 0, 80);
 
 $args = [
     'post_type' => 'post',
@@ -44,8 +47,50 @@ if ($active_cat !== 'all' && !empty($active_cat)) {
     ];
 }
 
+$title_search_filter = static function ($where) use ($search_query) {
+    global $wpdb;
+    $where .= $wpdb->prepare(
+        " AND {$wpdb->posts}.post_title LIKE %s",
+        '%' . $wpdb->esc_like($search_query) . '%'
+    );
+
+    return $where;
+};
+
+if ($search_query !== '') {
+    add_filter('posts_where', $title_search_filter, 10, 2);
+}
+
 $query = new WP_Query($args);
+
+if ($search_query !== '') {
+    remove_filter('posts_where', $title_search_filter, 10);
+}
+
+$search_action = remove_query_arg(['post_q', 'post_cat', 'paged']);
 ?>
+
+<form class="t888-post-search" method="get" action="<?php echo esc_url($search_action); ?>">
+    <?php if ($active_cat !== 'all' && $active_cat !== '') : ?>
+        <input type="hidden" name="post_cat" value="<?php echo esc_attr($active_cat); ?>">
+    <?php endif; ?>
+    <label class="screen-reader-text" for="t888-post-search-input"><?php esc_html_e('Tìm theo tên bài viết', 'nebon'); ?></label>
+    <input
+        id="t888-post-search-input"
+        class="t888-post-search-input"
+        type="search"
+        name="post_q"
+        value="<?php echo esc_attr($search_query); ?>"
+        placeholder="<?php esc_attr_e('Tìm theo tên bài viết', 'nebon'); ?>"
+        maxlength="80"
+    >
+    <button class="t888-post-search-submit" type="submit"><?php esc_html_e('Tìm kiếm', 'nebon'); ?></button>
+    <?php if ($search_query !== '') : ?>
+        <a class="t888-post-search-clear" href="<?php echo esc_url(remove_query_arg(['post_q', 'paged'])); ?>">
+            <?php esc_html_e('Xóa', 'nebon'); ?>
+        </a>
+    <?php endif; ?>
+</form>
 
 <?php if ($show_category_filter === 'yes'):
     $filter_terms = [];
@@ -159,5 +204,13 @@ $query = new WP_Query($args);
     wp_reset_postdata();
 ?>
 <?php else: ?>
-    <p><?php echo esc_html__('No posts found.', 'nebon'); ?></p>
+    <p class="t888-post-empty">
+        <?php
+        if ($search_query !== '') {
+            echo esc_html(sprintf(__('Không tìm thấy bài viết với tên "%s".', 'nebon'), $search_query));
+        } else {
+            echo esc_html__('No posts found.', 'nebon');
+        }
+        ?>
+    </p>
 <?php endif; ?>
