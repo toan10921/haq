@@ -3620,30 +3620,24 @@ select[name="orderby"]:focus {
   }
 }
 
-// .custom-bn-about {
-//   background-image:
-//       linear-gradient(
-//           90deg,
-//           rgba(6, 40, 76, 1) 0%,
-//           rgba(7, 52, 99, 0.9) 62%,
-//           rgba(6, 40, 76, 0.06) 100%
-//       ),
-//       url("https://vattuhaq.vn/wp-content/uploads/2026/10/banner-about-haq-1.png") !important;
+html {
+  scroll-behavior: smooth;
+}
 
-//   background-size: cover;
-//   background-position: center;
-//   background-repeat: no-repeat;
-// }
+#form-bao-gia {
+  scroll-margin-top: 100px;
+}
 
-// .custom-bn-about {
-//     .elementor-background-overlay {
-//         background: linear-gradient(
-//             90deg,
-//             rgba(6, 40, 76, 1) 0%,
-//             rgba(7, 52, 99, 0.9) 62%,
-//             rgba(6, 40, 76, 0.06) 100%
-//         ) !important;
-
-//         opacity: 1 !important;
-//     }
-// }
+@media screen and (max-width: 1600px) and (min-width: 1025px) {
+  .title-bn-contact{
+    width: 45% !important;
+  }
+  .des-bn-contact{
+    width: 38% !important;}
+}
+.archive.tax-product_cat [data-elementor-type="wp-page"] {
+  max-width: 1432px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}

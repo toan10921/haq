@@ -88,12 +88,69 @@ $query = new WP_Query($args);
 
 <?php if ($query->have_posts()): ?>
     <div class="blog-wrap blog-grid grid-style8">
-        <div class="posts-wrap">
-            <?php while ($query->have_posts()):
-                $query->the_post();
-                t888f_get_template('posts/loop/grid/grid-style8', '', [], true);
-            endwhile; ?>
-        </div>
+        <?php if ($paged === 1):
+            $query->the_post();
+            $featured_id = get_the_ID();
+            $featured_permalink = get_permalink($featured_id);
+            $featured_title = get_the_title($featured_id);
+            $featured_image = get_the_post_thumbnail_url($featured_id, 'large');
+
+            if (!$featured_image) {
+                $featured_image = get_theme_mod('general_post_thumbnail_default', '');
+            }
+            if (!$featured_image) {
+                $featured_image = get_template_directory_uri() . '/assets/images/505x273.png';
+            }
+
+            $featured_excerpt = get_the_excerpt();
+            if ($featured_excerpt === '') {
+                $featured_excerpt = wp_strip_all_tags(strip_shortcodes((string) get_the_content()));
+            }
+            $featured_excerpt = wp_trim_words($featured_excerpt, 36, '...');
+
+            $published = get_post_datetime($featured_id);
+            $site_now = new DateTimeImmutable('now', wp_timezone());
+            $published_day = $published instanceof DateTimeInterface ? $published->format('Y-m-d') : '';
+            $time_label = $published instanceof DateTimeInterface ? wp_date('g:i a', $published->getTimestamp()) : '';
+
+            if ($published_day !== '' && $published_day === $site_now->format('Y-m-d')) {
+                $featured_date = sprintf(__('Hôm nay lúc %s', 'nebon'), $time_label);
+            } elseif ($published_day !== '' && $published_day === $site_now->modify('-1 day')->format('Y-m-d')) {
+                $featured_date = sprintf(__('Hôm qua lúc %s', 'nebon'), $time_label);
+            } else {
+                $featured_date = get_the_date('d/m/Y', $featured_id);
+            }
+            ?>
+            <article class="post-card8-featured">
+                <a class="post-card8-featured-media" href="<?php echo esc_url($featured_permalink); ?>" aria-label="<?php echo esc_attr($featured_title); ?>">
+                    <img src="<?php echo esc_url($featured_image); ?>" alt="<?php echo esc_attr($featured_title); ?>">
+                </a>
+                <div class="post-card8-featured-content">
+                    <h2 class="post-card8-featured-title">
+                        <a href="<?php echo esc_url($featured_permalink); ?>"><?php echo esc_html($featured_title); ?></a>
+                    </h2>
+                    <time class="post-card8-featured-date" datetime="<?php echo esc_attr(get_the_date('c', $featured_id)); ?>">
+                        <?php echo esc_html($featured_date); ?>
+                    </time>
+                    <?php if ($featured_excerpt !== '') : ?>
+                        <p class="post-card8-featured-excerpt"><?php echo esc_html($featured_excerpt); ?></p>
+                    <?php endif; ?>
+                    <a class="post-card8-featured-more" href="<?php echo esc_url($featured_permalink); ?>">
+                        <?php esc_html_e('Xem thêm', 'nebon'); ?>
+                        <i class="las la-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </article>
+        <?php endif; ?>
+
+        <?php if ($query->have_posts()): ?>
+            <div class="posts-wrap">
+                <?php while ($query->have_posts()):
+                    $query->the_post();
+                    t888f_get_template('posts/loop/grid/grid-style8', '', [], true);
+                endwhile; ?>
+            </div>
+        <?php endif; ?>
     </div>
     <?php
     if ($show_pagination === 'yes') {
