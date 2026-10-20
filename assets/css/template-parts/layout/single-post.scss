@@ -1133,12 +1133,25 @@ input[type="submit"] {
 }
 
 // Single post editorial layout: article first, supporting widgets second.
+// overflow-x: hidden on html/body creates a scroll container and stops position: sticky.
+html:has(body.single-post),
+body.single-post {
+    overflow-x: clip;
+}
+
+body.single-post.minicart-open {
+    overflow: hidden;
+}
+
 .single-main {
     padding: 0px 0 96px;
+    overflow: visible;
 
     >.container {
         max-width: 1432px;
         display: flex;
+        align-items: flex-start;
+        overflow: visible;
     }
 
     >.no-sidebar-fullwidth {
@@ -1486,6 +1499,7 @@ input[type="submit"] {
     width: 100%;
     min-width: 0;
     flex: 1 1 auto;
+    overflow: visible;
 
     .single-post-content {
         max-width: none;
@@ -1499,7 +1513,18 @@ input[type="submit"] {
 }
 
 .single-post-rail {
+    position: sticky;
+    top: 16px;
+    z-index: 2;
+    align-self: start;
     min-width: 0;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+}
+
+body.admin-bar .single-post-rail {
+    top: 110px;
+    max-height: calc(100vh - 80px);
 }
 
 .post-rail-block + .post-rail-block {
@@ -1647,7 +1672,10 @@ input[type="submit"] {
         }
 
         .single-post-rail {
+            position: static;
             order: 2;
+            max-height: none;
+            overflow: visible;
         }
 
         .single-post-sidebar {
@@ -1667,7 +1695,10 @@ input[type="submit"] {
     }
 
     .single-post-layout--rail .single-post-rail {
+        position: static;
         order: 2;
+        max-height: none;
+        overflow: visible;
     }
 
     .single-post-layout--rail .single-post-sidebar {
