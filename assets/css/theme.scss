@@ -3641,3 +3641,28 @@ html {
   padding-left: 16px;
   padding-right: 16px;
 }
+
+/* Shop row: product grid + .custom-filter.
+   Category archives render the Elementor template outside the normal page
+   pipeline, so the atomic mobile rules that stack this row on /san-pham/
+   do not apply there. Force the same stack, and keep a gap once it wraps. */
+@media (max-width: 1024px) {
+  :is(.e-flexbox-base, .e-con, .e-con-inner, .elementor-container):has(> .custom-filter) {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    align-items: stretch !important;
+  }
+
+  :is(.e-flexbox-base, .e-con, .e-con-inner, .elementor-container):has(> .custom-filter) > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .custom-filter {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 32px !important;
+  }
+}
